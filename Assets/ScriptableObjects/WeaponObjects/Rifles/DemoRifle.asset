@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
+  m_Name: DemoRifle
+  m_EditorClassIdentifier: 
+  allowAutoFire: 1
+  damage: 15
+  maxDistance: 600
+  fireRate: 600
+  spread: 0
+  bulletsPerShot: 1
+  originalFOV: 90
+  aimDownSightFOV: 40
+  aimDownSightSpeed: 10
+  zoomSpeed: 10
+  adsOffsetX: 0
+  adsOffsetY: -0.18
+  adsOffsetZ: -0.2
+  currentAmmo: 30
+  magSize: 30
+  reloadTime: 1.2
+  recoilRotationHipfire: {x: 20, y: 30, z: 15}
+  recoilRotationAiming: {x: 15, y: 25, z: 10}
+  rotationSpeed: 6
+  returnSpeed: 25
+  kickbackForce: 0.05
+  kickbackRotation: 0.05
+  kickbackDuration: 0.1
+  resetDuration: 0.2
+  walkingRecoilMultiplier: 1.5
+  sprintingRecoilMultiplier: 2

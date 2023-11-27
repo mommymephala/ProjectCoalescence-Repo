@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
+  m_Name: DemoShotgun
+  m_EditorClassIdentifier: 
+  name: Demo Shotgun
+  weaponIcon: {fileID: 21300000, guid: 60b63b28e14f44e44884027b71cb4640, type: 3}
+  allowAutoFire: 0
+  damage: 20
+  maxDistance: 350
+  fireRate: 250
+  spread: 0.5
+  bulletsPerShot: 6
+  originalFOV: 90
+  aimDownSightFOV: 40
+  aimDownSightSpeed: 10
+  zoomSpeed: 10
+  adsOffsetX: -0.05
+  adsOffsetY: -0.05
+  adsOffsetZ: -0.05
+  currentAmmo: 12
+  magSize: 12
+  reloadTime: 1.2
+  recoilRotationHipfire: {x: 35, y: 50, z: 25}
+  recoilRotationAiming: {x: 30, y: 40, z: 20}
+  rotationSpeed: 8
+  returnSpeed: 25
+  kickbackForce: 0.05
+  kickbackRotation: 2
+  kickbackDuration: 0.1
+  resetDuration: 0.2
+  walkingRecoilMultiplier: 1.5
+  sprintingRecoilMultiplier: 2
