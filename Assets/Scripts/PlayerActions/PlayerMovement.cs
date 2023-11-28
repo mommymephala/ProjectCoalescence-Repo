@@ -30,7 +30,11 @@ namespace PlayerActions
         private float _headbobTimer;
         private Vector3 _originalLocalPosition;
 
+        [Header("Jumping")]
+        public float jumpForce = 5f;
+
         [Header("Keybinds")]
+        [SerializeField] private KeyCode jumpKey = KeyCode.Space;
         [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
 
         [Header("Drag")]
@@ -70,6 +74,11 @@ namespace PlayerActions
             ControlSpeed();
             HandleHeadbob();
 
+            if (Input.GetKeyDown(jumpKey) && _isGrounded)
+            {
+                Jump();
+            }
+
             _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
         }
 
@@ -86,6 +95,14 @@ namespace PlayerActions
 
             _moveDirection = orientation.forward * _verticalMovement + orientation.right * _horizontalMovement;
             IsWalking = !Input.GetKey(sprintKey) && (_horizontalMovement != 0f || _verticalMovement != 0f);
+        }
+        
+        //Delete it for the other game.
+        private void Jump()
+        {
+            if (!_isGrounded) return;
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            _rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
 
         private void ControlSpeed()
