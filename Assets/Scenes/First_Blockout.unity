@@ -5329,7 +5329,7 @@ GameObject:
   - component: {fileID: 128008195}
   - component: {fileID: 128008194}
   m_Layer: 0
-  m_Name: Door (7)
+  m_Name: Save_Room_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9791,7 +9791,7 @@ GameObject:
   - component: {fileID: 329168218}
   - component: {fileID: 329168217}
   m_Layer: 0
-  m_Name: Door (4)
+  m_Name: DarkHallway_Door_Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48502,7 +48502,7 @@ GameObject:
   - component: {fileID: 985311619}
   - component: {fileID: 985311618}
   m_Layer: 0
-  m_Name: Door (1)
+  m_Name: Lab_Room_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77640,7 +77640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698829430}
   m_Layer: 0
-  m_Name: GardenHallwaytoUpstairs
+  m_Name: BotanicHallwaytoUpstairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78765,7 +78765,7 @@ GameObject:
   - component: {fileID: 1762748673}
   - component: {fileID: 1762748672}
   m_Layer: 0
-  m_Name: Door (2)
+  m_Name: Botanic_Room_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90153,8 +90153,6 @@ SceneRoots:
   - {fileID: 1772789773}
   - {fileID: 999408223}
   - {fileID: 292216487}
-  - {fileID: 985311623}
-  - {fileID: 1762748677}
   - {fileID: 227913967}
   - {fileID: 1431638383}
   - {fileID: 1328210044}
@@ -90162,9 +90160,11 @@ SceneRoots:
   - {fileID: 118645606}
   - {fileID: 1808676221}
   - {fileID: 27485691}
-  - {fileID: 329168222}
   - {fileID: 693190319}
   - {fileID: 2092603917}
+  - {fileID: 985311623}
+  - {fileID: 1762748677}
+  - {fileID: 329168222}
   - {fileID: 128008199}
   - {fileID: 233014855}
   - {fileID: 1747619963}
