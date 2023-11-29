@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,6 +22,8 @@ public class InventoryTest : MonoBehaviour
     public GameObject SlotPrefab;
 
     private List<GameObject> allslots;
+
+    private int emptySlot;
     
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,8 @@ public class InventoryTest : MonoBehaviour
         
         allslots = new List<GameObject>();
 
+        emptySlot = slots;
+        
         inventoryWidht = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
 
         inventoryHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
@@ -79,5 +84,37 @@ public class InventoryTest : MonoBehaviour
 
         }
 
+    }
+
+    public bool AddItem(Item item)
+    {
+        if (item.maxSize == 1)
+        {
+            PlaceEmpty((item));
+            return true;
+        }
+
+        return false;
+    }
+    private bool PlaceEmpty(Item item)
+    {
+        if (emptySlot > 0)
+        {
+            foreach (GameObject slot in allslots)
+            {
+                Slot tmp = slot.GetComponent<Slot>();
+
+                if (tmp.isEmpty)
+                {
+                    tmp.AddItem(item);
+                    emptySlot--;
+
+                    return true;
+                }
+            }
+            
+        }
+
+        return false;
     }
 }
