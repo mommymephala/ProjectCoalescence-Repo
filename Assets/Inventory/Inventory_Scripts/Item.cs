@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
     public Sprite spriteHighlighted;
 
     public int maxSize;
-    // Start is called before the first frame update
+    
     public void Use()
 
     {

@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
+
+
 
 public class InventoryTest : MonoBehaviour
 {
@@ -21,10 +25,29 @@ public class InventoryTest : MonoBehaviour
 
     public GameObject SlotPrefab;
 
+    private static Slot from, to;
+
     private List<GameObject> allslots;
 
-    private int emptySlot;
+    public GameObject iconPrefab;
+
+    private static GameObject hoverObject;
+
+    public Canvas canvas;
+
+    private float hoverYOffset;
+
+    public EventSystem eventsystem;
     
+    private static int emptySlots;
+
+    public static int EmptySlots
+    {
+        get { return emptySlots; }
+        set { emptySlots = value; }
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +57,28 @@ public class InventoryTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (!eventsystem.IsPointerOverGameObject(-1) && from != null)
+            {
+                from.GetComponent<Image>().color = Color.white;
+                from.ClearSlot();
+                Destroy(GameObject.Find("Hover"));
+                to = null;
+                from = null;
+                hoverObject = null;
+            }
+        }
         
+        if (hoverObject != null)
+        {
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,Input.mousePosition, canvas.worldCamera, out position);
+
+            position.Set(position.x,position.y- hoverYOffset);
+            
+            hoverObject.transform.position = canvas.transform.TransformPoint((position));
+        }
     }
 
     private void CreateLayout()
@@ -42,7 +86,9 @@ public class InventoryTest : MonoBehaviour
         
         allslots = new List<GameObject>();
 
-        emptySlot = slots;
+        hoverYOffset = slotSize * 0.01f;
+
+        EmptySlots = slots;
         
         inventoryWidht = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
 
@@ -93,12 +139,35 @@ public class InventoryTest : MonoBehaviour
             PlaceEmpty((item));
             return true;
         }
+        else
+        {
+            foreach (GameObject slot in allslots)
+            {
+                Slot tmp = slot.GetComponent<Slot>();
+
+                if (!tmp.isEmpty)
+                {
+                    if (tmp.CurrentItem.type == item.type && tmp.IsAvailable)
+                    {
+                         tmp.AddItem(item);
+
+                         return true;
+                    } 
+                }
+            }
+
+            if (EmptySlots > 0)
+            {
+                PlaceEmpty(item);
+            }
+        }
 
         return false;
     }
+    
     private bool PlaceEmpty(Item item)
     {
-        if (emptySlot > 0)
+        if (EmptySlots > 0)
         {
             foreach (GameObject slot in allslots)
             {
@@ -107,7 +176,7 @@ public class InventoryTest : MonoBehaviour
                 if (tmp.isEmpty)
                 {
                     tmp.AddItem(item);
-                    emptySlot--;
+                    EmptySlots--;
 
                     return true;
                 }
@@ -116,5 +185,60 @@ public class InventoryTest : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void MoveItem(GameObject clicked)
+    {
+        if (from == null)
+        {
+            if (!clicked.GetComponent<Slot>().isEmpty)
+            {
+                from = clicked.GetComponent<Slot>();
+                
+                //Comment out ettim çünkü direkt colorı değiştiremedim. bana sürekli tintcolorı veriyor o da hata veriyor. ilerisi için duruyor şu an aynısı aşağı da da var.
+                from.GetComponent<Image>().color = Color.gray;
+
+                hoverObject = (GameObject)Instantiate(iconPrefab);
+                hoverObject.GetComponent<Image>().sprite = clicked.GetComponent<Image>().sprite;
+                hoverObject.name = "Hover";
+
+                RectTransform hoverTransfrom = hoverObject.GetComponent<RectTransform>();
+                RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
+                
+                
+                hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
+                hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
+                
+                
+                hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
+                hoverObject.transform.localScale = from.gameObject.transform.localScale;
+
+            }
+        }
+        else if (to == null)
+        {
+            to = clicked.GetComponent<Slot>();
+            Destroy(GameObject.Find("Hover"));
+        }
+
+        if (to != null && from != null)
+        {
+            Stack<Item> TmpTo = new Stack<Item>(to.Items);
+            to.AddItems(from.Items);
+
+            if (TmpTo.Count == 0)
+            {
+                from.ClearSlot();
+            }
+            else
+            {
+                from.AddItems(TmpTo);
+            }
+
+            from.GetComponent<Image>().color = Color.white;
+            to = null;
+            from = null;
+            hoverObject = null;
+        }
     }
 }
