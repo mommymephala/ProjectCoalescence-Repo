@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 //using UnityEngine.UIElements;
@@ -38,6 +39,9 @@ public class InventoryTest : MonoBehaviour
     private float hoverYOffset;
 
     public EventSystem eventsystem;
+
+    public GameObject dropItem;
+    private static GameObject playerRef;
     
     private static int emptySlots;
 
@@ -52,6 +56,8 @@ public class InventoryTest : MonoBehaviour
     void Start()
     {
         CreateLayout();
+
+        playerRef = GameObject.Find("TESTPlayer");
     }
 
     // Update is called once per frame
@@ -62,11 +68,27 @@ public class InventoryTest : MonoBehaviour
             if (!eventsystem.IsPointerOverGameObject(-1) && from != null)
             {
                 from.GetComponent<Image>().color = Color.white;
+
+                foreach (Item item in from.Items)
+                {
+                    // sadece öne attır
+                    float angle = UnityEngine.Random.Range(0.0f, Mathf.PI * 2);
+
+                    Vector3 v = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
+
+                    v *= 4;
+
+                   GameObject tmpDrop = GameObject.Instantiate(dropItem, playerRef.transform.position - v, quaternion.identity);
+
+                   tmpDrop.GetComponent<Item>().SetStats(item);
+                }
                 from.ClearSlot();
                 Destroy(GameObject.Find("Hover"));
                 to = null;
                 from = null;
                 hoverObject = null;
+                
+                Debug.Log("çalışıyor");
             }
         }
         
@@ -106,17 +128,17 @@ public class InventoryTest : MonoBehaviour
 
         for (int y = 0; y < rows; y++)
         {
-            float yPosition = (-2) - slotPaddingTop * (y + 1) - (slotSize * y);
+           // float yPosition = (-2) - slotPaddingTop * (y + 1) - (slotSize * y);
 
             for (int x = 0; x < columns; x++)
             {
-                GameObject newSlot = (GameObject)Instantiate(SlotPrefab);
+                GameObject newSlot = Instantiate(SlotPrefab);
 
                 RectTransform slotRect = newSlot.GetComponent<RectTransform>();
 
                 newSlot.name = "Slot";
 
-                newSlot.transform.SetParent(this.transform.parent);
+                newSlot.transform.SetParent(transform.parent);
 
                 slotRect.localPosition = inventoryRect.localPosition +
                                          new Vector3(slotPaddingLeft * (x + 1) + (slotSize * x),
@@ -195,7 +217,6 @@ public class InventoryTest : MonoBehaviour
             {
                 from = clicked.GetComponent<Slot>();
                 
-                //Comment out ettim çünkü direkt colorı değiştiremedim. bana sürekli tintcolorı veriyor o da hata veriyor. ilerisi için duruyor şu an aynısı aşağı da da var.
                 from.GetComponent<Image>().color = Color.gray;
 
                 hoverObject = (GameObject)Instantiate(iconPrefab);
@@ -241,4 +262,5 @@ public class InventoryTest : MonoBehaviour
             hoverObject = null;
         }
     }
+    
 }

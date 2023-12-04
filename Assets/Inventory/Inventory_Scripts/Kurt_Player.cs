@@ -38,4 +38,13 @@ public class Kurt_Player : MonoBehaviour
             inventory.AddItem(other.GetComponent<Item>());
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Item")
+        {
+            inventory.AddItem(collision.gameObject.GetComponent<Item>());
+            Destroy(collision.gameObject);
+        }
+    }
 }

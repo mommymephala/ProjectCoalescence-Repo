@@ -36,6 +36,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             return CurrentItem.maxSize > items.Count;
         }
     }
+    
     public Item CurrentItem
     {
         get { return items.Peek();}
@@ -83,8 +84,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         stackTxt.text = items.Count > 1 ? items.Count.ToString() : String.Empty;
         
         ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
-
-
+        
     }
     
     private void ChangeSprite(Sprite neutral, Sprite highlight)
