@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,12 +53,17 @@ public class InventoryTest : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        CreateLayout();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        CreateLayout();
 
-        playerRef = GameObject.Find("TESTPlayer");
+        canvas.enabled = false;
+        playerRef = GameObject.Find("PlayerWithLoadout");
     }
 
     // Update is called once per frame
@@ -71,7 +77,6 @@ public class InventoryTest : MonoBehaviour
 
                 foreach (Item item in from.Items)
                 {
-                    // sadece öne attır
                     float angle = UnityEngine.Random.Range(0.0f, Mathf.PI * 2);
 
                     Vector3 v = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
