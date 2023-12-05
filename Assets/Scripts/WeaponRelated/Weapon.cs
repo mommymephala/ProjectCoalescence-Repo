@@ -43,14 +43,14 @@ namespace WeaponRelated
 
         //Shooting & ADS variables
         private bool _aimingDownSight;
-        private Vector3 _originalWeaponPosition;
+        private Vector3 _originalAdsLocalPosition;
         private float _timeSinceLastShot;
         private float _targetFOV;
         private float _targetWeaponFOV;
     
         // Properties to access recoil-related variables
-        [SerializeField] private Vector3 weaponCameraOffset;
-        private Vector3 _currentCameraRotation;
+        private Vector3 _currentPlayerCameraRotation;
+        private Vector3 _currentWeaponCameraRotation;
         private Vector3 _smoothRotation;
         private Vector3 _weaponOriginalLocalPosition;
 
@@ -61,7 +61,7 @@ namespace WeaponRelated
             _isbloodFXPrefabNull = bloodFXPrefab == null;
             _timeSinceLastShot = weaponData.fireRate / 60f;
             _weaponOriginalLocalPosition = transform.localPosition;
-            _originalWeaponPosition = adsPositionRef.localPosition;
+            _originalAdsLocalPosition = adsPositionRef.localPosition;
             weaponData.originalPlayerFOV = playerCamera.fieldOfView;
             weaponData.originalWeaponFOV = weaponCamera.fieldOfView;
         }
@@ -88,7 +88,7 @@ namespace WeaponRelated
             _timeSinceLastShot += Time.deltaTime;
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             ApplyRecoil();
         }
@@ -143,12 +143,7 @@ namespace WeaponRelated
         {
             Vector3 recoilRotation = _aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
-            // Check if the player is sprinting or walking and apply the appropriate recoil multiplier
             var recoilMultiplier = 1f;
-            // if (playerMovement.IsSprinting)
-            // {
-            //     recoilMultiplier = weaponData.sprintingRecoilMultiplier;
-            // }
             if (playerMovement.IsWalking)
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
@@ -165,10 +160,19 @@ namespace WeaponRelated
         
         private void ApplyRecoil()
         {
-            _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.fixedDeltaTime);
-            _currentCameraRotation = Vector3.Lerp(_currentCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.fixedDeltaTime);
-            playerCameraTransform.localRotation = Quaternion.Euler(_currentCameraRotation);
-            weaponCameraTransform.localRotation = Quaternion.Euler(_currentCameraRotation + weaponCameraOffset);
+            // Calculate recoil for player camera
+            Vector3 currentPlayerCameraRotation = Vector3.Lerp(_currentPlayerCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.deltaTime * weaponData.smoothingFactor);
+            _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.deltaTime * weaponData.smoothingFactor);
+            playerCameraTransform.localRotation = Quaternion.Euler(currentPlayerCameraRotation);
+            
+            // Calculate recoil for weapon camera
+            Vector3 currentWeaponCameraRotation = Vector3.Lerp(_currentWeaponCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.deltaTime * weaponData.smoothingFactor);
+            _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.deltaTime * weaponData.smoothingFactor);
+            weaponCameraTransform.localRotation = Quaternion.Euler(currentWeaponCameraRotation);
+
+            // Update the stored rotations for future calculations
+            _currentPlayerCameraRotation = currentPlayerCameraRotation;
+            _currentWeaponCameraRotation = currentWeaponCameraRotation;
         }
         
         private void ApplyProceduralKickback()
@@ -245,7 +249,7 @@ namespace WeaponRelated
             else
             {
                 // Reset the weapon to its original position
-                adsPositionRef.localPosition = Vector3.Lerp(adsPositionRef.localPosition, _originalWeaponPosition, Time.deltaTime * weaponData.aimDownSightSpeed);
+                adsPositionRef.localPosition = Vector3.Lerp(adsPositionRef.localPosition, _originalAdsLocalPosition, Time.deltaTime * weaponData.aimDownSightSpeed);
 
                 // Smoothly zoom out
                 _targetFOV = weaponData.originalPlayerFOV;
@@ -288,6 +292,14 @@ namespace WeaponRelated
             weaponCamera.fieldOfView = weaponData.originalWeaponFOV;
         }
         
+        // ########
+        // ########
+        // ########
+        // ########
+        // ########
+        // ########
+        // ########
+        
         //Separate these VFX things to another script!!!
         private void SpawnBloodParticle(Vector3 position)
         {
@@ -311,7 +323,7 @@ namespace WeaponRelated
 
             if (_aimingDownSight)
             {
-                var fovRatio = weaponData.originalPlayerFOV / playerCamera.fieldOfView;
+                var fovRatio = weaponData.originalWeaponFOV / weaponCamera.fieldOfView;
                 muzzlePosition += muzzleTransform.forward * fovRatio;
             }
 

@@ -29,6 +29,7 @@ namespace WeaponRelated
         public Vector3 recoilRotationHipfire;
         public Vector3 recoilRotationAiming;
         public float rotationSpeed;
+        public float smoothingFactor;
         public float returnSpeed;
         public float kickbackForce;
         public float kickbackDuration;

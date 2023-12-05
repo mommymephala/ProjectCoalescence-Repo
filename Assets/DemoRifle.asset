@@ -18,7 +18,7 @@ MonoBehaviour:
   fireRate: 200
   spread: 0
   bulletsPerShot: 1
-  originalPlayerFOV: 90
+  originalPlayerFOV: 60
   originalWeaponFOV: 60
   aimDownSightFOV: 40
   aimDownSightSpeed: 10
@@ -26,11 +26,12 @@ MonoBehaviour:
   currentAmmo: 30
   magSize: 30
   reloadTime: 1.2
-  recoilRotationHipfire: {x: 200, y: 50, z: 0}
-  recoilRotationAiming: {x: 150, y: 50, z: 0}
+  recoilRotationHipfire: {x: 250, y: 25, z: 0}
+  recoilRotationAiming: {x: 150, y: 20, z: 0}
   rotationSpeed: 2
-  returnSpeed: 30
-  kickbackForce: 0.25
+  smoothingFactor: 0.5
+  returnSpeed: 60
+  kickbackForce: 0.5
   kickbackDuration: 0.1
   resetDuration: 0.1
   walkingRecoilMultiplier: 1.5

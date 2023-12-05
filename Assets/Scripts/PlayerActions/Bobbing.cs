@@ -3,24 +3,14 @@ using UnityEngine;
 
 public class Bobbing : MonoBehaviour
 {
-    public PlayerMovement _playerMovement;
+    public PlayerMovement playerMovement;
     [Header("Headbob")]
     [SerializeField] private bool toggleHeadbob = true;
     [SerializeField] private Transform joint;
     [SerializeField] private float bobSpeed = 10f;
     [SerializeField] private Vector3 bobAmount = new Vector3(.15f, .05f, 0f);
-    // [SerializeField] private float headbobFrequency = 2f;
-    // [SerializeField] private float walkHeadbobAmount = 0.1f;
-    // [SerializeField] private float sprintHeadbobAmount = 0.3f;
-    // [SerializeField] private float headbobSpeedMultiplier = 1f;
-    //private Vector3 _originalLocalPosition;
     private float _headbobTimer;
     private Vector3 _jointOriginalPos;
-
-    private void Awake()
-    {
-        //_playerMovement = GetComponent<PlayerMovement>();
-    }
 
     private void Update()
     {
@@ -31,9 +21,9 @@ public class Bobbing : MonoBehaviour
     {
         if (!toggleHeadbob) return;
 
-        if (_playerMovement.moveSpeed > 0)
+        if (playerMovement.moveSpeed > 0)
         {
-            var currentBobSpeed = _playerMovement.IsSprinting ? (bobSpeed + (_playerMovement.sprintSpeed * 0.5f)) : bobSpeed;
+            var currentBobSpeed = playerMovement.IsSprinting ? (bobSpeed + (playerMovement.sprintSpeed * 0.5f)) : bobSpeed;
         
             _headbobTimer += Time.deltaTime * currentBobSpeed;
 

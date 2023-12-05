@@ -26,9 +26,10 @@ MonoBehaviour:
   currentAmmo: 12
   magSize: 12
   reloadTime: 1.2
-  recoilRotationHipfire: {x: 800, y: 25, z: 0}
-  recoilRotationAiming: {x: 750, y: 20, z: 0}
+  recoilRotationHipfire: {x: 600, y: 60, z: 0}
+  recoilRotationAiming: {x: 400, y: 40, z: 0}
   rotationSpeed: 2
+  smoothingFactor: 0.5
   returnSpeed: 30
   kickbackForce: 1
   kickbackDuration: 0.25
