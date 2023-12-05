@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Interfaces;
+using UnityEditor.Scripting;
 using UnityEngine;
 
 public enum ItemType
@@ -8,9 +11,9 @@ public enum ItemType
     Health,
     Mete
 };
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IPickUp
 {
-   
+    
     public ItemType type;
 
     public Sprite spriteNeutral;
@@ -63,5 +66,12 @@ public class Item : MonoBehaviour
 
                 break;
         }
+    }
+
+
+    public void PickUp()
+    {
+        Debug.Log("TheObject has been picked");
+        Destroy(gameObject);
     }
 }

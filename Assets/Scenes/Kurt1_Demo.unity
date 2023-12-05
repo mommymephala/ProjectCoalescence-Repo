@@ -2762,7 +2762,6 @@ MonoBehaviour:
   type: 0
   spriteNeutral: {fileID: 21300000, guid: e2042202ff24a084390b88c44e0af4fd, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: e2042202ff24a084390b88c44e0af4fd, type: 3}
-  DoubleSize: 0
   maxSize: 3
 --- !u!65 &677629767
 BoxCollider:
@@ -2844,7 +2843,7 @@ Transform:
   m_GameObject: {fileID: 677629765}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.01, y: -1.05, z: 11.31}
+  m_LocalPosition: {x: 2.01, y: -1.05, z: 13.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3032,7 +3031,6 @@ MonoBehaviour:
   type: 2
   spriteNeutral: {fileID: 21300000, guid: 89eb9399524b57d4d8eb0125e39028da, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 89eb9399524b57d4d8eb0125e39028da, type: 3}
-  DoubleSize: 0
   maxSize: 3
 --- !u!65 &932011632
 BoxCollider:
@@ -3559,7 +3557,6 @@ MonoBehaviour:
   type: 1
   spriteNeutral: {fileID: 21300000, guid: 5f4b54923e4043a438528982181e070c, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: 5f4b54923e4043a438528982181e070c, type: 3}
-  DoubleSize: 0
   maxSize: 1
 --- !u!65 &1422424423
 BoxCollider:
@@ -3913,7 +3910,7 @@ Transform:
   m_GameObject: {fileID: 1764700957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.67, y: -0.68, z: 3.5646594}
+  m_LocalPosition: {x: -3.56, y: -0.68, z: 3.5646594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3931,6 +3928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa35034d8cd467548b23ea4c9462d6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDistance: 5
   inventory: {fileID: 1219085826}
 --- !u!54 &1764700963
 Rigidbody:
@@ -4089,13 +4087,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926481558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23638281, y: 0.33219296, z: -0.086384356, w: 0.90901524}
-  m_LocalPosition: {x: -4.04, y: 3.77, z: -2.8}
+  m_LocalRotation: {x: 0.25542787, y: 0.17775802, z: -0.03582322, w: 0.94967127}
+  m_LocalPosition: {x: -3.6, y: 5.48, z: -8.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 29.153, y: 40.149, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.86, y: 21.605, z: 1.504}
 --- !u!1 &2036890086
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,28 +4354,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 7138120043803816204}
-  playerCam: {fileID: 2417945867788215079}
   moveSpeed: 1
   airMultiplier: 0.1
   gravity: {x: 0, y: -10, z: 0}
   walkSpeed: 5
   sprintSpeed: 9
   acceleration: 8
-  toggleHeadbob: 0
-  headbobFrequency: 1
-  walkHeadbobAmount: 0.1
-  sprintHeadbobAmount: 0.25
-  headbobSpeedMultiplier: 0.1
   jumpForce: 5
   jumpKey: 32
   sprintKey: 304
   groundDrag: 6
   airDrag: 2
-  groundCheck: {fileID: 8961715561549269946}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  groundDistance: 0.2
 --- !u!114 &2345572299026100726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4766,8 +4753,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camHolder: {fileID: 7351023164883759417}
   orientation: {fileID: 7138120043803816204}
+  head: {fileID: 0}
   mouseSens: 600
   adsSens: 50
+  leanAngle: 15
+  leanLeftKey: 113
+  leanRightKey: 101
+  leanSmoothTime: 0.1
 --- !u!1 &4753179373434904118
 GameObject:
   m_ObjectHideFlags: 0
