@@ -29,14 +29,14 @@ public class Item : MonoBehaviour, IPickUp
         switch (type)
         {
             case ItemType.Health:
-                Debug.Log("Health Used");
+              // Debug.Log("Health Used");
                 
                 break;
             case ItemType.MANA:
-                Debug.Log("Mana Used");
+               // Debug.Log("Mana Used");
                 break;
             case ItemType.Mete:
-                Debug.Log("Mete used ");
+               // Debug.Log("Mete used ");
                 break;
             default:
                 break;
