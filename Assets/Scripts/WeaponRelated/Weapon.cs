@@ -16,9 +16,6 @@ namespace WeaponRelated
     {
         public WeaponType weaponType;
         [Header("Audio Events")]
-        [SerializeField] private string deagleShotEvent;
-        [SerializeField] private string rifleShotEvent;
-        [SerializeField] private string shotgunShotEvent;
        [SerializeField] private AudioMenager audioMenager;
        
         [Header("References")]
@@ -81,6 +78,7 @@ namespace WeaponRelated
         private void Start()
         {
             UpdateAiming(false);
+            
         }
 
         private void OnDisable()
@@ -348,13 +346,25 @@ namespace WeaponRelated
             switch (weaponType)
             {
                 case WeaponType.Deagle:
-                    audioMenager.PlayDeagleRanged();
+                    if ((!playerMovement.IsInventoryOpen))
+                    {
+                        audioMenager.PlayDeagleRanged();
+                    }
+
                     break;
                 case WeaponType.Rifle:
-                    audioMenager.PlayRifleRanged();
+                    if ((!playerMovement.IsInventoryOpen))
+                    {
+                        audioMenager.PlayRifleRanged();
+                    }
+                        
                     break;
                 case WeaponType.Shotgun:
-                    audioMenager.PlayShotgunRanged();
+                    if ((!playerMovement.IsInventoryOpen))
+                    {
+                        audioMenager.PlayShotgunRanged();
+                    }
+                        
                     break;
                 default:
                     break;

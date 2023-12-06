@@ -54,8 +54,9 @@ public class Door : MonoBehaviour
         else
         {
             _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
+            audioMenager.PlayDoor(gameObject);
         }
-        audioMenager.PlayDoor(gameObject);
+        
     }
 
     private IEnumerator DoRotationOpen(float forwardAmount)

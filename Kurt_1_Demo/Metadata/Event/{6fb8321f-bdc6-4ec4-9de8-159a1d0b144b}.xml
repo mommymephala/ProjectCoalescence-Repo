@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{6fb8321f-bdc6-4ec4-9de8-159a1d0b144b}">
-		<property name="note" />
 		<property name="color">
 			<value>Green</value>
 		</property>
@@ -57,7 +56,7 @@
 			<destination>{636cabcb-bf5e-47eb-b18e-e5c1ef77f757}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{2bef37bc-e8f8-45d5-96e9-f64703afefed}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{2135a3f5-a4b7-4348-9620-aff286caeb65}" />

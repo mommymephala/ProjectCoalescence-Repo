@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SnapshotGroup" id="{b66d44ea-c3e0-43da-acd8-8c10a65b16e3}">
+		<property name="name">
+			<value>sd</value>
+		</property>
+	</object>
+</objects>
