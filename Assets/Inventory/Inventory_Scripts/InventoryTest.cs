@@ -91,13 +91,13 @@ public class InventoryTest : MonoBehaviour
                 Destroy(GameObject.Find("Hover"));
                 to = null;
                 from = null;
-                hoverObject = null;
+               // hoverObject = null;
                 
                 Debug.Log("çalışıyor");
             }
         }
         
-        if (hoverObject != null)
+      /*  if (hoverObject != null)
         {
             Vector2 position;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,Input.mousePosition, canvas.worldCamera, out position);
@@ -105,7 +105,7 @@ public class InventoryTest : MonoBehaviour
             position.Set(position.x,position.y- hoverYOffset);
             
             hoverObject.transform.position = canvas.transform.TransformPoint((position));
-        }
+        }*/
     }
 
     private void CreateLayout()
@@ -224,20 +224,20 @@ public class InventoryTest : MonoBehaviour
                 
                 from.GetComponent<Image>().color = Color.gray;
 
-                hoverObject = (GameObject)Instantiate(iconPrefab);
-                hoverObject.GetComponent<Image>().sprite = clicked.GetComponent<Image>().sprite;
-                hoverObject.name = "Hover";
+                //hoverObject = (GameObject)Instantiate(iconPrefab);
+               // hoverObject.GetComponent<Image>().sprite = clicked.GetComponent<Image>().sprite;
+                //hoverObject.name = "Hover";
 
-                RectTransform hoverTransfrom = hoverObject.GetComponent<RectTransform>();
-                RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
+               // RectTransform hoverTransfrom = hoverObject.GetComponent<RectTransform>();
+                //RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
                 
                 
-                hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
-                hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
+                //hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
+                //hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
                 
                 
-                hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
-                hoverObject.transform.localScale = from.gameObject.transform.localScale;
+                //hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
+               // hoverObject.transform.localScale = from.gameObject.transform.localScale;
 
             }
         }
@@ -264,7 +264,7 @@ public class InventoryTest : MonoBehaviour
             from.GetComponent<Image>().color = Color.white;
             to = null;
             from = null;
-            hoverObject = null;
+            //hoverObject = null;
         }
     }
     

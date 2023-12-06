@@ -1,6 +1,7 @@
 ﻿using UI;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using WeaponRelated;
 
 namespace PlayerActions
@@ -9,11 +10,20 @@ namespace PlayerActions
     {
         [Header("Inventory")]
         public Canvas InventoryCanvas;
-        private bool IsInventoryOpen;
+        public bool IsInventoryOpen { get; private set; }
         [SerializeField] private  CursorVisibility cursorVisibility;
         [SerializeField] private  PlayerLook playerLook;
-        [SerializeField] private  Weapon weapon;
+        [SerializeField] private  Weapon deagleweapon;
+        [SerializeField] private  Weapon rifleWeapon;
+        [SerializeField] private  Weapon shotgunWeapon;
         
+         private AudioMenager audioMenager;
+        
+         private float footstepTimer = 0.25f;
+         private const float footstepInternal = 0.70f;
+         private float RunfootstepTimer = 0.25f;
+         private const float RunfootstepInternal = 0.50f;
+         
         private const float PlayerHeight = 2f;
         [SerializeField] private Transform orientation;
 
@@ -47,11 +57,18 @@ namespace PlayerActions
         private Vector3 _slopeMoveDirection;
         private Rigidbody _rb;
         private RaycastHit _slopeHit;
+        
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
+           
+
+        }
+        private void Start()
+        {
+            audioMenager = FindObjectOfType<AudioMenager>();
         }
 
         private void Update()
@@ -60,7 +77,7 @@ namespace PlayerActions
             TakeInput();
             ControlDrag();
             ControlSpeed();
-
+            
             if (Input.GetKeyDown(jumpKey) && _isGrounded)
             {
                 Jump();
@@ -69,7 +86,27 @@ namespace PlayerActions
             _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
 
             InventoryCanvasCheck();
+            if (_isGrounded && !Input.GetKey(sprintKey))
+            {
+                // Check if there is movement
+                bool isMoving = _horizontalMovement != 0f || _verticalMovement != 0f;
 
+                // If there is movement, increment the timer and play footstep sound if enough time has passed
+                if (isMoving)
+                {
+                    footstepTimer +=  Time.deltaTime;
+                    if (footstepTimer >= footstepInternal)
+                    {
+                        audioMenager.PlayFootstep();
+                        footstepTimer = 0f; // Reset the timer
+                    }
+                }
+                else
+                {
+                    // If there is no movement, reset the timer
+                    footstepTimer = footstepInternal;
+                }
+            }
         }
 
         private void FixedUpdate()
@@ -100,6 +137,27 @@ namespace PlayerActions
             {
                 moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
                 IsSprinting = true;
+                if (_isGrounded)
+                {
+                    // Check if there is movement
+                    bool isMoving = _horizontalMovement != 0f || _verticalMovement != 0f;
+
+                    // If there is movement, increment the timer and play footstep sound if enough time has passed
+                    if (isMoving)
+                    {
+                        RunfootstepTimer +=  Time.deltaTime;
+                        if (RunfootstepTimer >= RunfootstepInternal)
+                        {
+                            audioMenager.PlayFootstep();
+                            RunfootstepTimer = 0f; // Reset the timer
+                        }
+                    }
+                    else
+                    {
+                        // If there is no movement, reset the timer
+                        RunfootstepTimer = RunfootstepInternal;
+                    }
+                }
             }
             else
             {
@@ -178,7 +236,9 @@ namespace PlayerActions
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             playerLook.enabled = false;
-            weapon.enabled = false;
+            deagleweapon.enabled = false;
+            rifleWeapon.enabled = false;
+            deagleweapon.enabled = false;
             Time.timeScale = 0f;
         }
         public void InventoryCanvasCheckClose()
@@ -188,7 +248,9 @@ namespace PlayerActions
             Cursor.visible = false;
             IsInventoryOpen = false;
             playerLook.enabled = true;
-            weapon.enabled = true;
+            deagleweapon.enabled = true;
+            rifleWeapon.enabled = true;
+            shotgunWeapon.enabled = true;
             Time.timeScale = 1f;
         }
     }

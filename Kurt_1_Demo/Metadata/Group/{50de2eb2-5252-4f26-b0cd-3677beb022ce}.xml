@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{50de2eb2-5252-4f26-b0cd-3677beb022ce}">
+		<property name="name">
+			<value>EnemyIdle</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{39e8b6d3-bd93-4c74-a933-6d0000a2d080}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{175e6c6a-c8c5-49d4-b95b-6e371238a4ae}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{504f9bec-c0e7-479b-b79b-4894651d3e3a}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{39e8b6d3-bd93-4c74-a933-6d0000a2d080}">
+		<relationship name="effects">
+			<destination>{0a237ca1-f538-4568-9132-b7558761da7f}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{175e6c6a-c8c5-49d4-b95b-6e371238a4ae}" />
+	<object class="MixerBusFader" id="{0a237ca1-f538-4568-9132-b7558761da7f}" />
+</objects>

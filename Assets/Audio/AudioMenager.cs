@@ -62,7 +62,7 @@ public class AudioMenager : MonoBehaviour
             Debug.LogWarning("Fmod event not found: playerAttackRanged");
             return;
         }
-        RuntimeManager.PlayOneShot(deagle, transform.position);
+        RuntimeManager.PlayOneShot(rifle, transform.position);
        
         Debug.Log("deagle ses");
     }
@@ -78,10 +78,6 @@ public class AudioMenager : MonoBehaviour
         Debug.Log("shotgun ses");
     }
     
-    public void PlayCustomEvent(string eventName)
-    {
-        FMODUnity.RuntimeManager.PlayOneShot(eventName);
-    }
     public void PlayDoor(GameObject doorObject)
     {
         if (MetalDoor.IsNull)
