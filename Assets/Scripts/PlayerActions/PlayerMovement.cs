@@ -1,5 +1,4 @@
-﻿using UI;
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using WeaponRelated;
@@ -11,11 +10,11 @@ namespace PlayerActions
         [Header("Inventory")]
         public Canvas InventoryCanvas;
         public bool IsInventoryOpen { get; private set; }
-        [SerializeField] private  CursorVisibility cursorVisibility;
         [SerializeField] private  PlayerLook playerLook;
-        [SerializeField] private  Weapon deagleweapon;
+        [SerializeField] private  Weapon deagleWeapon;
         [SerializeField] private  Weapon rifleWeapon;
         [SerializeField] private  Weapon shotgunWeapon;
+        public DynamicCrosshair crosshair;
         
          private AudioMenager audioMenager;
         
@@ -77,6 +76,11 @@ namespace PlayerActions
             TakeInput();
             ControlDrag();
             ControlSpeed();
+            
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                crosshair.gameObject.SetActive(true);
+            }
             
             if (Input.GetKeyDown(jumpKey) && _isGrounded)
             {
@@ -236,9 +240,9 @@ namespace PlayerActions
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             playerLook.enabled = false;
-            deagleweapon.enabled = false;
+            deagleWeapon.enabled = false;
             rifleWeapon.enabled = false;
-            deagleweapon.enabled = false;
+            deagleWeapon.enabled = false;
             Time.timeScale = 0f;
         }
         public void InventoryCanvasCheckClose()
@@ -248,7 +252,7 @@ namespace PlayerActions
             Cursor.visible = false;
             IsInventoryOpen = false;
             playerLook.enabled = true;
-            deagleweapon.enabled = true;
+            deagleWeapon.enabled = true;
             rifleWeapon.enabled = true;
             shotgunWeapon.enabled = true;
             Time.timeScale = 1f;

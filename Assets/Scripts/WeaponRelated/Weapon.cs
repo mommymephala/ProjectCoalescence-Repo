@@ -52,7 +52,7 @@ namespace WeaponRelated
         private bool _ismuzzleFlashPrefabNull;
 
         //Shooting & ADS variables
-        private bool _aimingDownSight;
+        public bool _aimingDownSight;
         private Vector3 _originalAdsLocalPosition;
         private float _timeSinceLastShot;
         private float _targetFOV;

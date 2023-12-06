@@ -186,11 +186,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: bcead4f115bd0e74b8e35791e49d6f3b,
-      type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: bcead4f115bd0e74b8e35791e49d6f3b, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: bcead4f115bd0e74b8e35791e49d6f3b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: bcead4f115bd0e74b8e35791e49d6f3b, type: 3}
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -229,4 +228,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackTxt: {fileID: 8516712105271236022}
   slotEmpty: {fileID: 21300000, guid: d102cacf66c9a3c459792277c8870199, type: 3}
-  slotHighlight: {fileID: 21300000, guid: e2042202ff24a084390b88c44e0af4fd, type: 3}
+  slotHighlight: {fileID: 0}

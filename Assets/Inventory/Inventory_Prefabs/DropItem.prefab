@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5493177163942171058}
   - component: {fileID: 8918208084794872383}
   - component: {fileID: 1036348808924384191}
-  - component: {fileID: 735507767589362606}
   m_Layer: 0
   m_Name: DropItem
   m_TagString: Item
@@ -43,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2343410267557415882}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 307c68ba3296dfa4da3f6bcb7fa19e14, type: 3}
 --- !u!23 &5493177163942171058
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1006e62f55e79964cb729bbac6548137, type: 2}
+  - {fileID: 2100000, guid: 41680dad0f0243748b4e228f49a2e3c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,32 +121,4 @@ MonoBehaviour:
   type: 0
   spriteNeutral: {fileID: 21300000, guid: e2042202ff24a084390b88c44e0af4fd, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: e2042202ff24a084390b88c44e0af4fd, type: 3}
-  DoubleSize: 0
   maxSize: 3
---- !u!54 &735507767589362606
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2343410267557415882}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

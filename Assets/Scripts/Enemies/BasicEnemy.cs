@@ -16,6 +16,7 @@ namespace Enemies
         private Vector3 _walkPoint;
         private bool _walkPointSet;
         [SerializeField] private float walkPointRange;
+        [SerializeField] private float startIdleTime;
         [SerializeField] private float timeBetweenIdleAndWalk;
         private float _idleTimer;
 
@@ -54,7 +55,7 @@ namespace Enemies
         private void Start()
         {
             _currentState = EnemyState.Idle;
-            _idleTimer = timeBetweenIdleAndWalk;
+            _idleTimer = startIdleTime;
         }
 
         private void Update()

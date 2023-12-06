@@ -20,7 +20,6 @@ public class Item : MonoBehaviour, IPickUp
 
     public Sprite spriteHighlighted;
     
-
     public int maxSize;
     
     public void Use()
@@ -30,7 +29,6 @@ public class Item : MonoBehaviour, IPickUp
         {
             case ItemType.Health:
               // Debug.Log("Health Used");
-                
                 break;
             case ItemType.MANA:
                // Debug.Log("Mana Used");
@@ -52,20 +50,18 @@ public class Item : MonoBehaviour, IPickUp
 
         maxSize = item.maxSize;
 
-        switch (type)
+        /*switch (type)
         {
             case ItemType.Health:
                 GetComponent<Renderer>().material.color = Color.red;
                 break;
             case ItemType.MANA:
                 GetComponent<Renderer>().material.color = Color.green;
-
                 break;
             case ItemType.Mete:
                 GetComponent<Renderer>().material.color = Color.blue;
-
                 break;
-        }
+        }*/
     }
 
 

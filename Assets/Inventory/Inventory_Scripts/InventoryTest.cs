@@ -31,7 +31,7 @@ public class InventoryTest : MonoBehaviour
 
     private List<GameObject> allslots;
 
-    public GameObject iconPrefab;
+    // public GameObject iconPrefab;
 
     private static GameObject hoverObject;
 

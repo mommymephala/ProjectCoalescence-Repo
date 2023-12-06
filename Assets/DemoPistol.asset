@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DemoPistol
   m_EditorClassIdentifier: 
   allowAutoFire: 0
-  damage: 10
+  damage: 25
   maxDistance: 300
   fireRate: 150
   spread: 0
