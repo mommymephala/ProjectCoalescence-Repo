@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Interfaces;
+using UnityEngine;
 
 namespace PlayerActions
 {
@@ -14,6 +15,9 @@ namespace PlayerActions
 
         [SerializeField] private float adsSens = 50f;
 
+        public InventoryTest inventory;
+
+        public float MaxDistance;
         //Mouse look variables
         private const float Multiplier = 0.01f;
         private float _mouseX;
@@ -25,6 +29,11 @@ namespace PlayerActions
         private void Update()
         {
             HandleMouseLook();
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PickObject();
+            }
         }
 
         private void HandleMouseLook()
@@ -50,6 +59,23 @@ namespace PlayerActions
         public void SetAimingDownSight(bool aiming)
         {
             _aimingDownSight = aiming;
+        }
+        public void PickObject()
+        {
+            Ray ray = new Ray(camHolder.transform.position, camHolder.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, MaxDistance))
+            {
+                IPickUp objectPickable = hit.collider.GetComponent<IPickUp>();
+                if (objectPickable != null)
+                {
+                    inventory.AddItem(hit.collider.GetComponent<Item>());
+                    objectPickable.PickUp();
+                
+                }
+            }
+
         }
     }
 }

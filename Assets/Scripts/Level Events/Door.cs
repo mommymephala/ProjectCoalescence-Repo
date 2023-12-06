@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
     public bool isOpen;
-    
+    private AudioMenager audioMenager;
     [SerializeField] private bool isRotatingDoor = true;
     [SerializeField] private float speed = 1f;
     
@@ -30,6 +32,11 @@ public class Door : MonoBehaviour
         _startPosition = transform.position;
     }
 
+    private void Start()
+    {
+        audioMenager = FindObjectOfType<AudioMenager>();
+    }
+
     public void Open(Vector3 userPosition)
     {
         if (isOpen) return;
@@ -48,6 +55,7 @@ public class Door : MonoBehaviour
         {
             _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
         }
+        audioMenager.PlayDoor(gameObject);
     }
 
     private IEnumerator DoRotationOpen(float forwardAmount)

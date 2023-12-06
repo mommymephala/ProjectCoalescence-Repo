@@ -1,9 +1,21 @@
-﻿using UnityEngine;
+﻿using UI;
+using Unity.VisualScripting;
+using UnityEngine;
+using WeaponRelated;
 
 namespace PlayerActions
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [Header("Inventory")]
+        //public GameObject InventoryCanvas;
+
+        public Canvas InventoryCanvas;
+        private bool IsInventoryOpen;
+        [SerializeField] private  CursorVisibility cursorVisibility;
+        [SerializeField] private  PlayerLook playerLook;
+        [SerializeField] private  Weapon weapon;
+        
         private const float PlayerHeight = 2f;
         [SerializeField] private Transform orientation;
 
@@ -42,6 +54,7 @@ namespace PlayerActions
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
+            
         }
 
         private void Update()
@@ -57,6 +70,9 @@ namespace PlayerActions
             }
 
             _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
+
+            InventoryCanvasCheck();
+
         }
 
         private void FixedUpdate()
@@ -146,6 +162,45 @@ namespace PlayerActions
             {
                 _isGrounded = false;
             }
+        }
+        public void InventoryCanvasCheck()
+        {
+           
+            if (Input.GetKeyDown(KeyCode.Tab) && (IsInventoryOpen))
+            {
+               InventoryCanvasCheckClose();
+            }
+            else if (Input.GetKeyDown(KeyCode.Tab) && (!IsInventoryOpen))
+            {
+                InventoryCanvasCheckOpen();
+            }
+        }
+        public void InventoryCanvasCheckOpen()
+        {
+           
+               //InventoryCanvas.SetActive(true);
+                InventoryCanvas.enabled = true;
+                IsInventoryOpen = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                playerLook.enabled = false;
+                weapon.enabled = false;
+                Time.timeScale = 0f;
+
+
+        }
+        public void InventoryCanvasCheckClose()
+        {
+            InventoryCanvas.enabled = false;
+               // InventoryCanvas.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                IsInventoryOpen = false;
+                playerLook.enabled = true;
+                weapon.enabled = true;
+
+                Time.timeScale = 1f;
+
         }
     }
 }
