@@ -20,7 +20,7 @@ namespace Enemies
         private float _idleTimer;
 
         // Attacking
-        [SerializeField] private float timeBetweenAttacks;
+        private float _timeBetweenAttacks;
         private bool _alreadyAttacked;
 
         // States
@@ -213,7 +213,7 @@ namespace Enemies
                 }
 
                 _alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                Invoke(nameof(ResetAttack), _timeBetweenAttacks);
             }
         }
 
