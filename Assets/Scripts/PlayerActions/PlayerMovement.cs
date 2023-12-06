@@ -1,17 +1,24 @@
-﻿using System;
+﻿using UI;
+using Unity.VisualScripting;
 using UnityEngine;
+using WeaponRelated;
 
 namespace PlayerActions
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [Header("Inventory")]
+        //public GameObject InventoryCanvas;
+
+        public Canvas InventoryCanvas;
+        private bool IsInventoryOpen;
+        [SerializeField] private  CursorVisibility cursorVisibility;
+        [SerializeField] private  PlayerLook playerLook;
+        [SerializeField] private  Weapon weapon;
+        
         private const float PlayerHeight = 2f;
         [SerializeField] private Transform orientation;
-        [Header("Audio")]
-        private AudioMenager audioMenager;
 
-        private float footstepTimer = 0f;
-        private const float footstepInternal = 1f;
         [Header("Movement")]
         private const float MovementMultiplier = 10f;
         [SerializeField] public float moveSpeed = 1f;
@@ -47,11 +54,7 @@ namespace PlayerActions
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
-        }
-
-        private void Start()
-        {
-            audioMenager = FindObjectOfType<AudioMenager>();
+            
         }
 
         private void Update()
@@ -66,29 +69,10 @@ namespace PlayerActions
                 Jump();
             }
 
-            if (_isGrounded)
-            {
-                // Check if there is movement
-                bool isMoving = _horizontalMovement != 0f || _verticalMovement != 0f;
-
-                // If there is movement, increment the timer and play footstep sound if enough time has passed
-                if (isMoving)
-                {
-                    footstepTimer += Time.deltaTime;
-                    if (footstepTimer >= footstepInternal)
-                    {
-                        audioMenager.PlayFootstep();
-                        footstepTimer = 0f; // Reset the timer
-                    }
-                }
-                else
-                {
-                    // If there is no movement, reset the timer
-                    footstepTimer = footstepInternal;
-                }
-            }
-
             _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
+
+            InventoryCanvasCheck();
+
         }
 
         private void FixedUpdate()
@@ -145,11 +129,9 @@ namespace PlayerActions
             {
                 case true when !OnSlope():
                     _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
-                    
                     break;
                 case true when OnSlope():
                     _rb.AddForce(_slopeMoveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
-                    
                     break;
                 case false:
                     _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier * airMultiplier), ForceMode.Acceleration);
@@ -181,25 +163,44 @@ namespace PlayerActions
                 _isGrounded = false;
             }
         }
-       /* public void PlayFootstep()
+        public void InventoryCanvasCheck()
         {
-            //Raycast to the ground and return the collider to the RaycastHit.
-            hit2D = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-            Debug.DrawRay(transform.position, Vector2.down*1, Color.blue, 1f);
-            if (hit2D.collider != null)
+           
+            if (Input.GetKeyDown(KeyCode.Tab) && (IsInventoryOpen))
             {
-                //Call the footstep function and use the collider tag for surface comparison
-                audioManager.PlayFootstep(hit2D.collider.tag);
-                Debug.Log("Surface is " + hit2D.collider.tag);
+               InventoryCanvasCheckClose();
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.Tab) && (!IsInventoryOpen))
             {
-                return;
+                InventoryCanvasCheckOpen();
             }
-            
-            var footstepPosition = transform.position;
-            footstepPosition.z -= 1;
-            VFXController.Instance.Trigger("DustPuff", footstepPosition, 0, false, null, m_CurrentSurface);
-        }*/
+        }
+        public void InventoryCanvasCheckOpen()
+        {
+           
+               //InventoryCanvas.SetActive(true);
+                InventoryCanvas.enabled = true;
+                IsInventoryOpen = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                playerLook.enabled = false;
+                weapon.enabled = false;
+                Time.timeScale = 0f;
+
+
+        }
+        public void InventoryCanvasCheckClose()
+        {
+            InventoryCanvas.enabled = false;
+               // InventoryCanvas.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                IsInventoryOpen = false;
+                playerLook.enabled = true;
+                weapon.enabled = true;
+
+                Time.timeScale = 1f;
+
+        }
     }
 }
