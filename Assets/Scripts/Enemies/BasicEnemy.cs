@@ -151,7 +151,6 @@ namespace Enemies
         private void Idle()
         {
             _idleTimer -= Time.deltaTime;
-            Debug.Log(_idleTimer);
 
             if (!_walkPointSet && _idleTimer > 0)
             {
