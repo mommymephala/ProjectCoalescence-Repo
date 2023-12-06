@@ -20,7 +20,7 @@ namespace Enemies
         private float _idleTimer;
 
         // Attacking
-        private float _timeBetweenAttacks;
+        [SerializeField] private float timeBetweenAttacks;
         private bool _alreadyAttacked;
 
         // States
@@ -31,8 +31,8 @@ namespace Enemies
         private Animator _animator;
         private bool _isLightAttacking;
         private bool _isHeavyAttacking;
-        [SerializeField] private float walkSpeed = 2f;
-        [SerializeField] private float chaseSpeed = 5f;
+        [SerializeField] private float walkSpeed;
+        [SerializeField] private float chaseSpeed;
 
         private enum EnemyState
         {
@@ -76,6 +76,10 @@ namespace Enemies
                     {
                         _currentState = EnemyState.Chasing;
                     }
+                    if (_playerInSightRange && _playerInAttackRange)
+                    {
+                        _currentState = EnemyState.Chasing;
+                    }
                     break;
                 
                 case EnemyState.Walking:
@@ -92,6 +96,10 @@ namespace Enemies
                         _currentState = EnemyState.Idle;
                     }
                     if (_playerInSightRange && !_playerInAttackRange)
+                    {
+                        _currentState = EnemyState.Chasing;
+                    }
+                    if (_playerInSightRange && _playerInAttackRange)
                     {
                         _currentState = EnemyState.Chasing;
                     }
@@ -196,7 +204,7 @@ namespace Enemies
             if (!_alreadyAttacked)
             {
                 var randomAttack = Random.Range(0f, 1f);
-                if (randomAttack < 0.75f)
+                if (randomAttack < 0.6f)
                 {
                     // Light attack code here
                     _animator.SetBool("isLightAttacking", true);
@@ -212,7 +220,7 @@ namespace Enemies
                 }
 
                 _alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), _timeBetweenAttacks);
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
         }
 

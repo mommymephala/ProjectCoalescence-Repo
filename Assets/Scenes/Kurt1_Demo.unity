@@ -1498,116 +1498,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: rifle.Path
-      value: event:/SFX/Weapon/Weapon_Rifle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: MetalDoor.Path
-      value: event:/OBJ&INT/Metal_Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: rifle.Guid.Data1
-      value: -1449192954
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: rifle.Guid.Data2
-      value: 1118692774
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: rifle.Guid.Data3
-      value: -1410873970
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: rifle.Guid.Data4
-      value: 1791399420
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: deagleRangedEvent
-      value: Deagle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: weaponSwitch.Path
-      value: event:/SFX/Weapon/Weapon_Switch
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: shotgunRangedEvent
-      value: Shotgun
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: MetalDoor.Guid.Data1
-      value: -607918179
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: MetalDoor.Guid.Data2
-      value: 1135980185
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: MetalDoor.Guid.Data3
-      value: 1109397659
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: MetalDoor.Guid.Data4
-      value: 973050296
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: playerfootsteps.Path
-      value: event:/SFX/Player/Player_Footsteps
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: weaponSwitch.Guid.Data1
-      value: -1279879144
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: weaponSwitch.Guid.Data2
-      value: 1335215249
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: weaponSwitch.Guid.Data3
-      value: -108963650
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: weaponSwitch.Guid.Data4
-      value: 1058968276
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: playerfootsteps.Guid.Data1
-      value: 1874342431
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: playerfootsteps.Guid.Data2
-      value: 1321516486
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: playerfootsteps.Guid.Data3
-      value: -1709840227
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
-        type: 3}
-      propertyPath: playerfootsteps.Guid.Data4
-      value: 1259604765
-      objectReference: {fileID: 0}
     - target: {fileID: 7217314309965146093, guid: 0758613092b3cd34f9c582453b62c327,
         type: 3}
       propertyPath: m_Name
@@ -2319,7 +2209,9 @@ MonoBehaviour:
   InventoryCanvas: {fileID: 0}
   cursorVisibility: {fileID: 0}
   playerLook: {fileID: 0}
-  weapon: {fileID: 0}
+  deagleweapon: {fileID: 0}
+  rifleWeapon: {fileID: 0}
+  shotgunWeapon: {fileID: 0}
   orientation: {fileID: 7138120043803816204}
   moveSpeed: 1
   airMultiplier: 0.1
