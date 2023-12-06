@@ -2762,7 +2762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &666781107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3213,6 +3213,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2029537146}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1054860709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+    type: 3}
+  m_PrefabInstance: {fileID: 1876384087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d96e74a44d315149affdb4ae7b4f55c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1062550737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,6 +4217,184 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1876384087
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448957878156562799, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: rifle.Path
+      value: event:/SFX/Weapon/Weapon_Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: MetalDoor.Path
+      value: event:/OBJ&INT/Metal_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: rifle.Guid.Data1
+      value: -1449192954
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: rifle.Guid.Data2
+      value: 1118692774
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: rifle.Guid.Data3
+      value: -1410873970
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: rifle.Guid.Data4
+      value: 1791399420
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: deagleRangedEvent
+      value: Deagle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: weaponSwitch.Path
+      value: event:/SFX/Weapon/Weapon_Switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: shotgunRangedEvent
+      value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: MetalDoor.Guid.Data1
+      value: -607918179
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: MetalDoor.Guid.Data2
+      value: 1135980185
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: MetalDoor.Guid.Data3
+      value: 1109397659
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: MetalDoor.Guid.Data4
+      value: 973050296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: playerfootsteps.Path
+      value: event:/SFX/Player/Player_Footsteps
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: weaponSwitch.Guid.Data1
+      value: -1279879144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: weaponSwitch.Guid.Data2
+      value: 1335215249
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: weaponSwitch.Guid.Data3
+      value: -108963650
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: weaponSwitch.Guid.Data4
+      value: 1058968276
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: playerfootsteps.Guid.Data1
+      value: 1874342431
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: playerfootsteps.Guid.Data2
+      value: 1321516486
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: playerfootsteps.Guid.Data3
+      value: -1709840227
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: playerfootsteps.Guid.Data4
+      value: 1259604765
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217314309965146093, guid: 0758613092b3cd34f9c582453b62c327,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioMenager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
 --- !u!1 &1926481558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,9 +4542,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 887796919706641944, guid: 5f10cfa668861714890a253dc44edfd0,
         type: 3}
+      propertyPath: weaponType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 887796919706641944, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: audioMenager
+      value: 
+      objectReference: {fileID: 1054860709}
+    - target: {fileID: 887796919706641944, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
       propertyPath: currentAmmoText
       value: 
       objectReference: {fileID: 1529757267}
+    - target: {fileID: 887796919706641944, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: deagleShotEvent
+      value: Deagle
+      objectReference: {fileID: 0}
+    - target: {fileID: 887796919706641944, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: shotgunShotEvent
+      value: Weapon_Shotgun
+      objectReference: {fileID: 0}
     - target: {fileID: 3312106784635227399, guid: 5f10cfa668861714890a253dc44edfd0,
         type: 3}
       propertyPath: m_Name
@@ -4412,9 +4622,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4240910116834161158, guid: 5f10cfa668861714890a253dc44edfd0,
         type: 3}
+      propertyPath: audioMenager
+      value: 
+      objectReference: {fileID: 1054860709}
+    - target: {fileID: 4240910116834161158, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: rifleShotEvent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240910116834161158, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
       propertyPath: currentAmmoText
       value: 
       objectReference: {fileID: 1529757267}
+    - target: {fileID: 4240910116834161158, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: deagleShotEvent
+      value: deagle
+      objectReference: {fileID: 0}
     - target: {fileID: 6953790820863960590, guid: 5f10cfa668861714890a253dc44edfd0,
         type: 3}
       propertyPath: inventory
@@ -4427,9 +4652,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7392332605270488260, guid: 5f10cfa668861714890a253dc44edfd0,
         type: 3}
+      propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392332605270488260, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: audioMenager
+      value: 
+      objectReference: {fileID: 1054860709}
+    - target: {fileID: 7392332605270488260, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
       propertyPath: currentAmmoText
       value: 
       objectReference: {fileID: 1529757267}
+    - target: {fileID: 7392332605270488260, guid: 5f10cfa668861714890a253dc44edfd0,
+        type: 3}
+      propertyPath: shotgunShotEvent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8882796391436817809, guid: 5f10cfa668861714890a253dc44edfd0,
         type: 3}
       propertyPath: weapon
@@ -4457,6 +4697,7 @@ PrefabInstance:
       objectReference: {fileID: 813462409}
     m_RemovedComponents:
     - {fileID: 2136349022628969128, guid: 5f10cfa668861714890a253dc44edfd0, type: 3}
+    - {fileID: 353745766807978464, guid: 5f10cfa668861714890a253dc44edfd0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5396,3 +5637,4 @@ SceneRoots:
   - {fileID: 2029537146}
   - {fileID: 1630571773}
   - {fileID: 666781108}
+  - {fileID: 1876384087}
