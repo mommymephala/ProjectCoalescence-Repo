@@ -6,8 +6,21 @@ using PlayerActions;
 
 namespace WeaponRelated
 {
+    public enum WeaponType
+    {
+        Deagle,
+        Rifle,
+        Shotgun
+    }
     public class Weapon : MonoBehaviour
     {
+        public WeaponType weaponType;
+        [Header("Audio Events")]
+        [SerializeField] private string deagleShotEvent;
+        [SerializeField] private string rifleShotEvent;
+        [SerializeField] private string shotgunShotEvent;
+       [SerializeField] private AudioMenager audioMenager;
+       
         [Header("References")]
         public WeaponData weaponData;
         [SerializeField] private PlayerLook playerLook;
@@ -110,6 +123,7 @@ namespace WeaponRelated
 
         private void Shoot()
         {
+            
             if (weaponData.currentAmmo <= 0)
             {
                 StartReload();
@@ -134,6 +148,7 @@ namespace WeaponRelated
 
             weaponData.currentAmmo--;
             _timeSinceLastShot = 0f;
+            
             OnGunShot();
             CalculateRecoil();
             ApplyProceduralKickback();
@@ -317,6 +332,7 @@ namespace WeaponRelated
 
         private void OnGunShot()
         {
+            
             if (_ismuzzleFlashPrefabNull) return;
             Vector3 muzzlePosition = muzzleTransform.position;
             Quaternion muzzleRotation = muzzleTransform.rotation;
@@ -326,9 +342,23 @@ namespace WeaponRelated
                 var fovRatio = weaponData.originalWeaponFOV / weaponCamera.fieldOfView;
                 muzzlePosition += muzzleTransform.forward * fovRatio;
             }
-
+            
             GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePosition, muzzleRotation);
             Destroy(muzzleFlash, 0.1f);
+            switch (weaponType)
+            {
+                case WeaponType.Deagle:
+                    audioMenager.PlayDeagleRanged();
+                    break;
+                case WeaponType.Rifle:
+                    audioMenager.PlayRifleRanged();
+                    break;
+                case WeaponType.Shotgun:
+                    audioMenager.PlayShotgunRanged();
+                    break;
+                default:
+                    break;
+            }
         }
         
         //Separate UI logic!!!

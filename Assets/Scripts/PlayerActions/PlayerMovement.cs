@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PlayerActions
 {
@@ -6,7 +7,11 @@ namespace PlayerActions
     {
         private const float PlayerHeight = 2f;
         [SerializeField] private Transform orientation;
+        [Header("Audio")]
+        private AudioMenager audioMenager;
 
+        private float footstepTimer = 0f;
+        private const float footstepInternal = 1f;
         [Header("Movement")]
         private const float MovementMultiplier = 10f;
         [SerializeField] public float moveSpeed = 1f;
@@ -44,6 +49,11 @@ namespace PlayerActions
             _rb.freezeRotation = true;
         }
 
+        private void Start()
+        {
+            audioMenager = FindObjectOfType<AudioMenager>();
+        }
+
         private void Update()
         {
             CheckGround();
@@ -54,6 +64,28 @@ namespace PlayerActions
             if (Input.GetKeyDown(jumpKey) && _isGrounded)
             {
                 Jump();
+            }
+
+            if (_isGrounded)
+            {
+                // Check if there is movement
+                bool isMoving = _horizontalMovement != 0f || _verticalMovement != 0f;
+
+                // If there is movement, increment the timer and play footstep sound if enough time has passed
+                if (isMoving)
+                {
+                    footstepTimer += Time.deltaTime;
+                    if (footstepTimer >= footstepInternal)
+                    {
+                        audioMenager.PlayFootstep();
+                        footstepTimer = 0f; // Reset the timer
+                    }
+                }
+                else
+                {
+                    // If there is no movement, reset the timer
+                    footstepTimer = footstepInternal;
+                }
             }
 
             _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
@@ -113,9 +145,11 @@ namespace PlayerActions
             {
                 case true when !OnSlope():
                     _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+                    
                     break;
                 case true when OnSlope():
                     _rb.AddForce(_slopeMoveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+                    
                     break;
                 case false:
                     _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier * airMultiplier), ForceMode.Acceleration);
@@ -147,5 +181,25 @@ namespace PlayerActions
                 _isGrounded = false;
             }
         }
+       /* public void PlayFootstep()
+        {
+            //Raycast to the ground and return the collider to the RaycastHit.
+            hit2D = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+            Debug.DrawRay(transform.position, Vector2.down*1, Color.blue, 1f);
+            if (hit2D.collider != null)
+            {
+                //Call the footstep function and use the collider tag for surface comparison
+                audioManager.PlayFootstep(hit2D.collider.tag);
+                Debug.Log("Surface is " + hit2D.collider.tag);
+            }
+            else
+            {
+                return;
+            }
+            
+            var footstepPosition = transform.position;
+            footstepPosition.z -= 1;
+            VFXController.Instance.Trigger("DustPuff", footstepPosition, 0, false, null, m_CurrentSurface);
+        }*/
     }
 }

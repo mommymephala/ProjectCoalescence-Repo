@@ -1,10 +1,15 @@
 using UnityEngine;
-
+using FMODUnity;
 namespace WeaponRelated
 {
+   
+    
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
+    
     public class WeaponData : ScriptableObject 
     {
+        [Header("Audio")]
+        
         [Header("Shooting")]
         public bool allowAutoFire;
         public float damage;
