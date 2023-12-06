@@ -194,6 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 0
+  deagleShotEvent: 
+  rifleShotEvent: 
+  shotgunShotEvent: 
+  audioMenager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 54b5dc0a8e9ccee45a7ee3b800760f1b, type: 2}
   playerLook: {fileID: 6953790820863960590}
   playerMovement: {fileID: 8882796391436817809}
@@ -257,6 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 0
+  deagleShotEvent: 
+  rifleShotEvent: 
+  shotgunShotEvent: 
+  audioMenager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
   playerLook: {fileID: 6953790820863960590}
   playerMovement: {fileID: 8882796391436817809}
@@ -562,7 +572,7 @@ GameObject:
   - component: {fileID: 5680660875318511547}
   - component: {fileID: 7277345174602996981}
   - component: {fileID: 8700927520773970888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerWithLoadout
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -625,6 +635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fc03edbfbe7624dac860a9770951af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InventoryCanvas: {fileID: 0}
+  cursorVisibility: {fileID: 0}
+  playerLook: {fileID: 0}
+  weapon: {fileID: 0}
   orientation: {fileID: 8021899343002742154}
   moveSpeed: 1
   airMultiplier: 0.1
@@ -653,6 +667,8 @@ MonoBehaviour:
   orientation: {fileID: 8021899343002742154}
   mouseSens: 600
   adsSens: 50
+  inventory: {fileID: 0}
+  MaxDistance: 0
 --- !u!114 &7798253997476150458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,6 +859,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 0
+  deagleShotEvent: 
+  rifleShotEvent: 
+  shotgunShotEvent: 
+  audioMenager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 0debb2a06e0817847a4e2bb3a6f1911e, type: 2}
   playerLook: {fileID: 6953790820863960590}
   playerMovement: {fileID: 8882796391436817809}

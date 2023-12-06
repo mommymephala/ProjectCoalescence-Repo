@@ -8,8 +8,6 @@ namespace PlayerActions
     public class PlayerMovement : MonoBehaviour
     {
         [Header("Inventory")]
-        //public GameObject InventoryCanvas;
-
         public Canvas InventoryCanvas;
         private bool IsInventoryOpen;
         [SerializeField] private  CursorVisibility cursorVisibility;
@@ -54,7 +52,6 @@ namespace PlayerActions
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
-            
         }
 
         private void Update()
@@ -165,7 +162,6 @@ namespace PlayerActions
         }
         public void InventoryCanvasCheck()
         {
-           
             if (Input.GetKeyDown(KeyCode.Tab) && (IsInventoryOpen))
             {
                InventoryCanvasCheckClose();
@@ -177,30 +173,23 @@ namespace PlayerActions
         }
         public void InventoryCanvasCheckOpen()
         {
-           
-               //InventoryCanvas.SetActive(true);
-                InventoryCanvas.enabled = true;
-                IsInventoryOpen = true;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
-                playerLook.enabled = false;
-                weapon.enabled = false;
-                Time.timeScale = 0f;
-
-
+            InventoryCanvas.enabled = true;
+            IsInventoryOpen = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            playerLook.enabled = false;
+            weapon.enabled = false;
+            Time.timeScale = 0f;
         }
         public void InventoryCanvasCheckClose()
         {
             InventoryCanvas.enabled = false;
-               // InventoryCanvas.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                IsInventoryOpen = false;
-                playerLook.enabled = true;
-                weapon.enabled = true;
-
-                Time.timeScale = 1f;
-
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            IsInventoryOpen = false;
+            playerLook.enabled = true;
+            weapon.enabled = true;
+            Time.timeScale = 1f;
         }
     }
 }
