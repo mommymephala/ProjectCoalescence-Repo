@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Wall
   - AudioMenager
+  - Stairs
   layers:
   - Default
   - TransparentFX

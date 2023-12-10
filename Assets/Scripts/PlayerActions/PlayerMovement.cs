@@ -1,6 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using WeaponRelated;
 
 namespace PlayerActions
@@ -16,12 +14,12 @@ namespace PlayerActions
         [SerializeField] private  Weapon shotgunWeapon;
         public DynamicCrosshair crosshair;
         
-         private AudioMenager audioMenager;
+        private AudioMenager audioMenager;
         
-         private float footstepTimer = 0.25f;
-         private const float footstepInternal = 0.70f;
-         private float RunfootstepTimer = 0.25f;
-         private const float RunfootstepInternal = 0.50f;
+        private float footstepTimer = 0.25f;
+        private const float footstepInternal = 0.70f;
+        private float RunfootstepTimer = 0.25f;
+        private const float RunfootstepInternal = 0.50f;
          
         private const float PlayerHeight = 2f;
         [SerializeField] private Transform orientation;
@@ -62,8 +60,6 @@ namespace PlayerActions
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
-           
-
         }
         private void Start()
         {
@@ -214,7 +210,6 @@ namespace PlayerActions
 
             if (Physics.Raycast(origin, direction, out RaycastHit _, distance))
             {
-                Debug.DrawRay(origin, direction * distance, Color.red);
                 _isGrounded = true;
             }
             else
@@ -222,6 +217,7 @@ namespace PlayerActions
                 _isGrounded = false;
             }
         }
+        
         public void InventoryCanvasCheck()
         {
             if (Input.GetKeyDown(KeyCode.Tab) && (IsInventoryOpen))
