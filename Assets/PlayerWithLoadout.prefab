@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1189ba7cd465a4abc8bfd1491b53ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keys: 31000000320000003300000034000000
+  keys: 310000003200000033000000
   switchTime: 0.25
 --- !u!114 &5026933575070548801
 MonoBehaviour:
@@ -147,8 +147,8 @@ MonoBehaviour:
   playerMovement: {fileID: 8882796391436817809}
   toggleHeadbob: 1
   joint: {fileID: 7413055441489926069}
-  bobSpeed: 1
-  bobAmount: {x: 0.01, y: 0.025, z: 0}
+  bobSpeed: 2
+  bobAmount: {x: 0.01, y: 0.01, z: 0}
 --- !u!1 &879555771037117526
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 879555771037117526}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -0.041, z: 0.311}
+  m_LocalPosition: {x: 0.25, y: -0.016, z: 0.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -194,10 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
-  deagleShotEvent: 
-  rifleShotEvent: 
-  shotgunShotEvent: 
+  weaponType: 2
   audioMenager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 54b5dc0a8e9ccee45a7ee3b800760f1b, type: 2}
   playerLook: {fileID: 6953790820863960590}
@@ -217,6 +214,7 @@ MonoBehaviour:
   bulletHolePrefab: {fileID: 2428569139062834844, guid: c56d8c95d3722714786e89e94e8bcd0f,
     type: 3}
   currentAmmoText: {fileID: 0}
+  _aimingDownSight: 0
 --- !u!1 &1369392992920280065
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6767692127640851091
 Transform:
   m_ObjectHideFlags: 0
@@ -243,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 1369392992920280065}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: -0.005, z: 0.064}
+  m_LocalPosition: {x: 0.14, y: -0.005, z: 0.064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -263,9 +261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  deagleShotEvent: 
-  rifleShotEvent: 
-  shotgunShotEvent: 
   audioMenager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
   playerLook: {fileID: 6953790820863960590}
@@ -285,6 +280,7 @@ MonoBehaviour:
   bulletHolePrefab: {fileID: 2428569139062834844, guid: c56d8c95d3722714786e89e94e8bcd0f,
     type: 3}
   currentAmmoText: {fileID: 0}
+  _aimingDownSight: 0
 --- !u!1 &1898313387667891389
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +369,7 @@ Transform:
   m_GameObject: {fileID: 2593104313588668199}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.156, y: 0.001, z: -0.244}
+  m_LocalPosition: {x: -0.18, y: 0.021, z: -0.244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -636,9 +632,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryCanvas: {fileID: 0}
-  cursorVisibility: {fileID: 0}
-  playerLook: {fileID: 0}
-  weapon: {fileID: 0}
+  playerLook: {fileID: 6953790820863960590}
+  deagleWeapon: {fileID: 4240910116834161158}
+  rifleWeapon: {fileID: 7392332605270488260}
+  shotgunWeapon: {fileID: 887796919706641944}
+  crosshair: {fileID: 0}
   orientation: {fileID: 8021899343002742154}
   moveSpeed: 1
   airMultiplier: 0.1
@@ -668,7 +666,7 @@ MonoBehaviour:
   mouseSens: 600
   adsSens: 50
   inventory: {fileID: 0}
-  MaxDistance: 0
+  MaxDistance: 25
 --- !u!114 &7798253997476150458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,8 +682,8 @@ MonoBehaviour:
   playerMovement: {fileID: 8882796391436817809}
   toggleHeadbob: 1
   joint: {fileID: 7782827014878726469}
-  bobSpeed: 1
-  bobAmount: {x: 0.1, y: 0.05, z: 0}
+  bobSpeed: 0.4
+  bobAmount: {x: 0.01, y: 0.01, z: 0}
 --- !u!23 &9019693810236734854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -840,7 +838,7 @@ Transform:
   m_GameObject: {fileID: 6160457691748386486}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.152, y: -0.042, z: 0.098}
+  m_LocalPosition: {x: 0.141, y: -0.017, z: 0.114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -859,10 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
-  deagleShotEvent: 
-  rifleShotEvent: 
-  shotgunShotEvent: 
+  weaponType: 1
   audioMenager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 0debb2a06e0817847a4e2bb3a6f1911e, type: 2}
   playerLook: {fileID: 6953790820863960590}
@@ -882,6 +877,7 @@ MonoBehaviour:
   bulletHolePrefab: {fileID: 2428569139062834844, guid: c56d8c95d3722714786e89e94e8bcd0f,
     type: 3}
   currentAmmoText: {fileID: 0}
+  _aimingDownSight: 0
 --- !u!1 &6751567060521994873
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +903,7 @@ Transform:
   m_GameObject: {fileID: 6751567060521994873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.123, y: -0.006, z: -0.254}
+  m_LocalPosition: {x: -0.117, y: 0.005, z: -0.254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1242,6 +1238,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8067051525027657890, guid: c145268d806b8674f93878af6642d445,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bae5420cb665af5419fd8401b4a5427c, type: 2}
+    - target: {fileID: -3488063919645288440, guid: c145268d806b8674f93878af6642d445,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 181432e3608528a4097157f702c7057b, type: 2}
     - target: {fileID: 919132149155446097, guid: c145268d806b8674f93878af6642d445,
         type: 3}
       propertyPath: m_Name
@@ -1270,6 +1276,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5544619621030836376}
     m_Modifications:
+    - target: {fileID: -9187412822121666361, guid: 93646c4e15fd4a84698fac6f873771b7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bae5420cb665af5419fd8401b4a5427c, type: 2}
     - target: {fileID: -9070658687456447757, guid: 93646c4e15fd4a84698fac6f873771b7,
         type: 3}
       propertyPath: m_Layer
@@ -1415,6 +1426,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -3488063919645288440, guid: 93646c4e15fd4a84698fac6f873771b7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 181432e3608528a4097157f702c7057b, type: 2}
     - target: {fileID: -3247513172241032490, guid: 93646c4e15fd4a84698fac6f873771b7,
         type: 3}
       propertyPath: m_Layer
@@ -1783,6 +1799,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -3488063919645288440, guid: 0701c2fe75a574a48ac2809ad4acc5e3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 181432e3608528a4097157f702c7057b, type: 2}
     - target: {fileID: -3247513172241032490, guid: 0701c2fe75a574a48ac2809ad4acc5e3,
         type: 3}
       propertyPath: m_Layer
@@ -1878,6 +1899,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4706228489688515778, guid: 0701c2fe75a574a48ac2809ad4acc5e3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bae5420cb665af5419fd8401b4a5427c, type: 2}
     - target: {fileID: 5207929482016538069, guid: 0701c2fe75a574a48ac2809ad4acc5e3,
         type: 3}
       propertyPath: m_Layer
