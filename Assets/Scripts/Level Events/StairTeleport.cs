@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class StairTeleport : MonoBehaviour
 {
-    public Transform StairTeleportLocation;
+    public Transform stairTeleportLocation;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.position = StairTeleportLocation.position;
+            other.transform.position = stairTeleportLocation.position;
         }
     }
 }

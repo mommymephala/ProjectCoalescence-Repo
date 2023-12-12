@@ -16,7 +16,7 @@ namespace WeaponRelated
     {
         public WeaponType weaponType;
         [Header("Audio Events")]
-       [SerializeField] private AudioMenager audioMenager;
+       [SerializeField] private AudioManager audioManager;
        
         [Header("References")]
         public WeaponData weaponData;
@@ -348,21 +348,21 @@ namespace WeaponRelated
                 case WeaponType.Deagle:
                     if ((!playerMovement.IsInventoryOpen))
                     {
-                        audioMenager.PlayDeagleRanged();
+                        audioManager.PlayDeagleRanged();
                     }
 
                     break;
                 case WeaponType.Rifle:
                     if ((!playerMovement.IsInventoryOpen))
                     {
-                        audioMenager.PlayRifleRanged();
+                        audioManager.PlayRifleRanged();
                     }
                         
                     break;
                 case WeaponType.Shotgun:
                     if ((!playerMovement.IsInventoryOpen))
                     {
-                        audioMenager.PlayShotgunRanged();
+                        audioManager.PlayShotgunRanged();
                     }
                         
                     break;

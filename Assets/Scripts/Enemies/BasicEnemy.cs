@@ -44,6 +44,11 @@ namespace Enemies
         }
 
         private EnemyState _currentState;
+        private static readonly int IsIdle = Animator.StringToHash("isIdle");
+        private static readonly int IsRunning = Animator.StringToHash("isRunning");
+        private static readonly int IsLightAttacking = Animator.StringToHash("isLightAttacking");
+        private static readonly int IsHeavyAttacking = Animator.StringToHash("isHeavyAttacking");
+        private static readonly int IsWalking = Animator.StringToHash("isWalking");
 
         private void Awake()
         {
@@ -163,21 +168,21 @@ namespace Enemies
 
             if (!_walkPointSet && _idleTimer > 0)
             {
-                _animator.SetBool("isIdle", true);
-                _animator.SetBool("isRunning", false);
-                _animator.SetBool("isLightAttacking", false);
-                _animator.SetBool("isHeavyAttacking", false);
-                _animator.SetBool("isWalking", false);
+                _animator.SetBool(IsIdle, true);
+                _animator.SetBool(IsRunning, false);
+                _animator.SetBool(IsLightAttacking, false);
+                _animator.SetBool(IsHeavyAttacking, false);
+                _animator.SetBool(IsWalking, false);
             }
         }
 
         private void Walk()
         {
-            _animator.SetBool("isIdle", false);
-            _animator.SetBool("isRunning", false);
-            _animator.SetBool("isLightAttacking", false);
-            _animator.SetBool("isHeavyAttacking", false);
-            _animator.SetBool("isWalking", true);
+            _animator.SetBool(IsIdle, false);
+            _animator.SetBool(IsRunning, false);
+            _animator.SetBool(IsLightAttacking, false);
+            _animator.SetBool(IsHeavyAttacking, false);
+            _animator.SetBool(IsWalking, true);
         }
 
         private void ChasePlayer()
@@ -186,11 +191,11 @@ namespace Enemies
             var lookAtPosition = new Vector3(_player.position.x, transform.position.y, _player.position.z);
             transform.LookAt(lookAtPosition);
             
-            _animator.SetBool("isIdle", false);
-            _animator.SetBool("isLightAttacking", false);
-            _animator.SetBool("isHeavyAttacking", false);
-            _animator.SetBool("isWalking", false);
-            _animator.SetBool("isRunning", true);
+            _animator.SetBool(IsIdle, false);
+            _animator.SetBool(IsLightAttacking, false);
+            _animator.SetBool(IsHeavyAttacking, false);
+            _animator.SetBool(IsWalking, false);
+            _animator.SetBool(IsRunning, true);
         }
 
         private void AttackPlayer()
@@ -198,9 +203,9 @@ namespace Enemies
             var lookAtPosition = new Vector3(_player.position.x, transform.position.y, _player.position.z);
             transform.LookAt(lookAtPosition);
             
-            _animator.SetBool("isIdle", false);
-            _animator.SetBool("isRunning", false);
-            _animator.SetBool("isWalking", false);
+            _animator.SetBool(IsIdle, false);
+            _animator.SetBool(IsRunning, false);
+            _animator.SetBool(IsWalking, false);
 
             if (!_alreadyAttacked)
             {
@@ -208,15 +213,15 @@ namespace Enemies
                 if (randomAttack < 0.6f)
                 {
                     // Light attack code here
-                    _animator.SetBool("isLightAttacking", true);
-                    _animator.SetBool("isHeavyAttacking", false);
+                    _animator.SetBool(IsLightAttacking, true);
+                    _animator.SetBool(IsHeavyAttacking, false);
                     Debug.Log("Light Attack");
                 }
                 else
                 {
                     // Heavy attack code here
-                    _animator.SetBool("isLightAttacking", false);
-                    _animator.SetBool("isHeavyAttacking", true);
+                    _animator.SetBool(IsLightAttacking, false);
+                    _animator.SetBool(IsHeavyAttacking, true);
                     Debug.Log("Heavy Attack");
                 }
 
@@ -228,8 +233,8 @@ namespace Enemies
         private void ResetAttack()
         {
             _alreadyAttacked = false;
-            _animator.SetBool("isLightAttacking", false);
-            _animator.SetBool("isHeavyAttacking", false);
+            _animator.SetBool(IsLightAttacking, false);
+            _animator.SetBool(IsHeavyAttacking, false);
         }
 
         private void OnDrawGizmosSelected()

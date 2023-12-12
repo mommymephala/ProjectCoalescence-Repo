@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BotanicLoopTrigger : MonoBehaviour
 {
-    public GameObject BotanicTeleportToLabTrigger;
+    public GameObject botanicTeleportToLabTrigger;
 
     //When triggered, turn on botanic teleport trigger
     //Always active
@@ -10,7 +10,7 @@ public class BotanicLoopTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            BotanicTeleportToLabTrigger.SetActive(true);
+            botanicTeleportToLabTrigger.SetActive(true);
         }
     }
 }

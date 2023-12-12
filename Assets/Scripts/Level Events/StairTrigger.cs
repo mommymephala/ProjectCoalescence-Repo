@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StairTrigger : MonoBehaviour
 {
-    public GameObject FirstFloor;
-    public GameObject FirstFloorBlock;
+    public GameObject firstFloor;
+    public GameObject firstFloorBlock;
 
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        FirstFloor.SetActive(true);
-        FirstFloorBlock.SetActive(false);
+        firstFloor.SetActive(true);
+        firstFloorBlock.SetActive(false);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool isOpen;
-    private AudioMenager audioMenager;
+    private AudioManager _audioManager;
     [SerializeField] private bool isRotatingDoor = true;
     [SerializeField] private float speed = 1f;
     
@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        audioMenager = FindObjectOfType<AudioMenager>();
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void Open(Vector3 userPosition)
@@ -54,7 +54,7 @@ public class Door : MonoBehaviour
         else
         {
             _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
-            audioMenager.PlayDoor(gameObject);
+            _audioManager.PlayDoor(gameObject);
         }
         
     }

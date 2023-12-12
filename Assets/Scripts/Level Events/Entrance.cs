@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Entrance : MonoBehaviour
 {
-    public GameObject FirstFloor;
-
-   
-
+    public GameObject firstFloor;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        FirstFloor.SetActive(false);
+        firstFloor.SetActive(false);
         
     }
 }

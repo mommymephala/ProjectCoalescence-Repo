@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
-public class AudioMenager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public static AudioMenager Instance { get; private set; }
+    public static AudioManager Instance { get; private set; }
+    
     [Header("Player")]
     [SerializeField] private EventReference playerfootsteps;
     [SerializeField] private EventReference playerJump;
@@ -14,9 +15,9 @@ public class AudioMenager : MonoBehaviour
     [SerializeField] private EventReference rifle;
     [SerializeField] private EventReference deagle;
     [SerializeField] private EventReference shotgun;
-    [SerializeField] private EventReference MetalDoor;
+    [SerializeField] private EventReference metalDoor;
     [SerializeField] private EventReference playerHurt;
-    EventInstance playerFootstepInstance;
+    EventInstance _playerFootstepInstance;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -37,10 +38,10 @@ public class AudioMenager : MonoBehaviour
             Debug.LogWarning("Fmod event not found: playerFootstep");
             return;
         }
-        playerFootstepInstance = RuntimeManager.CreateInstance(playerfootsteps);
+        _playerFootstepInstance = RuntimeManager.CreateInstance(playerfootsteps);
         
-        playerFootstepInstance.start();
-        playerFootstepInstance.release();
+        _playerFootstepInstance.start();
+        _playerFootstepInstance.release();
      // RuntimeManager.PlayOneShot(playerfootsteps,transform.position);
        
     }
@@ -80,12 +81,12 @@ public class AudioMenager : MonoBehaviour
     
     public void PlayDoor(GameObject doorObject)
     {
-        if (MetalDoor.IsNull)
+        if (metalDoor.IsNull)
         {
             Debug.LogWarning("Fmod event not found: doorOpen");
             return;
         }
-        RuntimeManager.PlayOneShot(MetalDoor, doorObject.transform.position);
+        RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
     }
 
 }

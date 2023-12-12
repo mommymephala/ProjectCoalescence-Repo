@@ -5,19 +5,16 @@ namespace PlayerActions
 {
     public class PlayerLook : MonoBehaviour
     {
-        [Header("References")] [SerializeField]
-        private Transform camHolder;
-
-        [SerializeField] private Transform orientation;
-
-        [Header("Mouse Sensitivity")] [SerializeField]
-        private float mouseSens = 100f;
-
-        [SerializeField] private float adsSens = 50f;
-
+        [Header("References")] 
         public InventoryTest inventory;
+        public float maxDistance;
+        [SerializeField] private Transform orientation;
+        [SerializeField] private Transform camHolder;
 
-        public float MaxDistance;
+        [Header("Mouse Sensitivity")] 
+        [SerializeField] private float mouseSens = 100f;
+        [SerializeField] private float adsSens = 50f;
+        
         //Mouse look variables
         private const float Multiplier = 0.01f;
         private float _mouseX;
@@ -60,22 +57,21 @@ namespace PlayerActions
         {
             _aimingDownSight = aiming;
         }
-        public void PickObject()
+
+        private void PickObject()
         {
             Ray ray = new Ray(camHolder.transform.position, camHolder.transform.forward);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, MaxDistance))
+            if (Physics.Raycast(ray, out hit, maxDistance))
             {
                 IPickUp objectPickable = hit.collider.GetComponent<IPickUp>();
                 if (objectPickable != null)
                 {
                     inventory.AddItem(hit.collider.GetComponent<Item>());
                     objectPickable.PickUp();
-                
                 }
             }
-
         }
     }
 }

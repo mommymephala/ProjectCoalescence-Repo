@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class BotanicRoomTrigger : MonoBehaviour
 {
-    public GameObject BotanicHallwaytoUpstairs;
-    public GameObject LabHallwaytoUpstairs;
-    public GameObject Save_Room;
-    public GameObject Dark_Hallway;
+    public GameObject botanicHallwaytoUpstairs;
+    public GameObject labHallwaytoUpstairs;
+    public GameObject saveRoom;
+    public GameObject darkHallway;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        Save_Room.SetActive(false);
-        Dark_Hallway.SetActive(false);
-        BotanicHallwaytoUpstairs.SetActive(true);
-        LabHallwaytoUpstairs.SetActive(true);
+        saveRoom.SetActive(false);
+        darkHallway.SetActive(false);
+        botanicHallwaytoUpstairs.SetActive(true);
+        labHallwaytoUpstairs.SetActive(true);
         //gameObject.SetActive(false);
     }
 }
