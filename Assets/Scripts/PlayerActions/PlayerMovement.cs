@@ -92,7 +92,7 @@ namespace PlayerActions
                 Jump();
             }
 
-            _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
+            // _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
             
             if (_isGrounded && !Input.GetKey(sprintKey))
             {
@@ -189,17 +189,36 @@ namespace PlayerActions
         
         private void MovePlayer()
         {
-            if (_isGrounded && !OnSlope())
+            if (_isGrounded)
             {
-                _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+                if (OnSlope())
+                {
+                    HandleSlopeMovement();
+                }
+                else
+                {
+                    // Regular grounded movement
+                    _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+                }
             }
-            else if (_isGrounded && OnSlope())
+            else
             {
-                _rb.AddForce(_slopeMoveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
-            }
-            else if (!_isGrounded)
-            {
+                // Apply force in the air
                 _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier * airMultiplier), ForceMode.Acceleration);
+            }
+        }
+
+        private void HandleSlopeMovement()
+        {
+            _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal).normalized;
+
+            // Apply force along the slope's direction
+            _rb.AddForce(_slopeMoveDirection * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+
+            // Additional logic to prevent sliding down slopes
+            if (!(_horizontalMovement != 0f || _verticalMovement != 0f))
+            {
+                _rb.AddForce(-_slopeHit.normal * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
             }
         }
 
