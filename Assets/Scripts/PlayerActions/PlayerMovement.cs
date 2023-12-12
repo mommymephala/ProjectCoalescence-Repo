@@ -7,31 +7,27 @@ namespace PlayerActions
     {
         [Header("Inventory")]
         public Canvas InventoryCanvas;
-        public bool IsInventoryOpen { get; private set; }
+        public DynamicCrosshair crosshair;
+        
         [SerializeField] private  PlayerLook playerLook;
         [SerializeField] private  Weapon deagleWeapon;
         [SerializeField] private  Weapon rifleWeapon;
         [SerializeField] private  Weapon shotgunWeapon;
-        public DynamicCrosshair crosshair;
-        
         private AudioMenager audioMenager;
+        public bool IsInventoryOpen { get; private set; }
         
         private float footstepTimer = 0.25f;
         private const float footstepInternal = 0.70f;
         private float RunfootstepTimer = 0.25f;
         private const float RunfootstepInternal = 0.50f;
-         
-        private const float PlayerHeight = 2f;
-        [SerializeField] private Transform orientation;
 
         [Header("Movement")]
+        private const float PlayerHeight = 2f;
         private const float MovementMultiplier = 10f;
+        [SerializeField] private Transform orientation;
         [SerializeField] public float moveSpeed = 1f;
         [SerializeField] private float airMultiplier = 1f;
         [SerializeField] private Vector3 gravity;
-        [SerializeField] private float maxSlopeAngle;
-        [SerializeField] private float maxStepHeight;
-        [SerializeField] private float stepCheckDistance;
 
         [Header("Sprinting")]
         [SerializeField] private float walkSpeed = 4f;
@@ -42,6 +38,12 @@ namespace PlayerActions
 
         [Header("Jumping")]
         public float jumpForce = 5f;
+        
+        [Header("Slope Handling")]
+        // [SerializeField] private float maxSlopeAngle;
+        private RaycastHit _slopeHit;
+        // private bool _exitingSlope;
+        private Vector3 _slopeMoveDirection;
 
         [Header("Keybinds")]
         [SerializeField] private KeyCode jumpKey = KeyCode.Space;
@@ -50,14 +52,17 @@ namespace PlayerActions
         [Header("Drag")]
         [SerializeField] private float groundDrag = 6f;
         [SerializeField] private float airDrag = 2f;
+        
+        [Header("Ground Detection")]
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private LayerMask[] groundMask;
+        [SerializeField] private float groundDistance = 0.2f;
+        private bool _isGrounded;
+        
         private float _horizontalMovement;
         private float _verticalMovement;
-        private bool _isGrounded;
         private Vector3 _moveDirection;
-        private Vector3 _slopeMoveDirection;
         private Rigidbody _rb;
-        private RaycastHit _slopeHit;
-        
 
         private void Awake()
         {
@@ -71,6 +76,7 @@ namespace PlayerActions
 
         private void Update()
         {
+            InventoryCanvasCheck();
             CheckGround();
             TakeInput();
             ControlDrag();
@@ -87,26 +93,22 @@ namespace PlayerActions
             }
 
             _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal);
-
-            InventoryCanvasCheck();
+            
             if (_isGrounded && !Input.GetKey(sprintKey))
             {
-                // Check if there is movement
                 bool isMoving = _horizontalMovement != 0f || _verticalMovement != 0f;
 
-                // If there is movement, increment the timer and play footstep sound if enough time has passed
                 if (isMoving)
                 {
                     footstepTimer +=  Time.deltaTime;
                     if (footstepTimer >= footstepInternal)
                     {
                         audioMenager.PlayFootstep();
-                        footstepTimer = 0f; // Reset the timer
+                        footstepTimer = 0f;
                     }
                 }
                 else
                 {
-                    // If there is no movement, reset the timer
                     footstepTimer = footstepInternal;
                 }
             }
@@ -129,10 +131,10 @@ namespace PlayerActions
         
         private void Jump()
         {
-            if (!_isGrounded) return;
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
             _rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
+        
 
         private void ControlSpeed()
         {
@@ -142,22 +144,19 @@ namespace PlayerActions
                 IsSprinting = true;
                 if (_isGrounded)
                 {
-                    // Check if there is movement
                     bool isMoving = _horizontalMovement != 0f || _verticalMovement != 0f;
 
-                    // If there is movement, increment the timer and play footstep sound if enough time has passed
                     if (isMoving)
                     {
                         RunfootstepTimer +=  Time.deltaTime;
                         if (RunfootstepTimer >= RunfootstepInternal)
                         {
                             audioMenager.PlayFootstep();
-                            RunfootstepTimer = 0f; // Reset the timer
+                            RunfootstepTimer = 0f;
                         }
                     }
                     else
                     {
-                        // If there is no movement, reset the timer
                         RunfootstepTimer = RunfootstepInternal;
                     }
                 }
@@ -173,64 +172,33 @@ namespace PlayerActions
         {
             _rb.drag = _isGrounded ? groundDrag : airDrag;
         }
-
+        
         private bool OnSlope()
         {
             if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, PlayerHeight / 2 + 0.5f))
             {
-                float slopeAngle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+                if (_slopeHit.normal != Vector3.up)
+                {
+                    return true;
+                }
 
-                // Considering a surface as a slope if it has an angle and it's less than the max slope angle
-                return _slopeHit.normal != Vector3.up && slopeAngle <= maxSlopeAngle;
+                return false;
             }
             return false;
         }
         
-        private bool CheckForStep(out Vector3 stepUpOffset)
-        {
-            stepUpOffset = Vector3.zero;
-            RaycastHit hit;
-
-            // New step detection logic
-            Vector3 rayStart = transform.position + (transform.forward * 0.1f) + (Vector3.up * maxStepHeight);
-            Vector3 rayDirection = Vector3.down;
-
-            if (Physics.Raycast(rayStart, rayDirection, out hit, maxStepHeight))
-            {
-                if (hit.point.y > transform.position.y && hit.point.y < transform.position.y + maxStepHeight)
-                {
-                    stepUpOffset = new Vector3(0f, maxStepHeight - (rayStart.y - hit.point.y), 0f);
-                    return true;
-                }
-            }
-            return false;
-        }
-
         private void MovePlayer()
         {
-            if (_isGrounded)
+            if (_isGrounded && !OnSlope())
             {
-                // Check if there's a slope
-                if (OnSlope())
-                {
-                    // Apply force in the direction of the slope
-                    _rb.AddForce(Vector3.ProjectOnPlane(gravity, _slopeHit.normal) * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
-                }
-                else
-                {
-                    // Normal grounded movement
-                    _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
-                }
-
-                // Enhanced Step Logic
-                if (CheckForStep(out Vector3 stepUpOffset))
-                {
-                    _rb.position += stepUpOffset; // Step up
-                }
+                _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
             }
-            else
+            else if (_isGrounded && OnSlope())
             {
-                // Air movement logic
+                _rb.AddForce(_slopeMoveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+            }
+            else if (!_isGrounded)
+            {
                 _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier * airMultiplier), ForceMode.Acceleration);
             }
         }
@@ -242,74 +210,58 @@ namespace PlayerActions
                 _rb.AddForce(gravity, ForceMode.Acceleration);
             }
         }
-        
+
         private void CheckGround()
         {
-            float colliderRadius = 0.5f; // Adjust as necessary
-            float colliderHeight = PlayerHeight;
-            Vector3 boxCenter = transform.position + (Vector3.down * (colliderHeight / 2 - colliderRadius / 2));
-            Vector3 halfExtents = new Vector3(colliderRadius, 0.1f, colliderRadius);
-            Quaternion orientation = Quaternion.identity;
-            float maxDistance = 0.2f; // Adjust for better ground detection on slopes
+            bool isGrounded = false; // Initialize the flag to false
 
-            if (Physics.BoxCast(boxCenter, halfExtents, Vector3.down, out RaycastHit hit, orientation, maxDistance))
+            foreach (LayerMask layerMask in groundMask)
             {
-                if (Vector3.Angle(Vector3.up, hit.normal) <= maxSlopeAngle)
+                if (Physics.CheckSphere(groundCheck.position, groundDistance, layerMask))
                 {
-                    _isGrounded = true;
-                }
-                
-                else
-                {
-                    _isGrounded = false;
-                }
-                if (Vector3.Angle(Vector3.up, _slopeHit.normal) <= maxSlopeAngle)
-                {
-                    _isGrounded = true;
-                }
-                else
-                {
-                    _isGrounded = false;
+                    isGrounded = true;
+                    break;
                 }
             }
-            else
-            {
-                _isGrounded = false;
-            }
 
-            // Debug visualization
-            DebugDrawBox(boxCenter, halfExtents, orientation, maxDistance, _isGrounded ? Color.green : Color.red);
+            _isGrounded = isGrounded;
+
+            DebugCheckGround();
         }
-
-        private void DebugDrawBox(Vector3 center, Vector3 halfExtents, Quaternion orientation, float maxDistance, Color color)
+        
+        private void DebugCheckGround()
         {
-            Vector3 up = orientation * Vector3.up;
-            Vector3 right = orientation * Vector3.right;
-            Vector3 forward = orientation * Vector3.forward;
+            // Set the color for the debug sphere
+            Color debugColor = _isGrounded ? Color.green : Color.red;
 
-            Vector3 p1 = center + up * halfExtents.y - right * halfExtents.x - forward * halfExtents.z;
-            Vector3 p2 = center + up * halfExtents.y + right * halfExtents.x - forward * halfExtents.z;
-            Vector3 p3 = center + up * halfExtents.y - right * halfExtents.x + forward * halfExtents.z;
-            Vector3 p4 = center + up * halfExtents.y + right * halfExtents.x + forward * halfExtents.z;
-            Vector3 p5 = center - up * halfExtents.y - right * halfExtents.x - forward * halfExtents.z;
-            Vector3 p6 = center - up * halfExtents.y + right * halfExtents.x - forward * halfExtents.z;
-            Vector3 p7 = center - up * halfExtents.y - right * halfExtents.x + forward * halfExtents.z;
-            Vector3 p8 = center - up * halfExtents.y + right * halfExtents.x + forward * halfExtents.z;
-
-            // Draw the lines considering the maxDistance
-            Debug.DrawLine(p1, p2, color, maxDistance);
-            Debug.DrawLine(p2, p4, color, maxDistance);
-            Debug.DrawLine(p4, p3, color, maxDistance);
-            Debug.DrawLine(p3, p1, color, maxDistance);
-            Debug.DrawLine(p5, p6, color, maxDistance);
-            Debug.DrawLine(p6, p8, color, maxDistance);
-            Debug.DrawLine(p8, p7, color, maxDistance);
-            Debug.DrawLine(p7, p5, color, maxDistance);
-            Debug.DrawLine(p1, p5, color, maxDistance);
-            Debug.DrawLine(p2, p6, color, maxDistance);
-            Debug.DrawLine(p4, p8, color, maxDistance);
-            Debug.DrawLine(p3, p7, color, maxDistance);
+            // Draw a visible debug sphere at the ground check position
+            Debug.DrawRay(groundCheck.position, Vector3.down * groundDistance, debugColor);
+            DrawWireSphere(groundCheck.position, groundDistance, debugColor);
         }
+        
+        private static void DrawWireSphere(Vector3 position, float radius, Color color)
+        {
+            int segments = 36; // Number of line segments to create a circle
+            float angleIncrement = 360f / segments;
+            Vector3 prevPoint = Vector3.zero;
+
+            for (int i = 0; i <= segments; i++)
+            {
+                float angle = i * angleIncrement;
+                float x = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+                float z = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                Vector3 currentPoint = position + new Vector3(x, 0f, z);
+
+                if (i > 0)
+                {
+                    Debug.DrawLine(prevPoint, currentPoint, color);
+                }
+
+                prevPoint = currentPoint;
+            }
+        }
+        
+        // ################################################################################################################
         
         public void InventoryCanvasCheck()
         {
@@ -346,5 +298,120 @@ namespace PlayerActions
             shotgunWeapon.enabled = true;
             Time.timeScale = 1f;
         }
+        
+        // ################################################################################################################
+        
+        /*private bool CheckForStep(out Vector3 stepUpOffset)
+        {
+            stepUpOffset = Vector3.zero;
+            RaycastHit hit;
+
+            // New step detection logic
+            Vector3 rayStart = transform.position + (transform.forward * 0.1f) + (Vector3.up * maxStepHeight);
+            Vector3 rayDirection = Vector3.down;
+
+            if (Physics.Raycast(rayStart, rayDirection, out hit, maxStepHeight))
+            {
+                if (hit.point.y > transform.position.y && hit.point.y < transform.position.y + maxStepHeight)
+                {
+                    stepUpOffset = new Vector3(0f, maxStepHeight - (rayStart.y - hit.point.y), 0f);
+                    return true;
+                }
+            }
+            return false;
+        }*/
+
+        /*private void MovePlayer()
+        {
+            // Check if there's a slope
+            bool onSlope = OnSlope();
+
+            if (_isGrounded && !onSlope)
+            {
+                _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+            }
+            else if (onSlope && !_exitingSlope)
+            {
+                _slopeMoveDirection = Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal).normalized;
+                _rb.AddForce(_slopeMoveDirection * (moveSpeed * MovementMultiplier), ForceMode.Acceleration);
+            }
+            else
+            {
+                _rb.AddForce(_moveDirection.normalized * (moveSpeed * MovementMultiplier * airMultiplier), ForceMode.Acceleration);
+            }
+
+            // Enhanced Step Logic
+            if (CheckForStep(out Vector3 stepUpOffset))
+            {
+                _rb.position += stepUpOffset; // Step up
+            }
+        }*/
+        
+        /*private void CheckGround()
+        {
+            float colliderRadius = 0.5f; // Adjust as necessary
+            float colliderHeight = PlayerHeight;
+            Vector3 boxCenter = transform.position + (Vector3.down * (colliderHeight / 2 - colliderRadius / 2));
+            Vector3 halfExtents = new Vector3(colliderRadius, 0.1f, colliderRadius);
+            Quaternion orientation = Quaternion.identity;
+            float maxDistance = 0.2f; // Adjust for better ground detection on slopes
+
+            if (Physics.BoxCast(boxCenter, halfExtents, Vector3.down, out RaycastHit hit, orientation, maxDistance))
+            {
+                if (Vector3.Angle(Vector3.up, hit.normal) <= maxSlopeAngle)
+                {
+                    _isGrounded = true;
+                }
+                else
+                {
+                    _isGrounded = false;
+                }
+                if (Vector3.Angle(Vector3.up, _slopeHit.normal) <= maxSlopeAngle)
+                {
+                    _isGrounded = true;
+                }
+                else
+                {
+                    _isGrounded = false;
+                }
+            }
+            else
+            {
+                _isGrounded = false;
+            }
+
+            // Debug visualization
+            DebugDrawBox(boxCenter, halfExtents, orientation, maxDistance, _isGrounded ? Color.green : Color.red);
+        }*/
+
+        /*private void DebugDrawBox(Vector3 center, Vector3 halfExtents, Quaternion orientation, float maxDistance, Color color)
+        {
+            Vector3 up = orientation * Vector3.up;
+            Vector3 right = orientation * Vector3.right;
+            Vector3 forward = orientation * Vector3.forward;
+
+            Vector3 p1 = center + up * halfExtents.y - right * halfExtents.x - forward * halfExtents.z;
+            Vector3 p2 = center + up * halfExtents.y + right * halfExtents.x - forward * halfExtents.z;
+            Vector3 p3 = center + up * halfExtents.y - right * halfExtents.x + forward * halfExtents.z;
+            Vector3 p4 = center + up * halfExtents.y + right * halfExtents.x + forward * halfExtents.z;
+            Vector3 p5 = center - up * halfExtents.y - right * halfExtents.x - forward * halfExtents.z;
+            Vector3 p6 = center - up * halfExtents.y + right * halfExtents.x - forward * halfExtents.z;
+            Vector3 p7 = center - up * halfExtents.y - right * halfExtents.x + forward * halfExtents.z;
+            Vector3 p8 = center - up * halfExtents.y + right * halfExtents.x + forward * halfExtents.z;
+
+            // Draw the lines considering the maxDistance
+            Debug.DrawLine(p1, p2, color, maxDistance);
+            Debug.DrawLine(p2, p4, color, maxDistance);
+            Debug.DrawLine(p4, p3, color, maxDistance);
+            Debug.DrawLine(p3, p1, color, maxDistance);
+            Debug.DrawLine(p5, p6, color, maxDistance);
+            Debug.DrawLine(p6, p8, color, maxDistance);
+            Debug.DrawLine(p8, p7, color, maxDistance);
+            Debug.DrawLine(p7, p5, color, maxDistance);
+            Debug.DrawLine(p1, p5, color, maxDistance);
+            Debug.DrawLine(p2, p6, color, maxDistance);
+            Debug.DrawLine(p4, p8, color, maxDistance);
+            Debug.DrawLine(p3, p7, color, maxDistance);
+        }*/
     }
 }

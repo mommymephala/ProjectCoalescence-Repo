@@ -590,6 +590,7 @@ Transform:
   m_Children:
   - {fileID: 8021899343002742154}
   - {fileID: 1943666235629749900}
+  - {fileID: 5990467262739990384}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8668158061426205167
@@ -632,11 +633,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryCanvas: {fileID: 0}
+  crosshair: {fileID: 0}
   playerLook: {fileID: 6953790820863960590}
   deagleWeapon: {fileID: 4240910116834161158}
   rifleWeapon: {fileID: 7392332605270488260}
   shotgunWeapon: {fileID: 887796919706641944}
-  crosshair: {fileID: 0}
   orientation: {fileID: 8021899343002742154}
   moveSpeed: 1
   airMultiplier: 0.1
@@ -649,6 +650,11 @@ MonoBehaviour:
   sprintKey: 304
   groundDrag: 6
   airDrag: 2
+  groundCheck: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundDistance: 0.2
 --- !u!114 &6953790820863960590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +915,37 @@ Transform:
   m_Children:
   - {fileID: 7212587260955600851}
   m_Father: {fileID: 933360924081436618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7407968628494108929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5990467262739990384}
+  m_Layer: 8
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5990467262739990384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7407968628494108929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3421900540590381682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8074439578212347872
 GameObject:
