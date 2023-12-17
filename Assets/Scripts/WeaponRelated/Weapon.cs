@@ -15,8 +15,9 @@ namespace WeaponRelated
     public class Weapon : MonoBehaviour
     {
         public WeaponType weaponType;
+        
         [Header("Audio Events")]
-       [SerializeField] private AudioManager audioManager;
+        [SerializeField] private AudioManager audioManager;
        
         [Header("References")]
         public WeaponData weaponData;
@@ -28,7 +29,7 @@ namespace WeaponRelated
         
         [Header("Transforms")]
         [SerializeField] private Transform playerCameraTransform;
-        [SerializeField] private Transform weaponCameraTransform;
+        [SerializeField] private Transform weaponsHolderTransform;
         [SerializeField] private Transform muzzleTransform;
         [SerializeField] private Transform adsPositionRef;
         
@@ -52,7 +53,7 @@ namespace WeaponRelated
         private bool _ismuzzleFlashPrefabNull;
 
         //Shooting & ADS variables
-        public bool _aimingDownSight;
+        [HideInInspector] public bool aimingDownSight;
         private Vector3 _originalAdsLocalPosition;
         private float _timeSinceLastShot;
         private float _targetFOV;
@@ -78,14 +79,13 @@ namespace WeaponRelated
         private void Start()
         {
             UpdateAiming(false);
-            
         }
 
         private void OnDisable()
         {
             _shooting = false;
             _reloading = false;
-            _aimingDownSight = false;
+            aimingDownSight = false;
             ResetFOV();
         }
 
@@ -121,7 +121,6 @@ namespace WeaponRelated
 
         private void Shoot()
         {
-            
             if (weaponData.currentAmmo <= 0)
             {
                 StartReload();
@@ -130,10 +129,10 @@ namespace WeaponRelated
 
             for (var i = 0; i < weaponData.bulletsPerShot; i++)
             {
-                Vector3 spreadDirection = weaponCameraTransform.forward + Random.insideUnitSphere * weaponData.spread;
-                if (!Physics.Raycast(weaponCameraTransform.position, spreadDirection, out RaycastHit hitInfo,
+                Vector3 spreadDirection = weaponsHolderTransform.forward + Random.insideUnitSphere * weaponData.spread;
+                if (!Physics.Raycast(weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo,
                         weaponData.maxDistance)) continue;
-                Debug.DrawRay(weaponCameraTransform.position, spreadDirection, Color.red, 5);
+                Debug.DrawRay(weaponsHolderTransform.position, spreadDirection, Color.red, 5);
                 if (hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
@@ -154,7 +153,7 @@ namespace WeaponRelated
 
         private void CalculateRecoil()
         {
-            Vector3 recoilRotation = _aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
+            Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
             if (playerMovement.IsWalking)
@@ -162,7 +161,6 @@ namespace WeaponRelated
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }
 
-            // Apply smooth recoil to the current rotation with the recoil multiplier
             _smoothRotation += new Vector3
             (
                 -recoilRotation.x,
@@ -173,17 +171,14 @@ namespace WeaponRelated
         
         private void ApplyRecoil()
         {
-            // Calculate recoil for player camera
             Vector3 currentPlayerCameraRotation = Vector3.Lerp(_currentPlayerCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.deltaTime * weaponData.smoothingFactor);
             _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.deltaTime * weaponData.smoothingFactor);
             playerCameraTransform.localRotation = Quaternion.Euler(currentPlayerCameraRotation);
             
-            // Calculate recoil for weapon camera
             Vector3 currentWeaponCameraRotation = Vector3.Lerp(_currentWeaponCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.deltaTime * weaponData.smoothingFactor);
             _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.deltaTime * weaponData.smoothingFactor);
-            weaponCameraTransform.localRotation = Quaternion.Euler(currentWeaponCameraRotation);
+            weaponsHolderTransform.localRotation = Quaternion.Euler(currentWeaponCameraRotation);
 
-            // Update the stored rotations for future calculations
             _currentPlayerCameraRotation = currentPlayerCameraRotation;
             _currentWeaponCameraRotation = currentWeaponCameraRotation;
         }
@@ -218,7 +213,7 @@ namespace WeaponRelated
         private void StartReload()
         {
             if (_reloading || !gameObject.activeSelf || weaponData.currentAmmo >= weaponData.magSize) return;
-            _aimingDownSight = false;
+            aimingDownSight = false;
             StartCoroutine(Reload());
         }
 
@@ -240,46 +235,37 @@ namespace WeaponRelated
 
         private void Aiming()
         {
-            if (_aimingDownSight)
+            if (aimingDownSight)
             {
-                // Calculate the target screen position at the center of the screen
                 var targetScreenPosition = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
 
-                // Convert the screen position to a world position based on the weapon's distance from the camera
                 var distanceFromCamera = Vector3.Distance(adsPositionRef.position, playerCamera.transform.position);
                 Vector3 targetWorldPosition = playerCamera.ScreenToWorldPoint(new Vector3(targetScreenPosition.x, targetScreenPosition.y, distanceFromCamera));
 
-                // Convert the world position to a local position relative to the weapon
                 Vector3 targetLocalPosition = adsPositionRef.parent.InverseTransformPoint(targetWorldPosition);
 
                 adsPositionRef.localPosition = Vector3.Lerp(adsPositionRef.localPosition, targetLocalPosition, Time.deltaTime * weaponData.aimDownSightSpeed);
 
-                // Smoothly zoom in
                 _targetFOV = weaponData.aimDownSightFOV;
-                _targetWeaponFOV = weaponData.aimDownSightFOV;  // Set weapon FOV to be the same as player FOV
+                _targetWeaponFOV = weaponData.aimDownSightFOV;
                 playerLook.SetAimingDownSight(true);
             }
             else
             {
-                // Reset the weapon to its original position
                 adsPositionRef.localPosition = Vector3.Lerp(adsPositionRef.localPosition, _originalAdsLocalPosition, Time.deltaTime * weaponData.aimDownSightSpeed);
 
-                // Smoothly zoom out
                 _targetFOV = weaponData.originalPlayerFOV;
                 _targetWeaponFOV = weaponData.originalWeaponFOV;
                 playerLook.SetAimingDownSight(false);
             }
 
-            // Set the player camera FOV
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, _targetFOV, Time.deltaTime * weaponData.zoomSpeed);
-
-            // Set the weapon camera FOV
             weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, _targetWeaponFOV, Time.deltaTime * weaponData.zoomSpeed);
         }
 
         private void UpdateAiming(bool aiming)
         {
-            _aimingDownSight = aiming;
+            aimingDownSight = aiming;
         }
 
         private void HandleAdsInput()
@@ -291,7 +277,7 @@ namespace WeaponRelated
             if (toggleAimDownSight)
             {
                 if (Input.GetKeyDown(aimDownSightKey))
-                    UpdateAiming(!_aimingDownSight);
+                    UpdateAiming(!aimingDownSight);
             }
             else
             {
@@ -330,12 +316,11 @@ namespace WeaponRelated
 
         private void OnGunShot()
         {
-            
             if (_ismuzzleFlashPrefabNull) return;
             Vector3 muzzlePosition = muzzleTransform.position;
             Quaternion muzzleRotation = muzzleTransform.rotation;
 
-            if (_aimingDownSight)
+            if (aimingDownSight)
             {
                 var fovRatio = weaponData.originalWeaponFOV / weaponCamera.fieldOfView;
                 muzzlePosition += muzzleTransform.forward * fovRatio;

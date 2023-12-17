@@ -1,9 +1,6 @@
 using UnityEngine;
-using FMODUnity;
 namespace WeaponRelated
 {
-   
-    
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
     
     public class WeaponData : ScriptableObject 
@@ -14,6 +11,7 @@ namespace WeaponRelated
         public bool allowAutoFire;
         public float damage;
         public float maxDistance;
+        
         [Tooltip("In RPM")] public float fireRate;
         public float spread;
         public int bulletsPerShot;

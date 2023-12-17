@@ -5,17 +5,17 @@ namespace PlayerActions
 {
     public class PlayerMovement : MonoBehaviour
     {
+        // Re-do and separate
         [Header("Inventory")]
         public Canvas inventoryCanvas;
         public DynamicCrosshair crosshair;
-        
-        [SerializeField] private  PlayerLook playerLook;
-        [SerializeField] private  Weapon deagleWeapon;
-        [SerializeField] private  Weapon rifleWeapon;
-        [SerializeField] private  Weapon shotgunWeapon;
-        private AudioManager _audioManager;
+        [SerializeField] private PlayerLook playerLook;
+        [SerializeField] private Weapon deagleWeapon;
+        [SerializeField] private Weapon rifleWeapon;
+        [SerializeField] private Weapon shotgunWeapon;
         public bool IsInventoryOpen { get; private set; }
         
+        private AudioManager _audioManager;
         private float _footstepTimer = 0.25f;
         private const float FootstepInternal = 0.70f;
         private float _runfootstepTimer = 0.25f;
@@ -62,6 +62,20 @@ namespace PlayerActions
         private float _verticalMovement;
         private Vector3 _moveDirection;
         private Rigidbody _rb;
+        
+        /*
+         *
+         *
+         *
+         *
+         *
+         * DO BETTER SOUND IMPLEMENTATION, SEPARATE INVENTORY LOGIC
+         *
+         *
+         *
+         *
+         * 
+         */
 
         private void Awake()
         {
@@ -87,22 +101,20 @@ namespace PlayerActions
             {
                 Jump();
             }
-            
-            if (_isGrounded && !Input.GetKey(sprintKey))
+
+            if (!_isGrounded || Input.GetKey(sprintKey)) return;
+            if (IsMoving())
             {
-                if (IsMoving())
+                _footstepTimer +=  Time.deltaTime;
+                if (_footstepTimer >= FootstepInternal)
                 {
-                    _footstepTimer +=  Time.deltaTime;
-                    if (_footstepTimer >= FootstepInternal)
-                    {
-                        _audioManager.PlayFootstep();
-                        _footstepTimer = 0f;
-                    }
+                    _audioManager.PlayFootstep();
+                    _footstepTimer = 0f;
                 }
-                else
-                {
-                    _footstepTimer = FootstepInternal;
-                }
+            }
+            else
+            {
+                _footstepTimer = FootstepInternal;
             }
         }
 
@@ -133,21 +145,19 @@ namespace PlayerActions
             {
                 moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
                 IsSprinting = true;
-                if (_isGrounded)
+                if (!_isGrounded) return;
+                if (IsMoving())
                 {
-                    if (IsMoving())
+                    _runfootstepTimer +=  Time.deltaTime;
+                    if (_runfootstepTimer >= RunfootstepInternal)
                     {
-                        _runfootstepTimer +=  Time.deltaTime;
-                        if (_runfootstepTimer >= RunfootstepInternal)
-                        {
-                            _audioManager.PlayFootstep();
-                            _runfootstepTimer = 0f;
-                        }
+                        _audioManager.PlayFootstep();
+                        _runfootstepTimer = 0f;
                     }
-                    else
-                    {
-                        _runfootstepTimer = RunfootstepInternal;
-                    }
+                }
+                else
+                {
+                    _runfootstepTimer = RunfootstepInternal;
                 }
             }
             else
@@ -221,7 +231,7 @@ namespace PlayerActions
 
         private void CheckGround()
         {
-            bool isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // Initialize the flag to false
+            var isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // Initialize the flag to false
             _isGrounded = isGrounded;
 
             // DebugCheckGround();
@@ -264,7 +274,7 @@ namespace PlayerActions
             }
         }
         
-        // ################################################################################################################
+        // ################################################################################################################ //
         
         public void InventoryCanvasCheck()
         {
@@ -302,7 +312,7 @@ namespace PlayerActions
             Time.timeScale = 1f;
         }
         
-        // ################################################################################################################
+        // ################################################################################################################ //
         
     }
 }

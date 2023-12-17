@@ -34,6 +34,17 @@ namespace Enemies
         private bool _isHeavyAttacking;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float chaseSpeed;
+        
+        /*
+         *
+         *
+         *
+         * RE-WRITE ONCE ANIMATIONS AND THE MODEL IS CHANGED, CHANGE ALL THAT BOOL CHECKS WITH BETTER CONDITIONALS
+         *
+         *
+         *
+         * 
+         */
 
         private enum EnemyState
         {

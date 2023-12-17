@@ -34,14 +34,11 @@ namespace WeaponRelated
 
         private void TiltSway()
         {
-            // Calculate the tilt sway rotation along the X and Y axes based on mouse input
             var tiltY = Mathf.Clamp(_inputX * rotationAmount, -maxRotationAmount, maxRotationAmount);
             var tiltX = Mathf.Clamp(_inputY * rotationAmount, -maxRotationAmount, maxRotationAmount);
 
-            // Create a Quaternion representing the final sway rotation
             Quaternion finalRotation = Quaternion.Euler(new Vector3(rotationX ? -tiltX : 0f, rotationY ? tiltY : 0f, rotationZ ? tiltY : 0f));
 
-            // Smoothly interpolate between the current weapon rotation and the final sway rotation
             transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * _initialRotation, Time.deltaTime * smoothRotation);
         }
     }

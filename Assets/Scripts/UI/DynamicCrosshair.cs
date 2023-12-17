@@ -20,7 +20,7 @@ public class DynamicCrosshair : MonoBehaviour
     
     private void Update() 
     {
-        if(!weapon1._aimingDownSight)
+        if(!weapon1.aimingDownSight)
         {
             if (IsMoving) 
             {
@@ -36,7 +36,7 @@ public class DynamicCrosshair : MonoBehaviour
             gameObject.SetActive(false);
         }
         
-        if(!weapon2._aimingDownSight)
+        if(!weapon2.aimingDownSight)
         {
             if (IsMoving) 
             {
@@ -52,7 +52,7 @@ public class DynamicCrosshair : MonoBehaviour
             gameObject.SetActive(false);
         }
         
-        if(!weapon3._aimingDownSight)
+        if(!weapon3.aimingDownSight)
         {
             if (IsMoving) 
             {

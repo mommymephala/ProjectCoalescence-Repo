@@ -35,21 +35,16 @@ namespace PlayerActions
 
         private void HandleMouseLook()
         {
-            // Get mouse input
             _mouseX = Input.GetAxisRaw("Mouse X");
             _mouseY = Input.GetAxisRaw("Mouse Y");
 
-            // Determine current mouse sensitivity
             var currentMouseSensitivity = _aimingDownSight ? adsSens : mouseSens;
 
-            // Apply mouse input to rotation variables
             _yRotation += _mouseX * currentMouseSensitivity * Multiplier;
             _xRotation -= _mouseY * currentMouseSensitivity * Multiplier;
 
-            // Clamp the X rotation to avoid over-rotation
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-            // Update camera and orientation rotations
             camHolder.transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
             orientation.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
         }
@@ -60,12 +55,11 @@ namespace PlayerActions
 
         private void PickObject()
         {
-            Ray ray = new Ray(camHolder.transform.position, camHolder.transform.forward);
-            RaycastHit hit;
+            var ray = new Ray(camHolder.transform.position, camHolder.transform.forward);
 
-            if (Physics.Raycast(ray, out hit, maxDistance))
+            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
             {
-                IPickUp objectPickable = hit.collider.GetComponent<IPickUp>();
+                var objectPickable = hit.collider.GetComponent<IPickUp>();
                 if (objectPickable != null)
                 {
                     inventory.AddItem(hit.collider.GetComponent<Item>());
