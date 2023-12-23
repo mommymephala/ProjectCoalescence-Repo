@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Interfaces;
 using PlayerActions;
-
+using FMODUnity;
+using FMOD.Studio;
 namespace WeaponRelated
 {
     public enum WeaponType
@@ -16,8 +17,8 @@ namespace WeaponRelated
     {
         public WeaponType weaponType;
         [Header("Audio Events")]
-       [SerializeField] private AudioMenager audioMenager;
-       
+        [SerializeField] private AudioMenager audioMenager;
+        [SerializeField] private EventReference deagledeneme;
         [Header("References")]
         public WeaponData weaponData;
         [SerializeField] private PlayerLook playerLook;
@@ -348,21 +349,23 @@ namespace WeaponRelated
                 case WeaponType.Deagle:
                     if ((!playerMovement.IsInventoryOpen))
                     {
-                        audioMenager.PlayDeagleRanged();
+                        //audioMenager.PlayDeagleRanged();
+
+                        weaponData.PlayDeagleRanged();
                     }
 
                     break;
                 case WeaponType.Rifle:
                     if ((!playerMovement.IsInventoryOpen))
                     {
-                        audioMenager.PlayRifleRanged();
+                        weaponData.PlayDeagleRanged();
                     }
                         
                     break;
                 case WeaponType.Shotgun:
                     if ((!playerMovement.IsInventoryOpen))
                     {
-                        audioMenager.PlayShotgunRanged();
+                        weaponData.PlayDeagleRanged();
                     }
                         
                     break;
@@ -370,7 +373,7 @@ namespace WeaponRelated
                     break;
             }
         }
-        
+     
         //Separate UI logic!!!
         private void UpdateAmmoUI()
         {

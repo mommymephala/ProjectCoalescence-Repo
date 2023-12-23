@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 //using UnityEngine.UIElements;
 using UnityEngine.UI;
 
@@ -25,32 +26,28 @@ public class InventoryTest : MonoBehaviour
 
     public float slotSize;
 
-    public GameObject SlotPrefab;
+    [FormerlySerializedAs("SlotPrefab")] public GameObject slotPrefab;
 
-    private static Slot from, to;
+    private static Slot _from, _to;
 
     private List<GameObject> allslots;
-
-    // public GameObject iconPrefab;
-
-    private static GameObject hoverObject;
+    
 
     public Canvas canvas;
-
-    private float hoverYOffset;
+    
 
     public EventSystem eventsystem;
 
     public GameObject dropItem;
-    private static GameObject playerRef;
+    private static GameObject _playerRef;
     
-    private static int emptySlots;
+    private static int _emptySlots;
+    private Image ımage;
 
     public static int EmptySlots
-    {
-        get { return emptySlots; }
-        set { emptySlots = value; }
-
+    { 
+        get { return _emptySlots; }
+        set { _emptySlots = value; }
     }
 
     private void Awake()
@@ -61,9 +58,8 @@ public class InventoryTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         canvas.enabled = false;
-        playerRef = GameObject.Find("PlayerWithLoadout");
+        _playerRef = GameObject.Find("PlayerWithLoadout");
     }
 
     // Update is called once per frame
@@ -71,11 +67,11 @@ public class InventoryTest : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if (!eventsystem.IsPointerOverGameObject(-1) && from != null)
+            if (!eventsystem.IsPointerOverGameObject(-1) && _from != null)
             {
-                from.GetComponent<Image>().color = Color.white;
+                 _from.GetComponent<Image>().color = Color.white;
 
-                foreach (Item item in from.Items)
+                foreach (Item item in _from.Items)
                 {
                     float angle = UnityEngine.Random.Range(0.0f, Mathf.PI * 2);
 
@@ -83,66 +79,45 @@ public class InventoryTest : MonoBehaviour
 
                     v *= 4;
 
-                   GameObject tmpDrop = GameObject.Instantiate(dropItem, playerRef.transform.position - v, quaternion.identity);
+                   GameObject tmpDrop = GameObject.Instantiate(dropItem, _playerRef.transform.position - v, quaternion.identity);
 
                    tmpDrop.GetComponent<Item>().SetStats(item);
                 }
-                from.ClearSlot();
-                Destroy(GameObject.Find("Hover"));
-                to = null;
-                from = null;
-               // hoverObject = null;
+                _from.ClearSlot();
+               
+                _to = null;
+                _from = null;
                 
                 Debug.Log("çalışıyor");
             }
         }
         
-      /*  if (hoverObject != null)
-        {
-            Vector2 position;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,Input.mousePosition, canvas.worldCamera, out position);
-
-            position.Set(position.x,position.y- hoverYOffset);
-            
-            hoverObject.transform.position = canvas.transform.TransformPoint((position));
-        }*/
     }
 
     private void CreateLayout()
     {
-        
         allslots = new List<GameObject>();
-
-        hoverYOffset = slotSize * 0.01f;
-
         EmptySlots = slots;
         
         inventoryWidht = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
-
         inventoryHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
-
+        
         inventoryRect = GetComponent<RectTransform>();
         
         inventoryRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, inventoryWidht);
         inventoryRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, inventoryHeight);
-
-
+        
         int columns = slots / rows;
-
-
-
+        
         for (int y = 0; y < rows; y++)
         {
-           // float yPosition = (-2) - slotPaddingTop * (y + 1) - (slotSize * y);
-
             for (int x = 0; x < columns; x++)
             {
-                GameObject newSlot = Instantiate(SlotPrefab);
+                GameObject newSlot = Instantiate(slotPrefab);
 
                 RectTransform slotRect = newSlot.GetComponent<RectTransform>();
 
                 newSlot.name = "Slot";
-
                 newSlot.transform.SetParent(transform.parent);
 
                 slotRect.localPosition = inventoryRect.localPosition +
@@ -174,7 +149,7 @@ public class InventoryTest : MonoBehaviour
 
                 if (!tmp.isEmpty)
                 {
-                    if (tmp.CurrentItem.type == item.type && tmp.IsAvailable)
+                    if (tmp.CurrentItem.ıtemData == item.ıtemData && tmp.IsAvailable)
                     {
                          tmp.AddItem(item);
 
@@ -182,13 +157,11 @@ public class InventoryTest : MonoBehaviour
                     } 
                 }
             }
-
             if (EmptySlots > 0)
             {
                 PlaceEmpty(item);
             }
         }
-
         return false;
     }
     
@@ -208,63 +181,42 @@ public class InventoryTest : MonoBehaviour
                     return true;
                 }
             }
-            
         }
-
         return false;
     }
 
     public void MoveItem(GameObject clicked)
     {
-        if (from == null)
+        if (_from == null)
         {
             if (!clicked.GetComponent<Slot>().isEmpty)
             {
-                from = clicked.GetComponent<Slot>();
-                
-                from.GetComponent<Image>().color = Color.gray;
-
-                //hoverObject = (GameObject)Instantiate(iconPrefab);
-               // hoverObject.GetComponent<Image>().sprite = clicked.GetComponent<Image>().sprite;
-                //hoverObject.name = "Hover";
-
-               // RectTransform hoverTransfrom = hoverObject.GetComponent<RectTransform>();
-                //RectTransform clickedTransform = clicked.GetComponent<RectTransform>();
-                
-                
-                //hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
-                //hoverTransfrom.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
-                
-                
-                //hoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
-               // hoverObject.transform.localScale = from.gameObject.transform.localScale;
-
+                _from = clicked.GetComponent<Slot>();
             }
         }
-        else if (to == null)
+        else if (_to == null)
         {
-            to = clicked.GetComponent<Slot>();
-            Destroy(GameObject.Find("Hover"));
+            _to = clicked.GetComponent<Slot>();
         }
 
-        if (to != null && from != null)
+        if (_to != null && _from != null)
         {
-            Stack<Item> TmpTo = new Stack<Item>(to.Items);
-            to.AddItems(from.Items);
+            Stack<Item> tmpTo = new Stack<Item>(_to.Items);
+            _to.AddItems(_from.Items);
 
-            if (TmpTo.Count == 0)
+            if (tmpTo.Count == 0)
             {
-                from.ClearSlot();
+                _from.ClearSlot();
             }
             else
             {
-                from.AddItems(TmpTo);
+                _from.AddItems(tmpTo);
             }
 
-            from.GetComponent<Image>().color = Color.white;
-            to = null;
-            from = null;
-            //hoverObject = null;
+            _from.GetComponent<Image>().color = Color.white;
+            _to = null;
+            _from = null;
+          
         }
     }
     

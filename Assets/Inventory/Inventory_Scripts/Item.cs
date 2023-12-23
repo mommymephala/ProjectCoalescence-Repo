@@ -4,30 +4,56 @@ using System.ComponentModel;
 using Interfaces;
 using UnityEditor.Scripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public enum ItemType
-{
-    MANA,
-    Health,
-    Mete
-};
 public class Item : MonoBehaviour, IPickUp
 {
+    [FormerlySerializedAs("ItemData")] public ItemData ıtemData;
     
-    public ItemType type;
+   // public ItemData type;
+
+  // public ItemType? combinableWith;
 
     public Sprite spriteNeutral;
 
     public Sprite spriteHighlighted;
     
     public int maxSize;
+    private bool IsCombinable;
     
+    public void SetItemType(ItemData newType)
+    {
+        ıtemData = newType;
+        // Handle any updates that need to happen when the item type changes
+    }
+    private void OnItemTypeChanged()
+    {
+        // Logic to handle changes when item type is updated
+        // For example, update the item's visual representation based on the new type
+        UpdateVisualsBasedOnType();
+    }
+    private void UpdateVisualsBasedOnType()
+    {
+        // Implementation depends on your game's logic
+        // Example: Update sprite or other properties based on the itemType
+        // spriteNeutral = itemType.someSprite; // Example usage
+    }
     public void Use()
 
     {
-        switch (type)
+        switch (ıtemData.typeName)
         {
-            case ItemType.Health:
+             case "Health":
+                // Logic for Health item
+                Debug.Log("Health Used");
+                break;
+             case "Mana":
+                 // Logic for Mana item
+                 Debug.Log("Health Used");
+                 break;
+             default:
+                 break;
+           /* case ItemType.Health:
               // Debug.Log("Health Used");
                 break;
             case ItemType.MANA:
@@ -36,15 +62,16 @@ public class Item : MonoBehaviour, IPickUp
             case ItemType.Mete:
                // Debug.Log("Mete used ");
                 break;
+                
             default:
-                break;
+                break;*/
         }
     }
 
     public void SetStats(Item item)
     {
-        type = item.type;
-
+        //type = item.type;
+        ıtemData = item.ıtemData;
         spriteNeutral = item.spriteNeutral;
         spriteHighlighted = item.spriteHighlighted;
 
@@ -63,7 +90,18 @@ public class Item : MonoBehaviour, IPickUp
                 break;
         }*/
     }
-
+    /*public Item Combine(Item otherItem)
+    {
+        if (otherItem.type == combinableWith)
+        {
+            // Logic to create a new item
+            // This could be a simple instantiation or a more complex process
+            // depending on your game's logic
+            //Item newItem = //... create new item
+            //return newItem;
+        }
+        return null;
+    }*/
 
     public void PickUp()
     {

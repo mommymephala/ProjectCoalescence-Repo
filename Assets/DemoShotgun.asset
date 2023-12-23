@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
   m_Name: DemoShotgun
   m_EditorClassIdentifier: 
+  deagledeneme2:
+    Guid:
+      Data1: 1844504655
+      Data2: 1253633678
+      Data3: -1594968445
+      Data4: -1072045817
+    Path: event:/SFX/Weapon/Weapon_Shotgun
   allowAutoFire: 0
   damage: 20
   maxDistance: 350
@@ -23,7 +30,7 @@ MonoBehaviour:
   aimDownSightFOV: 40
   aimDownSightSpeed: 10
   zoomSpeed: 10
-  currentAmmo: 12
+  currentAmmo: 6
   magSize: 12
   reloadTime: 1.2
   recoilRotationHipfire: {x: 600, y: 60, z: 0}

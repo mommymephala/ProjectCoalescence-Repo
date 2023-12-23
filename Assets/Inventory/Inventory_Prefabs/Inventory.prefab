@@ -93,9 +93,10 @@ MonoBehaviour:
   slotPaddingLeft: 2
   slotPaddingTop: 2
   slotSize: 25
-  SlotPrefab: {fileID: 8679392212334514515, guid: 79a505fb317882d47b938bf39035e95b,
+  slotPrefab: {fileID: 8679392212334514515, guid: 79a505fb317882d47b938bf39035e95b,
     type: 3}
   iconPrefab: {fileID: 7816311561944208120, guid: 277b2add3d2e93044b4e9258da2b43df,
     type: 3}
   canvas: {fileID: 0}
   eventsystem: {fileID: 0}
+  dropItem: {fileID: 0}

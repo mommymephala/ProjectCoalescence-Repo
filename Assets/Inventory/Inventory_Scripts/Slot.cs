@@ -11,8 +11,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     private Stack<Item> items;
 
-    public Stack<Item> Items
-    {
+    public Stack<Item> Items {
         get { return items; }
 
         set { items = value; }
@@ -21,9 +20,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public Text stackTxt;
 
     public Sprite slotEmpty;
-
-    public Sprite slotHighlight;
-
+    
     public bool isEmpty
     {
         get { return items.Count == 0; }
@@ -60,12 +57,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void AddItem(Item item)
     {
@@ -75,7 +67,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             stackTxt.text = items.Count.ToString();
         }
         
-        ChangeSprite(item.spriteNeutral, item.spriteHighlighted);
+        ChangeSprite(item.spriteNeutral);
     }
     public void AddItems(Stack<Item> items)
     {
@@ -83,17 +75,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         
         stackTxt.text = items.Count > 1 ? items.Count.ToString() : String.Empty;
         
-        ChangeSprite(CurrentItem.spriteNeutral, CurrentItem.spriteHighlighted);
+       ChangeSprite(CurrentItem.spriteNeutral);
         
     }
     
-    private void ChangeSprite(Sprite neutral, Sprite highlight)
+   private void ChangeSprite(Sprite neutral )
     {
         GetComponent<Image>().sprite = neutral;
 
         SpriteState st = new SpriteState();
-
-        st.highlightedSprite = highlight;
+        
         st.pressedSprite = neutral;
 
         GetComponent<Button>().spriteState = st;
@@ -111,7 +102,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
             if (isEmpty)
             {
-                ChangeSprite(slotEmpty, slotHighlight);
+                ChangeSprite(slotEmpty);
 
                 InventoryTest.EmptySlots++;
             }
@@ -121,7 +112,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public void ClearSlot()
     {
         items.Clear();
-        ChangeSprite(slotEmpty,slotHighlight);
+        ChangeSprite(slotEmpty);
         stackTxt.text = string.Empty;
 
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 namespace WeaponRelated
 {
    
@@ -9,7 +10,9 @@ namespace WeaponRelated
     public class WeaponData : ScriptableObject 
     {
         [Header("Audio")]
-        
+        [SerializeField] private EventReference deagledeneme2;
+       //[SerializeField] private EventReference Rifle;
+       // [SerializeField] private EventReference Shotgun;
         [Header("Shooting")]
         public bool allowAutoFire;
         public float damage;
@@ -40,6 +43,42 @@ namespace WeaponRelated
         public float kickbackDuration;
         public float resetDuration;
         public float walkingRecoilMultiplier;
+        
         //public float sprintingRecoilMultiplier;
+        
+        
+        public void PlayDeagleRanged()
+        {
+            if (deagledeneme2.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: playerAttackRanged");
+                return;
+            }
+            RuntimeManager.PlayOneShot(deagledeneme2);
+       
+            Debug.Log("deagle ses");
+        }
+       /* public void PlayRifleRanged()
+        {
+            if (deagledeneme2.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: playerAttackRanged");
+                return;
+            }
+            RuntimeManager.PlayOneShot(deagledeneme2);
+       
+            Debug.Log("deagle ses");
+        }
+        public void PlayShotgunRanged()
+        {
+            if (deagledeneme2.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: playerAttackRanged");
+                return;
+            }
+            RuntimeManager.PlayOneShot(deagledeneme2);
+       
+            Debug.Log("shotgun ses");
+        }*/
     }
 }

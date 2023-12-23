@@ -44,7 +44,7 @@ public class AudioMenager : MonoBehaviour
      // RuntimeManager.PlayOneShot(playerfootsteps,transform.position);
        
     }
-    public void PlayDeagleRanged()
+  /*  public void PlayDeagleRanged()
     {
         if (deagle.IsNull)
         {
@@ -57,7 +57,7 @@ public class AudioMenager : MonoBehaviour
     }
     public void PlayRifleRanged()
     {
-        if (deagle.IsNull)
+        if (rifle.IsNull)
         {
             Debug.LogWarning("Fmod event not found: playerAttackRanged");
             return;
@@ -76,7 +76,7 @@ public class AudioMenager : MonoBehaviour
         RuntimeManager.PlayOneShot(shotgun, transform.position);
        
         Debug.Log("shotgun ses");
-    }
+    }*/
     
     public void PlayDoor(GameObject doorObject)
     {

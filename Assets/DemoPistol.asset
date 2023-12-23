@@ -12,6 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
   m_Name: DemoPistol
   m_EditorClassIdentifier: 
+  deagledeneme2:
+    Guid:
+      Data1: 2103223952
+      Data2: 1321540374
+      Data3: -1911335018
+      Data4: -519273705
+    Path: event:/SFX/Weapon/Weapon_Deagle
+  Rifle:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Shotgun:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   allowAutoFire: 0
   damage: 25
   maxDistance: 300
@@ -23,7 +44,7 @@ MonoBehaviour:
   aimDownSightFOV: 40
   aimDownSightSpeed: 10
   zoomSpeed: 10
-  currentAmmo: 10
+  currentAmmo: 6
   magSize: 10
   reloadTime: 0.75
   recoilRotationHipfire: {x: 450, y: 40, z: 0}
