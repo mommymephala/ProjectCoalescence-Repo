@@ -25,7 +25,6 @@ namespace HorrorEngine
                     {
                         if (!m_Inventory)
                             m_Inventory = GetComponentInChildren<UIInventory>(true);
-
                         m_Inventory?.Show();
                     }
 
