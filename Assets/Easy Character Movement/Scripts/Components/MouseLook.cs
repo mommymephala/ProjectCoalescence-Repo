@@ -13,11 +13,12 @@ namespace ECM.Components
 
     public class MouseLook : MonoBehaviour
     {
+        [SerializeField] private CharacterMovement characterMovement;
         #region EDITOR EXPOSED FIELDS
 
-        [Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
-        [SerializeField]
-        private bool _lockCursor = true;
+        //[Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
+        //[SerializeField]
+        //private bool _lockCursor = true;
 
         [Tooltip("The keyboard key to unlock the mouse cursor.")]
         [SerializeField]
@@ -51,12 +52,16 @@ namespace ECM.Components
         [Tooltip("The maximum pitch angle (in degrees).")]
         [SerializeField]
         private float _maxPitchAngle = 90.0f;
+        
+        
+        private float _adsSensitivity = 1.0f;
 
+        private bool _aimingDownSight;
         #endregion
 
         #region FIELDS
 
-        protected bool _isCursorLocked = true;
+        //protected bool _isCursorLocked = true;
 
         protected Quaternion characterTargetRotation;
         protected Quaternion cameraTargetRotation;
@@ -68,12 +73,20 @@ namespace ECM.Components
         /// <summary>
         /// Should the mouse cursor be locked (eg: hidden)?
         /// </summary>
-
-        public bool lockCursor
+        public float adsSensitivity
+        {
+            get { return _adsSensitivity; }
+            set { _adsSensitivity = Mathf.Max(0.0f, value); }
+        }
+        public void SetAimingDownSight(bool aiming)
+        {
+            _aimingDownSight = aiming;
+        }
+       /* public bool lockCursor
         {
             get { return _lockCursor; }
             set { _lockCursor = value; }
-        }
+        }*/
 
         /// <summary>
         /// The keyboard key to unlock the mouse cursor.
@@ -175,6 +188,7 @@ namespace ECM.Components
 
         public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
+            var currentSensitivity = _aimingDownSight ? _adsSensitivity : lateralSensitivity;
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;
             var pitch = Input.GetAxis("Mouse Y") * verticalSensitivity;
 
@@ -212,10 +226,10 @@ namespace ECM.Components
                     cameraTransform.localRotation = ClampPitch(cameraTransform.localRotation);
             }
 
-            UpdateCursorLock();
+           // UpdateCursorLock();
         }
 
-        public virtual void SetCursorLock(bool value)
+       /* public virtual void SetCursorLock(bool value)
         {
             lockCursor = value;
             if (lockCursor)
@@ -225,9 +239,9 @@ namespace ECM.Components
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
+        }*/
 
-        public virtual void UpdateCursorLock()
+        /*public virtual void UpdateCursorLock()
         {
             // If the user set "lockCursor" we check & properly lock the cursos
 
@@ -252,7 +266,7 @@ namespace ECM.Components
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-        }
+        }*/
 
         protected Quaternion ClampPitch(Quaternion q)
         {

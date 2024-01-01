@@ -9,10 +9,10 @@ namespace PlayerActions
         [Header("Inventory")]
         public Canvas inventoryCanvas;
         public DynamicCrosshair crosshair;
-        [SerializeField] private PlayerLook playerLook;
+       /* [SerializeField] private PlayerLook playerLook;
         [SerializeField] private Weapon deagleWeapon;
         [SerializeField] private Weapon rifleWeapon;
-        [SerializeField] private Weapon shotgunWeapon;
+        [SerializeField] private Weapon shotgunWeapon;*/
         public bool IsInventoryOpen { get; private set; }
         
         private AudioManager _audioManager;
@@ -293,10 +293,10 @@ namespace PlayerActions
             IsInventoryOpen = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-            playerLook.enabled = false;
-            deagleWeapon.enabled = false;
+           //playerLook.enabled = false;
+           /* deagleWeapon.enabled = false;
             rifleWeapon.enabled = false;
-            deagleWeapon.enabled = false;
+            deagleWeapon.enabled = false;*/
             Time.timeScale = 0f;
         }
         public void InventoryCanvasCheckClose()
@@ -305,10 +305,10 @@ namespace PlayerActions
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             IsInventoryOpen = false;
-            playerLook.enabled = true;
-            deagleWeapon.enabled = true;
+            //playerLook.enabled = true;
+           /* deagleWeapon.enabled = true;
             rifleWeapon.enabled = true;
-            shotgunWeapon.enabled = true;
+            shotgunWeapon.enabled = true;*/
             Time.timeScale = 1f;
         }
         

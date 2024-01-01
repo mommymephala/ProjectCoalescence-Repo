@@ -24,7 +24,7 @@ namespace HorrorEngine
                 return;
             }
 
-            DontDestroyOnLoad(gameObject);
+           DontDestroyOnLoad(gameObject);
 
             SceneManager.activeSceneChanged += OnSceneChange;
         }
@@ -73,7 +73,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        void OnSceneChange(Scene oldScene, Scene newScene)
+       void OnSceneChange(Scene oldScene, Scene newScene)
         {
             var oldEventSystem = EventSystem.current;
             var selected = oldEventSystem?.currentSelectedGameObject;

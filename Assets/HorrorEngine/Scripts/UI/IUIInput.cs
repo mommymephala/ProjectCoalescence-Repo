@@ -10,7 +10,7 @@ namespace HorrorEngine
         bool IsTogglePauseDown();
         bool IsToggleInventoryDown();
 
-        bool IsToggleMapDown();
+     bool IsToggleMapDown();
         bool IsToggleMapListDown();
         bool IsPrevSubmapDown();
         bool IsNextSubmapDown();

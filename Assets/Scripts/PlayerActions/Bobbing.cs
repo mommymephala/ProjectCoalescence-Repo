@@ -1,10 +1,11 @@
+using ECM.Controllers;
 using UnityEngine;
 
 namespace PlayerActions
 {
     public class Bobbing : MonoBehaviour
     {
-        public PlayerMovement playerMovement;
+        public BaseFirstPersonController baseFirstPersonController;
         [Header("Headbob")]
         [SerializeField] private bool toggleHeadbob = true;
         [SerializeField] private Transform joint;
@@ -22,9 +23,9 @@ namespace PlayerActions
         {
             if (!toggleHeadbob) return;
 
-            if (playerMovement.moveSpeed > 0)
+            if (baseFirstPersonController.GetTargetSpeed() > 0)
             {
-                var currentBobSpeed = playerMovement.IsSprinting ? (bobSpeed + (playerMovement.sprintSpeed * 0.5f)) : bobSpeed;
+                var currentBobSpeed = baseFirstPersonController.run ? (bobSpeed + (baseFirstPersonController.runSpeedMultiplier * baseFirstPersonController.GetTargetSpeed() * 0.5f)) : bobSpeed;
         
                 _headbobTimer += Time.deltaTime * currentBobSpeed;
 

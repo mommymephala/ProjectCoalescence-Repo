@@ -1,4 +1,6 @@
 using System.Collections;
+using ECM.Components;
+using ECM.Controllers;
 using UnityEngine;
 using UnityEngine.UI;
 using Interfaces;
@@ -20,9 +22,13 @@ namespace WeaponRelated
         [SerializeField] private AudioManager audioManager;
        
         [Header("References")]
-        public WeaponData weaponData;
-        [SerializeField] private PlayerLook playerLook;
-        [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] public WeaponData weaponData;
+
+        [SerializeField] private CharacterMovement characterMovement;
+        [SerializeField] private BaseFirstPersonController baseFirstPersonController;
+        [SerializeField] private MouseLook mouseLook;
+       // [SerializeField] private PlayerLook playerLook;
+        //[SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private bool toggleAimDownSight = true;
         [SerializeField] private Camera playerCamera;
         [SerializeField] private Camera weaponCamera;
@@ -43,7 +49,7 @@ namespace WeaponRelated
         [SerializeField] private GameObject bulletHolePrefab;
 
         [Header("UI")]
-        [SerializeField] private Text currentAmmoText;
+         private Text currentAmmoText;
 
         //Flags
         private bool _shooting;
@@ -75,6 +81,9 @@ namespace WeaponRelated
             _originalAdsLocalPosition = adsPositionRef.localPosition;
             weaponData.originalPlayerFOV = playerCamera.fieldOfView;
             weaponData.originalWeaponFOV = weaponCamera.fieldOfView;
+
+            //Text ammoCountText 
+            currentAmmoText  = GameObject.Find("AmmoCountText").GetComponent<Text>();
         }
         private void Start()
         {
@@ -116,7 +125,7 @@ namespace WeaponRelated
 
         private bool CanShoot()
         {
-            return !_reloading && _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f) && !playerMovement.IsSprinting;
+            return !_reloading && _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f) && !baseFirstPersonController.run;
         }
 
         private void Shoot()
@@ -156,7 +165,7 @@ namespace WeaponRelated
             Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (playerMovement.IsWalking)
+            if (characterMovement.IsWalking())
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }
@@ -248,7 +257,7 @@ namespace WeaponRelated
 
                 _targetFOV = weaponData.aimDownSightFOV;
                 _targetWeaponFOV = weaponData.aimDownSightFOV;
-                playerLook.SetAimingDownSight(true);
+                mouseLook.SetAimingDownSight(true);
             }
             else
             {
@@ -256,7 +265,7 @@ namespace WeaponRelated
 
                 _targetFOV = weaponData.originalPlayerFOV;
                 _targetWeaponFOV = weaponData.originalWeaponFOV;
-                playerLook.SetAimingDownSight(false);
+                mouseLook.SetAimingDownSight(false);
             }
 
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, _targetFOV, Time.deltaTime * weaponData.zoomSpeed);
@@ -331,24 +340,17 @@ namespace WeaponRelated
             switch (weaponType)
             {
                 case WeaponType.Deagle:
-                    if ((!playerMovement.IsInventoryOpen))
-                    {
-                        audioManager.PlayDeagleRanged();
-                    }
+                        //audioManager.PlayDeagleRanged();
+                    
 
                     break;
                 case WeaponType.Rifle:
-                    if ((!playerMovement.IsInventoryOpen))
-                    {
-                        audioManager.PlayRifleRanged();
-                    }
+                        //audioManager.PlayRifleRanged();
+                    
                         
                     break;
                 case WeaponType.Shotgun:
-                    if ((!playerMovement.IsInventoryOpen))
-                    {
-                        audioManager.PlayShotgunRanged();
-                    }
+                        //audioManager.PlayShotgunRanged();
                         
                     break;
                 default:

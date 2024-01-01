@@ -8,14 +8,14 @@ namespace UI
     {
         private void Awake()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            //SceneManager.sceneLoaded += OnSceneLoaded;
             CheckForCursor();
         }
 
-        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+       /* private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             CheckForCursor();
-        }
+        }*/
 
         private static void CheckForCursor()
         {
@@ -33,7 +33,7 @@ namespace UI
 
         private void OnDestroy()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
+           // SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 }

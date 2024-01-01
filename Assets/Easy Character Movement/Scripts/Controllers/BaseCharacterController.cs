@@ -839,9 +839,11 @@ namespace ECM.Controllers
             // Toggle pause / resume.
             // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetButton("Pause2"))
+            {
                 pause = !pause;
-
+                Debug.Log("b bastın");
+            }
             // Handle user input
 
             moveDirection = new Vector3

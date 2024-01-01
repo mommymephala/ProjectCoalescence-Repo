@@ -6,10 +6,10 @@ namespace HorrorEngine
 
     public class PlayerInteractor : MonoBehaviour, IInteractor, IDeactivateWithActor
     {
-        [SerializeField] InteractionColliderDetector m_Detector;
+       // [SerializeField] InteractionColliderDetector m_Detector;
 
         private IPlayerInput m_Input;
-
+ 
         public bool IsInteracting { get; private set; }
 
         // --------------------------------------------------------------------
@@ -37,7 +37,7 @@ namespace HorrorEngine
 
         private bool CheckIsInteracting()
         {
-            if (!PauseController.Instance.IsPaused && m_Detector.FocusedInteractive && m_Input.IsInteractingDown())
+            if (!PauseController.Instance.IsPaused &&  m_Input.IsInteractingDown())
             {
                 return true;
             }
@@ -47,4 +47,5 @@ namespace HorrorEngine
             }
         }
     }
+    //m_Detector.FocusedInteractive &&
 }

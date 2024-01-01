@@ -1,9 +1,11 @@
+using ECM.Components;
 using UnityEngine;
 
 namespace HorrorEngine
 {
     public class PlayerInputListenerOld : MonoBehaviour, IPlayerInput
     {
+        private MouseLook _mouseLook;
         static readonly float k_AxisActionThreshold = 0.5f;
 
         [SerializeField] string m_XPrimaryAxis;
@@ -28,7 +30,7 @@ namespace HorrorEngine
 
         public Vector2 GetPrimaryAxis()
         {
-            return new Vector2(Input.GetAxis(m_XPrimaryAxis), Input.GetAxis(m_YPrimaryAxis));
+            return new Vector2((Input.GetAxis(m_XPrimaryAxis)), (Input.GetAxis(m_YPrimaryAxis)));
         }
 
         public bool IsAimingHeld()

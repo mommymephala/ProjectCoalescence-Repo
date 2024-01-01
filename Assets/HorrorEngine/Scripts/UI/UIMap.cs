@@ -135,7 +135,6 @@ namespace HorrorEngine
             {
                 UpdateFloorChange();
             }
-
             if (m_Input.IsCancelDown() || m_Input.IsToggleMapDown())
             {
                 Hide();
@@ -156,7 +155,7 @@ namespace HorrorEngine
             if (!m_CurrentMap.MapSet)
                 return;
 
-            if (m_Input.IsPrevSubmapDown())
+        if (m_Input.IsPrevSubmapDown())
             {
                 int currentIndex = Array.IndexOf(m_CurrentMap.MapSet.Maps, m_CurrentMap);
 

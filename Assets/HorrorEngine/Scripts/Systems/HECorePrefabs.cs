@@ -11,7 +11,7 @@ namespace HorrorEngine
 
         [SerializeField] private GameObject m_GameManager;
         [SerializeField] private GameObject m_Character;
-        [SerializeField] private GameObject m_CameraSystem;
+       // [SerializeField] private GameObject m_CameraSystem;
         
         [Header("UI")]
         [SerializeField] private GameObject m_Inventory;
@@ -47,7 +47,7 @@ namespace HorrorEngine
             List<GameObject> rootGO = new List<GameObject>();
             Add(rootGO, m_GameManager, m_Prototype?.m_GameManager);
             Add(rootGO, m_Character, m_Prototype?.m_Character);
-            Add(rootGO, m_CameraSystem, m_Prototype?.m_CameraSystem);
+           // Add(rootGO, m_CameraSystem, m_Prototype?.m_CameraSystem);
 
             List<GameObject> uiGO = new List<GameObject>();
             Add(uiGO, m_Inventory, m_Prototype?.m_Inventory);

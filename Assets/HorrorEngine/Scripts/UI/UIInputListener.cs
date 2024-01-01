@@ -17,7 +17,7 @@ namespace HorrorEngine
             if (GameManager.Instance.IsPlaying)
             {
                 if (m_Input == null)
-                    m_Input = GetComponent<IUIInput>();
+                {  m_Input = GetComponent<IUIInput>();}
 
                 if (m_Input != null)
                 {
@@ -29,13 +29,13 @@ namespace HorrorEngine
                         m_Inventory?.Show();
                     }
 
-                    if (m_Input.IsToggleMapDown())
+                 /*  if (m_Input.IsToggleMapDown())
                     {
                         if (!m_Map)
                             m_Map = GetComponentInChildren<UIMap>(true);
 
                         m_Map?.Show();
-                    }
+                    }*/
                 }
             }
         }

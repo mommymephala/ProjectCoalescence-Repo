@@ -144,7 +144,7 @@ namespace ECM.Controllers
         /// eg: forward, backward or strafe.
         /// </summary>
 
-        protected virtual float GetTargetSpeed()
+        public virtual float GetTargetSpeed()
         {
             // Defaults to forward speed
 
@@ -209,7 +209,7 @@ namespace ECM.Controllers
                 z = Input.GetAxisRaw("Vertical")
             };
 
-            run = Input.GetButton("Fire3");
+            run = Input.GetButton("Run");
 
             jump = Input.GetButton("Jump");
 
