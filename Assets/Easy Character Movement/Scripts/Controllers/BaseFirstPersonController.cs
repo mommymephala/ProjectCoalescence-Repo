@@ -93,6 +93,14 @@ namespace ECM.Controllers
             get { return _runSpeedMultiplier; }
             set { _runSpeedMultiplier = Mathf.Max(value, 1.0f); }
         }
+        
+        /// <summary>
+        /// Move input command.
+        /// </summary>
+        public bool IsWalking
+        {
+            get { return moveDirection.sqrMagnitude > 0; }
+        }
 
         /// <summary>
         /// Run input command.
@@ -189,7 +197,7 @@ namespace ECM.Controllers
 
         /// <summary>
         /// Overrides 'BaseCharacterController' HandleInput method,
-        /// to perform custom input code. 
+        /// to perform custom input code.
         /// </summary>
 
         protected override void HandleInput()

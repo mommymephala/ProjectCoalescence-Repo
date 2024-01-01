@@ -25,7 +25,6 @@ namespace ECM.Components
     {
         #region EDITOR EXPOSED FIELDS
 
-        [SerializeField] private BaseFirstPersonController baseFirstPersonController;
         [Header("Speed Limiters")]
         [Tooltip("The maximum lateral speed this character can move, " +
                  "including movement from external forces like sliding, collisions, etc.")]
@@ -1708,27 +1707,5 @@ namespace ECM.Components
         }
 
         #endregion
-
-        public bool IsWalking()
-        {
-            if (!baseFirstPersonController.run)
-            {
-                // Check if the character is grounded.
-                if (!isGrounded)
-                    return false;
-
-                // Get the lateral (horizontal) component of the velocity.
-                var lateralVelocity = Vector3.ProjectOnPlane(cachedRigidbody.velocity, transform.up);
-
-                // Define a small threshold to determine if the character is moving laterally.
-                const float
-                    movementThreshold = 0.1f; // You can adjust this threshold based on your game's requirements.
-
-                // Check if the lateral velocity is greater than the threshold.
-                return lateralVelocity.magnitude > movementThreshold;
-            }
-
-            return false;
-        }
     }
 }

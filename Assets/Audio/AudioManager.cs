@@ -1,24 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
+    private static AudioManager Instance { get; set; }
     
     [Header("Player")]
-    [SerializeField] private EventReference playerfootsteps;
-    [SerializeField] private EventReference playerJump;
-    [SerializeField] private EventReference playerAttackRanged;
-    [SerializeField] private EventReference weaponSwitch;
-    [SerializeField] private EventReference rifle;
-    [SerializeField] private EventReference deagle;
-    [SerializeField] private EventReference shotgun;
+    [SerializeField] private EventReference playerFootsteps;
+    // [SerializeField] private EventReference playerJump;
+    // [SerializeField] private EventReference playerAttackRanged;
+    // [SerializeField] private EventReference weaponSwitch;
     [SerializeField] private EventReference metalDoor;
-    [SerializeField] private EventReference playerHurt;
-    EventInstance _playerFootstepInstance;
-    void Awake()
+    // [SerializeField] private EventReference playerHurt;
+    private EventInstance _playerFootstepInstance;
+
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -33,19 +29,19 @@ public class AudioManager : MonoBehaviour
     
     public void PlayFootstep()
     {
-        if (playerfootsteps.IsNull)
+        if (playerFootsteps.IsNull)
         {
             Debug.LogWarning("Fmod event not found: playerFootstep");
             return;
         }
-        _playerFootstepInstance = RuntimeManager.CreateInstance(playerfootsteps);
+        _playerFootstepInstance = RuntimeManager.CreateInstance(playerFootsteps);
         
         _playerFootstepInstance.start();
         _playerFootstepInstance.release();
      // RuntimeManager.PlayOneShot(playerfootsteps,transform.position);
        
     }
-    public void PlayDeagleRanged()
+    /*public void PlayDeagleRanged()
     {
         if (deagle.IsNull)
         {
@@ -77,7 +73,7 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(shotgun, transform.position);
        
         Debug.Log("shotgun ses");
-    }
+    }*/
     
     public void PlayDoor(GameObject doorObject)
     {
@@ -88,5 +84,4 @@ public class AudioManager : MonoBehaviour
         }
         RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
     }
-
 }

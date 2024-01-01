@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
   m_Name: DemoRifle
   m_EditorClassIdentifier: 
+  gunShotSFX:
+    Guid:
+      Data1: -1449192954
+      Data2: 1118692774
+      Data3: -1410873970
+      Data4: 1791399420
+    Path: event:/SFX/Weapon/Weapon_Rifle
   allowAutoFire: 0
   damage: 15
   maxDistance: 600

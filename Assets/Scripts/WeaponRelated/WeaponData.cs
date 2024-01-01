@@ -1,11 +1,13 @@
+using FMODUnity;
 using UnityEngine;
 namespace WeaponRelated
 {
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
     
-    public class WeaponData : ScriptableObject 
+    public class WeaponData : ScriptableObject
     {
-        [Header("Audio")]
+        [Header("Audio")] 
+        public EventReference gunShotSFX;
         
         [Header("Shooting")]
         public bool allowAutoFire;
@@ -38,6 +40,5 @@ namespace WeaponRelated
         public float kickbackDuration;
         public float resetDuration;
         public float walkingRecoilMultiplier;
-        //public float sprintingRecoilMultiplier;
     }
 }

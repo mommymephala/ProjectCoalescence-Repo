@@ -1,34 +1,22 @@
 using System.Collections;
 using ECM.Components;
 using ECM.Controllers;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 using Interfaces;
-using PlayerActions;
 
 namespace WeaponRelated
 {
-    public enum WeaponType
-    {
-        Deagle,
-        Rifle,
-        Shotgun
-    }
     public class Weapon : MonoBehaviour
     {
-        public WeaponType weaponType;
-        
         [Header("Audio Events")]
-        [SerializeField] private AudioManager audioManager;
+        // private AudioManager _audioManager;
        
         [Header("References")]
-        [SerializeField] public WeaponData weaponData;
-
-        [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private BaseFirstPersonController baseFirstPersonController;
+        [SerializeField] public WeaponData weaponData;
         [SerializeField] private MouseLook mouseLook;
-       // [SerializeField] private PlayerLook playerLook;
-        //[SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private bool toggleAimDownSight = true;
         [SerializeField] private Camera playerCamera;
         [SerializeField] private Camera weaponCamera;
@@ -49,7 +37,7 @@ namespace WeaponRelated
         [SerializeField] private GameObject bulletHolePrefab;
 
         [Header("UI")]
-         private Text currentAmmoText;
+        private Text _currentAmmoText;
 
         //Flags
         private bool _shooting;
@@ -73,6 +61,7 @@ namespace WeaponRelated
 
         private void Awake()
         {
+            // _audioManager = GetComponent<AudioManager>();
             _ismuzzleFlashPrefabNull = muzzleFlashPrefab == null;
             _isbulletHolePrefabNull = bulletHolePrefab == null;
             _isbloodFXPrefabNull = bloodFXPrefab == null;
@@ -82,8 +71,7 @@ namespace WeaponRelated
             weaponData.originalPlayerFOV = playerCamera.fieldOfView;
             weaponData.originalWeaponFOV = weaponCamera.fieldOfView;
 
-            //Text ammoCountText 
-            currentAmmoText  = GameObject.Find("AmmoCountText").GetComponent<Text>();
+            _currentAmmoText = GameObject.Find("AmmoCountText").GetComponent<Text>();
         }
         private void Start()
         {
@@ -165,7 +153,7 @@ namespace WeaponRelated
             Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (characterMovement.IsWalking())
+            if (baseFirstPersonController.IsWalking)
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }
@@ -337,25 +325,18 @@ namespace WeaponRelated
             
             GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePosition, muzzleRotation);
             Destroy(muzzleFlash, 0.1f);
-            switch (weaponType)
-            {
-                case WeaponType.Deagle:
-                        //audioManager.PlayDeagleRanged();
-                    
+            
+            PlayGunShotSFX();
+        }
 
-                    break;
-                case WeaponType.Rifle:
-                        //audioManager.PlayRifleRanged();
-                    
-                        
-                    break;
-                case WeaponType.Shotgun:
-                        //audioManager.PlayShotgunRanged();
-                        
-                    break;
-                default:
-                    break;
+        private void PlayGunShotSFX()
+        {
+            if (weaponData.gunShotSFX.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: gunShotSFX");
+                return;
             }
+            RuntimeManager.PlayOneShot(weaponData.gunShotSFX, transform.position);
         }
         
         //Separate UI logic!!!
@@ -363,11 +344,11 @@ namespace WeaponRelated
         {
             if (_reloading)
             {
-                currentAmmoText.text = "RELOADING";
+                _currentAmmoText.text = "RELOADING";
             }
             else
             {
-                currentAmmoText.text = "Ammo: " + weaponData.currentAmmo;
+                _currentAmmoText.text = "Ammo: " + weaponData.currentAmmo;
             }
         }
     }

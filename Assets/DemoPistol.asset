@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
   m_Name: DemoPistol
   m_EditorClassIdentifier: 
+  gunShotSFX:
+    Guid:
+      Data1: 2103223952
+      Data2: 1321540374
+      Data3: -1911335018
+      Data4: -519273705
+    Path: event:/SFX/Weapon/Weapon_Deagle
   allowAutoFire: 0
   damage: 25
   maxDistance: 300

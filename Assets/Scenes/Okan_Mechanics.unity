@@ -309,6 +309,26 @@ PrefabInstance:
       propertyPath: metalDoor.Guid.Data4
       value: 973050296
       objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
+      propertyPath: playerFootsteps.Path
+      value: event:/SFX/Player/Player_Footsteps
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
+      propertyPath: playerFootsteps.Guid.Data1
+      value: 1874342431
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
+      propertyPath: playerFootsteps.Guid.Data2
+      value: 1321516486
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
+      propertyPath: playerFootsteps.Guid.Data3
+      value: -1709840227
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
+      propertyPath: playerFootsteps.Guid.Data4
+      value: 1259604765
+      objectReference: {fileID: 0}
     - target: {fileID: 7217314309965146093, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: m_Name
       value: AudioManager

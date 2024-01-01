@@ -172,11 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
-  audioManager: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: 0debb2a06e0817847a4e2bb3a6f1911e, type: 2}
-  characterMovement: {fileID: 3903662941688377456}
   baseFirstPersonController: {fileID: 1760925919491981573}
+  weaponData: {fileID: 11400000, guid: 0debb2a06e0817847a4e2bb3a6f1911e, type: 2}
   mouseLook: {fileID: 8018176572433920961}
   toggleAimDownSight: 1
   playerCamera: {fileID: 5882218334397729467}
@@ -346,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eae04a4fe514bf4789aec1bdb93100b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFirstPersonController: {fileID: 1760925919491981573}
   _maxLateralSpeed: 10
   _maxRiseSpeed: 20
   _maxFallSpeed: 20
@@ -369,8 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4a7b6dca62ece4cb78b603cb08948c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterMovement: {fileID: 3903662941688377456}
-  _unlockCursorKey: 282
   _lateralSensitivity: 2
   _verticalSensitivity: 2
   _smooth: 0
@@ -399,7 +393,7 @@ MonoBehaviour:
   _brakingFriction: 8
   _airFriction: 0
   _airControl: 0.2
-  _canCrouch: 1
+  _canCrouch: 0
   _standingHeight: 2
   _crouchingHeight: 1
   _baseJumpHeight: 1.5
@@ -442,7 +436,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5568526188610130909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 995b390981ba4fc47990bbc0f420bef2, type: 3}
   m_Name: 
@@ -504,6 +498,7 @@ GameObject:
   - component: {fileID: 3519987534538740337}
   - component: {fileID: 6610454858635852192}
   - component: {fileID: 6255687473294886449}
+  - component: {fileID: 3675229414540137716}
   m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
@@ -639,6 +634,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5734946459304400441}
   m_Enabled: 1
+--- !u!114 &3675229414540137716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734946459304400441}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &6580982436461314265
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,11 +1003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
-  audioManager: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: 54b5dc0a8e9ccee45a7ee3b800760f1b, type: 2}
-  characterMovement: {fileID: 3903662941688377456}
   baseFirstPersonController: {fileID: 1760925919491981573}
+  weaponData: {fileID: 11400000, guid: 54b5dc0a8e9ccee45a7ee3b800760f1b, type: 2}
   mouseLook: {fileID: 8018176572433920961}
   toggleAimDownSight: 1
   playerCamera: {fileID: 5882218334397729467}
@@ -1059,11 +1064,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
-  audioManager: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
-  characterMovement: {fileID: 3903662941688377456}
   baseFirstPersonController: {fileID: 1760925919491981573}
+  weaponData: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
   mouseLook: {fileID: 8018176572433920961}
   toggleAimDownSight: 1
   playerCamera: {fileID: 5882218334397729467}

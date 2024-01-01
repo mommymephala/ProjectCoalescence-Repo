@@ -13,16 +13,15 @@ namespace ECM.Components
 
     public class MouseLook : MonoBehaviour
     {
-        [SerializeField] private CharacterMovement characterMovement;
         #region EDITOR EXPOSED FIELDS
 
-        //[Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
-        //[SerializeField]
-        //private bool _lockCursor = true;
+        // [Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
+        // [SerializeField]
+        // private bool _lockCursor = true;
 
-        [Tooltip("The keyboard key to unlock the mouse cursor.")]
-        [SerializeField]
-        private KeyCode _unlockCursorKey = KeyCode.Escape;
+        // [Tooltip("The keyboard key to unlock the mouse cursor.")]
+        // [SerializeField]
+        // private KeyCode _unlockCursorKey = KeyCode.Escape;
 
         [Tooltip("How fast the cursor moves in response to mouse lateral (x-axis) movement.")]
         [SerializeField]
@@ -57,6 +56,7 @@ namespace ECM.Components
         private float _adsSensitivity = 1.0f;
 
         private bool _aimingDownSight;
+        
         #endregion
 
         #region FIELDS
@@ -78,25 +78,31 @@ namespace ECM.Components
             get { return _adsSensitivity; }
             set { _adsSensitivity = Mathf.Max(0.0f, value); }
         }
+        
+        /// <summary>
+        /// Is aiming down sight?
+        /// </summary>
         public void SetAimingDownSight(bool aiming)
         {
             _aimingDownSight = aiming;
         }
+        
        /* public bool lockCursor
         {
             get { return _lockCursor; }
             set { _lockCursor = value; }
         }*/
 
-        /// <summary>
+       // ReSharper disable once InvalidXmlDocComment
+       /// <summary>
         /// The keyboard key to unlock the mouse cursor.
         /// </summary>
 
-        public KeyCode unlockCursorKey
-        {
-            get { return _unlockCursorKey; }
-            set { _unlockCursorKey = value; }
-        }
+        // public KeyCode unlockCursorKey
+        // {
+        //     get { return _unlockCursorKey; }
+        //     set { _unlockCursorKey = value; }
+        // }
 
         /// <summary>
         /// How fast the cursor moves in response to mouse lateral (x-axis) movement.
@@ -208,7 +214,7 @@ namespace ECM.Components
                 if (movement.platformUpdatesRotation && movement.isOnPlatform && movement.platformAngularVelocity != Vector3.zero)
                 {
                     characterTargetRotation *=
-                        Quaternion.Euler(movement.platformAngularVelocity * Mathf.Rad2Deg * Time.deltaTime);
+                        Quaternion.Euler(movement.platformAngularVelocity * (Mathf.Rad2Deg * Time.deltaTime));
                 }
 
                 movement.rotation = Quaternion.Slerp(movement.rotation, characterTargetRotation,
@@ -226,7 +232,7 @@ namespace ECM.Components
                     cameraTransform.localRotation = ClampPitch(cameraTransform.localRotation);
             }
 
-           // UpdateCursorLock();
+            // UpdateCursorLock();
         }
 
        /* public virtual void SetCursorLock(bool value)
@@ -243,7 +249,7 @@ namespace ECM.Components
 
         /*public virtual void UpdateCursorLock()
         {
-            // If the user set "lockCursor" we check & properly lock the cursos
+            // If the user set "lockCursor" we check & properly lock the cursor
 
             if (lockCursor)
                 InternalLockUpdate();
@@ -268,7 +274,7 @@ namespace ECM.Components
             }
         }*/
 
-        protected Quaternion ClampPitch(Quaternion q)
+        private Quaternion ClampPitch(Quaternion q)
         {
             q.x /= q.w;
             q.y /= q.w;
