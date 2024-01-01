@@ -9,6 +9,7 @@ namespace Enemies
     {
         private NavMeshAgent _agent;
         private Transform _player;
+        private bool _isPlayerFound = false;
         [SerializeField] private float health;
         [SerializeField] private LayerMask player;
         
@@ -63,7 +64,6 @@ namespace Enemies
 
         private void Awake()
         {
-            _player = GameObject.FindGameObjectWithTag("Player").transform;
             _agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
         }
@@ -76,6 +76,12 @@ namespace Enemies
 
         private void Update()
         {
+            if (!_isPlayerFound)
+            {
+                FindPlayer();
+                if (_player == null) return; // If the player is still not found, return early
+            }
+            
             _playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player);
             _playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, player);
 
@@ -159,6 +165,14 @@ namespace Enemies
                     }
                     break;
             }
+        }
+        
+        private void FindPlayer()
+        {
+            var playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject == null) return;
+            _player = playerObject.transform;
+            _isPlayerFound = true;
         }
         
         private void SearchWalkPoint()

@@ -105,7 +105,7 @@ namespace HorrorEngine
                 {
                     player.transform.position = spawnPoint.transform.position;
                     player.transform.LookAt(spawnPoint.transform.position + spawnPoint.transform.forward * 10, Vector3.up);
-                    player.GetComponent<GameObjectReset>().ResetComponents(); // This is to reset the animSpeedSetter, but might be overkill
+                    // player.GetComponent<GameObjectReset>().ResetComponents(); // This is to reset the animSpeedSetter, but might be overkill
                 }
             }
 

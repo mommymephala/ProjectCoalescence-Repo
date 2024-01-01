@@ -24,7 +24,7 @@ namespace HorrorEngine
                 return;
             }
 
-           DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
 
             SceneManager.activeSceneChanged += OnSceneChange;
         }
