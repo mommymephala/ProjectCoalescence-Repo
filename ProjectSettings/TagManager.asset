@@ -8,7 +8,7 @@ TagManager:
   - Wall
   - Item
   - Target
-  - AudioMenager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

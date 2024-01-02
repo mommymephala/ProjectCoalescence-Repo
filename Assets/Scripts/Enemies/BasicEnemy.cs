@@ -275,7 +275,30 @@ namespace Enemies
         public void TakeDamage(float damage)
         {
             health -= damage;
-            if (health <= 0) Destroy(gameObject);
+            if (health <= 0) Die();
         }
+
+        private void Die()
+        {
+            // Disable NavMeshAgent and Animator
+            _agent.enabled = false;
+            _animator.enabled = false;
+
+            // Enable the Rigidbody on all ragdoll parts
+            foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
+            {
+                rb.isKinematic = false;
+            }
+
+            // Optional: Add force to ragdoll parts for impact effect
+            // You can modify this based on the hit direction and power
+            foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
+            {
+                rb.AddForce(Vector3.back * 50f, ForceMode.Impulse);
+            }
+
+            Destroy(gameObject, 5f);
+        }
+
     }
 }

@@ -1,18 +1,27 @@
+using System;
 using ECM.Controllers;
+using ECM.Examples;
 using UnityEngine;
 
 namespace PlayerActions
 {
     public class Bobbing : MonoBehaviour
     {
-        public BaseFirstPersonController baseFirstPersonController;
         [Header("Headbob")]
         [SerializeField] private bool toggleHeadbob = true;
         [SerializeField] private Transform joint;
         [SerializeField] private float bobSpeed = 10f;
         [SerializeField] private Vector3 bobAmount = new Vector3(.15f, .05f, 0f);
+        
+        // References
         private float _headbobTimer;
         private Vector3 _jointOriginalPos;
+        private NewPlayerController _newPlayerController;
+
+        private void Awake()
+        {
+            _newPlayerController = FindObjectOfType<NewPlayerController>();
+        }
 
         private void Update()
         {
@@ -23,9 +32,9 @@ namespace PlayerActions
         {
             if (!toggleHeadbob) return;
 
-            if (baseFirstPersonController.GetTargetSpeed() > 0)
+            if (_newPlayerController.GetTargetSpeed() > 0)
             {
-                var currentBobSpeed = baseFirstPersonController.run ? (bobSpeed + (baseFirstPersonController.runSpeedMultiplier * baseFirstPersonController.GetTargetSpeed() * 0.5f)) : bobSpeed;
+                var currentBobSpeed = _newPlayerController.run ? (bobSpeed + (_newPlayerController.runSpeedMultiplier * _newPlayerController.GetTargetSpeed() * 0.5f)) : bobSpeed;
         
                 _headbobTimer += Time.deltaTime * currentBobSpeed;
 

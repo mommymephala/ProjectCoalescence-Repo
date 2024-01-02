@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AudioManagerSpawn : MonoBehaviour
 {
-    public Object audioManagerObject;
+    public GameObject audioManagerObject;
 
     private void Awake()
     {

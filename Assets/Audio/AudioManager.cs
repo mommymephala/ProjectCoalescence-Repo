@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
+        
         DontDestroyOnLoad(this);
     }
     
@@ -38,42 +39,10 @@ public class AudioManager : MonoBehaviour
         
         _playerFootstepInstance.start();
         _playerFootstepInstance.release();
-     // RuntimeManager.PlayOneShot(playerfootsteps,transform.position);
-       
+        
+     // RuntimeManager.PlayOneShot(playerFootsteps,transform.position);
+     
     }
-    /*public void PlayDeagleRanged()
-    {
-        if (deagle.IsNull)
-        {
-            Debug.LogWarning("Fmod event not found: playerAttackRanged");
-            return;
-        }
-        RuntimeManager.PlayOneShot(deagle, transform.position);
-       
-        Debug.Log("deagle ses");
-    }
-    public void PlayRifleRanged()
-    {
-        if (deagle.IsNull)
-        {
-            Debug.LogWarning("Fmod event not found: playerAttackRanged");
-            return;
-        }
-        RuntimeManager.PlayOneShot(rifle, transform.position);
-       
-        Debug.Log("deagle ses");
-    }
-    public void PlayShotgunRanged()
-    {
-        if (deagle.IsNull)
-        {
-            Debug.LogWarning("Fmod event not found: playerAttackRanged");
-            return;
-        }
-        RuntimeManager.PlayOneShot(shotgun, transform.position);
-       
-        Debug.Log("shotgun ses");
-    }*/
     
     public void PlayDoor(GameObject doorObject)
     {
@@ -82,6 +51,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Fmod event not found: doorOpen");
             return;
         }
+        
         RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
     }
 }

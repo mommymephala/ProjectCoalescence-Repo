@@ -9,10 +9,10 @@ namespace ECM.Examples
     ///
     /// This example shows how to create a custom first person controller, this extends the BaseFirstPerson controller
     /// and adds Headbob animation. To do this, we animate the cameraPivot transform, this way we can tailor fit the camera
-    /// headbob animation to match our game needs, aditionally, we can use Animation events to trigger sound effects like footsteps, etc.
+    /// headbob animation to match our game needs, additionally, we can use Animation events to trigger sound effects like footsteps, etc.
     /// </summary>
 
-    public class FPS_CustomController : BaseFirstPersonController
+    public class NewPlayerController : BaseFirstPersonController
     {
         #region EDITOR EXPOSED FIELDS
 
@@ -64,21 +64,10 @@ namespace ECM.Examples
         /// Override BaseFirstPersonController HandleInput method.
         /// </summary>
 
-        protected override void HandleInput()
-        {
-            // Add your game custom input code here
-
-            moveDirection = new Vector3
-            {
-                x = Input.GetAxisRaw("Horizontal"),
-                y = 0.0f,
-                z = Input.GetAxisRaw("Vertical")
-            };
-
-            run = Input.GetButton("Fire3");
-
-            jump = Input.GetButton("Jump");
-        }
+        // protected override void HandleInput()
+        // {
+        //     // Possible custom input code
+        // }
 
         /// <summary>
         /// Override BaseFirstPersonController Awake method.
@@ -86,7 +75,7 @@ namespace ECM.Examples
 
         public override void Awake()
         {
-            // Initalize BaseFirstPersonController
+            // Initialize BaseFirstPersonController
 
             base.Awake();
 

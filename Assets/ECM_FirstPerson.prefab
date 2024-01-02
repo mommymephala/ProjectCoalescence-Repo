@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1115692940767888658}
+  - component: {fileID: 7266222647645721068}
   m_Layer: 6
   m_Name: Camera_Pivot
   m_TagString: Untagged
@@ -63,6 +64,27 @@ Transform:
   - {fileID: 2519396527713515922}
   m_Father: {fileID: 8758201444150123333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7266222647645721068
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2182749191071400096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78f382da2260c154c9e7c883b74ca8e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2921514116108105349
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFirstPersonController: {fileID: 1760925919491981573}
+  newPlayerController: {fileID: 2729368286667738498}
   weaponData: {fileID: 11400000, guid: 0debb2a06e0817847a4e2bb3a6f1911e, type: 2}
   mouseLook: {fileID: 8018176572433920961}
   toggleAimDownSight: 1
@@ -233,7 +255,7 @@ GameObject:
   - component: {fileID: 2901058214962025513}
   - component: {fileID: 3903662941688377456}
   - component: {fileID: 8018176572433920961}
-  - component: {fileID: 1760925919491981573}
+  - component: {fileID: 2729368286667738498}
   - component: {fileID: 811811088031836526}
   - component: {fileID: 6385793521158963223}
   - component: {fileID: 1454168929682242043}
@@ -326,7 +348,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 1
-  _groundLimit: 60
+  _groundLimit: 89
   _stepOffset: 0.5
   _ledgeOffset: 0
   _castDistance: 0.5
@@ -372,7 +394,7 @@ MonoBehaviour:
   _clampPitch: 1
   _minPitchAngle: -90
   _maxPitchAngle: 90
---- !u!114 &1760925919491981573
+--- !u!114 &2729368286667738498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,7 +403,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5568526188610130909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd78ad1b02523246af003cc14e20b40, type: 3}
+  m_Script: {fileID: 11500000, guid: 795a2593dd749af49b6767d0126d527e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
@@ -408,6 +430,8 @@ MonoBehaviour:
   _backwardSpeed: 3
   _strafeSpeed: 4
   _runSpeedMultiplier: 2
+  cameraAnimator: {fileID: 7266222647645721068}
+  cameraAnimSpeed: 1.2
 --- !u!114 &811811088031836526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +521,6 @@ GameObject:
   - component: {fileID: 5882218334397729467}
   - component: {fileID: 3519987534538740337}
   - component: {fileID: 6610454858635852192}
-  - component: {fileID: 6255687473294886449}
   - component: {fileID: 3675229414540137716}
   m_Layer: 6
   m_Name: Camera
@@ -626,14 +649,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &6255687473294886449
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5734946459304400441}
-  m_Enabled: 1
 --- !u!114 &3675229414540137716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,7 +656,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5734946459304400441}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
@@ -953,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bc0961d83409c4da17fa18c2acbaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFirstPersonController: {fileID: 1760925919491981573}
+  newPlayerController: {fileID: 2729368286667738498}
   toggleHeadbob: 1
   joint: {fileID: 6219704464517825184}
   bobSpeed: 2
@@ -1003,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFirstPersonController: {fileID: 1760925919491981573}
+  newPlayerController: {fileID: 2729368286667738498}
   weaponData: {fileID: 11400000, guid: 54b5dc0a8e9ccee45a7ee3b800760f1b, type: 2}
   mouseLook: {fileID: 8018176572433920961}
   toggleAimDownSight: 1
@@ -1064,7 +1079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFirstPersonController: {fileID: 1760925919491981573}
+  newPlayerController: {fileID: 2729368286667738498}
   weaponData: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
   mouseLook: {fileID: 8018176572433920961}
   toggleAimDownSight: 1

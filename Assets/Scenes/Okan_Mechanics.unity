@@ -289,53 +289,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Path
-      value: event:/OBJ&INT/Metal_Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data1
-      value: -607918179
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data2
-      value: 1135980185
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data3
-      value: 1109397659
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data4
-      value: 973050296
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerFootsteps.Path
-      value: event:/SFX/Player/Player_Footsteps
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerFootsteps.Guid.Data1
-      value: 1874342431
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerFootsteps.Guid.Data2
-      value: 1321516486
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerFootsteps.Guid.Data3
-      value: -1709840227
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerFootsteps.Guid.Data4
-      value: 1259604765
-      objectReference: {fileID: 0}
     - target: {fileID: 7217314309965146093, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7217314309965146093, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -510,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 28752288439014797, guid: 620edee271be8cf49adab83b95b17d96, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 805571080932773687, guid: 620edee271be8cf49adab83b95b17d96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -569,6 +525,7 @@ GameObject:
   - component: {fileID: 1693053674}
   - component: {fileID: 1693053673}
   - component: {fileID: 1693053672}
+  - component: {fileID: 1693053676}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -657,11 +614,42 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 10, y: 0.1, z: 10}
+  m_LocalScale: {x: 10, y: 0.1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1693053676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693053671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: c54715789921531468cbceb07a667ed8, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1773120417
 PrefabInstance:
   m_ObjectHideFlags: 0

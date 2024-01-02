@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5362327567133030829}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: AudioMenager
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,66 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d96e74a44d315149affdb4ae7b4f55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerfootsteps:
+  playerFootsteps:
     Guid:
       Data1: 1874342431
       Data2: 1321516486
       Data3: -1709840227
       Data4: 1259604765
     Path: event:/SFX/Player/Player_Footsteps
-  playerJump:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  playerAttackRanged:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  weaponSwitch:
-    Guid:
-      Data1: -1279879144
-      Data2: 1335215249
-      Data3: -108963650
-      Data4: 1058968276
-    Path: event:/SFX/Weapon/Weapon_Switch
-  rifle:
-    Guid:
-      Data1: -1449192954
-      Data2: 1118692774
-      Data3: -1410873970
-      Data4: 1791399420
-    Path: event:/SFX/Weapon/Weapon_Rifle
-  deagle:
-    Guid:
-      Data1: 2103223952
-      Data2: 1321540374
-      Data3: -1911335018
-      Data4: -519273705
-    Path: event:/SFX/Weapon/Weapon_Deagle
-  shotgun:
-    Guid:
-      Data1: 1844504655
-      Data2: 1253633678
-      Data3: -1594968445
-      Data4: -1072045817
-    Path: event:/SFX/Weapon/Weapon_Shotgun
   metalDoor:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  playerHurt:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -607918179
+      Data2: 1135980185
+      Data3: 1109397659
+      Data4: 973050296
+    Path: event:/OBJ&INT/Metal_Door

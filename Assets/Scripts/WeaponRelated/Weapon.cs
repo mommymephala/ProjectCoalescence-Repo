@@ -1,6 +1,7 @@
 using System.Collections;
 using ECM.Components;
 using ECM.Controllers;
+using ECM.Examples;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ namespace WeaponRelated
         // private AudioManager _audioManager;
        
         [Header("References")]
-        [SerializeField] private BaseFirstPersonController baseFirstPersonController;
+        [SerializeField] private NewPlayerController newPlayerController;
         [SerializeField] public WeaponData weaponData;
         [SerializeField] private MouseLook mouseLook;
         [SerializeField] private bool toggleAimDownSight = true;
@@ -113,7 +114,7 @@ namespace WeaponRelated
 
         private bool CanShoot()
         {
-            return !_reloading && _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f) && !baseFirstPersonController.run;
+            return !_reloading && _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f) && !newPlayerController.run;
         }
 
         private void Shoot()
@@ -153,7 +154,7 @@ namespace WeaponRelated
             Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (baseFirstPersonController.IsWalking)
+            if (newPlayerController.IsWalking)
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }
@@ -311,7 +312,7 @@ namespace WeaponRelated
             Destroy(bulletHole, 5f);
         }
 
-        private void OnGunShot()
+        /*private void OnGunShot()
         {
             if (_ismuzzleFlashPrefabNull) return;
             Vector3 muzzlePosition = muzzleTransform.position;
@@ -327,7 +328,31 @@ namespace WeaponRelated
             Destroy(muzzleFlash, 0.1f);
             
             PlayGunShotSFX();
+        }*/
+        
+        private void OnGunShot()
+        {
+            if (_ismuzzleFlashPrefabNull) return;
+
+            GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, muzzleTransform);
+
+            muzzleFlash.transform.localPosition = Vector3.zero; 
+            muzzleFlash.transform.localRotation = Quaternion.identity;
+
+            if (aimingDownSight)
+            {
+                // Might need to fine-tune these values.
+                muzzleFlash.transform.localPosition = new Vector3(0f, 0f, 0.1f);
+
+                // Optionally can scale down the muzzle flash for ADS mode
+                muzzleFlash.transform.localScale = Vector3.one * 0.5f;
+            }
+
+            Destroy(muzzleFlash, 0.1f);
+
+            PlayGunShotSFX();
         }
+
 
         private void PlayGunShotSFX()
         {
