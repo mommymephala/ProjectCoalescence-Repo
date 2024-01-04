@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Prototype: {fileID: 11400000, guid: b91238578c4a8c54da94d789e9fdc377, type: 2}
   m_GameManager: {fileID: 0}
-  m_Character: {fileID: 5568526188610130909, guid: 047c155cddcc3aa408695491890697cc, type: 3}
+  m_Character: {fileID: 5568526188610130909, guid: 8e598006fee070547bf70436c34d9e3b, type: 3}
   m_Inventory: {fileID: 0}
   m_Document: {fileID: 0}
   m_DocumentList: {fileID: 0}
@@ -26,8 +26,6 @@ MonoBehaviour:
   m_ExamineItem: {fileID: 0}
   m_ExamineItemRenderer: {fileID: 0}
   m_Pause: {fileID: 0}
-  m_Map: {fileID: 0}
-  m_MapRenderer: {fileID: 0}
   m_GameOver: {fileID: 0}
   m_CinematicPlayer: {fileID: 0}
   m_InteractionPrompt: {fileID: 0}

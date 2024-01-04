@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 
 namespace HorrorEngine
@@ -294,4 +294,4 @@ namespace HorrorEngine
                 Gizmos.DrawWireSphere(transform.position, m_AutoAimingRange);
         }
     }
-}
+}*/

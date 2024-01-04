@@ -1,4 +1,4 @@
-using UnityEditor;
+/*using UnityEditor;
 using UnityEngine;
 
 namespace HorrorEngine
@@ -8,9 +8,7 @@ namespace HorrorEngine
     {
         private EquipableItemData m_Previewing;
         private GameObject m_PreviewInstance;
-
-       
-
+        
         private void OnDisable()
         {
             PlayerEquipment equipment = (target as PlayerEquipment);
@@ -38,9 +36,9 @@ namespace HorrorEngine
                 m_Previewing = equippable;
                 m_PreviewInstance = equippedInstance;
 
-                m_Previewing.CharacterAttachment.Position = m_PreviewInstance.transform.localPosition;
-                m_Previewing.CharacterAttachment.Rotation = m_PreviewInstance.transform.localRotation.eulerAngles;
-                m_Previewing.CharacterAttachment.Scale = m_PreviewInstance.transform.localScale;
+                // m_Previewing.CharacterAttachment.Position = m_PreviewInstance.transform.localPosition;
+                // m_Previewing.CharacterAttachment.Rotation = m_PreviewInstance.transform.localRotation.eulerAngles;
+                // m_Previewing.CharacterAttachment.Scale = m_PreviewInstance.transform.localScale;
             }
 
             if (!m_Previewing)
@@ -52,15 +50,15 @@ namespace HorrorEngine
             SocketController sockets = equipment.GetComponentInChildren<SocketController>();
             if  (m_Previewing)
             {
-                m_Previewing.CharacterAttachment.Position = EditorGUILayout.Vector3Field("Position", m_Previewing.CharacterAttachment.Position);
-                m_Previewing.CharacterAttachment.Rotation = EditorGUILayout.Vector3Field("Rotation", m_Previewing.CharacterAttachment.Rotation);
-                m_Previewing.CharacterAttachment.Scale = EditorGUILayout.Vector3Field("Scale", m_Previewing.CharacterAttachment.Scale);
+                // m_Previewing.CharacterAttachment.Position = EditorGUILayout.Vector3Field("Position", m_Previewing.CharacterAttachment.Position);
+                // m_Previewing.CharacterAttachment.Rotation = EditorGUILayout.Vector3Field("Rotation", m_Previewing.CharacterAttachment.Rotation);
+                // m_Previewing.CharacterAttachment.Scale = EditorGUILayout.Vector3Field("Scale", m_Previewing.CharacterAttachment.Scale);
 
                 if (m_PreviewInstance)
                 {
-                    m_PreviewInstance.transform.localPosition = m_Previewing.CharacterAttachment.Position;
-                    m_PreviewInstance.transform.localRotation = Quaternion.Euler(m_Previewing.CharacterAttachment.Rotation);
-                    m_PreviewInstance.transform.localScale = m_Previewing.CharacterAttachment.Scale;
+                    // m_PreviewInstance.transform.localPosition = m_Previewing.CharacterAttachment.Position;
+                    // m_PreviewInstance.transform.localRotation = Quaternion.Euler(m_Previewing.CharacterAttachment.Rotation);
+                    // m_PreviewInstance.transform.localScale = m_Previewing.CharacterAttachment.Scale;
                 }
 
                 if (EditorGUI.EndChangeCheck())
@@ -95,4 +93,4 @@ namespace HorrorEngine
             serializedObject.ApplyModifiedProperties();
         }
     }
-}
+}*/

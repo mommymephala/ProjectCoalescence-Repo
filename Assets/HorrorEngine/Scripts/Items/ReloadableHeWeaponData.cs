@@ -5,7 +5,7 @@ using UnityEngine;
 namespace HorrorEngine
 {
     [CreateAssetMenu(menuName = "Horror Engine/Items/Reloadable Weapon")]
-    public class ReloadableWeaponData : WeaponData
+    public class ReloadableHeWeaponData : HEWeaponData
     {
         public ItemData AmmoItem;
         public int MaxAmmo;

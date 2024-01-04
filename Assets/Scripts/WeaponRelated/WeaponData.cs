@@ -1,10 +1,11 @@
 using FMODUnity;
+using HorrorEngine;
 using UnityEngine;
 namespace WeaponRelated
 {
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
     
-    public class WeaponData : ScriptableObject
+    public class WeaponData : EquipableItemData
     {
         [Header("Audio")] 
         public EventReference gunShotSFX;

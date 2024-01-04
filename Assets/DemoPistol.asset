@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
   m_Name: DemoPistol
   m_EditorClassIdentifier: 
+  UniqueId: 92c02655-6baf-487a-9b16-02938a3e6f0b
+  Image: {fileID: 21300000, guid: e11eae54ed767974bba7c86b71112524, type: 3}
+  ExamineModel: {fileID: 42335214512033538, guid: fdb7fcebfb29e6d4f993588b6c476f64, type: 3}
+  Name: Pistol
+  Description: That's a pistol.
+  InventoryAction: 2
+  Flags: 120
+  DropPrefab: {fileID: 0}
+  EquipPrefab: {fileID: 726215935336019353, guid: 5ef5f61860026604fa1fefccda331145, type: 3}
+  Slot: 1
+  AttachOnEquipped: 1
+  MoveOutOfInventoryOnEquip: 0
   gunShotSFX:
     Guid:
       Data1: 2103223952

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using UnityEngine;
 
 namespace HorrorEngine
@@ -24,4 +24,4 @@ namespace HorrorEngine
             m_WeaponInstance = m_Equipment.GetWeaponInstance(EquipmentSlot.Primary);
         }       
     }
-}
+}*/

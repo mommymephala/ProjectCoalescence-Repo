@@ -50,7 +50,7 @@ namespace HorrorEngine
                 m_Icon.gameObject.SetActive(true);
 
                 m_Count.text = amount.ToString();
-                bool isReloadable = data as ReloadableWeaponData;
+                bool isReloadable = data as ReloadableHeWeaponData;
                 m_Count.gameObject.SetActive(data.Flags.HasFlag(ItemFlags.Bulkable) || amount > 0 || isReloadable);
                 m_Count.color = amount == 0 ? m_EmptyAmountColor : m_NormalAmountColor;
 

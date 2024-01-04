@@ -101,26 +101,13 @@ MonoBehaviour:
   MapDatabase: {fileID: 11400000, guid: c423acb542438c44db88c2dc29c811fb, type: 2}
   SpawnableDatabase: {fileID: 11400000, guid: 01b253ca63b3e3441acfd87520c6fe2c, type: 2}
   InitialInventory:
-  - Item: {fileID: 11400000, guid: 43713080a20059f4a9e5783dd395e4f7, type: 2}
+  - Item: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
     Count: 1
     SecondaryCount: 5
     Status: 0
-  - Item: {fileID: 11400000, guid: 328cf3d54a3619b4d9c00d4f63f17d82, type: 2}
-    Count: 1
-    SecondaryCount: 0
-    Status: 0
-  - Item: {fileID: 11400000, guid: 5bac8dbb311284b85a00faca85506be6, type: 2}
-    Count: 1
-    SecondaryCount: 0
-    Status: 1
-  - Item: {fileID: 11400000, guid: dc55256a7c75c294cb36173590119c64, type: 2}
-    Count: 1
-    SecondaryCount: 0
-    Status: 0
   InitialDocuments: []
   InitialMaps: []
-  InitialEquipment:
-  - {fileID: 11400000, guid: 5bac8dbb311284b85a00faca85506be6, type: 2}
+  InitialEquipment: []
   OnPlayerRegistered:
     m_PersistentCalls:
       m_Calls: []

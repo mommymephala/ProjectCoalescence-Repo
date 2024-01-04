@@ -70,7 +70,7 @@ namespace HorrorEngine
     public class AmmoEntry // Entry used for the ammo that's inside the weapons
     {
         public int Amount;
-        public WeaponData Weapon;
+        public HEWeaponData heWeapon;
     }
 
 
@@ -320,15 +320,15 @@ namespace HorrorEngine
             }
 
             // Auto combine weapon/ammo
-            ReloadableWeaponData reloadable1 = entry1.Item as ReloadableWeaponData;
-            ReloadableWeaponData reloadable2 = entry2.Item as ReloadableWeaponData;
+            ReloadableHeWeaponData reloadable1 = entry1.Item as ReloadableHeWeaponData;
+            ReloadableHeWeaponData reloadable2 = entry2.Item as ReloadableHeWeaponData;
             if (reloadable1 || reloadable2)
             {
                 InventoryEntry reloadableEntry = reloadable1 ? entry1 : entry2;
                 InventoryEntry ammoEntry = reloadable1 ? entry2 : entry1;
                 
-                ReloadableWeaponData reloadable = reloadableEntry.Item as ReloadableWeaponData;
-                if (reloadable.AmmoItem == ammoEntry.Item)
+                ReloadableHeWeaponData reloadableHe = reloadableEntry.Item as ReloadableHeWeaponData;
+                if (reloadableHe.AmmoItem == ammoEntry.Item)
                 {
                     return ReloadWeapon(reloadableEntry, ammoEntry);
                 }
@@ -342,10 +342,10 @@ namespace HorrorEngine
 
         public InventoryEntry ReloadWeapon(InventoryEntry weaponEntry, InventoryEntry ammoEntry)
         {
-            ReloadableWeaponData weapon = weaponEntry.Item as ReloadableWeaponData;
+            ReloadableHeWeaponData heWeapon = weaponEntry.Item as ReloadableHeWeaponData;
             
             int prevAmmo = weaponEntry.SecondaryCount;
-            int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, weapon.MaxAmmo);
+            int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, heWeapon.MaxAmmo);
             weaponEntry.SecondaryCount = newAmmo;
             int dif = newAmmo - prevAmmo;
 
@@ -501,12 +501,12 @@ namespace HorrorEngine
 
         public bool CanReloadWeapon(InventoryEntry weaponEntry)
         {
-            ReloadableWeaponData reloadableWeapon = weaponEntry.Item as ReloadableWeaponData;
-            if (reloadableWeapon)
+            ReloadableHeWeaponData reloadableHeWeapon = weaponEntry.Item as ReloadableHeWeaponData;
+            if (reloadableHeWeapon)
             {
                 Inventory inventory = GameManager.Instance.Inventory;
-                return weaponEntry.SecondaryCount < reloadableWeapon.MaxAmmo &&
-                    inventory.TryGet(reloadableWeapon.AmmoItem, out InventoryEntry ammoEntry);
+                return weaponEntry.SecondaryCount < reloadableHeWeapon.MaxAmmo &&
+                    inventory.TryGet(reloadableHeWeapon.AmmoItem, out InventoryEntry ammoEntry);
             }
 
             return false;

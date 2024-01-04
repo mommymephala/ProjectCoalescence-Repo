@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -82,4 +82,4 @@ namespace HorrorEngine
             base.StateExit(intoState);
         }
     }
-}
+}*/

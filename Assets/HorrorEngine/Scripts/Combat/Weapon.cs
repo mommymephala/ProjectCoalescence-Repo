@@ -4,7 +4,7 @@ namespace HorrorEngine
 {
     public class Weapon : MonoBehaviour
     {
-        public WeaponData WeaponData;
+        public HEWeaponData heWeaponData;
         public GameObject Visuals;
     }
 }

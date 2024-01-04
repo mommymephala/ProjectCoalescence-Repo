@@ -319,7 +319,7 @@ namespace WeaponRelated
 
             GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, muzzleTransform);
 
-            muzzleFlash.transform.localPosition = Vector3.zero; 
+            muzzleFlash.transform.localPosition = Vector3.zero;
             muzzleFlash.transform.localRotation = Quaternion.identity;
 
             if (aimingDownSight)

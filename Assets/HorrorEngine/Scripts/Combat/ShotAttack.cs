@@ -105,18 +105,18 @@ namespace HorrorEngine
                 }
             }
             
-            ReloadableWeaponData reloadable = m_WeaponData as ReloadableWeaponData;
-            if (reloadable.ShotSound)
-                m_AudioSource.PlayOneShot(reloadable.ShotSound);
+            ReloadableHeWeaponData reloadableHe = MHeWeaponData as ReloadableHeWeaponData;
+            if (reloadableHe.ShotSound)
+                m_AudioSource.PlayOneShot(reloadableHe.ShotSound);
         }
 
         // --------------------------------------------------------------------
 
         public override void OnAttackNotStarted()
         {
-            ReloadableWeaponData reloadable = m_WeaponData as ReloadableWeaponData;
-            if (reloadable.NoAmmoSound)
-                m_AudioSource.PlayOneShot(reloadable.NoAmmoSound);
+            ReloadableHeWeaponData reloadableHe = MHeWeaponData as ReloadableHeWeaponData;
+            if (reloadableHe.NoAmmoSound)
+                m_AudioSource.PlayOneShot(reloadableHe.NoAmmoSound);
         }
 
         // --------------------------------------------------------------------

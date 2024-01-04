@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using WeaponRelated;
 
 namespace HorrorEngine
 {
@@ -14,13 +15,15 @@ namespace HorrorEngine
         // --------------------------------------------------------------------
 
         private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
-        private SocketController m_SocketController;
+
+        public GameObject WeaponsHolder;
+        // private SocketController m_SocketController;
 
         // --------------------------------------------------------------------
 
         private void Awake()
         {
-            m_SocketController = GetComponentInChildren<SocketController>();
+            // m_SocketController = GetComponentInChildren<SocketController>();
             MessageBuffer<EquippedItemChangedMessage>.Subscribe(OnEquippedItemChanged);
         }
 
@@ -72,14 +75,14 @@ namespace HorrorEngine
             if (m_CurrentEquipment.ContainsKey(slot))
                 Unequip(slot);
 
-            var instance = Instantiate(equipable.EquipPrefab);
+            var instance = Instantiate(equipable.EquipPrefab, WeaponsHolder.transform);
             m_CurrentEquipment.Add(slot, new EquipmentEntry()
             {
                 Instance = instance,
                 Data = equipable
             });
 
-            m_SocketController.Attach(instance, equipable.CharacterAttachment);
+            // m_SocketController.Attach(instance, equipable.CharacterAttachment);
 
             return instance;
         }

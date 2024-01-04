@@ -4,7 +4,7 @@ namespace HorrorEngine
     {
         protected Weapon m_Weapon;
 
-        protected WeaponData m_WeaponData => m_Weapon.WeaponData;
+        protected HEWeaponData MHeWeaponData => m_Weapon.heWeaponData;
 
         protected override void Awake()
         {

@@ -9,7 +9,7 @@ namespace HorrorEngine
         [FormerlySerializedAs("Prefab")]
         public GameObject EquipPrefab;
         public EquipmentSlot Slot = EquipmentSlot.Primary;
-        public SocketAttachment CharacterAttachment;
+        // public SocketAttachment CharacterAttachment;
         [Tooltip("If true, this item will be attached to the character when used from the inventory selecting the Equip option. In some cases, items might not need to be attached until a action happens")]
         public bool AttachOnEquipped = true;
         [Tooltip("If true, this item will be removed from the current inventory slot when equipped")]

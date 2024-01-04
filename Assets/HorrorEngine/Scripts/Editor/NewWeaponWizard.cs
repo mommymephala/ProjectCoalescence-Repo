@@ -68,23 +68,23 @@ namespace HorrorEngine
                     }
 
                     // Copy & assign weapon data
-                    WeaponData newData = null;
+                    HEWeaponData newData = null;
                     if (m_CopyWeaponData)
                     {
-                        string oldDataPath = AssetDatabase.GetAssetPath(objSource.WeaponData);
+                        string oldDataPath = AssetDatabase.GetAssetPath(objSource.heWeaponData);
                         string outDataPath = m_OutputFolder + "/" + outName + ".asset";
                         if (AssetDatabase.CopyAsset(oldDataPath, outDataPath))
                         {
-                            newData = AssetDatabase.LoadAssetAtPath(outDataPath, typeof(WeaponData)) as WeaponData;
+                            newData = AssetDatabase.LoadAssetAtPath(outDataPath, typeof(HEWeaponData)) as HEWeaponData;
                             newData.GenerateId();
                             newData.Name = outName;
-                            objSource.WeaponData = newData;
+                            objSource.heWeaponData = newData;
                         }
                     }
 
                     if (m_CopyExaminationPrefab)
                     {
-                        GameObject newExamination = Instantiate(objSource.WeaponData.ExamineModel);
+                        GameObject newExamination = Instantiate(objSource.heWeaponData.ExamineModel);
                         var uiExaminUtil = newExamination.GetComponent<UIExamineItemUtility>();
                         DestroyImmediate(uiExaminUtil.Visuals);
 #if UNITY_2022_3_OR_NEWER
