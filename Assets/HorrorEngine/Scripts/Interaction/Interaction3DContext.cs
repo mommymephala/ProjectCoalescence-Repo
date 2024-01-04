@@ -113,7 +113,6 @@ namespace HorrorEngine
                 if (interactive == m_SelectedInteractive)
                     continue;
 
-
                 Vector3 interactiveOnScreen = Camera.main.WorldToScreenPoint(interactive.transform.position);
                 Vector3 dirToButton = interactiveOnScreen - cursorOnScreen;
                 Vector3 projection = Vector3.Project(dirToButton, desiredDir);

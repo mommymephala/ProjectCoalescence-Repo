@@ -280,7 +280,7 @@ namespace Enemies
 
         private void Die()
         {
-            // Disable NavMeshAgent and Animator
+            /*// Disable NavMeshAgent and Animator
             _agent.enabled = false;
             _animator.enabled = false;
 
@@ -295,9 +295,9 @@ namespace Enemies
             foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
             {
                 rb.AddForce(Vector3.back * 50f, ForceMode.Impulse);
-            }
+            }*/
 
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 1f);
         }
 
     }

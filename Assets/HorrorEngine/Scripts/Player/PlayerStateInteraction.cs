@@ -33,7 +33,7 @@ namespace HorrorEngine
             m_DirToInteractor.Normalize();
             m_RotationAngle = Vector3.Angle(m_DirToInteractor, Actor.transform.forward);
 
-            m_AnimationState = m_Interactive.Data ? m_Interactive.Data.AnimState : null;
+            // m_AnimationState = m_Interactive.Data ? m_Interactive.Data.AnimState : null;
 
             base.StateEnter(fromState);
 

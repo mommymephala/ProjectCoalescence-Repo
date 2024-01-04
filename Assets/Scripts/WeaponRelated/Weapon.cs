@@ -311,24 +311,6 @@ namespace WeaponRelated
             GameObject bulletHole = Instantiate(bulletHolePrefab, position, rotation);
             Destroy(bulletHole, 5f);
         }
-
-        /*private void OnGunShot()
-        {
-            if (_ismuzzleFlashPrefabNull) return;
-            Vector3 muzzlePosition = muzzleTransform.position;
-            Quaternion muzzleRotation = muzzleTransform.rotation;
-
-            if (aimingDownSight)
-            {
-                var fovRatio = weaponData.originalWeaponFOV / weaponCamera.fieldOfView;
-                muzzlePosition += muzzleTransform.forward * fovRatio;
-            }
-            
-            GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePosition, muzzleRotation);
-            Destroy(muzzleFlash, 0.1f);
-            
-            PlayGunShotSFX();
-        }*/
         
         private void OnGunShot()
         {

@@ -6,9 +6,7 @@ namespace HorrorEngine
     {
         [SerializeField] private LayerMask m_LayerMask;
         [SerializeField] private float m_Distance;
-
-        // --------------------------------------------------------------------
-
+        
         public void Cast()
         {
             if (Physics.Raycast(new Ray(transform.position, transform.forward), out RaycastHit hit, m_Distance, m_LayerMask, QueryTriggerInteraction.Collide))
@@ -38,9 +36,7 @@ namespace HorrorEngine
             while (m_Interactives.Count > 0)
                 RemoveInteractive(m_Interactives[0]);
         }
-
-        // --------------------------------------------------------------------
-
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;

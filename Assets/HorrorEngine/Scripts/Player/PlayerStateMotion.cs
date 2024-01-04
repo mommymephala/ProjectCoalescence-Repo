@@ -25,7 +25,6 @@ namespace HorrorEngine
             m_Input = GetComponentInParent<IPlayerInput>();
             m_Movement = GetComponentInParent<PlayerMovement>();
             m_Interaction = GetComponentInParent<PlayerInteractor>();
-            
         }
 
         // --------------------------------------------------------------------
@@ -47,7 +46,6 @@ namespace HorrorEngine
             }
 
             base.StateUpdate();
-
 
             if (m_Interaction.IsInteracting)
             {

@@ -8,7 +8,7 @@ namespace HorrorEngine
     {
         public string Prompt;
         public Sprite Icon;
-        public AnimatorStateHandle AnimState;
+        // public AnimatorStateHandle AnimState;
         [FormerlySerializedAs("InteractionTime")]
         public float InteractionDuration;
         public float InteractionDelay;

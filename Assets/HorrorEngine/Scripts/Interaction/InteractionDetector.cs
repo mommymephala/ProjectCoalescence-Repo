@@ -15,9 +15,7 @@ namespace HorrorEngine
 
         private InteractionChangedMessage m_InteractionChangedMsg = new InteractionChangedMessage();
         private Action<OnDisableNotifier> m_OnInteractiveDisabled;
-
-        // --------------------------------------------------------------------
-
+        
         public Interactive FocusedInteractive
         {
             get
@@ -28,16 +26,12 @@ namespace HorrorEngine
                 return i.isActiveAndEnabled ? i : null;
             }
         }
-
-        // --------------------------------------------------------------------
-
+        
         protected virtual void Awake()
         {
             m_OnInteractiveDisabled = OnInteractiveDisabled;
         }
-
-        // --------------------------------------------------------------------
-
+        
         protected void AddInteractive(Interactive interactive)
         {
             if (!m_Interactives.Contains(interactive))
@@ -47,9 +41,7 @@ namespace HorrorEngine
             m_InteractionChangedMsg.Interactive = interactive;
             MessageBuffer<InteractionChangedMessage>.Dispatch(m_InteractionChangedMsg);
         }
-
-        // --------------------------------------------------------------------
-
+        
         protected void RemoveInteractive(GameObject obj)
         {
             Interactive interactive = obj.GetComponent<Interactive>();
@@ -77,16 +69,13 @@ namespace HorrorEngine
                 MessageBuffer<InteractionChangedMessage>.Dispatch(m_InteractionChangedMsg);
             }
         }
-
-        // --------------------------------------------------------------------
-
+        
         private void OnInteractiveDisabled(OnDisableNotifier notifier)
         {
             notifier.RemoveCallback(m_OnInteractiveDisabled);
             RemoveInteractive(notifier.gameObject);
         }
-        // --------------------------------------------------------------------
-
+        
         protected virtual void OnDisable()
         {
             m_Interactives.Clear();
