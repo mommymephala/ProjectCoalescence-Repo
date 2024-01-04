@@ -16,7 +16,7 @@ namespace HorrorEngine
 
         private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
 
-        public GameObject WeaponsHolder;
+        public GameObject weaponsHolder;
         // private SocketController m_SocketController;
 
         // --------------------------------------------------------------------
@@ -75,7 +75,7 @@ namespace HorrorEngine
             if (m_CurrentEquipment.ContainsKey(slot))
                 Unequip(slot);
 
-            var instance = Instantiate(equipable.EquipPrefab, WeaponsHolder.transform);
+            var instance = Instantiate(equipable.EquipPrefab, weaponsHolder.transform);
             m_CurrentEquipment.Add(slot, new EquipmentEntry()
             {
                 Instance = instance,

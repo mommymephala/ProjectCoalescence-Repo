@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93aad870d2b1b744943f784084d04f4, type: 3}
   m_Name: DemoShotgun
   m_EditorClassIdentifier: 
+  UniqueId: a8ca23ec-d560-4e6d-a472-16248beacac3
+  Image: {fileID: 21300000, guid: eeee8afd6f3190f4c97f9256406e9a0c, type: 3}
+  ExamineModel: {fileID: 2618670157336995982, guid: 5fc5b59030b8c6740b88a351716e8549, type: 3}
+  Name: Shotgun
+  Description: This is a shotgun.
+  InventoryAction: 2
+  Flags: 120
+  DropPrefab: {fileID: 0}
+  EquipPrefab: {fileID: 855168729862957376, guid: 73cda8b8f3be60a439d41e9c20753209, type: 3}
+  Slot: 2
+  AttachOnEquipped: 1
+  MoveOutOfInventoryOnEquip: 0
   gunShotSFX:
     Guid:
       Data1: 1844504655

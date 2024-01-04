@@ -11,17 +11,17 @@ namespace WeaponRelated
 {
     public class Weapon : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private NewPlayerController newPlayerController;
         [SerializeField] public WeaponData weaponData;
-        [SerializeField] private MouseLook mouseLook;
-        [SerializeField] private bool toggleAimDownSight = true;
-        [SerializeField] private Camera playerCamera;
-        [SerializeField] private Camera weaponCamera;
+
+        [Header("References")]
+        private NewPlayerController _newPlayerController;
+        private MouseLook _mouseLook;
+        private Camera _playerCamera;
+        private Camera _weaponCamera;
+        private Transform _playerCameraTransform;
+        private Transform _weaponsHolderTransform;
         
         [Header("Transforms")]
-        [SerializeField] private Transform playerCameraTransform;
-        [SerializeField] private Transform weaponsHolderTransform;
         [SerializeField] private Transform muzzleTransform;
         [SerializeField] private Transform adsPositionRef;
         
@@ -36,6 +36,9 @@ namespace WeaponRelated
 
         [Header("UI")]
         private Text _currentAmmoText;
+        
+        [Header("Flags")]
+        [SerializeField] private bool toggleAimDownSight = true;
 
         //Flags
         private bool _shooting;
@@ -60,14 +63,22 @@ namespace WeaponRelated
         private void Awake()
         {
             // _audioManager = GetComponent<AudioManager>();
+            
+            _newPlayerController = GetComponentInParent<NewPlayerController>();
+            _mouseLook = GetComponentInParent<MouseLook>();
+            _playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
+            _weaponCamera = GameObject.Find("WeaponCamera").GetComponent<Camera>();
+            _playerCameraTransform = GameObject.Find("Camera_Pivot").transform;
+            _weaponsHolderTransform = GameObject.Find("WeaponsHolder").transform;
+            
             _ismuzzleFlashPrefabNull = muzzleFlashPrefab == null;
             _isbulletHolePrefabNull = bulletHolePrefab == null;
             _isbloodFXPrefabNull = bloodFXPrefab == null;
             _timeSinceLastShot = weaponData.fireRate / 60f;
             _weaponOriginalLocalPosition = transform.localPosition;
             _originalAdsLocalPosition = adsPositionRef.localPosition;
-            weaponData.originalPlayerFOV = playerCamera.fieldOfView;
-            weaponData.originalWeaponFOV = weaponCamera.fieldOfView;
+            weaponData.originalPlayerFOV = _playerCamera.fieldOfView;
+            weaponData.originalWeaponFOV = _weaponCamera.fieldOfView;
 
             _currentAmmoText = GameObject.Find("AmmoCountText").GetComponent<Text>();
         }
@@ -111,7 +122,7 @@ namespace WeaponRelated
 
         private bool CanShoot()
         {
-            return !_reloading && _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f) && !newPlayerController.run;
+            return !_reloading && _timeSinceLastShot >= 1f / (weaponData.fireRate / 60f) && !_newPlayerController.run;
         }
 
         private void Shoot()
@@ -124,10 +135,10 @@ namespace WeaponRelated
 
             for (var i = 0; i < weaponData.bulletsPerShot; i++)
             {
-                Vector3 spreadDirection = weaponsHolderTransform.forward + Random.insideUnitSphere * weaponData.spread;
+                Vector3 spreadDirection = _weaponsHolderTransform.forward + Random.insideUnitSphere * weaponData.spread;
                 
                 var layerMask = ~LayerMask.GetMask("InteractionSystem");
-                if (!Physics.Raycast(weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
+                if (!Physics.Raycast(_weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
                 
                 // Debug.DrawRay(weaponsHolderTransform.position, spreadDirection, Color.red, 5);
                 
@@ -155,7 +166,7 @@ namespace WeaponRelated
             Vector3 recoilRotation = aimingDownSight ? weaponData.recoilRotationAiming : weaponData.recoilRotationHipfire;
 
             var recoilMultiplier = 1f;
-            if (newPlayerController.IsWalking)
+            if (_newPlayerController.IsWalking)
             {
                 recoilMultiplier = weaponData.walkingRecoilMultiplier;
             }
@@ -172,11 +183,11 @@ namespace WeaponRelated
         {
             Vector3 currentPlayerCameraRotation = Vector3.Lerp(_currentPlayerCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.deltaTime * weaponData.smoothingFactor);
             _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.deltaTime * weaponData.smoothingFactor);
-            playerCameraTransform.localRotation = Quaternion.Euler(currentPlayerCameraRotation);
+            _playerCameraTransform.localRotation = Quaternion.Euler(currentPlayerCameraRotation);
             
             Vector3 currentWeaponCameraRotation = Vector3.Lerp(_currentWeaponCameraRotation, _smoothRotation, weaponData.rotationSpeed * Time.deltaTime * weaponData.smoothingFactor);
             _smoothRotation = Vector3.Lerp(_smoothRotation, Vector3.zero, weaponData.returnSpeed * Time.deltaTime * weaponData.smoothingFactor);
-            weaponsHolderTransform.localRotation = Quaternion.Euler(currentWeaponCameraRotation);
+            _weaponsHolderTransform.localRotation = Quaternion.Euler(currentWeaponCameraRotation);
 
             _currentPlayerCameraRotation = currentPlayerCameraRotation;
             _currentWeaponCameraRotation = currentWeaponCameraRotation;
@@ -238,8 +249,8 @@ namespace WeaponRelated
             {
                 var targetScreenPosition = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
 
-                var distanceFromCamera = Vector3.Distance(adsPositionRef.position, playerCamera.transform.position);
-                Vector3 targetWorldPosition = playerCamera.ScreenToWorldPoint(new Vector3(targetScreenPosition.x, targetScreenPosition.y, distanceFromCamera));
+                var distanceFromCamera = Vector3.Distance(adsPositionRef.position, _playerCamera.transform.position);
+                Vector3 targetWorldPosition = _playerCamera.ScreenToWorldPoint(new Vector3(targetScreenPosition.x, targetScreenPosition.y, distanceFromCamera));
 
                 Vector3 targetLocalPosition = adsPositionRef.parent.InverseTransformPoint(targetWorldPosition);
 
@@ -247,7 +258,7 @@ namespace WeaponRelated
 
                 _targetFOV = weaponData.aimDownSightFOV;
                 _targetWeaponFOV = weaponData.aimDownSightFOV;
-                mouseLook.SetAimingDownSight(true);
+                _mouseLook.SetAimingDownSight(true);
             }
             else
             {
@@ -255,11 +266,11 @@ namespace WeaponRelated
 
                 _targetFOV = weaponData.originalPlayerFOV;
                 _targetWeaponFOV = weaponData.originalWeaponFOV;
-                mouseLook.SetAimingDownSight(false);
+                _mouseLook.SetAimingDownSight(false);
             }
 
-            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, _targetFOV, Time.deltaTime * weaponData.zoomSpeed);
-            weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, _targetWeaponFOV, Time.deltaTime * weaponData.zoomSpeed);
+            _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _targetFOV, Time.deltaTime * weaponData.zoomSpeed);
+            _weaponCamera.fieldOfView = Mathf.Lerp(_weaponCamera.fieldOfView, _targetWeaponFOV, Time.deltaTime * weaponData.zoomSpeed);
         }
 
         private void UpdateAiming(bool aiming)
@@ -286,8 +297,8 @@ namespace WeaponRelated
 
         private void ResetFOV()
         {
-            playerCamera.fieldOfView = weaponData.originalPlayerFOV;
-            weaponCamera.fieldOfView = weaponData.originalWeaponFOV;
+            _playerCamera.fieldOfView = weaponData.originalPlayerFOV;
+            _weaponCamera.fieldOfView = weaponData.originalWeaponFOV;
         }
         
         // ########
