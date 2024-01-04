@@ -8,7 +8,7 @@ namespace HorrorEngine
         private IUIInput m_Input;
 
         private UIInventory m_Inventory;
-        private UIMap m_Map;
+        // private UIMap m_Map;
 
         private HashSet<Object> m_BlockingContext = new HashSet<Object>();
 
@@ -28,13 +28,13 @@ namespace HorrorEngine
                         m_Inventory?.Show();
                     }
 
-                 /*  if (m_Input.IsToggleMapDown())
-                    {
-                        if (!m_Map)
-                            m_Map = GetComponentInChildren<UIMap>(true);
+                    /*  if (m_Input.IsToggleMapDown())
+                       {
+                           if (!m_Map)
+                               m_Map = GetComponentInChildren<UIMap>(true);
 
-                        m_Map?.Show();
-                    }*/
+                           m_Map?.Show();
+                       }*/
                 }
             }
         }

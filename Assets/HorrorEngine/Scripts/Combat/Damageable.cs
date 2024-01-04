@@ -18,8 +18,7 @@ namespace HorrorEngine
         public OnDamageEvent OnPreDamage;
         [Tooltip("Event fired after the damage has been applied")]
         public OnDamageEvent OnDamage;
-
-
+        
         private Health m_Health;
 
         private void Awake()

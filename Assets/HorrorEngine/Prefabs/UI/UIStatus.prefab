@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4591858536237759735}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -107,7 +106,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4591858536237759735}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -247,7 +245,6 @@ RectTransform:
   - {fileID: 260716974304608047}
   - {fileID: 6024743368542960898}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -311,13 +308,25 @@ MonoBehaviour:
     Interval: 1
     Speed: 2
     Text: Danger
-  - FromHealth: 2
-    Color: {r: 1, g: 0.6971461, b: 0.30588233, a: 1}
+  - FromHealth: 25
+    Color: {r: 0.9725491, g: 0.23529413, b: 0.050980397, a: 1}
     Tiling: 2
     Interval: 1
-    Speed: 1
+    Speed: 2
     Text: Warning
-  - FromHealth: 3
+  - FromHealth: 50
+    Color: {r: 1, g: 0.69803923, b: 0.30588236, a: 1}
+    Tiling: 1
+    Interval: 1
+    Speed: 0.5
+    Text: Fine
+  - FromHealth: 75
+    Color: {r: 0.4716927, g: 0.8679245, b: 0.35535777, a: 1}
+    Tiling: 1
+    Interval: 1
+    Speed: 0.5
+    Text: Fine
+  - FromHealth: 100
     Color: {r: 0.4716927, g: 0.8679245, b: 0.35535777, a: 1}
     Tiling: 1
     Interval: 1
@@ -358,7 +367,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4591858536237759735}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -446,7 +454,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4591858536237759735}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

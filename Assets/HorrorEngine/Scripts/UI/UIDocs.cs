@@ -16,8 +16,8 @@ namespace HorrorEngine
         [SerializeField] private Transform m_PageLeftHook;
         [SerializeField] private Transform m_PageCenterHook;
         [SerializeField] private Transform m_PageRightHook;
-        [SerializeField] private UISelectableCallbacks m_RightArrow;
-        [SerializeField] private UISelectableCallbacks m_LeftArrow;
+        // [SerializeField] private UISelectableCallbacks m_RightArrow;
+        // [SerializeField] private UISelectableCallbacks m_LeftArrow;
 
         [Header("Audio")]
         [SerializeField] private AudioClip m_NavigateClip;
@@ -59,7 +59,7 @@ namespace HorrorEngine
             }
 
 
-            m_LeftArrow.OnSelected.AddListener((go) => {
+            /*m_LeftArrow.OnSelected.AddListener((go) => {
                 if (m_CurrentPageIndex > 0)
                 {
                     MovePageToRight(m_CurrentPageIndex);
@@ -75,7 +75,7 @@ namespace HorrorEngine
                     SetActivePage(++m_CurrentPageIndex);
                     MovePageFromRight(m_CurrentPageIndex);
                 }
-            });
+            });*/
         }
 
         // --------------------------------------------------------------------
@@ -94,8 +94,8 @@ namespace HorrorEngine
         {
             m_CurrentPageIndex = index;
 
-            m_LeftArrow.gameObject.SetActive(m_CurrentPageIndex > 0);
-            m_RightArrow.gameObject.SetActive(m_CurrentPageIndex < m_PageCount-1);
+            // m_LeftArrow.gameObject.SetActive(m_CurrentPageIndex > 0);
+            // m_RightArrow.gameObject.SetActive(m_CurrentPageIndex < m_PageCount-1);
         }
 
         // --------------------------------------------------------------------
@@ -273,11 +273,11 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        public void OnMapCategory()
-        {
-            Hide();
-            m_Input.Flush();
-            UIManager.Get<UIMap>().Show();
-        }
+        // public void OnMapCategory()
+        // {
+        //     Hide();
+        //     m_Input.Flush();
+        //     UIManager.Get<UIMap>().Show();
+        // }
     }
 }

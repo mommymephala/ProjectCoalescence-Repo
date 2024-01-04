@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -155,7 +155,7 @@ namespace HorrorEngine
             if (!m_CurrentMap.MapSet)
                 return;
 
-        if (m_Input.IsPrevSubmapDown())
+            if (m_Input.IsPrevSubmapDown())
             {
                 int currentIndex = Array.IndexOf(m_CurrentMap.MapSet.Maps, m_CurrentMap);
 
@@ -251,4 +251,4 @@ namespace HorrorEngine
             UIManager.PopAction();
         }
     }
-}
+}*/

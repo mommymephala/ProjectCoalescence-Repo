@@ -308,12 +308,11 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        public void OnMapCategory()
-        {
-            Hide();
-            UIManager.Get<UIMap>().Show();
-        }
-
+        // public void OnMapCategory()
+        // {
+        //     Hide();
+        //     UIManager.Get<UIMap>().Show();
+        // }
 
         // --------------------------------------------------------------------
 

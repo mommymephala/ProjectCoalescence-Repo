@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace HorrorEngine
@@ -40,4 +40,4 @@ namespace HorrorEngine
         }
 
     }
-}
+}*/

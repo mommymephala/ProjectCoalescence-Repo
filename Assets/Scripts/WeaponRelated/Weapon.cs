@@ -11,9 +11,6 @@ namespace WeaponRelated
 {
     public class Weapon : MonoBehaviour
     {
-        [Header("Audio Events")]
-        // private AudioManager _audioManager;
-       
         [Header("References")]
         [SerializeField] private NewPlayerController newPlayerController;
         [SerializeField] public WeaponData weaponData;
@@ -128,13 +125,17 @@ namespace WeaponRelated
             for (var i = 0; i < weaponData.bulletsPerShot; i++)
             {
                 Vector3 spreadDirection = weaponsHolderTransform.forward + Random.insideUnitSphere * weaponData.spread;
-                if (!Physics.Raycast(weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo,
-                        weaponData.maxDistance)) continue;
-                Debug.DrawRay(weaponsHolderTransform.position, spreadDirection, Color.red, 5);
+                
+                var layerMask = ~LayerMask.GetMask("InteractionSystem");
+                if (!Physics.Raycast(weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
+                
+                // Debug.DrawRay(weaponsHolderTransform.position, spreadDirection, Color.red, 5);
+                
                 if (hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
                 }
+                
                 var damageable = hitInfo.transform.GetComponent<IDamageable>();
                 if (damageable == null) continue;
                 damageable.TakeDamage(weaponData.damage);

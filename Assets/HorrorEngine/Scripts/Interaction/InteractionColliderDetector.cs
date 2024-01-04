@@ -30,11 +30,9 @@ namespace HorrorEngine
             Interactive interactive = other.GetComponent<Interactive>();
             if (interactive && interactive.isActiveAndEnabled)
             {
-                Debug.Log("I am interacting!!!");
                 Debug.Assert(!m_Interactives.Contains(interactive), "Trying to re-add an interactive to the InteractionDetector list", gameObject);
 
                 AddInteractive(interactive);
-                Debug.Log("Added interactive.");
             }
         }
         

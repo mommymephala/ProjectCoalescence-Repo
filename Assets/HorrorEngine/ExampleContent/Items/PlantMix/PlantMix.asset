@@ -19,6 +19,6 @@ MonoBehaviour:
   Description: It greatly restores your health
   InventoryAction: 1
   Flags: 116
-  PickupPrefab: {fileID: 0}
-  m_Regeneration: 2
+  DropPrefab: {fileID: 0}
+  m_Regeneration: 60
   m_CompleteRegeneration: 0

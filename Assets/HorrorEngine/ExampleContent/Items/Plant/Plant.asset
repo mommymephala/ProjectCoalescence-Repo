@@ -20,5 +20,5 @@ MonoBehaviour:
   InventoryAction: 1
   Flags: 124
   DropPrefab: {fileID: 0}
-  m_Regeneration: 1
+  m_Regeneration: 25
   m_CompleteRegeneration: 0

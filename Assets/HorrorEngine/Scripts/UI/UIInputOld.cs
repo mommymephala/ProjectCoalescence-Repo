@@ -10,10 +10,10 @@ namespace HorrorEngine
         [SerializeField] string m_Cancel;
         [SerializeField] string m_TogglePause;
         [SerializeField] string m_ToggleInventory;
-        [SerializeField] string m_ToggleMap;
-        [SerializeField] string m_ToggleMapList;
-        [SerializeField] string m_NextSubmap;
-        [SerializeField] string m_PrevSubmap;
+        // [SerializeField] string m_ToggleMap;
+        // [SerializeField] string m_ToggleMapList;
+        // [SerializeField] string m_NextSubmap;
+        // [SerializeField] string m_PrevSubmap;
 
         public Vector2 GetPrimaryAxis()
         {
@@ -40,25 +40,25 @@ namespace HorrorEngine
             return Input.GetButtonDown(m_ToggleInventory);
         }
 
-        public bool IsToggleMapDown()
-        {
-            return Input.GetButtonDown(m_ToggleMap);
-        }
+        // public bool IsToggleMapDown()
+        // {
+        //     return Input.GetButtonDown(m_ToggleMap);
+        // }
+        //
+        // public bool IsToggleMapListDown()
+        // {
+        //     return Input.GetButtonDown(m_ToggleMapList);
+        // }
 
-        public bool IsToggleMapListDown()
-        {
-            return Input.GetButtonDown(m_ToggleMapList);
-        }
-
-        public bool IsPrevSubmapDown()
-        {
-            return Input.GetButtonDown(m_PrevSubmap);
-        }
-
-        public bool IsNextSubmapDown()
-        {
-            return Input.GetButtonDown(m_NextSubmap);
-        }
+        // public bool IsPrevSubmapDown()
+        // {
+        //     return Input.GetButtonDown(m_PrevSubmap);
+        // }
+        //
+        // public bool IsNextSubmapDown()
+        // {
+        //     return Input.GetButtonDown(m_NextSubmap);
+        // }
 
         public void Flush()
         {
