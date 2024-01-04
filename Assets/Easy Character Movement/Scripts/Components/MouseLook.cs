@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using HorrorEngine;
+using Interfaces;
+using UnityEngine;
 
 namespace ECM.Components
 {
@@ -11,15 +14,18 @@ namespace ECM.Components
     /// This must be attached to the game object with 'CharacterMovement' component.
     /// </summary>
 
-    public class MouseLook : MonoBehaviour
+    public class MouseLook : MonoBehaviour, IDeactivateWithActor, IInteractor
     {
+        private InteractionDetector InteractionDetector;
+        private PickupItem PickupItem;
         [SerializeField] private CharacterMovement characterMovement;
         #region EDITOR EXPOSED FIELDS
 
         //[Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
         //[SerializeField]
         //private bool _lockCursor = true;
-
+        public float maxDistance;
+        [SerializeField] private Transform camHolder;
         [Tooltip("The keyboard key to unlock the mouse cursor.")]
         [SerializeField]
         private KeyCode _unlockCursorKey = KeyCode.Escape;
@@ -306,6 +312,73 @@ namespace ECM.Components
             maxPitchAngle = _maxPitchAngle;
         }
         
+        
+     /*   RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, maxDistance))
+        {
+            IInteractor interactable = hit.collider.gameObject.GetComponent<IInteractor>();
+            if (interactable != null)
+            {
+                interactable.Interact();
+            }*/
+     /*   private void Update()
+        {
+            
+        }
+
+        private void Take()
+        {
+            var ray = new Ray(camHolder.transform.position, camHolder.transform.forward);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+            {
+             Interactive interactive = GetComponent<Interactive>();
+                var objectPickable = hit.collider.GetComponent<Interactive>();
+             if (interactive && interactive.isActiveAndEnabled)
+                    {
+                        Debug.Assert(!InteractionDetector.m_Interactives.Contains(interactive), "Trying to re-add an interactive to the InteractionDetector list", gameObject);
+
+                       InteractionDetector.AddInteractive(interactive);
+                       if (objectPickable != null)
+                       {
+                       PickupItem.Take();
+                       }
+                  
+                }
+            }
+        }*/
+  
+     
+     void Update()
+     {
+         // Existing MouseLook rotation logic
+
+         // Check for interaction
+         if (Input.GetKeyDown(KeyCode.E)) // Assuming 'E' is the interact key
+         {
+             RaycastHit hit;
+             if (Camera.main != null)
+             {
+                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                 if (Physics.Raycast(ray, out hit, maxDistance))
+                 {
+                     // Use the IInteractor to interact with the hit object
+                     Interactive interactive = hit.collider.GetComponent<Interactive>();
+                 
+                     Debug.Log(interactive.gameObject);
+                     if (interactive && interactive.isActiveAndEnabled)
+                     {
+                        // Debug.Assert(!m_Interactives.Contains(interactive), "Trying to re-add an interactive to the InteractionDetector list", gameObject);
+
+                         //AddInteractive(interactive);
+                     }
+                 }
+             }
+         }
+     }
         #endregion
     }
 }

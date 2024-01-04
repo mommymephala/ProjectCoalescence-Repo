@@ -11,7 +11,7 @@ namespace HorrorEngine
 
     public abstract class InteractionDetector : MonoBehaviour, IDeactivateWithActor
     {
-        protected List<Interactive> m_Interactives = new List<Interactive>();
+        public List<Interactive> m_Interactives = new List<Interactive>();
 
         private InteractionChangedMessage m_InteractionChangedMsg = new InteractionChangedMessage();
         private Action<OnDisableNotifier> m_OnInteractiveDisabled;
@@ -38,7 +38,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        protected void AddInteractive(Interactive interactive)
+        public void AddInteractive(Interactive interactive)
         {
             if (!m_Interactives.Contains(interactive))
                 m_Interactives.Add(interactive);

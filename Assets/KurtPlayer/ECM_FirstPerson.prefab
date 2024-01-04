@@ -370,7 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 3903662941688377456}
-  _unlockCursorKey: 282
+  maxDistance: 10
+  camHolder: {fileID: 2519396527713515922}
+  _unlockCursorKey: 105
   _lateralSensitivity: 2
   _verticalSensitivity: 2
   _smooth: 0
