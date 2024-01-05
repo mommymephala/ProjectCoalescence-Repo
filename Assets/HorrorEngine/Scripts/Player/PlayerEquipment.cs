@@ -33,7 +33,17 @@ namespace HorrorEngine
         {
             SetupCurrentEquipment();
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ActivateEquipment(EquipmentSlot.Primary);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ActivateEquipment(EquipmentSlot.Secondary);
+            }
+        }
         private void SetupCurrentEquipment()
         {
             Dictionary<EquipmentSlot, InventoryEntry> equipped = GameManager.Instance.Inventory.Equipped;
@@ -82,11 +92,44 @@ namespace HorrorEngine
                 Data = equipable
             });
 
+            // Activate only if it's the primary weapon
+            if (slot == EquipmentSlot.Primary)
+            {
+                instance.SetActive(true);
+                DeactivateOtherWeapons(EquipmentSlot.Secondary);
+            }
+            else
+            {
+                instance.SetActive(false);
+            }
+
+
             // m_SocketController.Attach(instance, equipable.CharacterAttachment);
 
             return instance;
         }
-
+        
+        private void DeactivateOtherWeapons(EquipmentSlot slotToDeactivate)
+        {
+            if (m_CurrentEquipment.TryGetValue(slotToDeactivate, out EquipmentEntry entry))
+            {
+                entry.Instance.SetActive(false);
+            }
+        }
+        private void ActivateEquipment(EquipmentSlot slot)
+        {
+            foreach (var equipment in m_CurrentEquipment)
+            {
+                if (equipment.Key == slot)
+                {
+                    equipment.Value.Instance.SetActive(true);
+                }
+                else
+                {
+                    equipment.Value.Instance.SetActive(false);
+                }
+            }
+        }
         // --------------------------------------------------------------------
 
         public void Unequip(EquipmentSlot type, bool destroy = true)
