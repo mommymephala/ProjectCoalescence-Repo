@@ -37,6 +37,14 @@ namespace WeaponRelated
         [Header("UI")]
         private Text _currentAmmoText;
         
+        // [Header("Crosshair UI")]
+        // private RectTransform topCrosshair;
+        // private RectTransform bottomCrosshair;
+        // private RectTransform leftCrosshair;
+        // private RectTransform rightCrosshair;
+        private RectTransform _reticle;
+        private float _currentSize;
+        
         [Header("Flags")]
         [SerializeField] private bool toggleAimDownSight = true;
 
@@ -63,7 +71,6 @@ namespace WeaponRelated
         private void Awake()
         {
             // _audioManager = GetComponent<AudioManager>();
-            
             _newPlayerController = GetComponentInParent<NewPlayerController>();
             _mouseLook = GetComponentInParent<MouseLook>();
             _playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
@@ -81,6 +88,19 @@ namespace WeaponRelated
             weaponData.originalWeaponFOV = _weaponCamera.fieldOfView;
 
             _currentAmmoText = GameObject.Find("AmmoCountText").GetComponent<Text>();
+            if (CrosshairManager.Instance != null)
+            {
+                // topCrosshair = CrosshairManager.Instance.topCrosshair;
+                // bottomCrosshair = CrosshairManager.Instance.bottomCrosshair;
+                // leftCrosshair = CrosshairManager.Instance.leftCrosshair;
+                // rightCrosshair = CrosshairManager.Instance.rightCrosshair;
+                _reticle = CrosshairManager.Instance.reticle;
+
+            }
+            else
+            {
+                Debug.LogError("CrosshairManager not found in the scene.");
+            }
         }
         private void Start()
         {
@@ -102,6 +122,7 @@ namespace WeaponRelated
             HandleShootingInput();
             Aiming();
             UpdateAmmoUI();
+            UpdateCrosshair();
             _timeSinceLastShot += Time.deltaTime;
         }
 
@@ -346,8 +367,7 @@ namespace WeaponRelated
 
             PlayGunShotSFX();
         }
-
-
+        
         private void PlayGunShotSFX()
         {
             if (weaponData.gunShotSFX.IsNull)
@@ -359,6 +379,38 @@ namespace WeaponRelated
         }
         
         //Separate UI logic!!!
+        
+        private void UpdateCrosshair()
+        {
+            // Determine crosshair size based on the player's state and weapon's characteristics
+            if (_shooting)
+            {
+                _currentSize = Mathf.Lerp(_currentSize, weaponData.maxSize, weaponData.speed * Time.deltaTime);
+            }
+            else if (_newPlayerController.IsWalking)
+            {
+                _currentSize = Mathf.Lerp(_currentSize, weaponData.restingSize * weaponData.walkingRecoilMultiplier, weaponData.speed * Time.deltaTime);
+            }
+            else
+            {
+                _currentSize = Mathf.Lerp(_currentSize, weaponData.restingSize, weaponData.speed * Time.deltaTime);
+            }
+
+            ApplyCrosshairSize();
+        }
+
+        private void ApplyCrosshairSize()
+        {
+            _currentSize = Mathf.Lerp(_currentSize, weaponData.restingSize, Time.deltaTime * weaponData.speed);
+            _reticle.sizeDelta = new Vector2(_currentSize, _currentSize);
+            // Update the size of each crosshair part
+            // float sizeDelta = _currentSize - weaponData.restingSize;
+            // topCrosshair.sizeDelta = new Vector2(topCrosshair.sizeDelta.x, weaponData.restingSize + sizeDelta);
+            // bottomCrosshair.sizeDelta = new Vector2(bottomCrosshair.sizeDelta.x, weaponData.restingSize + sizeDelta);
+            // leftCrosshair.sizeDelta = new Vector2(leftCrosshair.sizeDelta.y, weaponData.restingSize + sizeDelta);
+            // rightCrosshair.sizeDelta = new Vector2(rightCrosshair.sizeDelta.y, weaponData.restingSize + sizeDelta);
+        }
+        
         private void UpdateAmmoUI()
         {
             if (_reloading)

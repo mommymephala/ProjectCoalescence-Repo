@@ -52,10 +52,9 @@ namespace ECM.Components
         [SerializeField]
         private float _maxPitchAngle = 90.0f;
         
-        
         private float _adsSensitivity = 1.0f;
 
-        private bool _aimingDownSight;
+        public bool aimingDownSight;
         
         #endregion
 
@@ -84,7 +83,7 @@ namespace ECM.Components
         /// </summary>
         public void SetAimingDownSight(bool aiming)
         {
-            _aimingDownSight = aiming;
+            aimingDownSight = aiming;
         }
         
        /* public bool lockCursor
@@ -194,7 +193,7 @@ namespace ECM.Components
 
         public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
-            var currentSensitivity = _aimingDownSight ? _adsSensitivity : lateralSensitivity;
+            var currentSensitivity = aimingDownSight ? _adsSensitivity : lateralSensitivity;
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;
             var pitch = Input.GetAxis("Mouse Y") * verticalSensitivity;
 

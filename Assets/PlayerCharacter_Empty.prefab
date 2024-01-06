@@ -1012,7 +1012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bc0961d83409c4da17fa18c2acbaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleHeadbob: 1
+  toggleBob: 1
   joint: {fileID: 6219704464517825184}
   bobSpeed: 2
   bobAmount: {x: 0.01, y: 0.01, z: 0}
+  aimingBobSpeed: 2
+  aimingBobAmount: {x: 0.025, y: 0.02, z: 0}

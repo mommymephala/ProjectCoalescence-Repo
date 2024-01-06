@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using WeaponRelated;
 
 namespace PlayerActions
@@ -8,11 +8,11 @@ namespace PlayerActions
         // Re-do and separate
         [Header("Inventory")]
         public Canvas inventoryCanvas;
-        public DynamicCrosshair crosshair;
+        // public DynamicCrosshair crosshair;
        /* [SerializeField] private PlayerLook playerLook;
         [SerializeField] private Weapon deagleWeapon;
         [SerializeField] private Weapon rifleWeapon;
-        [SerializeField] private Weapon shotgunWeapon;*/
+        [SerializeField] private Weapon shotgunWeapon;
         public bool IsInventoryOpen { get; private set; }
         
         private AudioManager _audioManager;
@@ -75,7 +75,7 @@ namespace PlayerActions
          *
          *
          * 
-         */
+         #1#
 
         private void Awake()
         {
@@ -296,7 +296,7 @@ namespace PlayerActions
            //playerLook.enabled = false;
            /* deagleWeapon.enabled = false;
             rifleWeapon.enabled = false;
-            deagleWeapon.enabled = false;*/
+            deagleWeapon.enabled = false;#1#
             Time.timeScale = 0f;
         }
         public void InventoryCanvasCheckClose()
@@ -308,11 +308,11 @@ namespace PlayerActions
             //playerLook.enabled = true;
            /* deagleWeapon.enabled = true;
             rifleWeapon.enabled = true;
-            shotgunWeapon.enabled = true;*/
+            shotgunWeapon.enabled = true;#1#
             Time.timeScale = 1f;
         }
         
         // ################################################################################################################ //
         
     }
-}
+}*/

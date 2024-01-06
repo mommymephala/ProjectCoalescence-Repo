@@ -45,14 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1591639e2b42a3b448e6e25264d4537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPlayerController: {fileID: 0}
   weaponData: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
-  mouseLook: {fileID: 0}
-  toggleAimDownSight: 1
-  playerCamera: {fileID: 0}
-  weaponCamera: {fileID: 0}
-  playerCameraTransform: {fileID: 0}
-  weaponsHolderTransform: {fileID: 0}
   muzzleTransform: {fileID: 7671510443073303017}
   adsPositionRef: {fileID: 6050747854847116778}
   aimDownSightKey: 324
@@ -60,6 +53,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 3797437162296904623, guid: 450ce4b27bb10d4458be5776773a7bdf, type: 3}
   bloodFXPrefab: {fileID: 194062, guid: fba44fab8ef00d34f8c307a143b28d05, type: 3}
   bulletHolePrefab: {fileID: 2428569139062834844, guid: c56d8c95d3722714786e89e94e8bcd0f, type: 3}
+  toggleAimDownSight: 1
   aimingDownSight: 0
 --- !u!1 &900073974245690827
 GameObject:

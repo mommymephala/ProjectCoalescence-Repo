@@ -418,7 +418,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3703261384958806080}
   - component: {fileID: 689868061751354768}
-  - component: {fileID: 7742632512234944255}
   m_Layer: 5
   m_Name: CrosshairReticlePanel
   m_TagString: Untagged
@@ -457,25 +456,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5323735630652070775}
   m_CullTransparentMesh: 1
---- !u!114 &7742632512234944255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5323735630652070775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46daf6e0dc9340f4098e79ab268b9157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 0}
-  weapon1: {fileID: 0}
-  weapon2: {fileID: 0}
-  weapon3: {fileID: 0}
-  restingSize: 50
-  maxSize: 250
-  speed: 6
 --- !u!1 &6000171669974249787
 GameObject:
   m_ObjectHideFlags: 0

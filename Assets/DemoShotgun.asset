@@ -54,3 +54,6 @@ MonoBehaviour:
   kickbackDuration: 0.25
   resetDuration: 0.25
   walkingRecoilMultiplier: 1.5
+  restingSize: 1
+  maxSize: 3
+  speed: 5

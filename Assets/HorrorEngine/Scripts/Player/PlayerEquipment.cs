@@ -44,6 +44,7 @@ namespace HorrorEngine
                 ActivateEquipment(EquipmentSlot.Secondary);
             }
         }
+        
         private void SetupCurrentEquipment()
         {
             Dictionary<EquipmentSlot, InventoryEntry> equipped = GameManager.Instance.Inventory.Equipped;

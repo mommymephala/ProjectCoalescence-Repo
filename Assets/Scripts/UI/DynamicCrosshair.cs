@@ -1,7 +1,11 @@
+
+using System;
+using ECM.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 using WeaponRelated;
 
-public class DynamicCrosshair : MonoBehaviour
+public class DynamicCrosshair : MonoBehaviour 
 {
     public Rigidbody playerRigidbody;
     public Weapon weapon1;
@@ -85,3 +89,4 @@ public class DynamicCrosshair : MonoBehaviour
         }
     }
 }
+
