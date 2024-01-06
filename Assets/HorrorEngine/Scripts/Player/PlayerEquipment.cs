@@ -6,7 +6,7 @@ namespace HorrorEngine
 {
     public class PlayerEquipment : MonoBehaviour, IResetable
     {
-        public struct EquipmentEntry
+        private struct EquipmentEntry
         {
             public GameObject Instance;
             public ItemData Data;
@@ -15,8 +15,11 @@ namespace HorrorEngine
         // --------------------------------------------------------------------
 
         private Dictionary<EquipmentSlot, EquipmentEntry> m_CurrentEquipment = new Dictionary<EquipmentSlot, EquipmentEntry>();
+        
+        [Header("Key Codes")]
+        [SerializeField] private KeyCode holsterKey = KeyCode.H; // Key to holster the weapon
 
-        public GameObject weaponsHolder;
+        [SerializeField] private GameObject weaponsHolder;
         // private SocketController m_SocketController;
 
         // --------------------------------------------------------------------
@@ -37,11 +40,23 @@ namespace HorrorEngine
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                ActivateEquipment(EquipmentSlot.Primary);
+                TryActivateEquipment(EquipmentSlot.Primary);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ActivateEquipment(EquipmentSlot.Secondary);
+                TryActivateEquipment(EquipmentSlot.Secondary);
+            }
+            else if (Input.GetKeyDown(holsterKey))
+            {
+                HolsterEquipment();
+            }
+        }
+        
+        private void TryActivateEquipment(EquipmentSlot slot)
+        {
+            if (IsEquipmentSlotFilled(slot))
+            {
+                ActivateEquipment(slot);
             }
         }
         
@@ -81,12 +96,13 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        public GameObject Equip(EquipableItemData equipable, EquipmentSlot slot)
+        public void Equip(EquipableItemData equipable, EquipmentSlot slot)
         {
             if (m_CurrentEquipment.ContainsKey(slot))
                 Unequip(slot);
 
-            var instance = Instantiate(equipable.EquipPrefab, weaponsHolder.transform);
+            GameObject instance = Instantiate(equipable.EquipPrefab, weaponsHolder.transform);
+            
             m_CurrentEquipment.Add(slot, new EquipmentEntry()
             {
                 Instance = instance,
@@ -103,11 +119,8 @@ namespace HorrorEngine
             {
                 instance.SetActive(false);
             }
-
-
+            
             // m_SocketController.Attach(instance, equipable.CharacterAttachment);
-
-            return instance;
         }
         
         private void DeactivateOtherWeapons(EquipmentSlot slotToDeactivate)
@@ -117,23 +130,23 @@ namespace HorrorEngine
                 entry.Instance.SetActive(false);
             }
         }
+        
+        private bool IsEquipmentSlotFilled(EquipmentSlot slot)
+        {
+            return m_CurrentEquipment.ContainsKey(slot) && m_CurrentEquipment[slot].Instance != null;
+        }
+        
         private void ActivateEquipment(EquipmentSlot slot)
         {
             foreach (var equipment in m_CurrentEquipment)
             {
-                if (equipment.Key == slot)
-                {
-                    equipment.Value.Instance.SetActive(true);
-                }
-                else
-                {
-                    equipment.Value.Instance.SetActive(false);
-                }
+                equipment.Value.Instance.SetActive(equipment.Key == slot);
             }
         }
+    
         // --------------------------------------------------------------------
 
-        public void Unequip(EquipmentSlot type, bool destroy = true)
+        private void Unequip(EquipmentSlot type, bool destroy = true)
         {
             if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
             {
@@ -143,10 +156,18 @@ namespace HorrorEngine
                 m_CurrentEquipment.Remove(type);
             }
         }
+        
+        private void HolsterEquipment()
+        {
+            foreach (var equipment in m_CurrentEquipment)
+            {
+                equipment.Value.Instance.SetActive(false);
+            }
+        }
 
         // --------------------------------------------------------------------
 
-        public bool GetEquipped(EquipmentSlot type, out ItemData item, out GameObject instance)
+        /*public bool GetEquipped(EquipmentSlot type, out ItemData item, out GameObject instance)
         {
             item = null;
             instance = null;
@@ -159,19 +180,19 @@ namespace HorrorEngine
             }
 
             return false;
-        }
+        }*/
 
         // --------------------------------------------------------------------
 
-        public GameObject GetWeaponInstance(EquipmentSlot type)
-        {
-            if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
-            {
-                if (entry.Data as WeaponData)
-                    return entry.Instance;
-            }
-            return null;
-        }
+        // public GameObject GetWeaponInstance(EquipmentSlot type)
+        // {
+        //     if (m_CurrentEquipment.TryGetValue(type, out EquipmentEntry entry))
+        //     {
+        //         if (entry.Data as WeaponData)
+        //             return entry.Instance;
+        //     }
+        //     return null;
+        // }
 
         // --------------------------------------------------------------------
 
@@ -183,7 +204,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        void RemoveAllEquipment()
+        private void RemoveAllEquipment()
         {
             foreach (var e in m_CurrentEquipment)
             {

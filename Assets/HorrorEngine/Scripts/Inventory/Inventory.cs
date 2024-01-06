@@ -320,21 +320,20 @@ namespace HorrorEngine
             }
 
             // Auto combine weapon/ammo
-            ReloadableHeWeaponData reloadable1 = entry1.Item as ReloadableHeWeaponData;
-            ReloadableHeWeaponData reloadable2 = entry2.Item as ReloadableHeWeaponData;
+            ReloadableHEWeaponData reloadable1 = entry1.Item as ReloadableHEWeaponData;
+            ReloadableHEWeaponData reloadable2 = entry2.Item as ReloadableHEWeaponData;
             if (reloadable1 || reloadable2)
             {
                 InventoryEntry reloadableEntry = reloadable1 ? entry1 : entry2;
                 InventoryEntry ammoEntry = reloadable1 ? entry2 : entry1;
                 
-                ReloadableHeWeaponData reloadableHe = reloadableEntry.Item as ReloadableHeWeaponData;
+                ReloadableHEWeaponData reloadableHe = reloadableEntry.Item as ReloadableHEWeaponData;
                 if (reloadableHe.AmmoItem == ammoEntry.Item)
                 {
                     return ReloadWeapon(reloadableEntry, ammoEntry);
                 }
             }
-
-
+            
             return entry1;
         }
 
@@ -342,7 +341,7 @@ namespace HorrorEngine
 
         public InventoryEntry ReloadWeapon(InventoryEntry weaponEntry, InventoryEntry ammoEntry)
         {
-            ReloadableHeWeaponData heWeapon = weaponEntry.Item as ReloadableHeWeaponData;
+            ReloadableHEWeaponData heWeapon = weaponEntry.Item as ReloadableHEWeaponData;
             
             int prevAmmo = weaponEntry.SecondaryCount;
             int newAmmo = Mathf.Min(prevAmmo + ammoEntry.Count, heWeapon.MaxAmmo);
@@ -501,7 +500,7 @@ namespace HorrorEngine
 
         public bool CanReloadWeapon(InventoryEntry weaponEntry)
         {
-            ReloadableHeWeaponData reloadableHeWeapon = weaponEntry.Item as ReloadableHeWeaponData;
+            ReloadableHEWeaponData reloadableHeWeapon = weaponEntry.Item as ReloadableHEWeaponData;
             if (reloadableHeWeapon)
             {
                 Inventory inventory = GameManager.Instance.Inventory;

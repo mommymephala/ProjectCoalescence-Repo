@@ -5,12 +5,12 @@ using UnityEngine;
 namespace HorrorEngine
 {
     [CreateAssetMenu(menuName = "Horror Engine/Items/Reloadable Weapon")]
-    public class ReloadableHeWeaponData : HEWeaponData
+    public class ReloadableHEWeaponData : HEWeaponData
     {
         public ItemData AmmoItem;
         public int MaxAmmo;
-        public AudioClip ShotSound;
-        public AudioClip ReloadSound;
-        public AudioClip NoAmmoSound;
+        // public AudioClip ShotSound;
+        // public AudioClip ReloadSound;
+        // public AudioClip NoAmmoSound;
     }
 }

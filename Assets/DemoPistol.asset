@@ -24,6 +24,8 @@ MonoBehaviour:
   Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 0
+  AmmoItem: {fileID: 11400000, guid: be47060051e3b9f409f698c455fb2110, type: 2}
+  MaxAmmo: 10
   gunShotSFX:
     Guid:
       Data1: 2103223952
@@ -42,8 +44,6 @@ MonoBehaviour:
   aimDownSightFOV: 40
   aimDownSightSpeed: 10
   zoomSpeed: 10
-  currentAmmo: 10
-  magSize: 10
   reloadTime: 0.75
   recoilRotationHipfire: {x: 450, y: 40, z: 0}
   recoilRotationAiming: {x: 350, y: 30, z: 0}
@@ -54,6 +54,3 @@ MonoBehaviour:
   kickbackDuration: 0.2
   resetDuration: 0.2
   walkingRecoilMultiplier: 1.5
-  restingSize: 100
-  maxSize: 1000
-  speed: 100

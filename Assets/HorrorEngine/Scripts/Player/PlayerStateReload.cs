@@ -1,13 +1,13 @@
-/*using UnityEngine;
+using UnityEngine;
+using WeaponRelated;
 
 namespace HorrorEngine
 {
     public class PlayerStateReload : ActorStateWithDuration
     {
-     
-        private AudioSource m_AudioSource;
+        // private AudioSource m_AudioSource;
         private InventoryEntry m_WeaponEntry;
-        private ReloadableWeaponData m_Weapon;
+        private WeaponData m_Weapon;
 
         // --------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace HorrorEngine
         {
             base.Awake();
 
-            m_AudioSource = GetComponentInParent<AudioSource>();
+            // m_AudioSource = GetComponentInParent<AudioSource>();
         }
 
         // --------------------------------------------------------------------
@@ -23,15 +23,15 @@ namespace HorrorEngine
         public override void StateEnter(IActorState fromState)
         {
             m_WeaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
-            m_Weapon = m_WeaponEntry.Item as ReloadableWeaponData;
+            m_Weapon = m_WeaponEntry.Item as WeaponData;
             Debug.Assert(m_Weapon, "ReloadableWeapon not equipped, it is assumed it'll be equipped in the primary equipment slot");
 
-            m_AnimationState = m_Weapon.ReloadAnim;
-            m_Duration = m_Weapon.ReloadDuration;
+            // m_AnimationState = m_Weapon.ReloadAnim;
+            m_Duration = m_Weapon.reloadTime;
 
             base.StateEnter(fromState);
 
-            m_AudioSource.PlayOneShot(m_Weapon.ReloadSound);
+            // m_AudioSource.PlayOneShot(m_Weapon.ReloadSound);
 
             UIManager.Get<UIInputListener>().AddBlockingContext(this);
 
@@ -60,4 +60,4 @@ namespace HorrorEngine
         }
 
     }
-}*/
+}

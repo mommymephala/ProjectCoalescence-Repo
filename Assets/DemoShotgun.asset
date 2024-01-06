@@ -21,9 +21,11 @@ MonoBehaviour:
   Flags: 120
   DropPrefab: {fileID: 0}
   EquipPrefab: {fileID: 855168729862957376, guid: 73cda8b8f3be60a439d41e9c20753209, type: 3}
-  Slot: 2
+  Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 0
+  AmmoItem: {fileID: 11400000, guid: a5398a73af1b8a143a2f4e30e2409b2f, type: 2}
+  MaxAmmo: 5
   gunShotSFX:
     Guid:
       Data1: 1844504655
@@ -42,8 +44,6 @@ MonoBehaviour:
   aimDownSightFOV: 40
   aimDownSightSpeed: 10
   zoomSpeed: 10
-  currentAmmo: 12
-  magSize: 12
   reloadTime: 1.2
   recoilRotationHipfire: {x: 600, y: 60, z: 0}
   recoilRotationAiming: {x: 400, y: 40, z: 0}
@@ -54,6 +54,3 @@ MonoBehaviour:
   kickbackDuration: 0.25
   resetDuration: 0.25
   walkingRecoilMultiplier: 1.5
-  restingSize: 1
-  maxSize: 3
-  speed: 5

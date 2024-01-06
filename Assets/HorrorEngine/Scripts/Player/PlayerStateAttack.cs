@@ -1,10 +1,11 @@
-/*using UnityEngine;
+using UnityEngine;
+using WeaponRelated;
 
 namespace HorrorEngine
 {
     public abstract class PlayerStateAttack : ActorStateWithDuration
     {
-        [SerializeField] private PlayerStateAiming m_AimingState;
+        // [SerializeField] private PlayerStateAiming m_AimingState;
         [SerializeField] private ActorState m_ReloadState;
         [SerializeField] private bool m_AutoReloadOnAttackStart;
         [SerializeField] private bool m_AutoReloadOnAttackEnd;
@@ -128,11 +129,11 @@ namespace HorrorEngine
                 if (weaponEntry.SecondaryCount > 0)
                     --weaponEntry.SecondaryCount;
 
-                if (m_AimingState)
-                {
-                    IVerticalAttack verticalAttack = m_Attack as IVerticalAttack;
-                    verticalAttack?.SetVerticality(m_AimingState.Verticality);
-                }
+                // if (m_AimingState)
+                // {
+                //     IVerticalAttack verticalAttack = m_Attack as IVerticalAttack;
+                //     verticalAttack?.SetVerticality(m_AimingState.Verticality);
+                // }
 
                 m_Attacked = true;
                 ++m_Attacks;
@@ -164,7 +165,7 @@ namespace HorrorEngine
 
         private bool CanAttackStart()
         {
-            ReloadableWeaponData reloadable = m_WeaponInventoryEntry.Item as ReloadableWeaponData;
+            WeaponData reloadable = m_WeaponInventoryEntry.Item as WeaponData;
             return !reloadable || m_WeaponInventoryEntry.SecondaryCount > 0;
         }
 
@@ -179,13 +180,13 @@ namespace HorrorEngine
             {
                 SetState(m_ReloadState);
             }
-            else
-            {
-                if (m_AimingState)
-                    SetState(m_AimingState);
-                else
-                    SetState(m_GoToStateAfterDuration);
-            }
+            // else
+            // {
+            //     if (m_AimingState)
+            //         SetState(m_AimingState);
+            //     else
+            //         SetState(m_GoToStateAfterDuration);
+            // }
         }
 
         // --------------------------------------------------------------------
@@ -210,4 +211,4 @@ namespace HorrorEngine
 
        
     }
-}*/
+}

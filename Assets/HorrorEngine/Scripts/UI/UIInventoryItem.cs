@@ -7,13 +7,9 @@ namespace HorrorEngine
 {
     public class UIInventoryItem : MonoBehaviour
     {
-        [FormerlySerializedAs("Icon")]
         [SerializeField] private Image m_Icon;
-        [FormerlySerializedAs("Combining")]
         [SerializeField] private GameObject m_SelectionLocked;
-        [FormerlySerializedAs("Name")]
         [SerializeField] private TMPro.TextMeshProUGUI m_ItemName;
-        [FormerlySerializedAs("Count")]
         [SerializeField] private TMPro.TextMeshProUGUI m_Count;
         [SerializeField] private string m_NoItemName = "No item";
         [SerializeField] private Color m_NormalAmountColor = Color.green;
@@ -50,7 +46,7 @@ namespace HorrorEngine
                 m_Icon.gameObject.SetActive(true);
 
                 m_Count.text = amount.ToString();
-                bool isReloadable = data as ReloadableHeWeaponData;
+                bool isReloadable = data as ReloadableHEWeaponData;
                 m_Count.gameObject.SetActive(data.Flags.HasFlag(ItemFlags.Bulkable) || amount > 0 || isReloadable);
                 m_Count.color = amount == 0 ? m_EmptyAmountColor : m_NormalAmountColor;
 

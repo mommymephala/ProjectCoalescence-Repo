@@ -15,15 +15,15 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         Death
     }
 
-    public State currentState;
+    [HideInInspector] public State currentState;
     private NavMeshAgent _agent;
     private Animator _animator;
     private CapsuleCollider _collider;
     private Transform _playerTransform;
     
     private bool _isPlayerDetected = false;
-    private Vector3 _lastKnownPlayerPosition;
     private bool _isPlayerLastPositionKnown = false;
+    private Vector3 _lastKnownPlayerPosition;
     
     public float timeBetweenAttacks = 2f;
     private float _timeSinceLastAttack = 0f;
@@ -106,13 +106,13 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         Debug.Log("Is in idle state.");
         
-        _animator.SetFloat("Speed", 0);
+        _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, Time.deltaTime * 2));
 
         float eyeLevel = transform.position.y + (_agent.height * 0.75f);
 
         // Parameters for vision cone
         float visionConeAngle = 60f;
-        int numberOfRays = 15;
+        int numberOfRays = 30;
         float angleStep = visionConeAngle / numberOfRays;
 
         // Detect the player with multiple raycasts
@@ -160,17 +160,17 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
                 _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, Time.deltaTime * 2));
             }
         }
-        else if (_isPlayerLastPositionKnown)
+        else if (_isPlayerLastPositionKnown && !_isPlayerDetected)
         {
             // Head to the last known player position
             _agent.SetDestination(_lastKnownPlayerPosition);
+            _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 2));
 
             // Check if AI has reached the last known player position
-            if (Vector3.Distance(transform.position, _lastKnownPlayerPosition) < 1f) // Threshold distance
+            if (Vector3.Distance(transform.position, _lastKnownPlayerPosition) < 1f)
             {
                 _isPlayerLastPositionKnown = false;
                 currentState = State.Idling;
-                _animator.SetFloat("Speed", 0); // Transition to idle animation
             }
         }
     }
@@ -249,23 +249,6 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
             _animator.SetTrigger("HitTrigger");
         }
     }
-    
-    /*public void ApplyForce(Vector3 force, Vector3 point)
-    {
-        // Enable ragdoll (if not already enabled)
-        EnableRagdoll();
-
-        // Apply force to the ragdoll
-        // Assume you have a reference to the Rigidbody of the hit part
-        // Rigidbody hitRigidbody = /* Get the Rigidbody of the hit part #1#;
-        // hitRigidbody.AddForceAtPosition(force, point, ForceMode.Impulse);
-    }
-
-    private void EnableRagdoll()
-    {
-        // Logic to enable ragdoll goes here
-        // Typically involves enabling Rigidbodies and Colliders of the ragdoll parts
-    }*/
 
     private void Death()
     {

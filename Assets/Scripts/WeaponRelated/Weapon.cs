@@ -3,6 +3,7 @@ using ECM.Components;
 using ECM.Controllers;
 using ECM.Examples;
 using FMODUnity;
+using HorrorEngine;
 using UnityEngine;
 using UnityEngine.UI;
 using Interfaces;
@@ -11,7 +12,7 @@ namespace WeaponRelated
 {
     public class Weapon : MonoBehaviour
     {
-        [SerializeField] public WeaponData weaponData;
+        public WeaponData weaponData;
 
         [Header("References")]
         private NewPlayerController _newPlayerController;
@@ -20,6 +21,8 @@ namespace WeaponRelated
         private Camera _weaponCamera;
         private Transform _playerCameraTransform;
         private Transform _weaponsHolderTransform;
+        private InventoryEntry _weaponEntry;
+        // private float _duration;
         
         [Header("Transforms")]
         [SerializeField] private Transform muzzleTransform;
@@ -42,8 +45,8 @@ namespace WeaponRelated
         // private RectTransform bottomCrosshair;
         // private RectTransform leftCrosshair;
         // private RectTransform rightCrosshair;
-        private RectTransform _reticle;
-        private float _currentSize;
+        // private RectTransform _reticle;
+        // private float _currentSize;
         
         [Header("Flags")]
         [SerializeField] private bool toggleAimDownSight = true;
@@ -51,6 +54,7 @@ namespace WeaponRelated
         //Flags
         private bool _shooting;
         private bool _reloading;
+        private Coroutine _reloadCoroutine;
         private bool _isbloodFXPrefabNull;
         private bool _isbulletHolePrefabNull;
         private bool _ismuzzleFlashPrefabNull;
@@ -87,20 +91,20 @@ namespace WeaponRelated
             weaponData.originalPlayerFOV = _playerCamera.fieldOfView;
             weaponData.originalWeaponFOV = _weaponCamera.fieldOfView;
 
-            _currentAmmoText = GameObject.Find("AmmoCountText").GetComponent<Text>();
-            if (CrosshairManager.Instance != null)
+            // _currentAmmoText = GameObject.Find("AmmoCountText").GetComponent<Text>();
+            /*if (CrosshairManager.Instance != null)
             {
                 // topCrosshair = CrosshairManager.Instance.topCrosshair;
                 // bottomCrosshair = CrosshairManager.Instance.bottomCrosshair;
                 // leftCrosshair = CrosshairManager.Instance.leftCrosshair;
                 // rightCrosshair = CrosshairManager.Instance.rightCrosshair;
-                _reticle = CrosshairManager.Instance.reticle;
+                // _reticle = CrosshairManager.Instance.reticle;
 
             }
             else
             {
                 Debug.LogError("CrosshairManager not found in the scene.");
-            }
+            }*/
         }
         private void Start()
         {
@@ -121,8 +125,8 @@ namespace WeaponRelated
             HandleAdsInput();
             HandleShootingInput();
             Aiming();
-            UpdateAmmoUI();
-            UpdateCrosshair();
+            // UpdateAmmoUI();
+            // UpdateCrosshair();
             _timeSinceLastShot += Time.deltaTime;
         }
 
@@ -148,7 +152,9 @@ namespace WeaponRelated
 
         private void Shoot()
         {
-            if (weaponData.currentAmmo <= 0)
+            _weaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
+
+            if (_weaponEntry.SecondaryCount <= 0)
             {
                 StartReload();
                 return;
@@ -174,7 +180,9 @@ namespace WeaponRelated
                 SpawnBloodParticle(hitInfo.point);
             }
 
-            weaponData.currentAmmo--;
+            // weaponData.currentAmmo--;
+            if (_weaponEntry.SecondaryCount > 0)
+                --_weaponEntry.SecondaryCount;
             _timeSinceLastShot = 0f;
             
             OnGunShot();
@@ -243,17 +251,65 @@ namespace WeaponRelated
 
         private void StartReload()
         {
-            if (_reloading || !gameObject.activeSelf || weaponData.currentAmmo >= weaponData.magSize) return;
-            aimingDownSight = false;
-            StartCoroutine(Reload());
+            if (_reloading || !gameObject.activeSelf) return;
+
+            _weaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
+            weaponData = _weaponEntry.Item as WeaponData;
+
+            if (_weaponEntry.SecondaryCount < weaponData.MaxAmmo)
+            {
+                ReloadFromInventory();
+            }
         }
 
-        private IEnumerator Reload()
+        private IEnumerator Reload(int ammoToReload, InventoryEntry ammoEntry)
         {
             _reloading = true;
+            aimingDownSight = false;
+            UIManager.Get<UIInputListener>().AddBlockingContext(this);
+
             yield return new WaitForSeconds(weaponData.reloadTime);
-            weaponData.currentAmmo = weaponData.magSize;
+
+            int actualAmmoLoaded = Mathf.Min(ammoToReload, ammoEntry.Count);
+            _weaponEntry.SecondaryCount += actualAmmoLoaded;
+            GameManager.Instance.Inventory.Remove(ammoEntry, actualAmmoLoaded);
+            _weaponEntry.SecondaryCount = Mathf.Min(_weaponEntry.SecondaryCount, weaponData.MaxAmmo);
+
+            EndReload();
+        }
+        
+        private void ReloadFromInventory()
+        {
+            Inventory inventory = GameManager.Instance.Inventory;
+            if (weaponData.AmmoItem != null && inventory.TryGet(weaponData.AmmoItem, out InventoryEntry ammoEntry))
+            {
+                int ammoNeeded = weaponData.MaxAmmo - _weaponEntry.SecondaryCount;
+                int ammoAvailable = Mathf.Min(ammoEntry.Count, ammoNeeded);
+
+                if (ammoAvailable > 0)
+                {
+                    if (_reloadCoroutine != null)
+                    {
+                        StopCoroutine(_reloadCoroutine);
+                    }
+                    _reloadCoroutine = StartCoroutine(Reload(ammoAvailable, ammoEntry));
+                }
+                else
+                {
+                    // Handle no ammo available scenario
+                }
+            }
+            else
+            {
+                // Handle no ammo available scenario
+            }
+        }
+
+        private void EndReload()
+        {
             _reloading = false;
+            UIManager.Get<UIInputListener>().RemoveBlockingContext(this);
+            _reloadCoroutine = null;
         }
 
         private void HandleReloadingInput()
@@ -380,7 +436,7 @@ namespace WeaponRelated
         
         //Separate UI logic!!!
         
-        private void UpdateCrosshair()
+        /*private void UpdateCrosshair()
         {
             // Determine crosshair size based on the player's state and weapon's characteristics
             if (_shooting)
@@ -409,18 +465,18 @@ namespace WeaponRelated
             // bottomCrosshair.sizeDelta = new Vector2(bottomCrosshair.sizeDelta.x, weaponData.restingSize + sizeDelta);
             // leftCrosshair.sizeDelta = new Vector2(leftCrosshair.sizeDelta.y, weaponData.restingSize + sizeDelta);
             // rightCrosshair.sizeDelta = new Vector2(rightCrosshair.sizeDelta.y, weaponData.restingSize + sizeDelta);
-        }
+        }*/
         
-        private void UpdateAmmoUI()
-        {
-            if (_reloading)
-            {
-                _currentAmmoText.text = "RELOADING";
-            }
-            else
-            {
-                _currentAmmoText.text = "Ammo: " + weaponData.currentAmmo;
-            }
-        }
+        // private void UpdateAmmoUI()
+        // {
+        //     if (_reloading)
+        //     {
+        //         _currentAmmoText.text = "RELOADING";
+        //     }
+        //     else
+        //     {
+        //         _currentAmmoText.text = "Ammo: " + weaponData.currentAmmo;
+        //     }
+        // }
     }
 }

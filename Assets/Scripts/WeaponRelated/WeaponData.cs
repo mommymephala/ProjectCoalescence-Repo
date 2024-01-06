@@ -5,7 +5,7 @@ namespace WeaponRelated
 {
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
     
-    public class WeaponData : EquipableItemData
+    public class WeaponData : ReloadableHEWeaponData
     {
         [Header("Audio")] 
         public EventReference gunShotSFX;
@@ -27,8 +27,8 @@ namespace WeaponRelated
         public float zoomSpeed;
     
         [Header("Reloading")]
-        public int currentAmmo;
-        public int magSize;
+        // public int currentAmmo;
+        // public int maxAmmo;
         public float reloadTime;
 
         [Header("Recoil Settings")]
@@ -42,9 +42,9 @@ namespace WeaponRelated
         public float resetDuration;
         public float walkingRecoilMultiplier;
         
-        [Header("Crosshair Values")]
-        public float restingSize;
-        public float maxSize;
-        public float speed;
+        // [Header("Crosshair Values")]
+        // public float restingSize;
+        // public float maxSize;
+        // public float speed;
     }
 }
