@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -42,4 +42,4 @@ namespace HorrorEngine
             Gizmos.DrawWireSphere(transform.position, m_UndetectionRadius);
         }
     }
-}
+}*/

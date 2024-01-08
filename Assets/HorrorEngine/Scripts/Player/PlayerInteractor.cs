@@ -7,8 +7,7 @@ namespace HorrorEngine
     public class PlayerInteractor : MonoBehaviour, IInteractor, IDeactivateWithActor
     {
         [SerializeField] InteractionColliderDetector m_Detector;
-        private Interactive m_Interactive; // Holds the currently focused interactive object
-
+        private Interactive m_Interactive;
         private IPlayerInput m_Input;
 
         public bool IsInteracting { get; private set; }
@@ -32,7 +31,7 @@ namespace HorrorEngine
         {
             if (!PauseController.Instance.IsPaused && m_Detector.FocusedInteractive && m_Input.IsInteractingDown())
             {
-                m_Interactive = m_Detector.FocusedInteractive; // Set the focused interactive object
+                m_Interactive = m_Detector.FocusedInteractive;
                 Interact();
                 return true;
             }

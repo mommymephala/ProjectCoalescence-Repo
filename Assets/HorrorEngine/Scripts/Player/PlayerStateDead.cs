@@ -1,4 +1,5 @@
 
+/*
 namespace HorrorEngine
 {
     public class PlayerStateDead : ActorState
@@ -22,4 +23,4 @@ namespace HorrorEngine
             base.StateExit(intoState);
         }
     }
-}
+}*/

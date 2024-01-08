@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HorrorEngine;
+using UnityEngine;
 
 namespace ECM.Components
 {
@@ -22,6 +23,25 @@ namespace ECM.Components
         // [Tooltip("The keyboard key to unlock the mouse cursor.")]
         // [SerializeField]
         // private KeyCode _unlockCursorKey = KeyCode.Escape;
+        
+        /* public bool lockCursor
+        {
+            get { return _lockCursor; }
+            set { _lockCursor = value; }
+        }*/
+
+        // ReSharper disable once InvalidXmlDocComment
+        /// <summary>
+        /// The keyboard key to unlock the mouse cursor.
+        /// </summary>
+
+        // public KeyCode unlockCursorKey
+        // {
+        //     get { return _unlockCursorKey; }
+        //     set { _unlockCursorKey = value; }
+        // }
+        
+        //protected bool _isCursorLocked = true;
 
         [Tooltip("How fast the cursor moves in response to mouse lateral (x-axis) movement.")]
         [SerializeField]
@@ -54,14 +74,12 @@ namespace ECM.Components
         
         private float _adsSensitivity = 1.0f;
 
-        public bool aimingDownSight;
+        [HideInInspector] public bool aimingDownSight;
         
         #endregion
 
         #region FIELDS
-
-        //protected bool _isCursorLocked = true;
-
+        
         protected Quaternion characterTargetRotation;
         protected Quaternion cameraTargetRotation;
 
@@ -85,23 +103,6 @@ namespace ECM.Components
         {
             aimingDownSight = aiming;
         }
-        
-       /* public bool lockCursor
-        {
-            get { return _lockCursor; }
-            set { _lockCursor = value; }
-        }*/
-
-       // ReSharper disable once InvalidXmlDocComment
-       /// <summary>
-        /// The keyboard key to unlock the mouse cursor.
-        /// </summary>
-
-        // public KeyCode unlockCursorKey
-        // {
-        //     get { return _unlockCursorKey; }
-        //     set { _unlockCursorKey = value; }
-        // }
 
         /// <summary>
         /// How fast the cursor moves in response to mouse lateral (x-axis) movement.
@@ -193,12 +194,17 @@ namespace ECM.Components
 
         public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
+            if (PauseController.Instance.IsPaused)
+            {
+                return;
+            }
+            
             var currentSensitivity = aimingDownSight ? _adsSensitivity : lateralSensitivity;
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;
             var pitch = Input.GetAxis("Mouse Y") * verticalSensitivity;
 
-            var yawRotation = Quaternion.Euler(0.0f, yaw, 0.0f);
-            var pitchRotation = Quaternion.Euler(-pitch, 0.0f, 0.0f);
+            Quaternion yawRotation = Quaternion.Euler(0.0f, yaw, 0.0f);
+            Quaternion pitchRotation = Quaternion.Euler(-pitch, 0.0f, 0.0f);
 
             characterTargetRotation *= yawRotation;
             cameraTargetRotation *= pitchRotation;

@@ -22,6 +22,7 @@ namespace WeaponRelated
         private Transform _playerCameraTransform;
         private Transform _weaponsHolderTransform;
         private InventoryEntry _weaponEntry;
+        private GameObject _crosshairInstance;
         // private float _duration;
         
         [Header("Transforms")]
@@ -38,7 +39,7 @@ namespace WeaponRelated
         [SerializeField] private GameObject bulletHolePrefab;
 
         [Header("UI")]
-        private Text _currentAmmoText;
+        // private Text _currentAmmoText;
         
         // [Header("Crosshair UI")]
         // private RectTransform topCrosshair;
@@ -108,6 +109,12 @@ namespace WeaponRelated
         }
         private void Start()
         {
+            if (weaponData.crosshairPrefab != null)
+            {
+                _crosshairInstance = Instantiate(weaponData.crosshairPrefab, transform);
+                _crosshairInstance.SetActive(false);
+            }
+            
             UpdateAiming(false);
         }
 
@@ -116,16 +123,26 @@ namespace WeaponRelated
             _shooting = false;
             _reloading = false;
             aimingDownSight = false;
+            if (_crosshairInstance != null)
+            {
+                Destroy(_crosshairInstance);
+            }
             ResetFOV();
         }
 
         private void Update()
         {
+            if (PauseController.Instance.IsPaused)
+            {
+                return;
+            }
+            
             HandleReloadingInput();
             HandleAdsInput();
             HandleShootingInput();
             Aiming();
             // UpdateAmmoUI();
+            UpdateCrosshairVisibility();
             // UpdateCrosshair();
             _timeSinceLastShot += Time.deltaTime;
         }
@@ -166,8 +183,6 @@ namespace WeaponRelated
                 
                 var layerMask = ~LayerMask.GetMask("InteractionSystem");
                 if (!Physics.Raycast(_weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
-                
-                // Debug.DrawRay(weaponsHolderTransform.position, spreadDirection, Color.red, 5);
                 
                 if (hitInfo.transform.CompareTag("Wall"))
                 {
@@ -435,6 +450,15 @@ namespace WeaponRelated
         }
         
         //Separate UI logic!!!
+        
+        
+        private void UpdateCrosshairVisibility()
+        {
+            if (_crosshairInstance != null)
+            {
+                _crosshairInstance.SetActive(!aimingDownSight);
+            }
+        }
         
         /*private void UpdateCrosshair()
         {

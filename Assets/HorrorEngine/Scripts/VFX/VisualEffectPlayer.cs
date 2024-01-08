@@ -22,7 +22,7 @@ namespace HorrorEngine
 
     public class VisualEffectPlayer : MonoBehaviour
     {
-        [SerializeField] private SocketController m_SocketController;
+        // [SerializeField] private SocketController m_SocketController;
         [SerializeField] private VFXEntry[] m_VisualEffects;
        
         public void PlayVFX(AnimationEvent evt)
@@ -40,7 +40,7 @@ namespace HorrorEngine
                             prefab = vfx.Effect;
 
                         if (prefab)
-                            vfx.InstantiationSettings.Instantiate(prefab, m_SocketController);
+                            vfx.InstantiationSettings.Instantiate(prefab);
                     }
                 }
             }

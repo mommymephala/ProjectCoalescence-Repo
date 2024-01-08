@@ -25,6 +25,10 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     private bool _isPlayerLastPositionKnown = false;
     private Vector3 _lastKnownPlayerPosition;
     
+    [SerializeField] private SphereCollider detectionSphere;
+    public float idleDetectionRadius = 5f;
+    public float chaseDetectionRadius = 10f;
+    
     public float timeBetweenAttacks = 2f;
     private float _timeSinceLastAttack = 0f;
     
@@ -41,7 +45,7 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     private int _attackCount = 0;
     // private bool _isAttacking = false;
     
-    public LayerMask playerLayer;
+    // public LayerMask playerLayer;
     // public GameObject lootPrefab;
 
     private void Awake()
@@ -55,22 +59,22 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         // currentState = State.InitialSpawn;
         currentState = State.Idling;
+        detectionSphere.radius = idleDetectionRadius;
     }
 
     private void Update()
     {
-        if (_isDead) return;
-        _timeSinceLastAttack += Time.deltaTime;
-        
         if (_playerTransform == null)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
                 _playerTransform = player.transform;
-                return;
             }
         }
+        
+        if (_isDead) return;
+        _timeSinceLastAttack += Time.deltaTime;
 
         switch (currentState)
         {
@@ -105,36 +109,10 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     private void Idle()
     {
         Debug.Log("Is in idle state.");
+        detectionSphere.radius = idleDetectionRadius;
         
-        _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, Time.deltaTime * 2));
-
-        float eyeLevel = transform.position.y + (_agent.height * 0.75f);
-
-        // Parameters for vision cone
-        float visionConeAngle = 60f;
-        int numberOfRays = 30;
-        float angleStep = visionConeAngle / numberOfRays;
-
-        // Detect the player with multiple raycasts
-        for (int i = 0; i <= numberOfRays; i++)
-        {
-            float rayAngle = -visionConeAngle / 2 + angleStep * i;
-            Vector3 direction = Quaternion.Euler(0, rayAngle, 0) * transform.forward;
-
-            Vector3 rayOrigin = new Vector3(transform.position.x, eyeLevel, transform.position.z);
-
-            Debug.DrawRay(rayOrigin, direction * sightRange, Color.red);
-
-            if (Physics.Raycast(rayOrigin, direction, out RaycastHit hit, sightRange, playerLayer))
-            {
-                if (hit.collider.gameObject.CompareTag("Player"))
-                {
-                    _isPlayerDetected = true;
-                    currentState = State.Chasing;
-                    break;
-                }
-            }
-        }
+        _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, Time.deltaTime * 5));
+        
     }
 
     private void Chase()
@@ -142,69 +120,119 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         if (_isPlayerDetected)
         {
             Debug.Log("Is in chase state.");
-            
+            detectionSphere.radius = chaseDetectionRadius;
+        
             _lastKnownPlayerPosition = _playerTransform.position;
             _isPlayerLastPositionKnown = true;
-            
-            _agent.SetDestination(_playerTransform.position);
-            _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 2));
 
-            if (Vector3.Distance(_playerTransform.position, transform.position) <= attackRange)
+            var distanceToPlayer = Vector3.Distance(_playerTransform.position, transform.position);
+
+            // Continue chasing if the player is within sight range
+            if (distanceToPlayer <= sightRange && distanceToPlayer > attackRange)
+            {
+                _agent.isStopped = false;
+                _agent.SetDestination(_playerTransform.position);
+
+                var normalizedSpeed = Mathf.InverseLerp(attackRange, sightRange, distanceToPlayer);
+                _agent.speed = Mathf.Lerp(1f, 0.5f, normalizedSpeed);
+                _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 5));
+            }
+            else if (distanceToPlayer <= attackRange)
             {
                 currentState = State.Attacking;
             }
-            
-            if (Vector3.Distance(_playerTransform.position, transform.position) > sightRange)
-            {
-                _isPlayerDetected = false;
-                _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, Time.deltaTime * 2));
-            }
         }
-        else if (_isPlayerLastPositionKnown && !_isPlayerDetected)
+        else if (_isPlayerLastPositionKnown)
         {
             // Head to the last known player position
+            _agent.isStopped = false;
             _agent.SetDestination(_lastKnownPlayerPosition);
-            _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 2));
 
-            // Check if AI has reached the last known player position
             if (Vector3.Distance(transform.position, _lastKnownPlayerPosition) < 1f)
             {
+                // Once reached the last known position, stop chasing
                 _isPlayerLastPositionKnown = false;
                 currentState = State.Idling;
+                _animator.SetFloat("Speed", 0); // Stop the chase animation
             }
+            else
+            {
+                // Continue the chase animation while moving towards the last known position
+                _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 5));
+            }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _isPlayerDetected = true;
+            _playerTransform = other.transform;
+            currentState = State.Chasing;
+        }
+    }
+    /*private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _isPlayerDetected = true;
+            _playerTransform = other.transform;
+            currentState = State.Chasing;
+        }
+    }*/
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _isPlayerDetected = false;
+            _lastKnownPlayerPosition = _playerTransform.position;
+            _isPlayerLastPositionKnown = true;
+            currentState = State.Chasing;
         }
     }
 
     private void Attack()
     {
         Debug.Log("Is in attack state.");
-
-        _agent.isStopped = true;
+        CheckPlayerDistance();
+        FacePlayer();
 
         if (_timeSinceLastAttack >= timeBetweenAttacks)
         {
+            _timeSinceLastAttack = 0f;
+            _animator.SetFloat("Speed",  0);
             TriggerAttack();
         }
-        
-        CheckPlayerDistance();
+    }
+
+    private void FacePlayer()
+    {
+        Vector3 directionToPlayer = (_playerTransform.position - transform.position).normalized;
+        // Ensure the rotation is only on the y-axis
+        directionToPlayer.y = 0;
+
+        if (directionToPlayer != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
     }
     
     private void CheckPlayerDistance()
     {
-        float playerDistance = Vector3.Distance(_playerTransform.position, transform.position);
+        var playerDistance = Vector3.Distance(_playerTransform.position, transform.position);
 
         if (playerDistance > attackRange)
         {
-            // Transition to chase or idle based on player's position
             currentState = (playerDistance <= sightRange) ? State.Chasing : State.Idling;
-            _agent.isStopped = false;
+            _agent.isStopped = false; // Ensure the agent can move again
         }
     }
     
     private float CalculateAttackChance()
     {
         // Adjust the probability thresholds based on the attack count
-        float lightAttackChance = 0.7f - (0.1f * (_attackCount / 3));
+        var lightAttackChance = 0.7f - (0.1f * (_attackCount / 3));
         return Mathf.Clamp(lightAttackChance, 0.5f, 0.7f);
     }
 
@@ -228,7 +256,6 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         _animator.ResetTrigger("HeavyAttackTrigger");
         _animator.ResetTrigger("NormalAttackTrigger");
-        _timeSinceLastAttack = 0f;
     }
 
     public void TakeDamage(float damage)
@@ -237,7 +264,16 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
 
         // Reduce health
         health -= damage;
-    
+
+        // Update last known player position when taking damage
+        if (_playerTransform != null)
+        {
+            _lastKnownPlayerPosition = _playerTransform.position;
+            _isPlayerLastPositionKnown = true;
+            detectionSphere.radius = chaseDetectionRadius;
+            currentState = State.Chasing;
+        }
+
         // Check if the enemy is dead
         if (health <= 0)
         {

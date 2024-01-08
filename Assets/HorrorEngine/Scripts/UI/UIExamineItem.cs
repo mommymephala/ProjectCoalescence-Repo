@@ -14,9 +14,7 @@ namespace HorrorEngine
         [SerializeField] private TMPro.TextMeshProUGUI m_NameText;
         [SerializeField] private Transform m_InteractionPrompt;
         [SerializeField] private GameObject m_ButtonLegend;
-
-
-
+        
         private IUIInput m_Input;
         private UIExamineItemRenderer m_Renderer;
 
@@ -35,7 +33,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        void Start()
+        private void Start()
         {
             gameObject.SetActive(false);
 
@@ -62,7 +60,7 @@ namespace HorrorEngine
             m_Renderer.PreviewObject.localRotation = Quaternion.Euler(m_InitialRotation);
 
             PauseController.Instance.Pause();
-            CursorController.Instance.SetInUI(true);
+            // CursorController.Instance.SetInUI(true);
 
             m_NameText.text = item.Name;
 
@@ -110,7 +108,7 @@ namespace HorrorEngine
 
             if (m_CanInteract)
             {
-                Physics.SyncTransforms(); // Needed for interaction since time is paused 
+                Physics.SyncTransforms();
 
                 m_Renderer.InteractionDetector.Cast();
                 if (m_Renderer.InteractionDetector.FocusedInteractive)
@@ -137,15 +135,15 @@ namespace HorrorEngine
         {
             m_XSpeed += m_Input.GetPrimaryAxis().x * Time.unscaledDeltaTime * m_XRotationSpeed;
             m_YSpeed += m_Input.GetPrimaryAxis().y * Time.unscaledDeltaTime * m_YRotationSpeed;
-
+            
             Vector3 objectUp = m_Renderer.PreviewObject.InverseTransformDirection(Vector3.up);
             Vector3 objectRight = m_Renderer.PreviewObject.InverseTransformDirection(Vector3.right);
 
             m_Renderer.PreviewObject.Rotate(-objectUp * m_XSpeed);
             m_Renderer.PreviewObject.Rotate(objectRight * m_YSpeed);
 
-            m_XSpeed = m_XSpeed - m_XSpeed * m_RotationDrag * Time.unscaledDeltaTime;
-            m_YSpeed = m_YSpeed - m_YSpeed * m_RotationDrag * Time.unscaledDeltaTime;
+            m_XSpeed -= m_XSpeed * m_RotationDrag * Time.unscaledDeltaTime;
+            m_YSpeed -= m_YSpeed * m_RotationDrag * Time.unscaledDeltaTime;
         }
 
         // --------------------------------------------------------------------
@@ -155,7 +153,7 @@ namespace HorrorEngine
             ClearPreviousModel();
 
             PauseController.Instance.Resume();
-            CursorController.Instance.SetInUI(false);
+            // CursorController.Instance.SetInUI(false);
 
             gameObject.SetActive(false);
 

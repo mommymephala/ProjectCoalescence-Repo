@@ -25,7 +25,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        void Start()
+        private void Start()
         {
             m_UIInput = UIManager.Instance.GetComponent<IUIInput>();
             Deactivate();
@@ -39,7 +39,7 @@ namespace HorrorEngine
             m_SelectedInteractive = null;
             this.InvokeActionNextFrame(() =>
             {
-                foreach (var interactive in m_Interactives)
+                foreach (Interactive interactive in m_Interactives)
                 {
                     interactive.enabled = true;
                 }
@@ -54,7 +54,7 @@ namespace HorrorEngine
 
         public void Deactivate()
         {
-            foreach(var interactive in m_Interactives)
+            foreach(Interactive interactive in m_Interactives)
             {
                 interactive.enabled = false;
             }
@@ -63,7 +63,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        void Update()
+        private void Update()
         {
             Vector2 axis = m_UIInput.GetPrimaryAxis();
             if (axis.magnitude > 0.5)
@@ -80,6 +80,7 @@ namespace HorrorEngine
                     }
                 }
             }
+            
             else
             {
                 m_CanSelect = true;

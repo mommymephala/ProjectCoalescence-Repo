@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -14,4 +14,4 @@ namespace HorrorEngine
             Gizmos.DrawWireCube(LookPosition, Vector3.one * 0.15f);
         }
     }
-}
+}*/

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -151,4 +151,4 @@ namespace HorrorEngine
             return m_HashedTagStates[tag][0];
         }
     }
-}
+}*/

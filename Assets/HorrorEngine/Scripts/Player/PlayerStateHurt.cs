@@ -1,8 +1,8 @@
-using UnityEngine;
-
-namespace HorrorEngine
-{
-    public class PlayerStateHurt : ActorStateWithDuration
-    {
-    }
-}
+// using UnityEngine;
+//
+// namespace HorrorEngine
+// {
+//     public class PlayerStateHurt : ActorStateWithDuration
+//     {
+//     }
+// }

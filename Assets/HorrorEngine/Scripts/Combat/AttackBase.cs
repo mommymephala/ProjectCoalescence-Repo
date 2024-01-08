@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -74,4 +74,4 @@ namespace HorrorEngine
 
         public virtual void OnAttackNotStarted() { }
     }
-}
+}*/

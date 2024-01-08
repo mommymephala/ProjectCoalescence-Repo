@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4820350874694038026}
     m_Modifications:
     - target: {fileID: 3633606685666757362, guid: 996f32ddee5847d44822616fb19f57a4, type: 3}
@@ -68,12 +69,21 @@ PrefabInstance:
       value: GunAmmo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996f32ddee5847d44822616fb19f57a4, type: 3}
+--- !u!4 &7830557016784850338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3633606685666757362, guid: 996f32ddee5847d44822616fb19f57a4, type: 3}
+  m_PrefabInstance: {fileID: 6829304322174584656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6829304323121237257
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2027679269891604227, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
@@ -160,7 +170,25 @@ PrefabInstance:
       propertyPath: Amount_OBSOLETE
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5379111683642358938, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379111683642358938, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379111683642358938, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2027679269891604227, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7830557016784850338}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c73ef28b5f95b14b92bec958713307d, type: 3}
 --- !u!4 &4820350874694038026 stripped
 Transform:

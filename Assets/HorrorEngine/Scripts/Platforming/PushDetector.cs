@@ -1,3 +1,4 @@
+/*
 using System;
 using UnityEngine;
 
@@ -123,3 +124,4 @@ namespace HorrorEngine
         }
     }
 }
+*/

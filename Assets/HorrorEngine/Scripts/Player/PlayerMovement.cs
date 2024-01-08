@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -321,4 +321,4 @@ namespace HorrorEngine
         public void AddConstrain(MovementConstrain constrain) { Constrain |= constrain; }
         public void RemoveConstrain(MovementConstrain constrain) { Constrain &= ~constrain; }
     }
-}
+}*/

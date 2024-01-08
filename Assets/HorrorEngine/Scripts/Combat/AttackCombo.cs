@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,4 +18,4 @@ namespace HorrorEngine
     {
         public AttackComboEntry[] Combo;
     }
-}
+}*/

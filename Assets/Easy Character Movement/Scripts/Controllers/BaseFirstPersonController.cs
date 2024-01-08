@@ -202,11 +202,6 @@ namespace ECM.Controllers
 
         protected override void HandleInput()
         {
-            // Toggle pause / resume.
-            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
-            if (Input.GetKeyDown(KeyCode.P))
-                pause = !pause;
-
             // Player input
             moveDirection = new Vector3
             {

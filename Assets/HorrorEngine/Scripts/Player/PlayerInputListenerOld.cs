@@ -5,35 +5,35 @@ namespace HorrorEngine
 {
     public class PlayerInputListenerOld : MonoBehaviour, IPlayerInput
     {
-        private MouseLook _mouseLook;
-        static readonly float k_AxisActionThreshold = 0.5f;
+        // private MouseLook _mouseLook;
+        // static readonly float k_AxisActionThreshold = 0.5f;
 
-        [SerializeField] string m_XPrimaryAxis;
-        [SerializeField] string m_YPrimaryAxis;
-        [SerializeField] string m_Aiming;
-        [SerializeField] string m_Attack;
+        // [SerializeField] string m_XPrimaryAxis;
+        // [SerializeField] string m_YPrimaryAxis;
+        // [SerializeField] string m_Aiming;
+        // [SerializeField] string m_Attack;
         [SerializeField] string m_Interact;
-        [SerializeField] string m_Run;
-        [SerializeField] string m_Reload;
-        [SerializeField] string m_Turn180;
-        [SerializeField] string m_ChangeAimTarget;
+        // [SerializeField] string m_Run;
+        // [SerializeField] string m_Reload;
+        // [SerializeField] string m_Turn180;
+        // [SerializeField] string m_ChangeAimTarget;
 
         private void Awake()
         {
             MessageBuffer<GameUnpausedMessage>.Subscribe(OnGameUnpaused);
         }
 
-        void OnGameUnpaused(GameUnpausedMessage msg)
+        private void OnGameUnpaused(GameUnpausedMessage msg)
         {
             Flush();
         }
 
-        public Vector2 GetPrimaryAxis()
-        {
-            return new Vector2((Input.GetAxis(m_XPrimaryAxis)), (Input.GetAxis(m_YPrimaryAxis)));
-        }
+        // public Vector2 GetPrimaryAxis()
+        // {
+        //     return new Vector2((Input.GetAxis(m_XPrimaryAxis)), (Input.GetAxis(m_YPrimaryAxis)));
+        // }
 
-        public bool IsAimingHeld()
+        /*public bool IsAimingHeld()
         {
             return Input.GetAxis(m_Aiming) > k_AxisActionThreshold || Input.GetButton(m_Aiming);
         }
@@ -46,15 +46,14 @@ namespace HorrorEngine
         public bool IsAttackUp()
         {
             return Input.GetButtonUp(m_Attack);
-        }
-
+        }*/
 
         public bool IsInteractingDown()
         {
             return Input.GetButtonDown(m_Interact);
         }
 
-        public bool IsRunHeld()
+        /*public bool IsRunHeld()
         {
             return Input.GetButton(m_Run);
         }
@@ -72,7 +71,7 @@ namespace HorrorEngine
         public bool IsChangeAimTargetDown()
         {
             return Input.GetButtonDown(m_ChangeAimTarget);
-        }
+        }*/
 
         public void Flush()
         {

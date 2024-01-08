@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -39,4 +39,4 @@ namespace HorrorEngine
                 OnChanged?.Invoke(this, target);
         }
     }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -159,4 +160,5 @@ namespace HorrorEngine
     public class PlayerInputNew : MonoBehaviour { }
 #endif
 }
+*/
 

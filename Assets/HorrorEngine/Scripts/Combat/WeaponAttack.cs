@@ -1,4 +1,4 @@
-namespace HorrorEngine
+/*namespace HorrorEngine
 {
     public abstract class WeaponAttack : AttackBase
     {
@@ -12,4 +12,4 @@ namespace HorrorEngine
             m_Weapon = GetComponentInParent<Weapon>();
         }
     }
-}
+}*/

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using UnityEngine;
 
 namespace HorrorEngine
@@ -92,4 +92,4 @@ namespace HorrorEngine
             m_Interactive?.Finish();
         }
     }
-}
+}*/

@@ -7,7 +7,7 @@ namespace HorrorEngine
     public class ObjectInstantiationSettings
     {
         public Transform Parent;
-        public SocketHandle Socket;
+        // public SocketHandle Socket;
         public Vector3 Position;
         public Vector3 Rotation;
         public float Scale = 1f;
@@ -15,19 +15,19 @@ namespace HorrorEngine
         public bool InheritsRotation;
         public bool DetachFromParent;
 
-        public GameObject Instantiate(GameObject prefab, SocketController socketCtrl = null)
+        public GameObject Instantiate(GameObject prefab)
         {
             if (!prefab)
                 return null;
 
-            Debug.Assert(Socket ^ Parent, "Socket and Parent properties are exclusive, Socket will be set as the new parent for the object");
-            Debug.Assert(socketCtrl || !Socket, "Socket has been provided but SocketController was null");
+            // Debug.Assert(Socket ^ Parent, "Socket and Parent properties are exclusive, Socket will be set as the new parent for the object");
+            // Debug.Assert(socketCtrl || !Socket, "Socket has been provided but SocketController was null");
 
-            if (Socket)
-            {
-                Parent = socketCtrl.GetSocket(Socket).transform;
-                Socket = null; // Clear socket to prevent future lookups
-            }
+            // if (Socket)
+            // {
+            //     Parent = socketCtrl.GetSocket(Socket).transform;
+            //     Socket = null; // Clear socket to prevent future lookups
+            // }
 
             GameObject newObj;
             Transform parent = null;

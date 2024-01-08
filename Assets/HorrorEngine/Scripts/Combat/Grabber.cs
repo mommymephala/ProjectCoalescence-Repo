@@ -1,9 +1,9 @@
-using UnityEngine;
-
-namespace HorrorEngine
-{
-    public class Grabber : MonoBehaviour
-    {
-       
-    }
-}
+// using UnityEngine;
+//
+// namespace HorrorEngine
+// {
+//     public class Grabber : MonoBehaviour
+//     {
+//        
+//     }
+// }

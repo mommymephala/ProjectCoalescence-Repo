@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.AI;
 
 namespace HorrorEngine
@@ -37,4 +37,4 @@ namespace HorrorEngine
                 OnChanged?.Invoke(this, target);
         }
     }
-}
+}*/

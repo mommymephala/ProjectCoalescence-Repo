@@ -7,7 +7,7 @@ namespace HorrorEngine
     {
         public ActorHandle Handle;
         public Animator MainAnimator;
-        public ActorStateController StateController { get; private set; }
+        // public ActorStateController StateController { get; private set; }
 
         private HashSet<Object> m_DisableContext = new HashSet<Object>();
 
@@ -19,7 +19,7 @@ namespace HorrorEngine
 
         protected void Awake()
         {
-            StateController = GetComponent<ActorStateController>();
+            // StateController = GetComponent<ActorStateController>();
 
             m_DeactivableCompontents = GetComponentsInChildren<IDeactivateWithActor>();
         }

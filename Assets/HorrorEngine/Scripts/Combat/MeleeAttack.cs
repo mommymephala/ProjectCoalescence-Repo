@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Serialization;
@@ -73,3 +74,4 @@ namespace HorrorEngine
         }
     }
 }
+*/

@@ -122,7 +122,7 @@ namespace HorrorEngine
 
         private void OnInteractorDisabled(OnDisableNotifier notifier)
         {
-            if (notifier.TryGetComponent(out Interactive interactive)) 
+            if (notifier.TryGetComponent(out Interactive interactive))
             {
                 if (interactive == m_Interactive)
                 {

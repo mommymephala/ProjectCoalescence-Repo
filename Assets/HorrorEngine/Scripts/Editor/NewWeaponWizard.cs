@@ -1,5 +1,6 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEditor;
+using WeaponRelated;
 
 namespace HorrorEngine
 {
@@ -47,54 +48,54 @@ namespace HorrorEngine
                 {
                     Weapon objSource = (Weapon)PrefabUtility.InstantiatePrefab(m_WeaponPrefab);
 
-                    GameObject oldModel = objSource.Visuals;
+                    // GameObject oldModel = objSource.Visuals;
 #if UNITY_2022_3_OR_NEWER
-                    GameObject newModel = (GameObject)PrefabUtility.InstantiatePrefab(m_NewWeaponModel, oldModel.transform.parent);
+                    // GameObject newModel = (GameObject)PrefabUtility.InstantiatePrefab(m_NewWeaponModel, oldModel.transform.parent);
 #else
                     GameObject newModel = Instantiate(m_NewWeaponModel, oldModel.transform.parent);
 #endif
-                    objSource.Visuals = newModel;
+                    // objSource.Visuals = newModel;
 
                     string outName = string.IsNullOrEmpty(m_Name) ? m_NewWeaponModel.name : m_Name;
 
                     // Copy all sockets
-                    Socket[] sockets = oldModel.GetComponentsInChildren<Socket>();
-                    foreach (var socket in sockets)
-                    {
-                        GameObject newSocket = new GameObject(socket.name);
-                        UnityEditorInternal.ComponentUtility.CopyComponent(socket);
-                        UnityEditorInternal.ComponentUtility.PasteComponentAsNew(newSocket);
-                        newSocket.transform.SetParent(newModel.transform);
-                    }
+                    // Socket[] sockets = oldModel.GetComponentsInChildren<Socket>();
+                    // foreach (var socket in sockets)
+                    // {
+                    //     GameObject newSocket = new GameObject(socket.name);
+                    //     UnityEditorInternal.ComponentUtility.CopyComponent(socket);
+                    //     UnityEditorInternal.ComponentUtility.PasteComponentAsNew(newSocket);
+                    //     newSocket.transform.SetParent(newModel.transform);
+                    // }
 
                     // Copy & assign weapon data
-                    HEWeaponData newData = null;
+                    WeaponData newData = null;
                     if (m_CopyWeaponData)
                     {
-                        string oldDataPath = AssetDatabase.GetAssetPath(objSource.heWeaponData);
+                        string oldDataPath = AssetDatabase.GetAssetPath(objSource.weaponData);
                         string outDataPath = m_OutputFolder + "/" + outName + ".asset";
                         if (AssetDatabase.CopyAsset(oldDataPath, outDataPath))
                         {
-                            newData = AssetDatabase.LoadAssetAtPath(outDataPath, typeof(HEWeaponData)) as HEWeaponData;
+                            newData = AssetDatabase.LoadAssetAtPath(outDataPath, typeof(WeaponData)) as WeaponData;
                             newData.GenerateId();
                             newData.Name = outName;
-                            objSource.heWeaponData = newData;
+                            objSource.weaponData = newData;
                         }
                     }
 
                     if (m_CopyExaminationPrefab)
                     {
-                        GameObject newExamination = Instantiate(objSource.heWeaponData.ExamineModel);
+                        GameObject newExamination = Instantiate(objSource.weaponData.ExamineModel);
                         var uiExaminUtil = newExamination.GetComponent<UIExamineItemUtility>();
                         DestroyImmediate(uiExaminUtil.Visuals);
 #if UNITY_2022_3_OR_NEWER
-                        GameObject newExaminationModel = (GameObject)PrefabUtility.InstantiatePrefab(m_NewWeaponModel, oldModel.transform.parent);
+                        // GameObject newExaminationModel = (GameObject)PrefabUtility.InstantiatePrefab(m_NewWeaponModel, oldModel.transform.parent);
 #else
                         GameObject newExaminationModel = Instantiate(m_NewWeaponModel, oldModel.transform.parent);
 #endif
-                        newExaminationModel.transform.SetParent(newExamination.transform);
-                        newExaminationModel.layer = LayerMask.NameToLayer("UI");
-                        uiExaminUtil.Visuals = newExaminationModel;
+                        // newExaminationModel.transform.SetParent(newExamination.transform);
+                        // newExaminationModel.layer = LayerMask.NameToLayer("UI");
+                        // uiExaminUtil.Visuals = newExaminationModel;
                         
                         string examOutPath = m_OutputFolder + "/" + outName + "_Examination.prefab";
                         GameObject examinePrefab = PrefabUtility.SaveAsPrefabAsset(newExamination, examOutPath);
@@ -110,7 +111,7 @@ namespace HorrorEngine
                     }
 
 #if UNITY_2022_3_OR_NEWER
-                    DestroyImmediate(oldModel);
+                    // DestroyImmediate(oldModel);
 #else
                     oldModel.gameObject.SetActive(false);
 #endif
@@ -133,4 +134,4 @@ namespace HorrorEngine
             }
         }
     }
-}
+}*/

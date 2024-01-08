@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 namespace HorrorEngine
@@ -17,3 +18,4 @@ namespace HorrorEngine
         }
     }
 }
+*/

@@ -15,6 +15,9 @@ namespace WeaponRelated
         public float damage;
         public float maxDistance;
         
+        [Header("Crosshair")]
+        public GameObject crosshairPrefab;
+        
         [Tooltip("In RPM")] public float fireRate;
         public float spread;
         public int bulletsPerShot;
@@ -41,10 +44,5 @@ namespace WeaponRelated
         public float kickbackDuration;
         public float resetDuration;
         public float walkingRecoilMultiplier;
-        
-        // [Header("Crosshair Values")]
-        // public float restingSize;
-        // public float maxSize;
-        // public float speed;
     }
 }

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using ECM.Components;
+using ECM.Examples;
+using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -14,16 +17,15 @@ namespace HorrorEngine
 
     public class PauseController : SingletonBehaviourDontDestroy<PauseController>
     {
-        private int mPauseCount;
-
-        public bool IsPaused => mPauseCount > 0;
+        private int _pauseCount;
+        public bool IsPaused => _pauseCount > 0;
 
         public void Pause()
         {
-            ++mPauseCount;
-            if (mPauseCount == 1)
+            ++_pauseCount;
+            if (_pauseCount == 1)
                 MessageBuffer<GamePausedMessage>.Dispatch(GamePausedMessage.Default);
-
+            
             Time.timeScale = 0f;
         }
 
@@ -31,19 +33,19 @@ namespace HorrorEngine
 
         public void Resume()
         {
-            --mPauseCount;
+            --_pauseCount;
 
-            if (mPauseCount <= 0)
+            if (_pauseCount <= 0)
             {
                 MessageBuffer<GameUnpausedMessage>.Dispatch(GameUnpausedMessage.Default);
                 Time.timeScale = 1f;
             }
 
-            Debug.Assert(mPauseCount >= 0, "PauseController:  PauseCount went below 0");
+            Debug.Assert(_pauseCount >= 0, "PauseController: PauseCount went below 0");
         }
 
 #if UNITY_EDITOR
-        public void Update()
+        private void Update()
         {
             if (Input.GetKey(KeyCode.Numlock))
             {
@@ -51,7 +53,5 @@ namespace HorrorEngine
             }
         }
 #endif
-    }
-
-    
+    }    
 }

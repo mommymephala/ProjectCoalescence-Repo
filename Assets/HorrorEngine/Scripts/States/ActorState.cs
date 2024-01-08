@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -150,4 +150,4 @@ namespace HorrorEngine
 
         public bool HasTag(string tag) { return m_HashedTags.Contains(tag); }
     }
-}
+}*/

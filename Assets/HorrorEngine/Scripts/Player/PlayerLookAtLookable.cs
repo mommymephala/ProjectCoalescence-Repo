@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -139,4 +139,4 @@ namespace HorrorEngine
             GizmoUtils.DrawWireCapsule(transform.localToWorldMatrix, up, down, m_Radius);
         }
     }
-}
+}*/

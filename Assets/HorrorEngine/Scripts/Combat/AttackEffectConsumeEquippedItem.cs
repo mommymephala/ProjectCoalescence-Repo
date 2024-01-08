@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace HorrorEngine
 {
@@ -14,4 +14,4 @@ namespace HorrorEngine
             GameManager.Instance.Inventory.ClearEquipped(m_Slot);            
         }
     }
-}
+}*/

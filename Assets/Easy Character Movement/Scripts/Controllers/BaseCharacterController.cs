@@ -1,5 +1,6 @@
 ﻿using ECM.Components;
 using ECM.Helpers;
+using HorrorEngine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -472,13 +473,13 @@ namespace ECM.Controllers
         /// Toggle pause / resume.
         /// </summary>
 
-        public bool pause { get; set; }
+        // public bool pause { get; set; }
 
         /// <summary>
         /// Is the character paused?
         /// </summary>
 
-        public bool isPaused { get; private set; }
+        // public bool isPaused { get; private set; }
 
         /// <summary>
         /// Should saved velocity (when pause == true) be restored on resume (when pause == false)?
@@ -512,7 +513,7 @@ namespace ECM.Controllers
         /// While paused, will turn the Rigidbody into kinematic, preventing any physical interaction.
         /// </summary>
 
-        private void Pause()
+        /*private void Pause()
         {
             if (pause && !isPaused)
             {
@@ -528,7 +529,7 @@ namespace ECM.Controllers
                 movement.Pause(false, restoreVelocityOnResume);
                 isPaused = false;
             }
-        }
+        }*/
 
         /// <summary>
         /// Rotate the character towards a given direction vector.
@@ -836,14 +837,6 @@ namespace ECM.Controllers
 
         protected virtual void HandleInput()
         {
-            // Toggle pause / resume.
-            // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
-
-            if (Input.GetButton("Pause2"))
-            {
-                pause = !pause;
-                Debug.Log("b bastın");
-            }
             // Handle user input
 
             moveDirection = new Vector3
@@ -918,11 +911,11 @@ namespace ECM.Controllers
         {
             // Pause / resume character
 
-            Pause();
+            // Pause();
 
             // If paused, return
 
-            if (isPaused)
+            if (PauseController.Instance.IsPaused)
                 return;
 
             // Perform character movement
@@ -942,7 +935,7 @@ namespace ECM.Controllers
 
             // If paused, return
 
-            if (isPaused)
+            if (PauseController.Instance.IsPaused)
                 return;
 
             // Update character rotation (if not paused)

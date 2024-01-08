@@ -65,7 +65,7 @@ namespace HorrorEngine
                 {
                     dirToSnap.Normalize();
                 }
-                m_Rigidbody.MovePosition(m_Rigidbody.position + dirToSnap * Time.deltaTime * m_SnapSpeed);
+                m_Rigidbody.MovePosition(m_Rigidbody.position + dirToSnap * (Time.deltaTime * m_SnapSpeed));
 
                 if (Vector3.Distance(m_SnappingPos, m_Rigidbody.position) < k_SnapThreshold)
                 {

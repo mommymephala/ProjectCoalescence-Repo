@@ -1,4 +1,5 @@
 
+/*
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace HorrorEngine
     public class EnemyStateGrab : ActorState
     {
         [SerializeField] private float m_GrabDistance = 1f;
-        [Tooltip("Helps finding which player state will be selected. This is the “grabbed” player state")]
+        [Tooltip("Helps finding which player state will be selected. This is the ï¿½grabbedï¿½ player state")]
         [SerializeField] private string m_GrabTag;
         [SerializeField] private ActorState m_ExitState;
         [SerializeField] private float m_FacingSpeed = 1f;
@@ -301,3 +302,4 @@ namespace HorrorEngine
         }
     }
 }
+*/

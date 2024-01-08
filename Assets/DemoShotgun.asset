@@ -36,6 +36,7 @@ MonoBehaviour:
   allowAutoFire: 0
   damage: 20
   maxDistance: 350
+  crosshairPrefab: {fileID: 2989330691921647678, guid: 86e6347c19f045b45aff470e1b7b8cbc, type: 3}
   fireRate: 100
   spread: 0.25
   bulletsPerShot: 6
