@@ -53,6 +53,8 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        normalHitBox.gameObject.SetActive(false);
+        heavyHitBox.gameObject.SetActive(false);
         currentState = State.Idling;
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -284,8 +286,8 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         if (normalHitBox != null)
         {
-            normalHitBox.enabled = true;
-            normalHitBox.ApplyDamage();
+            normalHitBox.gameObject.SetActive(enabled);
+            // normalHitBox.ApplyDamage();
         }
     }
 
@@ -293,7 +295,7 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         if (normalHitBox != null)
         {
-            normalHitBox.enabled = false;
+            normalHitBox.gameObject.SetActive(false);
         }
     }
     
@@ -301,8 +303,8 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         if (heavyHitBox != null)
         {
-            heavyHitBox.enabled = true;
-            heavyHitBox.ApplyDamage();
+            heavyHitBox.gameObject.SetActive(true);
+            // heavyHitBox.ApplyDamage();
         }
     }
 
@@ -310,7 +312,7 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         if (heavyHitBox != null)
         {
-            heavyHitBox.enabled = false;
+            heavyHitBox.gameObject.SetActive(false);
         }
     }
     

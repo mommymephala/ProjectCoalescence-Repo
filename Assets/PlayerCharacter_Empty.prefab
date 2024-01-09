@@ -205,7 +205,6 @@ GameObject:
   - component: {fileID: 8758201444150123333}
   - component: {fileID: 853495936258527061}
   - component: {fileID: 1426046510348422961}
-  - component: {fileID: 6856723075692929587}
   - component: {fileID: 2901058214962025513}
   - component: {fileID: 3903662941688377456}
   - component: {fileID: 8018176572433920961}
@@ -218,7 +217,8 @@ GameObject:
   - component: {fileID: 1021022981972556560}
   - component: {fileID: 3581403075746073572}
   - component: {fileID: 341940598994730367}
-  - component: {fileID: 7092530800393853256}
+  - component: {fileID: 4657688684610162694}
+  - component: {fileID: 4529312909000587469}
   m_Layer: 6
   m_Name: PlayerCharacter_Empty
   m_TagString: Player
@@ -294,29 +294,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!136 &6856723075692929587
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5568526188610130909}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2901058214962025513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +310,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _groundLimit: 89
-  _stepOffset: 0.5
+  _stepOffset: 0.4
   _ledgeOffset: 0
   _castDistance: 0.5
   _triggerInteraction: 1
@@ -526,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holsterKey: 104
   weaponsHolder: {fileID: 7700498950004397369}
---- !u!114 &7092530800393853256
+--- !u!114 &4657688684610162694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -555,6 +532,29 @@ MonoBehaviour:
   OnLoadedDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!136 &4529312909000587469
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568526188610130909}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5734946459304400441
 GameObject:
   m_ObjectHideFlags: 0
