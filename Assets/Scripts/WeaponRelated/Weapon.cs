@@ -192,10 +192,10 @@ namespace WeaponRelated
                 var damageable = hitInfo.transform.GetComponent<IDamageable>();
                 if (damageable == null) continue;
 
-                Vector3 impactPoint = hitInfo.point;
-                Vector3 impactDir = (hitInfo.point - _weaponsHolderTransform.position).normalized;
+                // Vector3 impactPoint = hitInfo.point;
+                // Vector3 impactDir = (hitInfo.point - _weaponsHolderTransform.position).normalized;
 
-                damageable.TakeDamage(weaponData.damage, impactPoint, impactDir);
+                damageable.TakeDamage(weaponData.damage);
                 SpawnBloodParticle(hitInfo.point);
             }
 

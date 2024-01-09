@@ -31,8 +31,8 @@ namespace HorrorEngine
         public HealthDepletedEvent OnDeath = new HealthDepletedEvent();
         public UnityEvent OnLoadedDead;
 
-        public Damageable LastDamageableHit { get; private set; }
-        public UnityEngine.Object LastInstigator { get; private set; }
+        // public Damageable LastDamageableHit { get; private set; }
+        // public UnityEngine.Object LastInstigator { get; private set; }
         public float Normalized { get { return Value / Max; } }
         public bool IsDead { get { return Value <= 0; } }
 
@@ -52,9 +52,9 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        public void TakeDamage(float amount, Damageable damageable = null)
+        public void DamageReceived(float amount)
         {
-            LastDamageableHit = damageable;
+            // LastDamageableHit = damageable;
 
             if (Invulnerable)
                 return;

@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 namespace HorrorEngine
@@ -27,7 +28,7 @@ namespace HorrorEngine
             GetComponent<Damageable>().OnDamage.RemoveListener(OnDamage);
         }
 
-        void OnDamage(Vector3 impactPoint, Vector3 impactDir)
+        private void OnDamage(Vector3 impactPoint, Vector3 impactDir)
         {
             if (m_ImpactVFX && (!OnlyOnDeath || m_Health.IsDead))
             {
@@ -39,3 +40,4 @@ namespace HorrorEngine
         }
     }
 }
+*/

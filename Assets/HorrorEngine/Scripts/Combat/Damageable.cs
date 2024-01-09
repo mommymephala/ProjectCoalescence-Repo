@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,7 +36,7 @@ namespace HorrorEngine
                 {
                     // OnPreDamage?.Invoke(impactPoint, impactDir);
 
-                    m_Health.TakeDamage(damage, this);
+                    m_Health.ApplyDamage(damage);
 
                     OnDamage?.Invoke(impactPoint, impactDir);
                 }
@@ -44,4 +44,4 @@ namespace HorrorEngine
             }
         }
     }
-}
+}*/

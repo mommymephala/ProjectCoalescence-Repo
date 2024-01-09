@@ -27,6 +27,8 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     
     [SerializeField] private float idleDetectionRadius = 4f;
     [SerializeField] private float chaseDetectionRadius = 8f;
+    [SerializeField] private EnemyHitBox normalHitBox;
+    [SerializeField] private EnemyHitBox heavyHitBox;
     public LayerMask playerLayer;
 
     public float timeBetweenAttacks = 2f;
@@ -216,21 +218,7 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         _agent.speed = Mathf.Lerp(1f, 0.5f, normalizedSpeed);
         _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 5));
     }
-
-    private void Attack()
-    {
-        CheckPlayerDistance();
-
-        _agent.isStopped = true;
-
-        if (_timeSinceLastAttack >= timeBetweenAttacks)
-        {
-            _timeSinceLastAttack = 0f;
-            _animator.SetFloat("Speed",  0);
-            TriggerAttack();
-        }
-    }
-
+    
     private void FacePlayer()
     {
         Vector3 directionToPlayer = (_playerTransform.position - transform.position).normalized;
@@ -252,6 +240,20 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         {
             currentState = (playerDistance <= sightRange) ? State.Chasing : State.Idling;
             _agent.isStopped = false; // Ensure the agent can move again
+        }
+    }
+
+    private void Attack()
+    {
+        CheckPlayerDistance();
+
+        _agent.isStopped = true;
+
+        if (_timeSinceLastAttack >= timeBetweenAttacks)
+        {
+            _timeSinceLastAttack = 0f;
+            _animator.SetFloat("Speed",  0);
+            TriggerAttack();
         }
     }
     
@@ -278,24 +280,58 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         _attackCount = (_attackCount + 1) % 3;
     }
     
+    public void EnableNormalHitBox()
+    {
+        if (normalHitBox != null)
+        {
+            normalHitBox.enabled = true;
+            normalHitBox.ApplyDamage();
+        }
+    }
+
+    public void DisableNormalHitBox()
+    {
+        if (normalHitBox != null)
+        {
+            normalHitBox.enabled = false;
+        }
+    }
+    
+    public void EnableHeavyHitBox()
+    {
+        if (heavyHitBox != null)
+        {
+            heavyHitBox.enabled = true;
+            heavyHitBox.ApplyDamage();
+        }
+    }
+
+    public void DisableHeavyHitBox()
+    {
+        if (heavyHitBox != null)
+        {
+            heavyHitBox.enabled = false;
+        }
+    }
+    
     // Reset animations separately
     public void OnHeavyAttackComplete()
     {
         _animator.ResetTrigger("HeavyAttackTrigger");
-        _animator.ResetTrigger("NormalAttackTrigger");
+        // _animator.ResetTrigger("NormalAttackTrigger");
     }
     
     public void OnNormalAttackComplete()
     {
-        _animator.ResetTrigger("HeavyAttackTrigger");
+        // _animator.ResetTrigger("HeavyAttackTrigger");
         _animator.ResetTrigger("NormalAttackTrigger");
     }
 
-    public void TakeDamage(float damage, Vector3 impactPoint, Vector3 impactDir)
+    public void TakeDamage(float damage)
     {
         if (_isDead) return;
 
-        _health.TakeDamage(damage);
+        _health.DamageReceived(damage);
         _hasTakenHit = true;
 
         if (_health.IsDead)

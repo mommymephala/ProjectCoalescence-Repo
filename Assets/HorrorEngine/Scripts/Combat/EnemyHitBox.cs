@@ -1,32 +1,34 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace HorrorEngine
 {
-    public class HitBox : MonoBehaviour
+    public class EnemyHitBox : MonoBehaviour
     {
         [SerializeField] private Vector3 m_Center;
         [SerializeField] private Vector3 m_Size = Vector3.one;
         [SerializeField] private LayerMask m_LayerMask;
+        [SerializeField] private float damageAmount;
 
-        private Collider[] m_OverlapResults = new Collider[10];
-
-        // --------------------------------------------------------------------
-
-        public void GetOverlappingDamageables(List<Damageable> damageables)
+        public void ApplyDamage()
         {
-            damageables.Clear();
-            
-            var scaledCenter = new Vector3(m_Center.x * transform.lossyScale.x, m_Center.y * transform.lossyScale.y, m_Center.z * transform.lossyScale.z);
+            var scaledCenter = transform.position + new Vector3(m_Center.x * transform.lossyScale.x, m_Center.y * transform.lossyScale.y, m_Center.z * transform.lossyScale.z);
             var scaledSize = new Vector3(m_Size.x * transform.lossyScale.x, m_Size.y * transform.lossyScale.y, m_Size.z * transform.lossyScale.z);
 
-            DebugUtils.DrawBox(transform.position + scaledCenter, transform.rotation, scaledSize, Color.red, 10);
-            int count = Physics.OverlapBoxNonAlloc(transform.position + scaledCenter, scaledSize * 0.5f, m_OverlapResults, transform.rotation, m_LayerMask, QueryTriggerInteraction.Collide);
-            
-            for (int i = 0; i < count; ++i)
+            var overlapResults = Physics.OverlapBox(scaledCenter, scaledSize * 0.5f, transform.rotation, m_LayerMask, QueryTriggerInteraction.Collide);
+
+            Debug.Log($"OverlapBox found {overlapResults.Length} colliders."); // Debugging line
+
+            foreach (Collider collider in overlapResults)
             {
-                if (m_OverlapResults[i].TryGetComponent(out Damageable d))
-                    damageables.Add(d);
+                if (collider.TryGetComponent(out PlayerHealth playerHealth))
+                {
+                    playerHealth.TakeDamage(damageAmount);
+                    Debug.Log("Damage applied to player: " + damageAmount); // Debugging line
+                }
+                else
+                {
+                    Debug.Log($"Collider {collider.name} is not a PlayerHealth."); // Debugging line
+                }
             }
         }
 
