@@ -180,26 +180,29 @@ namespace WeaponRelated
             for (var i = 0; i < weaponData.bulletsPerShot; i++)
             {
                 Vector3 spreadDirection = _weaponsHolderTransform.forward + Random.insideUnitSphere * weaponData.spread;
-                
+        
                 var layerMask = ~LayerMask.GetMask("InteractionSystem");
                 if (!Physics.Raycast(_weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
-                
+        
                 if (hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
                 }
-                
+
                 var damageable = hitInfo.transform.GetComponent<IDamageable>();
                 if (damageable == null) continue;
-                damageable.TakeDamage(weaponData.damage);
+
+                Vector3 impactPoint = hitInfo.point;
+                Vector3 impactDir = (hitInfo.point - _weaponsHolderTransform.position).normalized;
+
+                damageable.TakeDamage(weaponData.damage, impactPoint, impactDir);
                 SpawnBloodParticle(hitInfo.point);
             }
 
-            // weaponData.currentAmmo--;
             if (_weaponEntry.SecondaryCount > 0)
                 --_weaponEntry.SecondaryCount;
             _timeSinceLastShot = 0f;
-            
+    
             OnGunShot();
             CalculateRecoil();
             ApplyProceduralKickback();

@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 namespace HorrorEngine
 {
-  
-
     [Serializable]
     public class GameSaveData
     {

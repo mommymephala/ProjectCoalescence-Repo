@@ -1,4 +1,4 @@
-using Interfaces;
+/*using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -45,7 +45,7 @@ namespace Enemies
          *
          *
          * 
-         */
+         #1#
 
         private enum EnemyState
         {
@@ -280,7 +280,7 @@ namespace Enemies
 
         private void Die()
         {
-            /*// Disable NavMeshAgent and Animator
+            /#1#/ Disable NavMeshAgent and Animator
             _agent.enabled = false;
             _animator.enabled = false;
 
@@ -295,10 +295,10 @@ namespace Enemies
             foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
             {
                 rb.AddForce(Vector3.back * 50f, ForceMode.Impulse);
-            }*/
+            }#1#
 
             Destroy(gameObject, 1f);
         }
 
     }
-}
+}*/

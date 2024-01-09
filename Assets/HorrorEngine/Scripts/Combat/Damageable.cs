@@ -12,10 +12,11 @@ namespace HorrorEngine
     {
         public Combatant Owner { get; private set; }
 
-        public DamageableType Type;
+        // public DamageableType Type;
 
-        [Tooltip("Event fired before the damage is applied")]
-        public OnDamageEvent OnPreDamage;
+        // [Tooltip("Event fired before the damage is applied")]
+        // public OnDamageEvent OnPreDamage;
+        
         [Tooltip("Event fired after the damage has been applied")]
         public OnDamageEvent OnDamage;
         
@@ -33,7 +34,7 @@ namespace HorrorEngine
             {
                 if (damage > 0)
                 {
-                    OnPreDamage?.Invoke(impactPoint, impactDir);
+                    // OnPreDamage?.Invoke(impactPoint, impactDir);
 
                     m_Health.TakeDamage(damage, this);
 
