@@ -248,6 +248,7 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     private void Attack()
     {
         CheckPlayerDistance();
+        FacePlayer();
 
         _agent.isStopped = true;
 
