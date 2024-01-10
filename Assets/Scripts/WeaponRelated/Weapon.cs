@@ -41,14 +41,6 @@ namespace WeaponRelated
         [Header("UI")]
         // private Text _currentAmmoText;
         
-        // [Header("Crosshair UI")]
-        // private RectTransform topCrosshair;
-        // private RectTransform bottomCrosshair;
-        // private RectTransform leftCrosshair;
-        // private RectTransform rightCrosshair;
-        // private RectTransform _reticle;
-        // private float _currentSize;
-        
         [Header("Flags")]
         [SerializeField] private bool toggleAimDownSight = true;
 
@@ -91,21 +83,6 @@ namespace WeaponRelated
             _originalAdsLocalPosition = adsPositionRef.localPosition;
             weaponData.originalPlayerFOV = _playerCamera.fieldOfView;
             weaponData.originalWeaponFOV = _weaponCamera.fieldOfView;
-
-            // _currentAmmoText = GameObject.Find("AmmoCountText").GetComponent<Text>();
-            /*if (CrosshairManager.Instance != null)
-            {
-                // topCrosshair = CrosshairManager.Instance.topCrosshair;
-                // bottomCrosshair = CrosshairManager.Instance.bottomCrosshair;
-                // leftCrosshair = CrosshairManager.Instance.leftCrosshair;
-                // rightCrosshair = CrosshairManager.Instance.rightCrosshair;
-                // _reticle = CrosshairManager.Instance.reticle;
-
-            }
-            else
-            {
-                Debug.LogError("CrosshairManager not found in the scene.");
-            }*/
         }
         private void Start()
         {
@@ -143,7 +120,6 @@ namespace WeaponRelated
             Aiming();
             // UpdateAmmoUI();
             UpdateCrosshairVisibility();
-            // UpdateCrosshair();
             _timeSinceLastShot += Time.deltaTime;
         }
 
@@ -192,11 +168,18 @@ namespace WeaponRelated
                 var damageable = hitInfo.transform.GetComponent<IDamageable>();
                 if (damageable == null) continue;
 
-                // Vector3 impactPoint = hitInfo.point;
-                // Vector3 impactDir = (hitInfo.point - _weaponsHolderTransform.position).normalized;
-
                 damageable.TakeDamage(weaponData.damage);
                 SpawnBloodParticle(hitInfo.point);
+                
+                // if (hitInfo.transform.CompareTag("TarEnemyHeadshot"))
+                // {
+                //     damageable.TakeDamage(weaponData.damage + 10);
+                // }
+                //
+                // if (hitInfo.transform.CompareTag("BossEnemyChipHit"))
+                // {
+                //     damageable.TakeDamage(weaponData.damage + 20);
+                // }
             }
 
             if (_weaponEntry.SecondaryCount > 0)

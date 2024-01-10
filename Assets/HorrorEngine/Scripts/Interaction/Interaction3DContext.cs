@@ -106,12 +106,25 @@ namespace HorrorEngine
 
         private Interactive FindTargetInteractive(Vector3 desiredDir)
         {
+            if (Camera.main == null)
+            {
+                Debug.LogError("Main Camera is not found. Please tag your camera as 'MainCamera'.");
+                return null;
+            }
+
+            if (m_Cursor == null)
+            {
+                Debug.LogError("Cursor Transform is not assigned.");
+                return null;
+            }
+
             float minDistance = float.MaxValue;
-            Interactive canditate = null;
+            Interactive candidate = null;
             Vector3 cursorOnScreen = Camera.main.WorldToScreenPoint(m_Cursor.position);
+
             foreach (var interactive in m_Interactives)
             {
-                if (interactive == m_SelectedInteractive)
+                if (interactive == null || interactive == m_SelectedInteractive)
                     continue;
 
                 Vector3 interactiveOnScreen = Camera.main.WorldToScreenPoint(interactive.transform.position);
@@ -125,10 +138,11 @@ namespace HorrorEngine
                 if (dist < minDistance)
                 {
                     minDistance = dist;
-                    canditate = interactive;
+                    candidate = interactive;
                 }
             }
-            return canditate;
+
+            return candidate;
         }
     }
 }

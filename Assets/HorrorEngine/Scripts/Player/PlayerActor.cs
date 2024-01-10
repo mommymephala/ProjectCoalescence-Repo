@@ -12,7 +12,7 @@ namespace HorrorEngine
 
         public void SetVisible(bool visible)
         {
-            MainAnimator.gameObject.SetActive(visible);
+            gameObject.SetActive(visible);
         }
     }
 

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,4 +18,4 @@ namespace HorrorEngine
             clip.duration = 1;
         }
     }
-}
+}*/

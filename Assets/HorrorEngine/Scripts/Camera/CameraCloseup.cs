@@ -43,7 +43,6 @@ namespace HorrorEngine
 
             // Fade In
             yield return m_UIFade.Fade(1f, 0f, m_FadeInDuration);
-
         }
 
         private IEnumerator EndCloseupRoutine(Func<IEnumerator> deactivationRoutine)
@@ -64,12 +63,19 @@ namespace HorrorEngine
     public class CameraCloseup : Closeup
     {
         [SerializeField] bool m_HidePlayer = false;
-        [SerializeField] Cinemachine.CinemachineVirtualCamera m_Camera;
+        Camera m_PlayerCamera; // Reference to the player's camera
+        [SerializeField] Camera m_CloseupCamera; // Reference to the closeup camera
 
         protected override void Start()
         {
             base.Start();
-            m_Camera.gameObject.SetActive(false);
+            m_CloseupCamera.enabled = false; // Ensure the closeup camera is initially disabled
+        }
+
+        private void Update()
+        {
+            if (m_PlayerCamera != null) return;
+            m_PlayerCamera = GameManager.Instance.Player.GetComponent<Camera>();
         }
 
         public override IEnumerator ActivationRoutine()
@@ -78,7 +84,11 @@ namespace HorrorEngine
             {
                 GameManager.Instance.Player.SetVisible(false);
             }
-            m_Camera.gameObject.SetActive(true);
+
+            if (m_PlayerCamera != null)
+                m_PlayerCamera.enabled = false; // Disable player camera
+
+            m_CloseupCamera.enabled = true; // Enable closeup camera
             yield return null;
         }
 
@@ -88,7 +98,12 @@ namespace HorrorEngine
             {
                 GameManager.Instance.Player.SetVisible(true);
             }
-            m_Camera.gameObject.SetActive(false);
+
+            m_CloseupCamera.enabled = false; // Disable closeup camera
+
+            if (m_PlayerCamera != null)
+                m_PlayerCamera.enabled = true; // Re-enable player camera
+
             yield return null;
         }
     }

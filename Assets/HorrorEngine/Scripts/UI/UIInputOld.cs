@@ -17,7 +17,8 @@ namespace HorrorEngine
 
         public Vector2 GetPrimaryAxis()
         {
-            return new Vector2(Input.GetAxis(m_XPrimaryAxis), Input.GetAxis(m_YPrimaryAxis));
+            Vector2 axis = new Vector2(Input.GetAxisRaw(m_XPrimaryAxis), Input.GetAxisRaw(m_YPrimaryAxis));
+            return axis;
         }
 
         public bool IsConfirmDown()

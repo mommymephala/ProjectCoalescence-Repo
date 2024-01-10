@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEditor;
 using System;
 
@@ -41,28 +41,28 @@ namespace HorrorEngine
                     try
                     {
                         Actor actor = objSource.GetComponentInChildren<Actor>();
-                        Animator animator = actor.MainAnimator;
+                        // Animator animator = actor.MainAnimator;
 
 #if UNITY_2022_3_OR_NEWER
-                    GameObject newModel = (GameObject)PrefabUtility.InstantiatePrefab(m_NewCharacterModel, animator.transform.parent);
+                    // GameObject newModel = (GameObject)PrefabUtility.InstantiatePrefab(m_NewCharacterModel, animator.transform.parent);
 #else
                         GameObject newModel = Instantiate(m_NewCharacterModel, animator.transform.parent);
 #endif
 
-                        Animator newAnimator = newModel.GetComponent<Animator>();
-                        newAnimator.applyRootMotion = false;
-                        newAnimator.runtimeAnimatorController = animator.runtimeAnimatorController;
-                        actor.MainAnimator = newAnimator;
+                        // Animator newAnimator = newModel.GetComponent<Animator>();
+                        // newAnimator.applyRootMotion = false;
+                        // newAnimator.runtimeAnimatorController = animator.runtimeAnimatorController;
+                        // actor.MainAnimator = newAnimator;
 
-                        var components = animator.GetComponents<Component>();
-                        foreach (var cmp in components)
-                        {
-                            UnityEditorInternal.ComponentUtility.CopyComponent(cmp);
-                            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(newModel);
-                        }
+                        // var components = animator.GetComponents<Component>();
+                        // foreach (var cmp in components)
+                        // {
+                        //     UnityEditorInternal.ComponentUtility.CopyComponent(cmp);
+                        //     UnityEditorInternal.ComponentUtility.PasteComponentAsNew(newModel);
+                        // }
 
 #if UNITY_2022_3_OR_NEWER
-                    DestroyImmediate(animator.gameObject);
+                    // DestroyImmediate(animator.gameObject);
 #else
                         animator.gameObject.SetActive(false);
 #endif
@@ -84,4 +84,4 @@ namespace HorrorEngine
             }
         }
     }
-}
+}*/

@@ -113,10 +113,6 @@ MonoBehaviour:
     Count: 1
     SecondaryCount: 0
     Status: 0
-  - Item: {fileID: 11400000, guid: 366b292ae911772478db86dc9d5ea7ec, type: 2}
-    Count: 1
-    SecondaryCount: 0
-    Status: 0
   InitialDocuments: []
   InitialMaps: []
   InitialEquipment: []
