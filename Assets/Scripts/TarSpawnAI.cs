@@ -43,8 +43,14 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     private int _attackCount = 0;
     
     private int _consecutiveHeadshots = 0;
+    private int _consecutiveNonHeadshots = 0;
     private float _timeSinceLastHeadshot = 0f;
-    private const float HeadshotTimeout = 5f;
+    private const float HeadshotTimeout = 4f;
+    private float _timeSinceLastNonHeadshot = 0f;
+    private const float NonHeadshotTimeout = 2.5f;
+    
+    private const float MaxHeadshotStaggerChance = 0.75f;
+    private const float MaxNonHeadshotStaggerChance = 0.25f;
     private bool _isPlayerLastPositionKnown;
 
     private void Awake()
@@ -71,6 +77,19 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     {
         _timeSinceLastAttack += Time.deltaTime;
         _timeSinceLastHeadshot += Time.deltaTime;
+        _timeSinceLastNonHeadshot += Time.deltaTime;
+
+        if (_timeSinceLastHeadshot > HeadshotTimeout)
+        {
+            _consecutiveHeadshots = 0;
+            _timeSinceLastHeadshot = 0f;
+        }
+
+        if (_timeSinceLastNonHeadshot > NonHeadshotTimeout)
+        {
+            _consecutiveNonHeadshots = 0;
+            _timeSinceLastNonHeadshot = 0f;
+        }
         DetectPlayer();
 
         switch (currentState)
@@ -334,6 +353,26 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         // _animator.ResetTrigger("HeavyAttackTrigger");
         _animator.ResetTrigger("NormalAttackTrigger");
     }
+    
+    private float CalculateStaggerChance(bool isHeadshot)
+    {
+        float staggerChance;
+        if (isHeadshot)
+        {
+            staggerChance = Mathf.Lerp(0.35f, MaxHeadshotStaggerChance, Mathf.Min(_consecutiveHeadshots, 3) / 3f);
+        }
+        else
+        {
+            staggerChance = Mathf.Lerp(0.1f, MaxNonHeadshotStaggerChance, Mathf.Min(_consecutiveNonHeadshots, 3) / 3f);
+        }
+
+        return staggerChance;
+    }
+    
+    private void TriggerStaggerAnimation()
+    {
+        _animator.SetTrigger("HitTrigger");
+    }
 
     public void TakeDamage(float damage, bool isChargedAttack, bool isHeadshot)
     {
@@ -341,15 +380,33 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
 
         _health.DamageReceived(damage);
         _hasTakenHit = true;
-        
+
         if (isHeadshot)
         {
             _consecutiveHeadshots++;
             _timeSinceLastHeadshot = 0f;
+            _consecutiveNonHeadshots = 0;
+            _timeSinceLastNonHeadshot = 0f;
+            if (_consecutiveHeadshots > 3) _consecutiveHeadshots = 1;
         }
         else
         {
+            _consecutiveNonHeadshots++;
+            _timeSinceLastNonHeadshot = 0f;
             _consecutiveHeadshots = 0;
+            _timeSinceLastHeadshot = 0f;
+            if (_consecutiveNonHeadshots > 3) _consecutiveNonHeadshots = 1;
+        }
+
+        // Determine if a stagger should happen
+        float staggerChance = CalculateStaggerChance(isHeadshot);
+        if (Random.value < staggerChance)
+        {
+            TriggerStaggerAnimation();
+
+            // Reset both headshot and non-headshot counters after triggering stagger
+            _consecutiveHeadshots = 0;
+            _consecutiveNonHeadshots = 0;
         }
 
         if (_health.IsDead)
@@ -360,14 +417,11 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         
         else
         {
-            _animator.SetTrigger("HitTrigger");
-
             _lastKnownPlayerPosition = _playerTransform.position;
             _isPlayerLastPositionKnown = true;
             _isPlayerDetected = true;
             currentState = State.Chasing;
             FacePlayer();
-
         }
     }
 

@@ -3146,7 +3146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec3a046b976ab440aac443f4b308f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Infinite: 0
+  Infinite: 1
   Invulnerable: 0
   Max: 200
   Min: 0
