@@ -7,6 +7,7 @@ using HorrorEngine;
 using UnityEngine;
 using UnityEngine.UI;
 using Interfaces;
+using Unity.VisualScripting;
 
 namespace WeaponRelated
 {
@@ -37,6 +38,7 @@ namespace WeaponRelated
         [SerializeField] private GameObject muzzleFlashPrefab;
         [SerializeField] private GameObject bloodFXPrefab;
         [SerializeField] private GameObject bulletHolePrefab;
+        [SerializeField] private Animator weaponAnimator;
 
         [Header("UI")]
         // private Text _currentAmmoText;
@@ -104,6 +106,7 @@ namespace WeaponRelated
             {
                 Destroy(_crosshairInstance);
             }
+            
             ResetFOV();
         }
 
@@ -132,10 +135,26 @@ namespace WeaponRelated
         {
             _shooting = weaponData.allowAutoFire ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
 
-            if (_shooting && CanShoot())
+            if (_shooting)
             {
-                Shoot();
+                if (weaponData.isBaton && CanShoot())
+                {
+                    // Trigger attack animation here
+                    TriggerAttackAnimation();
+                    Shoot();
+                }
+
+                if (CanShoot())
+                {
+                    Shoot();
+                }
             }
+        }
+        
+        private void TriggerAttackAnimation()
+        {
+            weaponAnimator.SetTrigger("AttackTrigger");
+            // weaponAnimator.Play("BatonAttack");
         }
 
         private bool CanShoot()
@@ -156,30 +175,27 @@ namespace WeaponRelated
             for (var i = 0; i < weaponData.bulletsPerShot; i++)
             {
                 Vector3 spreadDirection = _weaponsHolderTransform.forward + Random.insideUnitSphere * weaponData.spread;
-        
                 var layerMask = ~LayerMask.GetMask("InteractionSystem");
                 if (!Physics.Raycast(_weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
-        
-                if (hitInfo.transform.CompareTag("Wall"))
+
+                if (!weaponData.isBaton && hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
                 }
 
-                var damageable = hitInfo.transform.GetComponent<IDamageable>();
+                var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
                 if (damageable == null) continue;
 
-                damageable.TakeDamage(weaponData.damage);
-                SpawnBloodParticle(hitInfo.point);
+                bool isHeadshot = hitInfo.collider.GetComponent<SphereCollider>() != null;
+
+                float damageAmount = isHeadshot ? weaponData.damage + 10 : weaponData.damage;
+
+                damageable.TakeDamage(damageAmount, false, isHeadshot);
                 
-                // if (hitInfo.transform.CompareTag("TarEnemyHeadshot"))
-                // {
-                //     damageable.TakeDamage(weaponData.damage + 10);
-                // }
-                //
-                // if (hitInfo.transform.CompareTag("BossEnemyChipHit"))
-                // {
-                //     damageable.TakeDamage(weaponData.damage + 20);
-                // }
+                if (isHeadshot || hitInfo.transform.CompareTag("Target"))
+                {
+                    SpawnBloodParticle(hitInfo.point);
+                }
             }
 
             if (_weaponEntry.SecondaryCount > 0)
@@ -358,10 +374,11 @@ namespace WeaponRelated
 
         private void HandleAdsInput()
         {
-            if (_reloading)
+            if (_reloading || weaponData.isBaton) // Disable ADS for the specific weapon
             {
                 return;
             }
+
             if (toggleAimDownSight)
             {
                 if (Input.GetKeyDown(aimDownSightKey))
@@ -372,6 +389,7 @@ namespace WeaponRelated
                 UpdateAiming(Input.GetKey(aimDownSightKey));
             }
         }
+
 
         private void ResetFOV()
         {
@@ -404,7 +422,10 @@ namespace WeaponRelated
         
         private void OnGunShot()
         {
-            if (_ismuzzleFlashPrefabNull) return;
+            if (_ismuzzleFlashPrefabNull || weaponData.isBaton) // No muzzle flash for the specific weapon
+            {
+                return;
+            }
 
             GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, muzzleTransform);
 
@@ -413,15 +434,12 @@ namespace WeaponRelated
 
             if (aimingDownSight)
             {
-                // Might need to fine-tune these values.
+                // Optionally adjust muzzle flash position and scale for ADS mode
                 muzzleFlash.transform.localPosition = new Vector3(0f, 0f, 0.1f);
-
-                // Optionally can scale down the muzzle flash for ADS mode
                 muzzleFlash.transform.localScale = Vector3.one * 0.5f;
             }
 
             Destroy(muzzleFlash, 0.1f);
-
             PlayGunShotSFX();
         }
         

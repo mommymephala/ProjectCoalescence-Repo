@@ -1,9 +1,7 @@
-using UnityEngine;
-
 namespace Interfaces
 {
-    public interface IDamageable 
+    public interface IDamageable
     {
-        public void TakeDamage(float damage);
+        void TakeDamage(float damage, bool isChargedAttack, bool isHeadshot = false);
     }
 }

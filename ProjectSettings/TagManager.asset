@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Target
   - AudioManager
+  - TarEnemyHeadshot
   layers:
   - Default
   - TransparentFX

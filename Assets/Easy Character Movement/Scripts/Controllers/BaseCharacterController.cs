@@ -75,6 +75,10 @@ namespace ECM.Controllers
         private float _crouchingHeight = 1.0f;
 
         [Header("Jump")]
+        [Tooltip("Can the character jump?")]
+        [SerializeField]
+        private bool canJump = true;
+        
         [Tooltip("The initial jump height (in meters).")]
         [SerializeField]
         private float _baseJumpHeight = 1.5f;
@@ -300,6 +304,15 @@ namespace ECM.Controllers
             get { return _crouchingHeight; }
             set { _crouchingHeight = Mathf.Max(0.0f, value); }
         }
+        
+        /// <summary>
+        /// Can the character perform a jump?
+        /// </summary>
+        public bool CanJump
+        {
+            get { return canJump; }
+            set { canJump = value; }
+        }
 
         /// <summary>
         /// The initial jump height (in meters).
@@ -507,30 +520,7 @@ namespace ECM.Controllers
         #endregion
 
         #region METHODS
-
-        /// <summary>
-        /// Pause Rigidbody physical interaction, will restore current velocities (linear, angular) if desired (restoreVelocityOnResume == true).
-        /// While paused, will turn the Rigidbody into kinematic, preventing any physical interaction.
-        /// </summary>
-
-        /*private void Pause()
-        {
-            if (pause && !isPaused)
-            {
-                // Pause 
-
-                movement.Pause(true);
-                isPaused = true;
-            }
-            else if (!pause && isPaused)
-            {
-                // Resume
-
-                movement.Pause(false, restoreVelocityOnResume);
-                isPaused = false;
-            }
-        }*/
-
+        
         /// <summary>
         /// Rotate the character towards a given direction vector.
         /// </summary>
@@ -568,6 +558,9 @@ namespace ECM.Controllers
 
         protected virtual void Jump()
         {
+            if (!CanJump)
+                return;
+            
             // Update _isJumping flag state
 
             if (isJumping)
@@ -623,6 +616,9 @@ namespace ECM.Controllers
 
         protected virtual void MidAirJump()
         {
+            if (!CanJump)
+                return;
+            
             // Reset mid-air jumps counter
 
             if (_midAirJumpCount > 0 && movement.isGrounded)

@@ -377,9 +377,10 @@ MonoBehaviour:
   _brakingFriction: 8
   _airFriction: 0
   _airControl: 0.2
-  _canCrouch: 0
+  _canCrouch: 1
   _standingHeight: 2
   _crouchingHeight: 1
+  canJump: 0
   _baseJumpHeight: 1.5
   _extraJumpTime: 0.5
   _extraJumpPower: 25
@@ -513,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977d47a1389345fd8d1d32ead57fb10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Infinite: 0
+  Infinite: 1
   Invulnerable: 0
   Max: 100
   Min: 0

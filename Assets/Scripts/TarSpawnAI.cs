@@ -41,6 +41,10 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     public float sightRange = 10f;
     public float attackRange = 2f;
     private int _attackCount = 0;
+    
+    private int _consecutiveHeadshots = 0;
+    private float _timeSinceLastHeadshot = 0f;
+    private const float HeadshotTimeout = 5f;
     private bool _isPlayerLastPositionKnown;
 
     private void Awake()
@@ -66,6 +70,7 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
     private void Update()
     {
         _timeSinceLastAttack += Time.deltaTime;
+        _timeSinceLastHeadshot += Time.deltaTime;
         DetectPlayer();
 
         switch (currentState)
@@ -330,12 +335,22 @@ public class TarSpawnAI : MonoBehaviour, IDamageable
         _animator.ResetTrigger("NormalAttackTrigger");
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool isChargedAttack, bool isHeadshot)
     {
         if (_isDead) return;
 
         _health.DamageReceived(damage);
         _hasTakenHit = true;
+        
+        if (isHeadshot)
+        {
+            _consecutiveHeadshots++;
+            _timeSinceLastHeadshot = 0f;
+        }
+        else
+        {
+            _consecutiveHeadshots = 0;
+        }
 
         if (_health.IsDead)
         {
