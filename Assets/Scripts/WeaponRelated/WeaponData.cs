@@ -28,9 +28,6 @@ namespace WeaponRelated
         public float aimDownSightFOV;
         public float aimDownSightSpeed;
         public float zoomSpeed;
-        
-        [Header("Baton Settings")]
-        public bool isBaton;
     
         [Header("Reloading")]
         // public int currentAmmo;

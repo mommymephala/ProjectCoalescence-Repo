@@ -41,7 +41,7 @@ public class ShadowAI : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(float damage, bool isChargedAttack, bool isHeadshot)
+    public void TakeDamage(float damage, bool isChargedAttack, bool isWeakpoint)
     {
         if (isChargedAttack)
         {

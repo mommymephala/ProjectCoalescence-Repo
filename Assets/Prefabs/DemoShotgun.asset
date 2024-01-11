@@ -20,7 +20,7 @@ MonoBehaviour:
   InventoryAction: 2
   Flags: 120
   DropPrefab: {fileID: 0}
-  EquipPrefab: {fileID: 855168729862957376, guid: 73cda8b8f3be60a439d41e9c20753209, type: 3}
+  EquipPrefab: {fileID: 726215935336019353, guid: 91e4d62869434e24d9d742f6c6ddb5cb, type: 3}
   Slot: 1
   AttachOnEquipped: 1
   MoveOutOfInventoryOnEquip: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   aimDownSightFOV: 40
   aimDownSightSpeed: 10
   zoomSpeed: 10
-  reloadTime: 1.2
+  reloadTime: 2.5
   recoilRotationHipfire: {x: 600, y: 60, z: 0}
   recoilRotationAiming: {x: 400, y: 40, z: 0}
   rotationSpeed: 2

@@ -135,26 +135,10 @@ namespace WeaponRelated
         {
             _shooting = weaponData.allowAutoFire ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
 
-            if (_shooting)
+            if (_shooting && CanShoot())
             {
-                if (weaponData.isBaton && CanShoot())
-                {
-                    // Trigger attack animation here
-                    TriggerAttackAnimation();
-                    Shoot();
-                }
-
-                if (CanShoot())
-                {
-                    Shoot();
-                }
+                Shoot();
             }
-        }
-        
-        private void TriggerAttackAnimation()
-        {
-            weaponAnimator.SetTrigger("AttackTrigger");
-            // weaponAnimator.Play("BatonAttack");
         }
 
         private bool CanShoot()
@@ -178,7 +162,7 @@ namespace WeaponRelated
                 var layerMask = ~LayerMask.GetMask("InteractionSystem");
                 if (!Physics.Raycast(_weaponsHolderTransform.position, spreadDirection, out RaycastHit hitInfo, weaponData.maxDistance, layerMask)) continue;
 
-                if (!weaponData.isBaton && hitInfo.transform.CompareTag("Wall"))
+                if (hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
                 }
@@ -186,13 +170,13 @@ namespace WeaponRelated
                 var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
                 if (damageable == null) continue;
 
-                bool isHeadshot = hitInfo.collider.GetComponent<Weakpoint>() != null;
+                bool isWeakpoint = hitInfo.collider.GetComponent<Weakpoint>() != null;
 
-                float damageAmount = isHeadshot ? weaponData.damage + 10 : weaponData.damage;
+                float damageAmount = isWeakpoint ? weaponData.damage + 10 : weaponData.damage;
 
-                damageable.TakeDamage(damageAmount, false, isHeadshot);
+                damageable.TakeDamage(damageAmount, false, isWeakpoint);
                 
-                if (isHeadshot || hitInfo.transform.CompareTag("Target"))
+                if (isWeakpoint || hitInfo.transform.CompareTag("Target"))
                 {
                     SpawnBloodParticle(hitInfo.point);
                 }
@@ -283,7 +267,9 @@ namespace WeaponRelated
         {
             _reloading = true;
             aimingDownSight = false;
-            UIManager.Get<UIInputListener>().AddBlockingContext(this);
+            UIManager.Get<UIInputListener>().AddBlockingContext(this); 
+            
+            weaponAnimator.SetTrigger("ReloadTrigger");
 
             yield return new WaitForSeconds(weaponData.reloadTime);
 
@@ -374,7 +360,7 @@ namespace WeaponRelated
 
         private void HandleAdsInput()
         {
-            if (_reloading || weaponData.isBaton) // Disable ADS for the specific weapon
+            if (_reloading) // Disable ADS for the specific weapon
             {
                 return;
             }
@@ -422,7 +408,7 @@ namespace WeaponRelated
         
         private void OnGunShot()
         {
-            if (_ismuzzleFlashPrefabNull || weaponData.isBaton) // No muzzle flash for the specific weapon
+            if (_ismuzzleFlashPrefabNull)
             {
                 return;
             }

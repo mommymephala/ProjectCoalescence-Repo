@@ -32,6 +32,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     public LayerMask playerLayer;
 
     public float timeBetweenAttacks = 2f;
+    public float turningSpeed = 5f;
     private float _timeSinceLastAttack = 0f;
 
     protected bool _isDead = false;
@@ -164,7 +165,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         {
             _lastKnownPlayerPosition = _playerTransform.position;
             _isPlayerLastPositionKnown = true;
-            FacePlayer();
+            FacePlayer(turningSpeed);
             MoveTowardsPlayer();
 
             var distanceToPlayer = Vector3.Distance(_playerTransform.position, transform.position);
@@ -243,7 +244,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 5));
     }
     
-    protected virtual void FacePlayer()
+    protected virtual void FacePlayer(float turningSpeed)
     {
         Vector3 directionToPlayer = (_playerTransform.position - transform.position).normalized;
         directionToPlayer.y = 0;
@@ -251,7 +252,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         if (directionToPlayer != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turningSpeed);
         }
     }
     
@@ -269,7 +270,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     protected virtual void Attack()
     {
         CheckPlayerDistance();
-        FacePlayer();
+        FacePlayer(turningSpeed);
 
         _agent.isStopped = true;
 
@@ -366,14 +367,14 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         _animator.SetTrigger("HitTrigger");
     }
 
-    public virtual void TakeDamage(float damage, bool isChargedAttack, bool isHeadshot)
+    public virtual void TakeDamage(float damage, bool isChargedAttack, bool isWeakpoint)
     {
         if (_isDead) return;
 
         _health.DamageReceived(damage);
         _hasTakenHit = true;
 
-        if (isHeadshot)
+        if (isWeakpoint)
         {
             _consecutiveHeadshots++;
             _timeSinceLastHeadshot = 0f;
@@ -391,7 +392,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         }
 
         // Determine if a stagger should happen
-        float staggerChance = CalculateStaggerChance(isHeadshot);
+        var staggerChance = CalculateStaggerChance(isWeakpoint);
         if (Random.value < staggerChance)
         {
             TriggerStaggerAnimation();
@@ -413,7 +414,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             _isPlayerLastPositionKnown = true;
             _isPlayerDetected = true;
             currentState = State.Chasing;
-            FacePlayer();
+            FacePlayer(turningSpeed);
         }
     }
 

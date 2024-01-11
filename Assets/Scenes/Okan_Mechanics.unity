@@ -3714,6 +3714,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timeBetweenAttacks: 1.5
+  turningSpeed: 5
   sightRange: 6
   attackRange: 2
 --- !u!54 &896085761
@@ -6454,6 +6455,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timeBetweenAttacks: 1.5
+  turningSpeed: 5
   sightRange: 6
   attackRange: 2
 --- !u!54 &1663478702
@@ -8429,6 +8431,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timeBetweenAttacks: 1.5
+  turningSpeed: 5
   sightRange: 6
   attackRange: 2
 --- !u!114 &919132149148704603
@@ -10470,9 +10473,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Experimental_Man (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9099606201668865414, guid: 4304c30f8542a23479f15b03ad1c6df8, type: 3}
-      propertyPath: m_Speed
-      value: 2
+    - target: {fileID: 602939778820059583, guid: 4304c30f8542a23479f15b03ad1c6df8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
