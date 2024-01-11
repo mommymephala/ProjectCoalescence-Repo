@@ -186,7 +186,7 @@ namespace WeaponRelated
                 var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
                 if (damageable == null) continue;
 
-                bool isHeadshot = hitInfo.collider.GetComponent<SphereCollider>() != null;
+                bool isHeadshot = hitInfo.collider.GetComponent<Weakpoint>() != null;
 
                 float damageAmount = isHeadshot ? weaponData.damage + 10 : weaponData.damage;
 
