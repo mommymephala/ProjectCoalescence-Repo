@@ -9,6 +9,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 {
     public enum State
     {
+        SpawnStall,
         InitialSpawn,
         Idling,
         Chasing,
@@ -53,7 +54,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     private const float MaxHeadshotStaggerChance = 0.75f;
     private const float MaxNonHeadshotStaggerChance = 0.25f;
     protected bool _isPlayerLastPositionKnown;
-
+    public bool IsSpawn;
     protected virtual void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -64,9 +65,16 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 
     protected virtual void Start()
     {
+        if (IsSpawn)
+        {
+            currentState = State.SpawnStall;
+        }
+        else
+        {
+            currentState = State.Idling;
+        }
         normalHitBox.gameObject.SetActive(false);
         heavyHitBox.gameObject.SetActive(false);
-        currentState = State.Idling;
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -79,7 +87,11 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         _timeSinceLastAttack += Time.deltaTime;
         _timeSinceLastHeadshot += Time.deltaTime;
         _timeSinceLastNonHeadshot += Time.deltaTime;
-
+        if (currentState == State.Attacking)
+        {
+            // Ensure the enemy stays in place during the attack
+            _agent.isStopped = true;
+        }
         if (_timeSinceLastHeadshot > HeadshotTimeout)
         {
             _consecutiveHeadshots = 0;
@@ -95,8 +107,11 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 
         switch (currentState)
         {
+            case State.SpawnStall:
+                SpawnStall();
+                break;
             case State.InitialSpawn:
-                // InitialSpawnBehavior();
+                SpawnBehavior();
                 break;
             case State.Idling:
                 Idle();
@@ -115,9 +130,18 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
                 break;
         }
     }
-
+    public void SpawnStall()
+    {
+        _agent.isStopped = true;
+    }
     protected virtual void DetectPlayer()
     {
+
+        if (currentState == State.SpawnStall)
+        {
+            _agent.isStopped = true;   
+        }
+        
         if (_isDead) return;
         if (currentState == State.Idling && _hasTakenHit)
         {
@@ -135,8 +159,12 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             {
                 _isPlayerDetected = true;
                 _playerTransform = hitCollider.transform;
-                
-                if (currentState != State.Attacking && currentState != State.Chasing)
+                if (currentState == State.SpawnStall)
+                {
+                    Debug.Log("içerdeyim");
+                    currentState = State.InitialSpawn;
+                }
+                if (currentState != State.Attacking && currentState != State.Chasing && currentState != State.SpawnStall && currentState != State.InitialSpawn)
                 {
                     currentState = State.Chasing;
                 }
@@ -263,24 +291,27 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         if (playerDistance > attackRange)
         {
             currentState = (playerDistance <= sightRange) ? State.Chasing : State.Idling;
+            // Resume NavMeshAgent to allow movement
             _agent.isStopped = false;
         }
     }
 
     protected virtual void Attack()
     {
-        CheckPlayerDistance();
-        FacePlayer(turningSpeed);
-
+        // Lock the enemy's position by stopping the NavMeshAgent
         _agent.isStopped = true;
+
+        // Face the player without moving
+        FacePlayer(turningSpeed);
 
         if (_timeSinceLastAttack >= timeBetweenAttacks)
         {
             _timeSinceLastAttack = 0f;
-            _animator.SetFloat("Speed",  0);
+            _animator.SetFloat("Speed", 0);
             TriggerAttack();
         }
     }
+
     
     protected virtual float CalculateAttackChance()
     {
@@ -340,11 +371,36 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     public virtual void OnHeavyAttackComplete()
     {
         _animator.ResetTrigger("HeavyAttackTrigger");
+
+        // Transition back to appropriate state after attack is complete
+        TransitionAfterAttack();
     }
-    
+
     public virtual void OnNormalAttackComplete()
     {
         _animator.ResetTrigger("NormalAttackTrigger");
+
+        // Transition back to appropriate state after attack is complete
+        TransitionAfterAttack();
+    }
+
+    private void TransitionAfterAttack()
+    {
+        // Check if the player is still within the chase range
+        if (Vector3.Distance(_playerTransform.position, transform.position) <= chaseDetectionRadius)
+        {
+            currentState = State.Chasing;
+        }
+        else
+        {
+            currentState = State.Idling;
+        }
+
+        // Resume the NavMeshAgent based on the new state
+        if (currentState == State.Chasing)
+        {
+            _agent.isStopped = false;
+        }
     }
     
     protected virtual float CalculateStaggerChance(bool isHeadshot)
@@ -435,7 +491,10 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         //     Instantiate(lootPrefab, transform.position, Quaternion.identity);
         // }
     }
-
+    protected virtual void SpawnBehavior()
+    {
+        // Base class does nothing
+    }
     // You can call this method to trigger the enemy spawn externally
     // public void TriggerSpawn()
     // {
