@@ -441,7 +441,6 @@ namespace WeaponRelated
         
         //Separate UI logic!!!
         
-        
         private void UpdateCrosshairVisibility()
         {
             if (_crosshairInstance != null)

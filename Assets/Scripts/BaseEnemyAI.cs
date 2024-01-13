@@ -20,7 +20,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     [HideInInspector] public State currentState;
     protected NavMeshAgent _agent;
     protected Animator _animator;
-    private CapsuleCollider _collider;
+    protected CapsuleCollider _collider;
     protected Transform _playerTransform;
 
     protected bool _isPlayerDetected = false;
@@ -44,17 +44,8 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     public float attackRange = 2f;
     private int _attackCount = 0;
     
-    private int _consecutiveHeadshots = 0;
-    private int _consecutiveNonHeadshots = 0;
-    private float _timeSinceLastHeadshot = 0f;
-    private const float HeadshotTimeout = 4f;
-    private float _timeSinceLastNonHeadshot = 0f;
-    private const float NonHeadshotTimeout = 2.5f;
-    
-    private const float MaxHeadshotStaggerChance = 0.75f;
-    private const float MaxNonHeadshotStaggerChance = 0.25f;
-    protected bool _isPlayerLastPositionKnown;
-    public bool IsSpawn;
+    protected bool IsPlayerLastPositionKnown;
+    public bool isSpawn;
     protected virtual void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -65,14 +56,16 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 
     protected virtual void Start()
     {
-        if (IsSpawn)
+        if (isSpawn)
         {
             currentState = State.SpawnStall;
         }
+        
         else
         {
             currentState = State.Idling;
         }
+        
         normalHitBox.gameObject.SetActive(false);
         heavyHitBox.gameObject.SetActive(false);
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -85,24 +78,13 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     protected virtual void Update()
     {
         _timeSinceLastAttack += Time.deltaTime;
-        _timeSinceLastHeadshot += Time.deltaTime;
-        _timeSinceLastNonHeadshot += Time.deltaTime;
+        
         if (currentState == State.Attacking)
         {
-            // Ensure the enemy stays in place during the attack
             _agent.isStopped = true;
         }
-        if (_timeSinceLastHeadshot > HeadshotTimeout)
-        {
-            _consecutiveHeadshots = 0;
-            _timeSinceLastHeadshot = 0f;
-        }
-
-        if (_timeSinceLastNonHeadshot > NonHeadshotTimeout)
-        {
-            _consecutiveNonHeadshots = 0;
-            _timeSinceLastNonHeadshot = 0f;
-        }
+        
+        _animator.SetBool("IsSpawn", isSpawn);
         DetectPlayer();
 
         switch (currentState)
@@ -130,16 +112,18 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
                 break;
         }
     }
-    public void SpawnStall()
+
+    private void SpawnStall()
     {
         _agent.isStopped = true;
+        _collider.enabled = false;
     }
+    
     protected virtual void DetectPlayer()
     {
-
         if (currentState == State.SpawnStall)
         {
-            _agent.isStopped = true;   
+            _agent.isStopped = true;
         }
         
         if (_isDead) return;
@@ -173,13 +157,6 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
-    // private void InitialSpawnBehavior()
-    // {
-    //     // Implement your spawn animation logic here
-    //     _animator.Play("SpawnAnimation");
-    //     currentState = State.Idling;
-    // }
-
     protected virtual void Idle()
     {
         if (_isDead) return;
@@ -188,11 +165,10 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 
     protected virtual void Chase()
     {
-        // Check if the player is detected or if the AI has taken a hit
         if (_isPlayerDetected)
         {
             _lastKnownPlayerPosition = _playerTransform.position;
-            _isPlayerLastPositionKnown = true;
+            IsPlayerLastPositionKnown = true;
             FacePlayer(turningSpeed);
             MoveTowardsPlayer();
 
@@ -203,7 +179,6 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
                 _agent.isStopped = false;
                 _agent.SetDestination(_playerTransform.position);
 
-                // Normalize speed based on distance to player
                 var normalizedSpeed = Mathf.InverseLerp(attackRange, sightRange, distanceToPlayer);
                 _agent.speed = Mathf.Lerp(1f, 0.5f, normalizedSpeed);
                 _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), _agent.speed, Time.deltaTime * 5));
@@ -219,15 +194,10 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
                 currentState = State.Attacking;
             }
         }
-        else if (_isPlayerLastPositionKnown)
+        else if (IsPlayerLastPositionKnown)
         {
             SeekLastKnownPlayerPosition();
         }
-        // else
-        // {
-        //     // Transition back to Idle if the player is lost and not in last known position
-        //     currentState = State.Idling;
-        // }
     }
     
     protected virtual void MoveTowardsPlayer()
@@ -254,7 +224,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         {
             if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
             {
-                _isPlayerLastPositionKnown = false;
+                IsPlayerLastPositionKnown = false;
                 currentState = State.Idling;
                 _animator.SetFloat("Speed", 0);
             }
@@ -283,18 +253,6 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turningSpeed);
         }
     }
-    
-    protected virtual void CheckPlayerDistance()
-    {
-        var playerDistance = Vector3.Distance(_playerTransform.position, transform.position);
-
-        if (playerDistance > attackRange)
-        {
-            currentState = (playerDistance <= sightRange) ? State.Chasing : State.Idling;
-            // Resume NavMeshAgent to allow movement
-            _agent.isStopped = false;
-        }
-    }
 
     protected virtual void Attack()
     {
@@ -311,11 +269,9 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             TriggerAttack();
         }
     }
-
     
     protected virtual float CalculateAttackChance()
     {
-        // Adjust the probability thresholds based on the attack count
         var lightAttackChance = 0.7f - (0.1f * (_attackCount / 3));
         return Mathf.Clamp(lightAttackChance, 0.5f, 0.7f);
     }
@@ -332,7 +288,6 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             _animator.SetTrigger("NormalAttackTrigger");
         }
 
-        // Increment the attack count and reset if it reaches 3
         _attackCount = (_attackCount + 1) % 3;
     }
     
@@ -372,7 +327,6 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     {
         _animator.ResetTrigger("HeavyAttackTrigger");
 
-        // Transition back to appropriate state after attack is complete
         TransitionAfterAttack();
     }
 
@@ -380,13 +334,11 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     {
         _animator.ResetTrigger("NormalAttackTrigger");
 
-        // Transition back to appropriate state after attack is complete
         TransitionAfterAttack();
     }
 
     private void TransitionAfterAttack()
     {
-        // Check if the player is still within the chase range
         if (Vector3.Distance(_playerTransform.position, transform.position) <= chaseDetectionRadius)
         {
             currentState = State.Chasing;
@@ -396,26 +348,10 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             currentState = State.Idling;
         }
 
-        // Resume the NavMeshAgent based on the new state
         if (currentState == State.Chasing)
         {
             _agent.isStopped = false;
         }
-    }
-    
-    protected virtual float CalculateStaggerChance(bool isHeadshot)
-    {
-        float staggerChance;
-        if (isHeadshot)
-        {
-            staggerChance = Mathf.Lerp(0.35f, MaxHeadshotStaggerChance, Mathf.Min(_consecutiveHeadshots, 3) / 3f);
-        }
-        else
-        {
-            staggerChance = Mathf.Lerp(0.1f, MaxNonHeadshotStaggerChance, Mathf.Min(_consecutiveNonHeadshots, 3) / 3f);
-        }
-
-        return staggerChance;
     }
     
     protected virtual void TriggerStaggerAnimation()
@@ -430,44 +366,17 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         _health.DamageReceived(damage);
         _hasTakenHit = true;
 
-        if (isWeakpoint)
-        {
-            _consecutiveHeadshots++;
-            _timeSinceLastHeadshot = 0f;
-            _consecutiveNonHeadshots = 0;
-            _timeSinceLastNonHeadshot = 0f;
-            if (_consecutiveHeadshots > 3) _consecutiveHeadshots = 1;
-        }
-        else
-        {
-            _consecutiveNonHeadshots++;
-            _timeSinceLastNonHeadshot = 0f;
-            _consecutiveHeadshots = 0;
-            _timeSinceLastHeadshot = 0f;
-            if (_consecutiveNonHeadshots > 3) _consecutiveNonHeadshots = 1;
-        }
-
-        // Determine if a stagger should happen
-        var staggerChance = CalculateStaggerChance(isWeakpoint);
-        if (Random.value < staggerChance)
-        {
-            TriggerStaggerAnimation();
-
-            // Reset both headshot and non-headshot counters after triggering stagger
-            _consecutiveHeadshots = 0;
-            _consecutiveNonHeadshots = 0;
-        }
+        TriggerStaggerAnimation();
 
         if (_health.IsDead)
         {
             _isDead = true;
             currentState = State.Death;
         }
-        
         else
         {
             _lastKnownPlayerPosition = _playerTransform.position;
-            _isPlayerLastPositionKnown = true;
+            IsPlayerLastPositionKnown = true;
             _isPlayerDetected = true;
             currentState = State.Chasing;
             FacePlayer(turningSpeed);

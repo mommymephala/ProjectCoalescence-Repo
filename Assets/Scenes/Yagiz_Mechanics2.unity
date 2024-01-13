@@ -3844,7 +3844,6 @@ MonoBehaviour:
   turningSpeed: 5
   sightRange: 6
   attackRange: 2
-  IsSpawn: 0
 --- !u!54 &896085761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6586,7 +6585,6 @@ MonoBehaviour:
   turningSpeed: 5
   sightRange: 6
   attackRange: 2
-  IsSpawn: 0
 --- !u!54 &1663478702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8563,7 +8561,6 @@ MonoBehaviour:
   turningSpeed: 5
   sightRange: 6
   attackRange: 2
-  IsSpawn: 0
 --- !u!114 &919132149148704603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8987,7 +8984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3599813710911311443, guid: 9eadcfd17b3bd2f40a28046abe8df88e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3678065054379726446, guid: 9eadcfd17b3bd2f40a28046abe8df88e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

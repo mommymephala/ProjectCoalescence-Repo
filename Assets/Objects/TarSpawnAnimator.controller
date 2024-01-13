@@ -85,7 +85,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Spawn Trigger
+    m_ConditionEvent: SpawnTrigger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3714083088119351160}
@@ -316,7 +316,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 30, y: 270, z: 0}
-  m_EntryPosition: {x: -370, y: 160, z: 0}
+  m_EntryPosition: {x: -360, y: 80, z: 0}
   m_ExitPosition: {x: 1220, y: 220, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 4453014752600687005}
@@ -365,7 +365,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Spawn Trigger
+  - m_Name: SpawnTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

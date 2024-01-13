@@ -9,7 +9,7 @@ public class ExperimentalManAI : BaseEnemyAI
         if (_isPlayerDetected)
         {
             _lastKnownPlayerPosition = _playerTransform.position;
-            _isPlayerLastPositionKnown = true;
+            IsPlayerLastPositionKnown = true;
             FacePlayer(turningSpeed);
         
             var distanceToPlayer = Vector3.Distance(_playerTransform.position, transform.position);
@@ -29,7 +29,7 @@ public class ExperimentalManAI : BaseEnemyAI
                 _agent.SetDestination(_playerTransform.position);
             }
         }
-        else if (_isPlayerLastPositionKnown)
+        else if (IsPlayerLastPositionKnown)
         {
             SeekLastKnownPlayerPosition();
         }
@@ -39,6 +39,5 @@ public class ExperimentalManAI : BaseEnemyAI
     {
         if (!isWeakpoint) return;
         base.TakeDamage(damage, isChargedAttack, true);
-
     }
 }
