@@ -7,12 +7,14 @@ public class AudioManager : MonoBehaviour
     
     [Header("Player")]
     [SerializeField] private EventReference playerFootsteps;
+    [SerializeField] private EventReference playerTakeDamage;
     // [SerializeField] private EventReference playerJump;
     // [SerializeField] private EventReference playerAttackRanged;
     // [SerializeField] private EventReference weaponSwitch;
     [SerializeField] private EventReference metalDoor;
     // [SerializeField] private EventReference playerHurt;
     private EventInstance _playerFootstepInstance;
+    private EventInstance _playerTakeDamage;
 
     private void Awake()
     {
@@ -43,6 +45,23 @@ public class AudioManager : MonoBehaviour
      // RuntimeManager.PlayOneShot(playerFootsteps,transform.position);
      
     }
+
+    public void PlayPlayerTakeDamage()
+    {
+        if (playerTakeDamage.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: playertakedamage");
+            return;
+        }
+
+        _playerTakeDamage = RuntimeManager.CreateInstance(playerFootsteps);
+        
+        _playerTakeDamage.start();
+        _playerTakeDamage.release();
+        
+    }
+    
+    
     
     public void PlayDoor(GameObject doorObject)
     {
@@ -54,4 +73,5 @@ public class AudioManager : MonoBehaviour
         
         RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
     }
+    
 }

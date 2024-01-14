@@ -25,9 +25,9 @@ public class SpawnableEnemyAI : BaseEnemyAI
     
     private void FixedUpdate()
     {
-        Debug.Log(IsSpawn);
+       // Debug.Log(IsSpawn);
         _animator.SetBool("IsSpawn", IsSpawn);
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
     }
 
     private void EndSpawnAnimation()
@@ -39,7 +39,7 @@ public class SpawnableEnemyAI : BaseEnemyAI
         _animator.SetBool("IsSpawn", IsSpawn);
         currentState = State.Idling;
         _agent.isStopped = false;
-        Debug.Log(IsSpawn);
+      // Debug.Log(IsSpawn);
     }
 
 }

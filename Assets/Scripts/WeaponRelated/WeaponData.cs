@@ -9,6 +9,9 @@ namespace WeaponRelated
     {
         [Header("Audio")] 
         public EventReference gunShotSFX;
+
+        public EventReference ReloadSfx;
+        public EventReference OutOfAmmo;
         
         [Header("Shooting")]
         public bool allowAutoFire;

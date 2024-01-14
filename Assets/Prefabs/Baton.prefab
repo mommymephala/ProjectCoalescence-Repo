@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6050747854847116778}
+  - {fileID: 5165002831781571790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4779855607038662269
@@ -51,77 +51,13 @@ MonoBehaviour:
   rotationX: 1
   rotationY: 1
   rotationZ: 1
---- !u!1 &1291254175607523797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3122432319898901259}
-  m_Layer: 13
-  m_Name: DemoPistol
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3122432319898901259
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291254175607523797}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.438, y: -0.16, z: 0.053}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5165002831781571790}
-  m_Father: {fileID: 6050747854847116778}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6192824760540287028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6050747854847116778}
-  m_Layer: 13
-  m_Name: PistolADSPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6050747854847116778
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192824760540287028}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3122432319898901259}
-  m_Father: {fileID: 5276595615740840276}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4622804042484501285
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3122432319898901259}
+    m_TransformParent: {fileID: 5276595615740840276}
     m_Modifications:
     - target: {fileID: -9025623879369772240, guid: 396173af5a2bc2b43abe0da333586934, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -149,15 +85,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 396173af5a2bc2b43abe0da333586934, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.196
+      value: -0.242
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 396173af5a2bc2b43abe0da333586934, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.005
+      value: -0.16499999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 396173af5a2bc2b43abe0da333586934, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1
+      value: 0.153
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 396173af5a2bc2b43abe0da333586934, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1782,6 +1718,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3dc7851fc27fd4d827479f6ea39ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BatonAttack:
+    Guid:
+      Data1: 2103223952
+      Data2: 1321540374
+      Data3: -1911335018
+      Data4: -519273705
+    Path: event:/SFX/Weapon/Weapon_Deagle
+  BatonSwoosh:
+    Guid:
+      Data1: -1449192954
+      Data2: 1118692774
+      Data3: -1410873970
+      Data4: 1791399420
+    Path: event:/SFX/Weapon/Weapon_Rifle
+  BatonElectric:
+    Guid:
+      Data1: 1844504655
+      Data2: 1253633678
+      Data3: -1594968445
+      Data4: -1072045817
+    Path: event:/SFX/Weapon/Weapon_Shotgun
   hitbox: {fileID: 408315975419749592}
   attackDelay: 0.01
   chargedAttackEffect: {fileID: 1190131086089332, guid: a22bb852cf433044e8752ea7fe62f570, type: 3}

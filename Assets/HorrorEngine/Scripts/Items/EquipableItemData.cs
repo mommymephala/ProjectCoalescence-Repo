@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.Serialization;
-
+using FMODUnity;
 namespace HorrorEngine
 {
     [CreateAssetMenu(menuName = "Horror Engine/Items/Equipable")]
     public class EquipableItemData : ItemData
     {
+        [Header("Audio")] 
+        
         [FormerlySerializedAs("Prefab")]
         public GameObject EquipPrefab;
         public EquipmentSlot Slot = EquipmentSlot.Primary;
@@ -14,6 +16,7 @@ namespace HorrorEngine
         public bool AttachOnEquipped = true;
         [Tooltip("If true, this item will be removed from the current inventory slot when equipped")]
         public bool MoveOutOfInventoryOnEquip;
+        
 
         public override void OnUse(InventoryEntry entry)
         {
@@ -33,8 +36,6 @@ namespace HorrorEngine
             {
                 equipment.Equip(this, this.Slot);
             }
-            
         }
-
     }
 }
