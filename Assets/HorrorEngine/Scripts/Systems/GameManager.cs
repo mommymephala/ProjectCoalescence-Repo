@@ -71,16 +71,16 @@ namespace HorrorEngine
 
             StorageBox.FillCapacityWithEmptyEntries();
 
-            MessageBuffer<DoorCrossSceneTransitionBeforeSpawnMessage>.Subscribe(OnDoorCrossSceneTransitionBeforeSpawn);
-            MessageBuffer<DoorTransitionMidWayMessage>.Subscribe(OnDoorTransitionMidway);
+            // MessageBuffer<DoorCrossSceneTransitionBeforeSpawnMessage>.Subscribe(OnDoorCrossSceneTransitionBeforeSpawn);
+            // MessageBuffer<DoorTransitionMidWayMessage>.Subscribe(OnDoorTransitionMidway);
         }
         // --------------------------------------------------------------------
 
-        private void OnDestroy()
-        {
-            MessageBuffer<DoorCrossSceneTransitionBeforeSpawnMessage>.Unsubscribe(OnDoorCrossSceneTransitionBeforeSpawn);
-            MessageBuffer<DoorTransitionMidWayMessage>.Unsubscribe(OnDoorTransitionMidway);
-        }
+        // private void OnDestroy()
+        // {
+        //     MessageBuffer<DoorCrossSceneTransitionBeforeSpawnMessage>.Unsubscribe(OnDoorCrossSceneTransitionBeforeSpawn);
+        //     MessageBuffer<DoorTransitionMidWayMessage>.Unsubscribe(OnDoorTransitionMidway);
+        // }
 
         // --------------------------------------------------------------------
 
@@ -142,7 +142,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        void OnDoorTransitionMidway(DoorTransitionMidWayMessage msg)
+        /*void OnDoorTransitionMidway(DoorTransitionMidWayMessage msg)
         {
             ObjectStateManager.Instance.CaptureStates();
         }
@@ -153,7 +153,7 @@ namespace HorrorEngine
         {
             ObjectStateManager.Instance.InstantiateSpawned(SceneManager.GetActiveScene(), SpawnableDatabase);
             ObjectStateManager.Instance.ApplyStates();
-        }
+        }*/
 
         // --------------------------------------------------------------------
 

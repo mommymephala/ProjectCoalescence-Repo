@@ -2,24 +2,23 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    [SerializeField]
-    private Door door;
+    [SerializeField] private DoorOpening doorOpening;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        if (!door.isOpen)
+        if (!doorOpening.isOpen)
         {
-            door.Open(other.transform.position);
+            doorOpening.Open(other.transform.position);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        if (door.isOpen)
+        if (doorOpening.isOpen)
         {
-            door.Close();
+            doorOpening.Close();
         }
     }
 }

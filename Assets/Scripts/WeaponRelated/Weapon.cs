@@ -7,7 +7,6 @@ using HorrorEngine;
 using UnityEngine;
 using UnityEngine.UI;
 using Interfaces;
-using Unity.VisualScripting;
 
 namespace WeaponRelated
 {
@@ -24,7 +23,6 @@ namespace WeaponRelated
         private Transform _weaponsHolderTransform;
         private InventoryEntry _weaponEntry;
         private GameObject _crosshairInstance;
-        // private float _duration;
         
         [Header("Transforms")]
         [SerializeField] private Transform muzzleTransform;
@@ -69,7 +67,6 @@ namespace WeaponRelated
 
         private void Awake()
         {
-            // _audioManager = GetComponent<AudioManager>();
             _newPlayerController = GetComponentInParent<NewPlayerController>();
             _mouseLook = GetComponentInParent<MouseLook>();
             _playerCamera = GameObject.Find("Camera").GetComponent<Camera>();
@@ -86,6 +83,7 @@ namespace WeaponRelated
             weaponData.originalPlayerFOV = _playerCamera.fieldOfView;
             weaponData.originalWeaponFOV = _weaponCamera.fieldOfView;
         }
+        
         private void Start()
         {
             if (weaponData.crosshairPrefab != null)
@@ -363,7 +361,7 @@ namespace WeaponRelated
 
         private void HandleAdsInput()
         {
-            if (_reloading) // Disable ADS for the specific weapon
+            if (_reloading)
             {
                 return;
             }
@@ -439,20 +437,22 @@ namespace WeaponRelated
                 Debug.LogWarning("Fmod event not found: gunShotSFX");
                 return;
             }
+            
             RuntimeManager.PlayOneShot(weaponData.gunShotSFX, transform.position);
         }
 
         private void PlayReloadSFX()
         {
-            if (weaponData.ReloadSfx.IsNull)
+            if (weaponData.ReloadSFX.IsNull)
             {
                 Debug.LogWarning("Fmod event not found: Reload");
                 return;
             }
 
             Debug.Log("reload");
-            RuntimeManager.PlayOneShot(weaponData.ReloadSfx, transform.position);
+            RuntimeManager.PlayOneShot(weaponData.ReloadSFX, transform.position);
         }
+        
         private void PlayOutOfAmmo()
         {
             if (weaponData.OutOfAmmo.IsNull)
@@ -460,9 +460,11 @@ namespace WeaponRelated
                 Debug.LogWarning("Fmod event not found: Out of ammo");
                 return;
             }
+            
             Debug.Log("out of ammo");
             RuntimeManager.PlayOneShot(weaponData.OutOfAmmo, transform.position);
         }
+        
         //Separate UI logic!!!
         
         private void UpdateCrosshairVisibility()

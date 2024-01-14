@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 
 namespace HorrorEngine
@@ -57,4 +57,4 @@ namespace HorrorEngine
             enabled = Convert.ToBoolean(savedData);
         }
     }
-}
+}*/

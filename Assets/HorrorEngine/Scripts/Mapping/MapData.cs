@@ -57,7 +57,7 @@ namespace HorrorEngine
                     return Enum.Parse<MapRoomState>(componentData);
              }
 
-            return MapRoomState.Unknown;
+             return MapRoomState.Unknown;
         }
 
     }

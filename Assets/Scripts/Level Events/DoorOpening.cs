@@ -3,10 +3,9 @@ using System.Collections;
 using FMODUnity;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class DoorOpening : MonoBehaviour
 {
     public bool isOpen;
-    private AudioManager _audioManager;
     [SerializeField] private bool isRotatingDoor = true;
     [SerializeField] private float speed = 1f;
     
@@ -27,19 +26,14 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         _startRotation = transform.rotation.eulerAngles;
-        // Since "Forward" actually is pointing into the door frame, choose a direction to think about as "forward" 
         _forward = transform.right;
         _startPosition = transform.position;
-    }
-
-    private void Start()
-    {
-        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void Open(Vector3 userPosition)
     {
         if (isOpen) return;
+        
         if (_animationCoroutine != null)
         {
             StopCoroutine(_animationCoroutine);
@@ -48,15 +42,14 @@ public class Door : MonoBehaviour
         if (isRotatingDoor)
         {
             var dot = Vector3.Dot(_forward, (userPosition - transform.position).normalized);
-            Debug.Log($"Dot: {dot:N3}");
             _animationCoroutine = StartCoroutine(DoRotationOpen(dot));
         }
+        
         else
         {
             _animationCoroutine = StartCoroutine(DoSlidingOpen()); 
-            _audioManager.PlayDoor(gameObject);
+            AudioManager.Instance.PlayDoor(gameObject);
         }
-        
     }
 
     private IEnumerator DoRotationOpen(float forwardAmount)

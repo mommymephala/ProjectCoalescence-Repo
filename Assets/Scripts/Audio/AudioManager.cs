@@ -3,7 +3,7 @@ using FMODUnity;
 using FMOD.Studio;
 public class AudioManager : MonoBehaviour
 {
-    private static AudioManager Instance { get; set; }
+    public static AudioManager Instance { get; private set; }
     
     [Header("Player")]
     [SerializeField] private EventReference playerFootsteps;
@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
+        
         else
         {
             Instance = this;
@@ -37,13 +38,11 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Fmod event not found: playerFootstep");
             return;
         }
+        
         _playerFootstepInstance = RuntimeManager.CreateInstance(playerFootsteps);
         
         _playerFootstepInstance.start();
         _playerFootstepInstance.release();
-        
-     // RuntimeManager.PlayOneShot(playerFootsteps,transform.position);
-     
     }
 
     public void PlayPlayerTakeDamage()
@@ -60,8 +59,6 @@ public class AudioManager : MonoBehaviour
         _playerTakeDamage.release();
         
     }
-    
-    
     
     public void PlayDoor(GameObject doorObject)
     {

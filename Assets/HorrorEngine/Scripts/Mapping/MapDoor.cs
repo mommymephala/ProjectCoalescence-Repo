@@ -52,7 +52,7 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        private void Start()
+        /*private void Start()
         {
             if (Door)
             {
@@ -84,7 +84,7 @@ namespace HorrorEngine
                     sceneDoor.Exit.OnOpened.RemoveListener(OnDoorOpened);
                 }
             }
-        }
+        }*/
 
         // --------------------------------------------------------------------
 

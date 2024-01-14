@@ -6,8 +6,8 @@ namespace HorrorEngine
 {
     public abstract class DoorBase : MonoBehaviour
     {
-        public DoorAnimation Animation;
-        public Transform ExitPoint;
+        // public DoorAnimation Animation;
+        // public Transform ExitPoint;
         public UnityEvent OnLocked;
         public UnityEvent OnOpened;
 
@@ -15,20 +15,19 @@ namespace HorrorEngine
 
         public abstract bool IsLocked();
 
-        protected virtual void OnDrawGizmosSelected()
-        {
-            if (ExitPoint)
-            {
-                Gizmos.DrawWireCube(ExitPoint.position, new Vector3(0.5f, 0f, 0.5f));
-                GizmoUtils.DrawArrow(ExitPoint.position, ExitPoint.forward, 1f);
-            }
-        }
+        // protected virtual void OnDrawGizmosSelected()
+        // {
+        //     if (ExitPoint)
+        //     {
+        //         Gizmos.DrawWireCube(ExitPoint.position, new Vector3(0.5f, 0f, 0.5f));
+        //         GizmoUtils.DrawArrow(ExitPoint.position, ExitPoint.forward, 1f);
+        //     }
+        // }
     }
 
     public class SceneDoor : DoorBase
     {
-        public SceneDoor Exit;
-
+        // public SceneDoor Exit;
         private DoorLock m_Lock;
         private Transform m_Interactor;
 
@@ -43,7 +42,7 @@ namespace HorrorEngine
 
         public override bool IsLocked()
         {
-            return (m_Lock && m_Lock.IsLocked) || (Exit && Exit.m_Lock && Exit.m_Lock.IsLocked);
+            return (m_Lock && m_Lock.IsLocked); //|| (Exit && Exit.m_Lock && Exit.m_Lock.IsLocked);
         }
 
         // --------------------------------------------------------------------
@@ -52,7 +51,7 @@ namespace HorrorEngine
         {
             if (m_Lock && m_Lock.IsLocked)
             {
-                m_Lock.OnTryToUnlock(out bool open);
+                m_Lock.OnTryToUnlock(out var open);
                 if (!open)
                 {
                     if (IsLocked())
@@ -60,45 +59,46 @@ namespace HorrorEngine
                     return;
                 }
             }
-
-            if (Exit && Exit.m_Lock && Exit.m_Lock.IsLocked)
-            {
-                Exit.m_Lock.OnTryToUnlockFromExit(out bool open);
-                if (!open)
-                {
-                    if (IsLocked())
-                        OnLocked?.Invoke();
-                    return;
-                }
-            }
-
+            
             OnOpened?.Invoke();
-            MonoBehaviour interactorMB = (MonoBehaviour)interactor;
-            m_Interactor = interactorMB.transform;
-            DoorTransitionController.Instance.Trigger(this, interactorMB.gameObject, TransitionRoutine);
+
+            // if (Exit && Exit.m_Lock && Exit.m_Lock.IsLocked)
+            // {
+            //     Exit.m_Lock.OnTryToUnlockFromExit(out var open);
+            //     if (!open)
+            //     {
+            //         if (IsLocked())
+            //             OnLocked?.Invoke();
+            //         return;
+            //     }
+            // }
+            
+            // var interactorMB = (MonoBehaviour)interactor;
+            // m_Interactor = interactorMB.transform;
+            // DoorTransitionController.Instance.Trigger(this, interactorMB.gameObject, TransitionRoutine);
         }
         
         // --------------------------------------------------------------------
 
-        private IEnumerator TransitionRoutine()
-        {
-            // Player teleportation
-            m_Interactor.rotation = Exit.ExitPoint.rotation;
-            m_Interactor.position = Exit.ExitPoint.position;
-            yield return null;
-        }
+        // private IEnumerator TransitionRoutine()
+        // {
+        //     // Player teleportation
+        //     m_Interactor.rotation = Exit.ExitPoint.rotation;
+        //     m_Interactor.position = Exit.ExitPoint.position;
+        //     yield return null;
+        // }
         
         // --------------------------------------------------------------------
 
-        protected override void OnDrawGizmosSelected()
-        {
-            base.OnDrawGizmosSelected();
-
-            if (Exit)
-            {
-                Gizmos.color = Exit.Exit == this ? Color.green : Color.red;
-                Gizmos.DrawLine(transform.position, Exit.transform.position);
-            }
-        }
+        // protected override void OnDrawGizmosSelected()
+        // {
+        //     base.OnDrawGizmosSelected();
+        //
+        //     if (Exit)
+        //     {
+        //         Gizmos.color = Exit.Exit == this ? Color.green : Color.red;
+        //         Gizmos.DrawLine(transform.position, Exit.transform.position);
+        //     }
+        // }
     }
 }

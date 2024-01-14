@@ -6,23 +6,16 @@ namespace HorrorEngine
     [CreateAssetMenu(menuName = "Horror Engine/Items/Equipable")]
     public class EquipableItemData : ItemData
     {
-        [Header("Audio")] 
-        
-        [FormerlySerializedAs("Prefab")]
         public GameObject EquipPrefab;
         public EquipmentSlot Slot = EquipmentSlot.Primary;
-        // public SocketAttachment CharacterAttachment;
-        [Tooltip("If true, this item will be attached to the character when used from the inventory selecting the Equip option. In some cases, items might not need to be attached until a action happens")]
         public bool AttachOnEquipped = true;
-        [Tooltip("If true, this item will be removed from the current inventory slot when equipped")]
         public bool MoveOutOfInventoryOnEquip;
-        
 
         public override void OnUse(InventoryEntry entry)
         {
             base.OnUse(entry);
 
-            PlayerEquipment equipment = GameManager.Instance.Player.GetComponent<PlayerEquipment>();
+            var equipment = GameManager.Instance.Player.GetComponent<PlayerEquipment>();
             Inventory inventory = GameManager.Instance.Inventory;
             if (entry != null)
             {

@@ -8,12 +8,6 @@ namespace HorrorEngine
         [SerializeField] private DialogData m_OnUnlockedDialog;
         [SerializeField] private AudioClip m_OnUnlockedSound;
 
-
-        [HideInInspector]
-        [FormerlySerializedAs("m_OnUnlockDialog")]
-        [SerializeField] private string[] m_OnUnlockDialog_DEPRECATED = { "You unlocked the door" };
-
-
         public override void OnTryToUnlock(out bool openImmediately)
         {
             openImmediately = false;

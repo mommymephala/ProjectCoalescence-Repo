@@ -14,15 +14,8 @@ namespace HorrorEngine
         [Space]
         [SerializeField] private ItemData m_Key;
         [SerializeField] private bool m_ConsumesItem = true;
-        [SerializeField] private bool m_UseObjectAutomatically = true;
-        [SerializeField] private bool m_UseKeyBothSides = true;
-
-        [HideInInspector]
-        [FormerlySerializedAs("m_LockedOtherSideDialog")]
-        [SerializeField] private string[] m_LockedOtherSideDialog_DEPRECATED = { "The door is locked from the other side" };
-        [HideInInspector]
-        [FormerlySerializedAs("m_OnUnlockDialog")]
-        [SerializeField] private string[] m_OnUnlockDialog_DEPRECATED = { "You unlocked the door with the key" };
+        // [SerializeField] private bool m_UseObjectAutomatically = true;
+        // [SerializeField] private bool m_UseKeyBothSides = true;
 
         protected override void Awake()
         {
@@ -45,7 +38,7 @@ namespace HorrorEngine
             openImmediately = false;
         }
 
-        public override void OnTryToUnlockFromExit(out bool openImmediately)
+        /*public override void OnTryToUnlockFromExit(out bool openImmediately)
         {
             openImmediately = false;
 
@@ -61,48 +54,31 @@ namespace HorrorEngine
 
             if (!TryUnlock() && m_OnLockedDialog.IsValid())
                 UIManager.Get<UIDialog>().Show(m_OnLockedDialog);
-        }
+        }*/
 
         public bool TryUnlock()
         {
             Debug.Assert(m_Key, "DoorLockKeyItem requires an item to work", gameObject);
             if (!m_Key)
                 return false;
-
-            if (m_UseObjectAutomatically)
+            
+            if (GameManager.Instance.Inventory.Contains(m_Key))
             {
-                if (GameManager.Instance.Inventory.Contains(m_Key))
+                if (m_ConsumesItem)
                 {
-
-                    if (m_ConsumesItem)
-                        GameManager.Instance.Inventory.Remove(m_Key);
-
-                    if (m_UseKeyBothSides)
-                    {
-                        // TODO - Support CrossSceneDoors
-                        SceneDoor sceneDoor = Door as SceneDoor;
-                        if (sceneDoor)
-                        {
-                            // Unlock both sides if the lock has the same key
-                            var exitLock = sceneDoor.Exit.GetComponent<DoorLockKeyItem>();
-                            if (exitLock && exitLock.IsLocked && exitLock.m_Key == m_Key)
-                            {
-                                exitLock.IsLocked = false;
-                            }
-                        }
-                    }
-
+                    GameManager.Instance.Inventory.Remove(m_Key);
                     IsLocked = false;
-                    
+                        
+                    // OnUnlock?.Invoke();
+                        
                     if (m_OnUnlockedSound)
                         AudioSource.PlayOneShot(m_OnUnlockedSound);
 
                     if (m_OnUnlockedDialog.IsValid())
                         UIManager.Get<UIDialog>().Show(m_OnUnlockedDialog);
-
-
-                    return true;
                 }
+                    
+                return true;
             }
 
             return false;

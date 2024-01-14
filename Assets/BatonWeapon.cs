@@ -5,24 +5,24 @@ using UnityEngine;
 using FMODUnity;
 public class BatonWeapon : MonoBehaviour
 {
-    public EventReference BatonAttack;
-    public EventReference BatonSwoosh;
-    public EventReference BatonElectric;
+    public EventReference batonAttack;
+    public EventReference batonSwoosh;
+    public EventReference batonElectric;
     
-    private Animator animator;
-    private bool isAttacking = false;
+    private Animator _animator;
+    private bool _isAttacking = false;
     [SerializeField] private Collider hitbox;
     public float attackDelay;
-    private DepleteEquipment depleteEquipment;
+    private DepleteEquipment _depleteEquipment;
     
-    [SerializeField] private GameObject chargedAttackEffect; // Particle effect for charged attack
-    private bool isCharged => depleteEquipment.HasCharge(); // Check if the baton is charged
+    [SerializeField] private GameObject chargedAttackEffect;
+    private bool IsCharged => _depleteEquipment.HasCharge();
 
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        depleteEquipment = GetComponent<DepleteEquipment>();
+        _animator = GetComponent<Animator>();
+        _depleteEquipment = GetComponent<DepleteEquipment>();
     }
 
     private void Start()
@@ -32,7 +32,12 @@ public class BatonWeapon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        if (PauseController.Instance.IsPaused)
+        {
+            return;
+        }
+        
+        if (Input.GetMouseButtonDown(0) && !_isAttacking)
         {
             StartCoroutine(AttackRoutine());
         }
@@ -41,31 +46,29 @@ public class BatonWeapon : MonoBehaviour
     private IEnumerator AttackRoutine()
     {
         StartAttack();
-        // Wait for the duration of the current animation state plus the additional delay
         yield return new WaitForSeconds(GetCurrentAnimationLength() + attackDelay);
         FinishAttack();
     }
 
     private float GetCurrentAnimationLength()
     {
-        // Make sure the correct animation layer is referenced, usually layer 0
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
         return stateInfo.length;
     }
 
     private void StartAttack()
     {
-        isAttacking = true;
-        animator.SetTrigger("Attack");
+        _isAttacking = true;
+        _animator.SetTrigger("Attack");
         
-        if (isCharged)
+        if (IsCharged)
         {
             PlayBatonElectric();
-            depleteEquipment.Deplete();
-            // Enable charged attack effects and flags
-            EnableChargedAttackEffects(); // Pass the hitbox's position
-            hitbox.GetComponent<BatonHit>().SetChargedAttack(true); // Flag the hit as a charged attack
+            _depleteEquipment.Deplete();
+            EnableChargedAttackEffects();
+            hitbox.GetComponent<BatonHit>().SetChargedAttack(true);
         }
+        
         else
         {
             PlayBatonAttack();
@@ -85,8 +88,7 @@ public class BatonWeapon : MonoBehaviour
 
     private void FinishAttack()
     {
-        // DisableHitbox();
-        isAttacking = false;
+        _isAttacking = false;
     }
     
     private void EnableChargedAttackEffects()
@@ -95,38 +97,40 @@ public class BatonWeapon : MonoBehaviour
         GameObject effectInstance = Instantiate(chargedAttackEffect, hitbox.transform.position, Quaternion.identity);
         Destroy(effectInstance, 1f);
     }
+    
     public void PlayBatonAttack()
     {
-        if (BatonAttack.IsNull)
+        if (batonAttack.IsNull)
         {
             Debug.LogWarning("Fmod event not found: BatonAttack");
             return;
         }
 
         Debug.Log("batonAttack");
-        RuntimeManager.PlayOneShot(BatonAttack, transform.position);
+        RuntimeManager.PlayOneShot(batonAttack, transform.position);
     }
+    
     public void PlayBatonElectric()
     {
-        if (BatonElectric.IsNull)
+        if (batonElectric.IsNull)
         {
             Debug.LogWarning("Fmod event not found: BatonAttack");
             return;
         }
 
         Debug.Log("bruh");
-        RuntimeManager.PlayOneShot(BatonElectric, transform.position);
+        RuntimeManager.PlayOneShot(batonElectric, transform.position);
     }
 
     public void PlayBatonSwoosh()
     {
-        if (BatonSwoosh.IsNull)
+        if (batonSwoosh.IsNull)
         {
             Debug.LogWarning("Fmod event not found: BatonAttack");
             return;
         }
 
         Debug.Log("batonAttack");
-        RuntimeManager.PlayOneShot(BatonSwoosh, transform.position);
+        RuntimeManager.PlayOneShot(batonSwoosh, transform.position);
     }
 }

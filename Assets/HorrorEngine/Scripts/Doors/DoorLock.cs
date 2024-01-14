@@ -7,17 +7,10 @@ namespace HorrorEngine
 {
     public class DoorLock : MonoBehaviour, ISavableObjectStateExtra
     {
-        [FormerlySerializedAs("IsLocked")]
         [SerializeField] private bool m_Locked = true;
-     
         [SerializeField] protected DialogData m_OnLockedDialog;
         [SerializeField] protected AudioClip m_LockedSound;
-
-        [HideInInspector]
-        [FormerlySerializedAs("m_LockedDialog")]
-        [SerializeField] protected string[] m_LockedDialog_DEPRECATED = { "The door is locked" };
-
-
+        
         public bool IsLocked 
         {
             get

@@ -99,7 +99,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5629040359004303961}
   - {fileID: 8203255207953940194}
   - {fileID: 8203255209289634321}
   - {fileID: 8203255208627651358}
@@ -211,10 +210,6 @@ MonoBehaviour:
   m_Cancel: Cancel
   m_TogglePause: Pause
   m_ToggleInventory: Inventory
-  m_ToggleMap: 
-  m_ToggleMapList: 
-  m_NextSubmap: 
-  m_PrevSubmap: 
 --- !u!1 &8203255208820099815
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,70 +603,4 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3324118805880377170, guid: 37a1d3823a1dc3d4980cade1ebb02e2d, type: 3}
   m_PrefabInstance: {fileID: 8203255207853504731}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8203255207990276960
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8203255208461063176}
-    m_Modifications:
-    - target: {fileID: 4596362433352417574, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_Name
-      value: DoorTransitionController
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
---- !u!4 &5629040359004303961 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-  m_PrefabInstance: {fileID: 8203255207990276960}
   m_PrefabAsset: {fileID: 0}

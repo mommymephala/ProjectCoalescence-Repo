@@ -15,9 +15,8 @@ namespace ECM.Controllers
     {
         #region EDITOR EXPOSED FIELDS
         [Header("Footsteps")]
-        [SerializeField] private AudioManager _audioManager;
+        // [SerializeField] private AudioManager audioManager;
         private float _footstepTimer;
-        
         
         [SerializeField]
         private float footstepDelay = 0.5f; // Time in seconds between each footstep
@@ -288,17 +287,18 @@ namespace ECM.Controllers
                 mouseLook.Init(transform, cameraTransform);
             }
         }
-        private void Update()
+
+        public override void Update()
         {
             base.Update(); // Call base class Update
 
             HandleFootsteps();
         }
+        
         private void HandleFootsteps()
         {
             if (!isGrounded || moveDirection.sqrMagnitude < 0.1f)
             {
-                // If not grounded or not moving significantly, reset timer and exit
                 _footstepTimer = 0;
                 return;
             }
@@ -307,14 +307,12 @@ namespace ECM.Controllers
 
             if (_footstepTimer >= footstepDelay)
             {
-                _audioManager.PlayFootstep();
+                AudioManager.Instance.PlayFootstep();
                 _footstepTimer = 0;
             }
         }
         public virtual void LateUpdate()
         {
-            // Perform camera's (view) animation
-
             AnimateView();
         }
 

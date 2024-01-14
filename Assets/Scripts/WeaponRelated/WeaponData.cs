@@ -10,7 +10,7 @@ namespace WeaponRelated
         [Header("Audio")] 
         public EventReference gunShotSFX;
 
-        public EventReference ReloadSfx;
+        public EventReference ReloadSFX;
         public EventReference OutOfAmmo;
         
         [Header("Shooting")]

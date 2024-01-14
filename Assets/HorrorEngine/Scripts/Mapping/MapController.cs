@@ -55,7 +55,7 @@ namespace HorrorEngine
             m_Rooms = GetComponentsInChildren<MapRoom>(true);
             m_Savable = GetComponent<SavableObjectState>();
 
-            MessageBuffer<DoorTransitionEndMessage>.Subscribe(OnDoorTransitionEnd);
+            // MessageBuffer<DoorTransitionEndMessage>.Subscribe(OnDoorTransitionEnd);
             MessageBuffer<MapStepCompletedMessage>.Subscribe(OnMapStepCompleted);
 
             m_Controllers.Add(this);
@@ -65,7 +65,7 @@ namespace HorrorEngine
 
         private void OnDestroy()
         {
-            MessageBuffer<DoorTransitionEndMessage>.Unsubscribe(OnDoorTransitionEnd);
+            // MessageBuffer<DoorTransitionEndMessage>.Unsubscribe(OnDoorTransitionEnd);
             MessageBuffer<MapStepCompletedMessage>.Unsubscribe(OnMapStepCompleted);
 
             m_Controllers.Remove(this);
@@ -101,11 +101,11 @@ namespace HorrorEngine
 
         // --------------------------------------------------------------------
 
-        private void OnDoorTransitionEnd(DoorTransitionEndMessage msg)
-        {
-            UpdateContent();
-            MarkCurrentRoomVisited();
-        }
+        // private void OnDoorTransitionEnd(DoorTransitionEndMessage msg)
+        // {
+        //     UpdateContent();
+        //     MarkCurrentRoomVisited();
+        // }
 
         // --------------------------------------------------------------------
 
