@@ -3844,6 +3844,7 @@ MonoBehaviour:
   turningSpeed: 5
   sightRange: 6
   attackRange: 2
+  isSpawn: 0
 --- !u!54 &896085761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6585,6 +6586,7 @@ MonoBehaviour:
   turningSpeed: 5
   sightRange: 6
   attackRange: 2
+  isSpawn: 0
 --- !u!54 &1663478702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8561,6 +8563,7 @@ MonoBehaviour:
   turningSpeed: 5
   sightRange: 6
   attackRange: 2
+  isSpawn: 0
 --- !u!114 &919132149148704603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10609,6 +10612,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8150673463311610023, guid: b0e50f07d4ab6ef42aa13737725610fc, type: 3}
       propertyPath: IsSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150673463311610023, guid: b0e50f07d4ab6ef42aa13737725610fc, type: 3}
+      propertyPath: isSpawn
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8467225357831508060, guid: b0e50f07d4ab6ef42aa13737725610fc, type: 3}
