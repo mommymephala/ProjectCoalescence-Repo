@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92012e25e58dc04dbc13bfeef19075d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_XPrimaryAxis: Mouse X
-  m_YPrimaryAxis: Mouse Y
+  m_XPrimaryAxis: Horizontal
+  m_YPrimaryAxis: Vertical
   m_Confirm: Submit
   m_Cancel: Cancel
   m_TogglePause: Pause

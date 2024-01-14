@@ -1240,6 +1240,7 @@ MonoBehaviour:
   turningSpeed: 1.5
   sightRange: 6
   attackRange: 2
+  isSpawn: 0
 --- !u!1 &1204565982647985894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1452412220893309448, guid: f364292bd76fd4e40b2c4e1f1d5bb660, type: 3}
