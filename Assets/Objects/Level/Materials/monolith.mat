@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 2081881c9ac884747b831de943394b1e, type: 3}
+        m_Texture: {fileID: 2800000, guid: de70eacd7fb0dcb4dbfcfbb4b5b3677f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -128,7 +128,7 @@ Material:
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &5594115616077948202
+--- !u!114 &5311016542962110615
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
