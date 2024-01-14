@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using HorrorEngine;
 using UnityEngine;
-
+using FMODUnity;
 public class BatonWeapon : MonoBehaviour
 {
+    public EventReference BatonAttack;
+    public EventReference BatonSwoosh;
+    public EventReference BatonElectric;
+    
     private Animator animator;
     private bool isAttacking = false;
     [SerializeField] private Collider hitbox;
@@ -53,9 +57,10 @@ public class BatonWeapon : MonoBehaviour
     {
         isAttacking = true;
         animator.SetTrigger("Attack");
-
+        
         if (isCharged)
         {
+            PlayBatonElectric();
             depleteEquipment.Deplete();
             // Enable charged attack effects and flags
             EnableChargedAttackEffects(); // Pass the hitbox's position
@@ -63,6 +68,7 @@ public class BatonWeapon : MonoBehaviour
         }
         else
         {
+            PlayBatonAttack();
             hitbox.GetComponent<BatonHit>().SetChargedAttack(false); // Unflag the hit as a charged attack
         }
     }
@@ -88,5 +94,39 @@ public class BatonWeapon : MonoBehaviour
         if (chargedAttackEffect == null) return;
         GameObject effectInstance = Instantiate(chargedAttackEffect, hitbox.transform.position, Quaternion.identity);
         Destroy(effectInstance, 1f);
+    }
+    public void PlayBatonAttack()
+    {
+        if (BatonAttack.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: BatonAttack");
+            return;
+        }
+
+        Debug.Log("batonAttack");
+        RuntimeManager.PlayOneShot(BatonAttack, transform.position);
+    }
+    public void PlayBatonElectric()
+    {
+        if (BatonElectric.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: BatonAttack");
+            return;
+        }
+
+        Debug.Log("bruh");
+        RuntimeManager.PlayOneShot(BatonElectric, transform.position);
+    }
+
+    public void PlayBatonSwoosh()
+    {
+        if (BatonSwoosh.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: BatonAttack");
+            return;
+        }
+
+        Debug.Log("batonAttack");
+        RuntimeManager.PlayOneShot(BatonSwoosh, transform.position);
     }
 }

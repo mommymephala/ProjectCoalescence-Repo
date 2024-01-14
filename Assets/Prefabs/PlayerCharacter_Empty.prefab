@@ -389,6 +389,8 @@ MonoBehaviour:
   _maxMidAirJumps: 1
   _useRootMotion: 0
   _rootMotionRotation: 0
+  _audioManager: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
+  footstepDelay: 0.5
   _forwardSpeed: 5
   _backwardSpeed: 3
   _strafeSpeed: 4

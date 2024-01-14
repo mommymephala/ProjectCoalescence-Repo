@@ -256,10 +256,11 @@ namespace WeaponRelated
 
             _weaponEntry = GameManager.Instance.Inventory.GetEquippedWeapon();
             weaponData = _weaponEntry.Item as WeaponData;
-
+            
             if (_weaponEntry.SecondaryCount < weaponData.MaxAmmo)
             {
                 ReloadFromInventory();
+                
             }
         }
 
@@ -295,16 +296,18 @@ namespace WeaponRelated
                     {
                         StopCoroutine(_reloadCoroutine);
                     }
+            
+                    PlayReloadSFX(); // Add this line to play the reload sound effect
                     _reloadCoroutine = StartCoroutine(Reload(ammoAvailable, ammoEntry));
                 }
                 else
                 {
-                    // Handle no ammo available scenario
+                    PlayOutOfAmmo(); // This handles the scenario where player has some ammo, but not enough to reload
                 }
             }
             else
             {
-                // Handle no ammo available scenario
+                PlayOutOfAmmo(); // This handles the scenario where player has no ammo at all
             }
         }
 
@@ -438,7 +441,28 @@ namespace WeaponRelated
             }
             RuntimeManager.PlayOneShot(weaponData.gunShotSFX, transform.position);
         }
-        
+
+        private void PlayReloadSFX()
+        {
+            if (weaponData.ReloadSfx.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: Reload");
+                return;
+            }
+
+            Debug.Log("reload");
+            RuntimeManager.PlayOneShot(weaponData.ReloadSfx, transform.position);
+        }
+        private void PlayOutOfAmmo()
+        {
+            if (weaponData.OutOfAmmo.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found: Out of ammo");
+                return;
+            }
+            Debug.Log("out of ammo");
+            RuntimeManager.PlayOneShot(weaponData.OutOfAmmo, transform.position);
+        }
         //Separate UI logic!!!
         
         private void UpdateCrosshairVisibility()

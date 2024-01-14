@@ -33,6 +33,20 @@ MonoBehaviour:
       Data3: -1594968445
       Data4: -1072045817
     Path: event:/SFX/Weapon/Weapon_Shotgun
+  ReloadSfx:
+    Guid:
+      Data1: 2103223952
+      Data2: 1321540374
+      Data3: -1911335018
+      Data4: -519273705
+    Path: event:/SFX/Weapon/Weapon_Deagle
+  OutOfAmmo:
+    Guid:
+      Data1: -1279879144
+      Data2: 1335215249
+      Data3: -108963650
+      Data4: 1058968276
+    Path: event:/SFX/Weapon/Weapon_Switch
   allowAutoFire: 0
   damage: 20
   maxDistance: 350
