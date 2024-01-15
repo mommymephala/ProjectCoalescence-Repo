@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{149fa142-d32d-4f21-82cb-204366f0644e}">
+		<property name="name">
+			<value>HitSurfaces</value>
+		</property>
+		<relationship name="folder">
+			<destination>{d5008c10-1e0e-45cc-abc9-35c246b7643f}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{eb3e9213-ee45-4595-b0f9-3e84dd44d129}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{eb3e9213-ee45-4595-b0f9-3e84dd44d129}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Enemy</value>
+			<value>Wall</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

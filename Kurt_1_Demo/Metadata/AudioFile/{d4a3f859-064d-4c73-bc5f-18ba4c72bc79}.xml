@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d4a3f859-064d-4c73-bc5f-18ba4c72bc79}">
+		<property name="assetPath">
+			<value>80649-Reaction_grunt_short_raspy-BLASTWAVEFX-17739.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.59079365079365076</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>

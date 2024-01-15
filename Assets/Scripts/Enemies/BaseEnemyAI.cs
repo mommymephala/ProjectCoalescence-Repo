@@ -76,7 +76,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
             _agent.isStopped = true;
         }
         
-        _animator.SetBool("IsSpawn", isSpawn);
+       
         DetectPlayer();
 
         switch (currentState)

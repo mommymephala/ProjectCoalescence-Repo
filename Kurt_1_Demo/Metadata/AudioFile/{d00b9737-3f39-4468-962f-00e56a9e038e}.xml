@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d00b9737-3f39-4468-962f-00e56a9e038e}">
+		<property name="assetPath">
+			<value>517335-Gun-Shotgun-Pump_Action-Remington-870-12_Gauge-Shot-1-Mix.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.048</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>

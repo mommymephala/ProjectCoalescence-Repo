@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{45219a4b-47c8-4be2-b811-407c8a2244a2}">
+		<property name="assetPath">
+			<value>209840-EFX_SD_FS_Heavy_Creature_04.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>40.533406249999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>

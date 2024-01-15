@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{46290cdd-2e29-4f4c-ba9c-5fcfb5497a44}">
+		<property name="assetPath">
+			<value>301746-Male_Vocal_Grunts_Short-05.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>192</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.32015624999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>

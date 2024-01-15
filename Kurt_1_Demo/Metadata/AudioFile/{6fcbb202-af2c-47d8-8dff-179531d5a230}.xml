@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6fcbb202-af2c-47d8-8dff-179531d5a230}">
+		<property name="assetPath">
+			<value>275873-Electrical_Fire_3.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>31.30121875</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc32d93f-9386-4661-b92a-d4174f757eb9}</destination>
+		</relationship>
+	</object>
+</objects>
