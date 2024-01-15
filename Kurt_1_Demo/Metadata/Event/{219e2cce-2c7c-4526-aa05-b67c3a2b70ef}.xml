@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{219e2cce-2c7c-4526-aa05-b67c3a2b70ef}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>Weapon_Reload</value>
 		</property>
@@ -30,6 +33,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{610c2816-f07e-45ee-a3e7-ae20ba17ad04}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{1b08b3ba-efad-4b45-a4b4-3e7db07be8a5}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{90be1d02-99fe-4934-ab39-1381d33d9fe0}">
