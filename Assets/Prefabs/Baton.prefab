@@ -1718,27 +1718,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3dc7851fc27fd4d827479f6ea39ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BatonAttack:
+  batonAttack:
     Guid:
-      Data1: 2103223952
-      Data2: 1321540374
-      Data3: -1911335018
-      Data4: -519273705
-    Path: event:/SFX/Weapon/Weapon_Deagle
-  BatonSwoosh:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  batonSwoosh:
     Guid:
-      Data1: -1449192954
-      Data2: 1118692774
-      Data3: -1410873970
-      Data4: 1791399420
-    Path: event:/SFX/Weapon/Weapon_Rifle
-  BatonElectric:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  batonElectric:
     Guid:
-      Data1: 1844504655
-      Data2: 1253633678
-      Data3: -1594968445
-      Data4: -1072045817
-    Path: event:/SFX/Weapon/Weapon_Shotgun
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   hitbox: {fileID: 408315975419749592}
   attackDelay: 0.01
   chargedAttackEffect: {fileID: 1190131086089332, guid: a22bb852cf433044e8752ea7fe62f570, type: 3}

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Okan_Mechanics.unity
-    guid: 20e93f87892dfc849b74ee4b5c80ce20
+    path: Assets/Scenes/Emre_Light_Build.unity
+    guid: 6dbaba3b80c2cbf479b87ccc402e9a95
   m_configObjects: {}

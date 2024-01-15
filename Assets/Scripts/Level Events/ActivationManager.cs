@@ -31,7 +31,9 @@ namespace Level_Events
             DownstairWalls,
             PowerCoreShortcut,
             PathBehindStatue,
-
+            UpstairBlock,
+            SpawnAfterCoreActivation,
+            
         }
         
         public static ActivationManager Instance { get; private set; }
