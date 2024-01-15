@@ -25,6 +25,13 @@ public class SpawnableEnemyAI : BaseEnemyAI
             currentState = State.Idling;
         }
     }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        _animator.SetBool("IsSpawn", isSpawn);
+    }
     private void EndSpawnAnimation()
     {
         isSpawn = false;
