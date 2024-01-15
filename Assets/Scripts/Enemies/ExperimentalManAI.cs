@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExperimentalManAI : BaseEnemyAI
@@ -34,7 +35,8 @@ public class ExperimentalManAI : BaseEnemyAI
             SeekLastKnownPlayerPosition();
         }
     }
-    
+
+   
     public override void TakeDamage(float damage, bool isChargedAttack, bool isWeakpoint)
     {
         if (!isWeakpoint) return;

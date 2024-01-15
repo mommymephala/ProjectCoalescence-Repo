@@ -6,6 +6,7 @@ namespace HorrorEngine
     {
         public void TakeDamage(float damage, bool isChargedAttack, bool isWeakpoint)
         {
+            AudioManager.Instance.PlayPlayerTakeDamage();
             DamageReceived(damage);
         }
     }

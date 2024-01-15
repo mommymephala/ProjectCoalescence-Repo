@@ -163,6 +163,7 @@ namespace WeaponRelated
                 if (hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
+                    PlaySurfaceHitSFX(weaponData.wallHitSFX);
                 }
 
                 var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
@@ -177,6 +178,7 @@ namespace WeaponRelated
                 if (isWeakpoint || hitInfo.transform.CompareTag("Target"))
                 {
                     SpawnBloodParticle(hitInfo.point);
+                    PlaySurfaceHitSFX(weaponData.targetHitSFX);
                 }
             }
 
@@ -474,7 +476,15 @@ namespace WeaponRelated
                 _crosshairInstance.SetActive(!aimingDownSight);
             }
         }
-        
+        private void PlaySurfaceHitSFX(EventReference surfaceHitSfx)
+        {
+            if (surfaceHitSfx.IsNull)
+            {
+                Debug.LogWarning("Fmod event not found for surface hit");
+                return;
+            }
+            RuntimeManager.PlayOneShot(surfaceHitSfx, transform.position);
+        }
         /*private void UpdateCrosshair()
         {
             // Determine crosshair size based on the player's state and weapon's characteristics

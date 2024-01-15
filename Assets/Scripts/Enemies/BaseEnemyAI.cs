@@ -56,15 +56,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 
     protected virtual void Start()
     {
-        if (isSpawn)
-        {
-            currentState = State.SpawnStall;
-        }
-        
-        else
-        {
-            currentState = State.Idling;
-        }
+        currentState = State.Idling;
         
         normalHitBox.gameObject.SetActive(false);
         heavyHitBox.gameObject.SetActive(false);
@@ -161,10 +153,12 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
     {
         if (_isDead) return;
         _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, Time.deltaTime * 5));
+        //AudioManager.Instance.PlayEnemyIdle(gameObject,AudioManager.EnemyType.BaseEnemy);
     }
 
     protected virtual void Chase()
     {
+        //AudioManager.Instance.PlayEnemyIdle(gameObject,AudioManager.EnemyType.BaseEnemy);
         if (_isPlayerDetected)
         {
             _lastKnownPlayerPosition = _playerTransform.position;
@@ -264,6 +258,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
 
         if (_timeSinceLastAttack >= timeBetweenAttacks)
         {
+            
             _timeSinceLastAttack = 0f;
             _animator.SetFloat("Speed", 0);
             TriggerAttack();
@@ -282,10 +277,13 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         if (attackProbability > CalculateAttackChance())
         {
             _animator.SetTrigger("HeavyAttackTrigger");
+           // AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy);
+          // AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.HeavyAttack);
         }
         else
         {
             _animator.SetTrigger("NormalAttackTrigger");
+            //AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.NormalAttack);
         }
 
         _attackCount = (_attackCount + 1) % 3;
@@ -375,6 +373,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         }
         else
         {
+            AudioManager.Instance.PlayEnemyTakeDamage(gameObject,AudioManager.EnemyType.BaseEnemy);
             _lastKnownPlayerPosition = _playerTransform.position;
             IsPlayerLastPositionKnown = true;
             _isPlayerDetected = true;
@@ -390,7 +389,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         _animator.ResetTrigger("NormalAttackTrigger");
         
         _animator.SetBool("IsDead", true);
-        
+        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.BaseEnemy);
         _agent.enabled = false;
         _collider.enabled = false;
         
@@ -399,6 +398,23 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         // {
         //     Instantiate(lootPrefab, transform.position, Quaternion.identity);
         // }
+    }
+    public void PlayFootstepSound()
+    {
+        AudioManager.Instance.PlayEnemyFootStep(gameObject, AudioManager.EnemyType.BaseEnemy);
+    }
+    public void PlayChaseSound()
+    {
+        AudioManager.Instance.PlayEnemyIdle(gameObject, AudioManager.EnemyType.BaseEnemy);
+    }
+    public void PlayNormalAttackSound()
+    {
+        AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.NormalAttack);
+    }
+
+    public void PlayHeavyAttackSound()
+    {
+        AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.HeavyAttack);
     }
     protected virtual void SpawnBehavior()
     {
