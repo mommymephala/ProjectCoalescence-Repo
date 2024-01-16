@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ed8a1f97-7929-4c27-ad0b-51f2f91b580a}">
+		<property name="name">
+			<value>Baton_Hit</value>
+		</property>
+		<relationship name="folder">
+			<destination>{d5008c10-1e0e-45cc-abc9-35c246b7643f}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{292fdb35-3dfc-4e78-aa7a-c9b5a9331898}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{292fdb35-3dfc-4e78-aa7a-c9b5a9331898}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Empty</value>
+			<value>Tar_Spawn</value>
+			<value>Chip</value>
+			<value>Glass</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
