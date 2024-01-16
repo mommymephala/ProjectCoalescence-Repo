@@ -1452,7 +1452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: chipEnemySounds.idle.Path
-      value: event:/SFX/Weapon/Weapon_Shotgun
+      value: event:/SFX/Weapon/Shotgun/Weapon_Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: BaseEnemyFootstep.Guid.Data1
@@ -1488,11 +1488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: baseEnemySounds.footstep.Path
-      value: event:/SFX/Weapon/Weapon_Deagle
+      value: event:/SFX/Weapon/Deagle/Weapon_Deagle
       objectReference: {fileID: 0}
     - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: chipEnemySounds.footstep.Path
-      value: event:/SFX/Weapon/Weapon_Deagle
+      value: event:/SFX/Weapon/Deagle/Weapon_Deagle
       objectReference: {fileID: 0}
     - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: baseEnemySounds.idle.Guid.Data1

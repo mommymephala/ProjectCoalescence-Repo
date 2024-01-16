@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{61ed3591-8bd0-4b37-b6b2-23fbd78f64e7}">
+		<property name="note">
+			<value>bu silahtan alınıp direkt buraya koyulabilir direkt 3d çalsın diye</value>
+		</property>
 		<property name="name">
 			<value>Chip_Enemy_Take_Damage</value>
 		</property>
@@ -31,6 +34,9 @@
 		<relationship name="timeline">
 			<destination>{c1bc16bb-fb04-44c8-808b-77471013eae9}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{1b08b3ba-efad-4b45-a4b4-3e7db07be8a5}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{7ba9f677-b1bc-4f0b-8b98-eaf13a8f94f9}">
 		<relationship name="masterBus">
@@ -57,8 +63,8 @@
 	<object class="MarkerTrack" id="{97d97821-785c-44de-ad61-56f4fb4a5cf1}" />
 	<object class="GroupTrack" id="{43f5af0c-2484-48c4-ac2a-55b1ef6c5508}">
 		<relationship name="modules">
-			<destination>{02e14014-4bdb-4328-a658-1e33d0155ae4}</destination>
 			<destination>{7a67ba87-6135-4984-9aca-5c192baead7d}</destination>
+			<destination>{02e14014-4bdb-4328-a658-1e33d0155ae4}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{44f54183-ce74-4eec-b354-26ed299f97b4}</destination>
@@ -87,6 +93,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{0b2690c8-70a4-4724-9702-fd13626d4cf2}" />
+	<object class="SingleSound" id="{7a67ba87-6135-4984-9aca-5c192baead7d}">
+		<property name="length">
+			<value>0.46933333333333332</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{3fa5cabd-6053-407b-9431-34bfcb515a77}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{02e14014-4bdb-4328-a658-1e33d0155ae4}">
 		<property name="start">
 			<value>0.46933333333333332</value>
@@ -96,14 +110,6 @@
 		</property>
 		<relationship name="audioFile">
 			<destination>{59f43bdf-e2b3-4e17-ab63-15cf6342a011}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{7a67ba87-6135-4984-9aca-5c192baead7d}">
-		<property name="length">
-			<value>0.46933333333333332</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{3fa5cabd-6053-407b-9431-34bfcb515a77}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{44f54183-ce74-4eec-b354-26ed299f97b4}">

@@ -16,10 +16,11 @@
 			<value>2</value>
 		</property>
 		<property name="maximum">
-			<value>2</value>
+			<value>3</value>
 		</property>
 		<property name="enumerationLabels">
-			<value>Enemy</value>
+			<value>Tar_Enemy</value>
+			<value>ChipEnemy</value>
 			<value>Wall</value>
 		</property>
 		<property name="initialValue">

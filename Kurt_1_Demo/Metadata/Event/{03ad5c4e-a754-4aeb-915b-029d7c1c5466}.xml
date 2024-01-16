@@ -36,6 +36,9 @@
 		<relationship name="parameters">
 			<destination>{f994ac45-f1b8-4aeb-b47f-3735ee577355}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{1b08b3ba-efad-4b45-a4b4-3e7db07be8a5}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{5f47c3e8-8453-46d3-bb01-ceb0cacf511c}">
 		<relationship name="masterBus">
@@ -142,10 +145,13 @@
 	</object>
 	<object class="SingleSound" id="{d67a978f-2301-4d5b-aee3-5603856bc493}">
 		<property name="start">
-			<value>3.5</value>
+			<value>3.7706403940886695</value>
 		</property>
 		<property name="length">
-			<value>2.5</value>
+			<value>0.72935960591133053</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.27064039408866947</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{d3dc35b2-28bf-4364-b178-42911c2df1d2}</destination>
