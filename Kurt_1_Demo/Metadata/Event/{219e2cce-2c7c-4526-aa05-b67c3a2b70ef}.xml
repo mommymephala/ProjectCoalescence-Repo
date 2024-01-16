@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{219e2cce-2c7c-4526-aa05-b67c3a2b70ef}">
-		<property name="color">
-			<value>Purple</value>
-		</property>
 		<property name="name">
 			<value>Weapon_Reload</value>
 		</property>

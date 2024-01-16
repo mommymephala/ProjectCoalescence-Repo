@@ -372,7 +372,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         }
         else
         {
-            AudioManager.Instance.PlayEnemyTakeDamage(gameObject,AudioManager.EnemyType.BaseEnemy);
+           // AudioManager.Instance.PlayEnemyTakeDamage(gameObject,AudioManager.EnemyType.BaseEnemy);
             _lastKnownPlayerPosition = _playerTransform.position;
             IsPlayerLastPositionKnown = true;
             _isPlayerDetected = true;
@@ -381,14 +381,16 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual void Death()
+    public virtual void Death()
     {
         _isPlayerDetected = false;
         _animator.ResetTrigger("HeavyAttackTrigger");
         _animator.ResetTrigger("NormalAttackTrigger");
         
         _animator.SetBool("IsDead", true);
-        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.BaseEnemy);
+        
+        
+        Debug.Log("yarrak");
         _agent.enabled = false;
         _collider.enabled = false;
         
@@ -398,20 +400,24 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         //     Instantiate(lootPrefab, transform.position, Quaternion.identity);
         // }
     }
-    public void PlayFootstepSound()
+    public virtual void PlayOnDeath()
+    {
+        AudioManager.Instance.PlayEnemyDeath(gameObject,AudioManager.EnemyType.BaseEnemy);
+    }
+    public virtual void PlayFootstepSound()
     {
         AudioManager.Instance.PlayEnemyFootStep(gameObject, AudioManager.EnemyType.BaseEnemy);
     }
-    public void PlayChaseSound()
+    public virtual void PlayChaseSound()
     {
         AudioManager.Instance.PlayEnemyIdle(gameObject, AudioManager.EnemyType.BaseEnemy);
     }
-    public void PlayNormalAttackSound()
+    public virtual void PlayNormalAttackSound()
     {
         AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.NormalAttack);
     }
 
-    public void PlayHeavyAttackSound()
+    public virtual void PlayHeavyAttackSound()
     {
         AudioManager.Instance.PlayEnemyAttack(gameObject, AudioManager.EnemyType.BaseEnemy, AudioManager.AttackType.HeavyAttack);
     }

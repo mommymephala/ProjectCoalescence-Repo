@@ -10,6 +10,9 @@ TagManager:
   - Target
   - AudioManager
   - TarEnemyHeadshot
+  - Chip
+  - Tar
+  - Weakpoint
   layers:
   - Default
   - TransparentFX

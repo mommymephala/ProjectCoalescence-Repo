@@ -19,7 +19,9 @@ namespace ECM.Controllers
         private float _footstepTimer;
         
         [SerializeField]
-        private float footstepDelay = 0.5f; // Time in seconds between each footstep
+        private float footstepDelay = 0.5f;
+        [SerializeField]
+        private float runningFootstepDelay = 0.25f;// Time in seconds between each footstep
         [Header("First Person")]
         [Tooltip("Speed when moving forward.")]
         [SerializeField]
@@ -305,9 +307,21 @@ namespace ECM.Controllers
 
             _footstepTimer += Time.deltaTime;
 
-            if (_footstepTimer >= footstepDelay)
+            // Determine the current footstep delay based on whether the character is running or walking
+            float currentFootstepDelay = run ? runningFootstepDelay : footstepDelay;
+
+            if (_footstepTimer >= currentFootstepDelay)
             {
-                AudioManager.Instance.PlayFootstep();
+                if (run)
+                {
+                    // Play running footstep sound
+                    AudioManager.Instance.PlayRunning(); // Replace with your actual method to play running footsteps
+                }
+                else
+                {
+                    // Play walking footstep sound
+                    AudioManager.Instance.PlayFootstep();
+                }
                 _footstepTimer = 0;
             }
         }

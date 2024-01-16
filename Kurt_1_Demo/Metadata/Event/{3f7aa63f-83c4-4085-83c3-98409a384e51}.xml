@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{3f7aa63f-83c4-4085-83c3-98409a384e51}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>New Event</value>
 		</property>
@@ -55,7 +58,7 @@
 			<destination>{ae08b8b0-1bcd-4a1c-917c-46583730f079}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{57cc5b24-0cf9-48da-943d-54771ef06dce}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{eb3eb0a9-96ae-4126-acfc-d58a33a48233}" />

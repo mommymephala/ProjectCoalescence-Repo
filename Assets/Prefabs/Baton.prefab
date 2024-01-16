@@ -1718,13 +1718,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3dc7851fc27fd4d827479f6ea39ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pLayer:
+    serializedVersion: 2
+    m_Bits: 65207
   batonAttack:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 246109983
+      Data2: 1126179713
+      Data3: 407196307
+      Data4: 277863756
+    Path: event:/SFX/Weapon/Baton/Baton_Attack
   batonSwoosh:
     Guid:
       Data1: 0
@@ -1742,6 +1745,8 @@ MonoBehaviour:
   hitbox: {fileID: 408315975419749592}
   attackDelay: 0.01
   chargedAttackEffect: {fileID: 1190131086089332, guid: a22bb852cf433044e8752ea7fe62f570, type: 3}
+  _weaponsHolderTransform: {fileID: 5276595615740840276}
+  maxDistance: 2
 --- !u!114 &2176655910297729058
 MonoBehaviour:
   m_ObjectHideFlags: 0

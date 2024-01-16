@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 5668173904888955150}
   m_Layer: 14
   m_Name: Tar_Spawn_WakingUp
-  m_TagString: Target
+  m_TagString: Tar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

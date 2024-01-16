@@ -32,21 +32,28 @@ MonoBehaviour:
       Data2: 1253633678
       Data3: -1594968445
       Data4: -1072045817
-    Path: event:/SFX/Weapon/Weapon_Shotgun
-  ReloadSfx:
+    Path: event:/SFX/Weapon/Shotgun/Weapon_Shotgun
+  ReloadSFX:
     Guid:
-      Data1: 2103223952
-      Data2: 1321540374
-      Data3: -1911335018
-      Data4: -519273705
-    Path: event:/SFX/Weapon/Weapon_Deagle
+      Data1: 350510444
+      Data2: 1090153502
+      Data3: -1359629142
+      Data4: -320608033
+    Path: event:/SFX/Weapon/Shotgun/Weapon_Shotgun_Reload
   OutOfAmmo:
     Guid:
-      Data1: -1279879144
-      Data2: 1335215249
-      Data3: -108963650
-      Data4: 1058968276
-    Path: event:/SFX/Weapon/Weapon_Switch
+      Data1: 1557240119
+      Data2: 1103861585
+      Data3: 1821831083
+      Data4: 611753695
+    Path: event:/SFX/Weapon/Shotgun/Weapon_Shotgun_Out_of_Ammo
+  gunSurfaceEffect:
+    Guid:
+      Data1: -1282436960
+      Data2: 1183804112
+      Data3: -1765800269
+      Data4: -316674339
+    Path: event:/SFX/Weapon/Deagle/Weapon_Hit_Effect
   allowAutoFire: 0
   damage: 20
   maxDistance: 350
