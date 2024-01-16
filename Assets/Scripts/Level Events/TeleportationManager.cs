@@ -34,6 +34,9 @@ namespace Level_Events
 
             playerTransform.position = targetTransform.position;
 
+            playerTransform.rotation = targetTransform.rotation;
+
+
             playerRb.velocity = targetTransform.TransformDirection(velocity);
             playerRb.angularVelocity = angularVelocity;
 
