@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 8203255208627651356}
   - component: {fileID: 7274055579482693466}
   - component: {fileID: 429299258408657129}
+  - component: {fileID: 99838803763145871}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -210,6 +211,14 @@ MonoBehaviour:
   m_Cancel: Cancel
   m_TogglePause: Pause
   m_ToggleInventory: Inventory
+--- !u!81 &99838803763145871
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203255208627651359}
+  m_Enabled: 1
 --- !u!1 &8203255208820099815
 GameObject:
   m_ObjectHideFlags: 0

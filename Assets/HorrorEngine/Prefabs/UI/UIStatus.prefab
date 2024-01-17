@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.45490196, g: 0.8666667, b: 0.47007498, a: 1}
+  m_Color: {r: 0.20060521, g: 0.8679245, b: 0.2260269, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -5.5, y: 5.2}
+  m_AnchoredPosition: {x: -10.8, y: 5.2}
   m_SizeDelta: {x: 50.7, y: 21.5}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &6397545530637592916
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Warning
+  m_text: WARNING
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fcbac58f9bf4dd8428dea0db0537247b, type: 2}
-  m_sharedMaterial: {fileID: -7803602290350721996, guid: fcbac58f9bf4dd8428dea0db0537247b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8c4ae26fd1fc2c64db5ecc8fc3b8663b, type: 2}
+  m_sharedMaterial: {fileID: 835356039115279982, guid: 8c4ae26fd1fc2c64db5ecc8fc3b8663b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -167,17 +167,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.05
+  m_fontSize: 13.9
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 16
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -235,7 +235,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2497121249546538450}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Status:
   - FromHealth: 0
-    Color: {r: 0.9716981, g: 0.23682575, b: 0.049501523, a: 1}
+    Color: {r: 0.85882354, g: 0.0509804, b: 0.14677836, a: 1}
     Tiling: 2
     Interval: 1
     Speed: 2
@@ -321,19 +321,20 @@ MonoBehaviour:
     Speed: 0.5
     Text: Fine
   - FromHealth: 75
-    Color: {r: 0.4716927, g: 0.8679245, b: 0.35535777, a: 1}
+    Color: {r: 0.40682724, g: 0.8301887, b: 0.28586686, a: 1}
     Tiling: 1
     Interval: 1
     Speed: 0.5
     Text: Fine
   - FromHealth: 100
-    Color: {r: 0.4716927, g: 0.8679245, b: 0.35535777, a: 1}
+    Color: {r: 0.3019608, g: 0.8313726, b: 0.15294118, a: 1}
     Tiling: 1
     Interval: 1
     Speed: 0.5
     Text: Fine
   m_Line: {fileID: 5018234816945914031}
-  m_StatusBg: {fileID: 4358076694869639502}
+  m_StatusBg: {fileID: 975281981112062238}
+  m_StatusFrame: {fileID: 4358076694869639502}
   m_StatusText: {fileID: 7404994520757011802}
 --- !u!1 &6034730961752590895
 GameObject:

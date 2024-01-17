@@ -35,7 +35,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -72,8 +71,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0. No Data
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fcbac58f9bf4dd8428dea0db0537247b, type: 2}
-  m_sharedMaterial: {fileID: -7803602290350721996, guid: fcbac58f9bf4dd8428dea0db0537247b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 21527c038e3dadb4b84d7d45a4584fd1, type: 2}
+  m_sharedMaterial: {fileID: -7738156263430526360, guid: 21527c038e3dadb4b84d7d45a4584fd1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -107,7 +106,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 8
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -237,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b058b7cd28db3e4ea0975bce6dad84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Button: 0
+  m_Button: 0
   OnClick:
     m_PersistentCalls:
       m_Calls: []

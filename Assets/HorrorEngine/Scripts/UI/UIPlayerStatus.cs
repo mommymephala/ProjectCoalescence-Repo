@@ -16,9 +16,9 @@ namespace HorrorEngine {
     public class UIPlayerStatus : MonoBehaviour
     {
         [SerializeField] private UIPlayerStatusEntry[] Status;
-
         [SerializeField] private UIStatusLine m_Line;
         [SerializeField] private Image m_StatusBg;
+        [SerializeField] private Image m_StatusFrame;
         [SerializeField] private TMPro.TextMeshProUGUI m_StatusText;
 
         private Health m_Health;
@@ -75,6 +75,7 @@ namespace HorrorEngine {
             }
 
             m_StatusBg.color = selectedStatus.Color;
+            m_StatusFrame.color = selectedStatus.Color;
             m_StatusText.text = selectedStatus.Text;
             m_Line.SetStatus(selectedStatus);
             

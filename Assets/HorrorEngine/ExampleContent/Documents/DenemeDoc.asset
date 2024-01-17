@@ -15,7 +15,7 @@ MonoBehaviour:
   UniqueId: af711554-60a8-4e8d-afeb-6b8faddca459
   Name: Digital Log
   Image: {fileID: 21300000, guid: ba54fa9abd9f21d4d86afc86a5329442, type: 3}
-  ShowImageOnRead: 1
+  ShowImageOnRead: 0
   ShowPageCount: 1
   PagesText_DEPRECATED:
   - 'Thank you for acquiring Retro Horror Template.

@@ -69,7 +69,7 @@ namespace HorrorEngine
                     GameManager.Instance.Inventory.Remove(m_Key);
                     IsLocked = false;
                         
-                    // OnUnlock?.Invoke();
+                    OnUnlock?.Invoke();
                         
                     if (m_OnUnlockedSound)
                         AudioSource.PlayOneShot(m_OnUnlockedSound);
