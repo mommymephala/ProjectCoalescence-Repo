@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     public class EnemySounds
     {
         public EventReference footstep;
-        public EventReference takeDamage;
+      //  public EventReference takeDamage;
         public EventReference Normalattack;
         public EventReference Heavyattack;
         public EventReference death;
@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private EventReference playerFootsteps;
+    [SerializeField] private EventReference playerRunning;
     [SerializeField] private EventReference playerTakeDamage;
     [SerializeField] private EventReference playerDeath;
     [Header("Enemy Sounds")]
@@ -43,7 +44,7 @@ public class AudioManager : MonoBehaviour
     // [SerializeField] private EventReference playerHurt;
     private EventInstance _playerFootstepInstance;
     private EventInstance _playerTakeDamage;
-
+    private EventInstance _playerRunning;
 
     private EventInstance _baseEnemyFootstepInstance;
     
@@ -80,6 +81,19 @@ public class AudioManager : MonoBehaviour
         
         _playerFootstepInstance.start();
         _playerFootstepInstance.release();
+        
+    }
+    public void PlayRunning()
+    {
+        if (playerRunning.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: player running");
+            return;
+        }
+        _playerRunning = RuntimeManager.CreateInstance(playerRunning);
+        
+        _playerRunning.start();
+        _playerRunning.release();
         
     }
     public void PlayPlayerTakeDamage()
@@ -153,7 +167,7 @@ public class AudioManager : MonoBehaviour
     }
     
 
-    public void PlayEnemyTakeDamage(GameObject enemyobject, EnemyType enemyType)
+  /*  public void PlayEnemyTakeDamage(GameObject enemyobject, EnemyType enemyType)
     {
         if (enemySoundsMap[enemyType].takeDamage.IsNull)
         {
@@ -162,7 +176,7 @@ public class AudioManager : MonoBehaviour
         }
         
        RuntimeManager.PlayOneShot(enemySoundsMap[enemyType].takeDamage, enemyobject.transform.position);
-    }
+    }*/
     public void PlayEnemyDeath(GameObject enemyobject,EnemyType enemyType)
     {
         if (enemySoundsMap[enemyType].death.IsNull)

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="EventFolder" id="{97286dfc-4c5e-4811-aa19-d929f1dbf777}">
 		<property name="color">
-			<value>Cyan Light 2</value>
+			<value>Red</value>
 		</property>
 		<property name="name">
 			<value>Chip_Enemy_Take_Damage</value>

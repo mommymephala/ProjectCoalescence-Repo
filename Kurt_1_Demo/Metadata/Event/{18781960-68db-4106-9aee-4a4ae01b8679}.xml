@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{18781960-68db-4106-9aee-4a4ae01b8679}">
+		<property name="color">
+			<value>Red</value>
+		</property>
 		<property name="name">
 			<value>Tar_Spawn_Death</value>
 		</property>
@@ -53,7 +56,7 @@
 			<destination>{ad14134a-22ce-46f0-9cbb-bd48a9c0ca01}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{967a4e84-bc36-4cdb-9bb4-d6622a2695d8}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{73e69512-5926-4636-91bc-34fabe948f4c}" />

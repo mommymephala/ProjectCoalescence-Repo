@@ -1,6 +1,8 @@
 using FMODUnity;
 using HorrorEngine;
 using UnityEngine;
+//using FMODUnity;
+using FMOD.Studio;
 namespace WeaponRelated
 {
     [CreateAssetMenu(fileName="Weapon", menuName="Weapon")]
@@ -11,10 +13,11 @@ namespace WeaponRelated
         public EventReference gunShotSFX;
         public EventReference ReloadSFX;
         public EventReference OutOfAmmo;
-        
+        public EventInstance gunshotInstance;
+        public EventReference gunSurfaceEffect;
         [Header("Surface Hit Sounds")]
-        public EventReference wallHitSFX;
-        public EventReference targetHitSFX;
+        //public EventReference wallHitSFX;
+        //public EventReference targetHitSFX;
         
         [Header("Shooting")]
         public bool allowAutoFire;

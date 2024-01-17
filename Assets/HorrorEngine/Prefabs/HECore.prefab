@@ -145,7 +145,11 @@ GameObject:
   - component: {fileID: 8203255208627651356}
   - component: {fileID: 7274055579482693466}
   - component: {fileID: 429299258408657129}
+<<<<<<< HEAD
   - component: {fileID: 99838803763145871}
+=======
+  - component: {fileID: 2548608229485404258}
+>>>>>>> YK_Fmod_Final_Continue
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -211,7 +215,11 @@ MonoBehaviour:
   m_Cancel: Cancel
   m_TogglePause: Pause
   m_ToggleInventory: Inventory
+<<<<<<< HEAD
 --- !u!81 &99838803763145871
+=======
+--- !u!81 &2548608229485404258
+>>>>>>> YK_Fmod_Final_Continue
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

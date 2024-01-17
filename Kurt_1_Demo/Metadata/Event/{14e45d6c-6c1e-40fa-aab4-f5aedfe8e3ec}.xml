@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{14e45d6c-6c1e-40fa-aab4-f5aedfe8e3ec}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>Weapon_Shotgun_Reload</value>
 		</property>
@@ -58,7 +61,7 @@
 			<destination>{1cd62b00-02b3-491e-8676-6c41c5b02cce}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{c665e896-f756-4c90-9d9f-43495d826875}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{67d9c84e-9253-489c-8d40-00dfb53be1cc}" />

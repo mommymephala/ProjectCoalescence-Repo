@@ -163,7 +163,8 @@ namespace WeaponRelated
                 if (hitInfo.transform.CompareTag("Wall"))
                 {
                     SpawnBulletHole(hitInfo.point, Quaternion.LookRotation(-hitInfo.normal));
-                    PlaySurfaceHitSFX(weaponData.wallHitSFX);
+                    // PlaySurfaceHitSFX(weaponData.);
+                    PlaySurfaceHitSFX("Wall");
                 }
 
                 var damageable = hitInfo.transform.GetComponentInParent<IDamageable>();
@@ -175,10 +176,21 @@ namespace WeaponRelated
 
                 damageable.TakeDamage(damageAmount, false, isWeakpoint);
                 
-                if (isWeakpoint || hitInfo.transform.CompareTag("Target"))
+                if (hitInfo.transform.CompareTag("Tar"))
                 {
                     SpawnBloodParticle(hitInfo.point);
-                    PlaySurfaceHitSFX(weaponData.targetHitSFX);
+                    Debug.Log("tar ses");
+                    PlaySurfaceHitSFX("Tar_Spawn");
+                   // PlaySurfaceHitSFX(weaponData.targetHitSFX);
+                }
+                else if (hitInfo.transform.CompareTag("Chip"))
+                {
+                    Debug.Log("chip ses");
+                    PlaySurfaceHitSFX("Chip");
+                } else if (isWeakpoint || hitInfo.transform.CompareTag("Weakpoint"))
+                {
+                    Debug.Log("weakpint ses");
+                    PlaySurfaceHitSFX("Weakpoint");
                 }
             }
 
@@ -427,7 +439,9 @@ namespace WeaponRelated
                 muzzleFlash.transform.localPosition = new Vector3(0f, 0f, 0.1f);
                 muzzleFlash.transform.localScale = Vector3.one * 0.5f;
             }
-
+            Debug.Log(" heryerim");
+            PlaySurfaceHitSFX("heryer");
+            
             Destroy(muzzleFlash, 0.1f);
             PlayGunShotSFX();
         }
@@ -476,14 +490,38 @@ namespace WeaponRelated
                 _crosshairInstance.SetActive(!aimingDownSight);
             }
         }
-        private void PlaySurfaceHitSFX(EventReference surfaceHitSfx)
+        private void PlaySurfaceHitSFX(string surfaceHitSfx)
         {
-            if (surfaceHitSfx.IsNull)
+
+            weaponData.gunshotInstance = RuntimeManager.CreateInstance(weaponData.gunSurfaceEffect);
+            switch (surfaceHitSfx)
+            {
+                case "Wall":
+                    weaponData.gunshotInstance.setParameterByName("HitSurfaces", 3);
+                    Debug.Log("duvarım");
+                    break;
+                case "Tar_Spawn":
+                    weaponData.gunshotInstance.setParameterByName("HitSurfaces", 1);
+                    Debug.Log("tarım");
+                    break;
+                case "Chip":
+                    weaponData.gunshotInstance.setParameterByName("HitSurfaces", 2);
+                    Debug.Log("Chipim");
+                    break;
+                case "Weakpoint":
+                    weaponData.gunshotInstance.setParameterByName("HitSurfaces", 4);
+                    Debug.Log("weak");
+                    break;
+                // Add other cases as needed
+            }
+            /*if (surfaceHitSfx.IsNull)
             {
                 Debug.LogWarning("Fmod event not found for surface hit");
                 return;
-            }
-            RuntimeManager.PlayOneShot(surfaceHitSfx, transform.position);
+            }*/
+         //RuntimeManager.PlayOneShot(surfaceHitSfx, transform.position);
+         weaponData.gunshotInstance.start();
+         weaponData.gunshotInstance.release();
         }
         /*private void UpdateCrosshair()
         {

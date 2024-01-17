@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{5cd19937-9751-41cb-abef-966cdf9e7624}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>Weapon_Shotgun_Out_of_Ammo</value>
 		</property>
@@ -54,7 +57,7 @@
 			<destination>{832a7ca0-3261-4aa6-b17d-51d6f61ed61c}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{5ffe819a-5680-491f-ab8d-406f592194ff}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{7ea29dff-35d6-4a25-a9ec-0d8788ad6f5e}" />

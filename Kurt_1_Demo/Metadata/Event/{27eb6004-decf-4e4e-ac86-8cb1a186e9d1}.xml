@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{27eb6004-decf-4e4e-ac86-8cb1a186e9d1}">
+		<property name="color">
+			<value>Red</value>
+		</property>
 		<property name="name">
 			<value>Tar_Spawn_Footstep</value>
 		</property>
@@ -53,7 +56,7 @@
 			<destination>{aa5cb238-a640-42c9-835c-053d40d8656b}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{48873e4a-1d14-4a69-abaa-332e8e89eee4}</destination>
+			<destination>{7b06e8af-ef4a-4d86-bddb-0dc5f7976e56}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{9a97214a-5755-41a0-a9e8-dc6cfca249e8}" />

@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 535002992510100507}
   m_Layer: 0
   m_Name: mixamorig:Head
-  m_TagString: Untagged
+  m_TagString: Tar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 8989154303377316693}
   m_Layer: 14
   m_Name: Tar_Spawn (1)
-  m_TagString: Target
+  m_TagString: Tar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
