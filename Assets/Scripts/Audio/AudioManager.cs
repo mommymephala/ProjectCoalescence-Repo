@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
     // [SerializeField] private EventReference playerAttackRanged;
     // [SerializeField] private EventReference weaponSwitch;
     [SerializeField] private EventReference metalDoor;
+    [SerializeField] private EventReference metalDoorClosed;
     // [SerializeField] private EventReference playerHurt;
     private EventInstance _playerFootstepInstance;
     private EventInstance _playerTakeDamage;
@@ -198,5 +199,14 @@ public class AudioManager : MonoBehaviour
         
         RuntimeManager.PlayOneShot(metalDoor, doorObject.transform.position);
     }
-    
+    public void PlayDoorClosed(GameObject doorObject)
+    {
+        if (metalDoorClosed.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: door closed");
+            return;
+        }
+        
+        RuntimeManager.PlayOneShot(metalDoorClosed, doorObject.transform.position);
+    }
 }

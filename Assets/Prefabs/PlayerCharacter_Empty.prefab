@@ -390,6 +390,7 @@ MonoBehaviour:
   _useRootMotion: 0
   _rootMotionRotation: 0
   footstepDelay: 0.5
+  runningFootstepDelay: 0.25
   _forwardSpeed: 5
   _backwardSpeed: 3
   _strafeSpeed: 4

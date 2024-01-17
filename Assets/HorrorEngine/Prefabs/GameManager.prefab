@@ -86,6 +86,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7ff8feb1e2abf0746bdd60574177d9f6, type: 2}
     - {fileID: 11400000, guid: 8d850626663147942bcf0eb90aff11fe, type: 2}
     - {fileID: 11400000, guid: 4c4faadd2b95e38409a6a33764a157eb, type: 2}
+    - {fileID: 11400000, guid: 311417b460666364d88ecf1ae51efa36, type: 2}
+    - {fileID: 11400000, guid: 23c2dc4e98be0c94d8375480a98124d4, type: 2}
+    - {fileID: 11400000, guid: 14ab5a0ff71532d44bc81a0c1c441e51, type: 2}
     m_OnFullDialog:
       Lines:
       - Delay: 0
@@ -118,11 +121,11 @@ MonoBehaviour:
     Count: 1
     SecondaryCount: 0
     Status: 0
-  - Item: {fileID: 11400000, guid: e2fa7f883db7ddf4bb030602c6d02a6a, type: 2}
+  - Item: {fileID: 11400000, guid: be47060051e3b9f409f698c455fb2110, type: 2}
     Count: 1
     SecondaryCount: 0
     Status: 0
-  - Item: {fileID: 11400000, guid: c396a572c8e52a941b73ef3207e845c2, type: 2}
+  - Item: {fileID: 11400000, guid: a5398a73af1b8a143a2f4e30e2409b2f, type: 2}
     Count: 1
     SecondaryCount: 0
     Status: 0

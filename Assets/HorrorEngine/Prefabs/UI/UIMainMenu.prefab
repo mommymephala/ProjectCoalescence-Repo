@@ -2009,8 +2009,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LoadSlotsScreen: {fileID: 1714319654055593855}
   m_NewButton: {fileID: 8029408757168064838}
-  m_LoadButton: {fileID: 819678481123795064}
+  _Options: {fileID: 0}
   m_QuitButton: {fileID: 1714319652154801996}
+  Options_Screen: {fileID: 0}
   m_CloseSlotsClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
   m_StartScene: {fileID: 11400000, guid: fda71761ebb6e264986bec5e4de17225, type: 2}
 --- !u!114 &3116343227410835970

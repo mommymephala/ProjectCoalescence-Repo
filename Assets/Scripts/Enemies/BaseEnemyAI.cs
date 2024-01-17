@@ -390,7 +390,7 @@ public class BaseEnemyAI : MonoBehaviour, IDamageable
         _animator.SetBool("IsDead", true);
         
         
-        Debug.Log("yarrak");
+        
         _agent.enabled = false;
         _collider.enabled = false;
         
