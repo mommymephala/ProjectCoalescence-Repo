@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: LastandFirstMen
+  m_EditorClassIdentifier: 
+  UniqueId: 36963e06-9ca1-48a7-a5d3-c250bf39e66d
+  Name: Book Quote
+  Image: {fileID: 21300000, guid: ba54fa9abd9f21d4d86afc86a5329442, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  PagesText_DEPRECATED: []
+  Pages:
+  - Text: Words of a great thinker from a far long era of our species.
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "\u201CGreat are the stars, and man is of no account to them. But man is
+      a fair spirit, whom a star conceived and a star kills. He is greater than those
+      bright blind companies. For though in them there is incalculable potentiality,
+      in him there is achievement, small, but actual.\""
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "\"Too soon, seemingly, he comes to his end. But when he is done he will
+      not be nothing, not as though he had never been; for he is eternally a beauty
+      in the eternal form of things.\u201D"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip: {fileID: 0}
+  PageClip: {fileID: 0}
+  CloseClip: {fileID: 0}
