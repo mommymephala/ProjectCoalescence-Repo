@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HorrorEngine;
+using UnityEngine;
 
 namespace ECM.Controllers
 {
@@ -299,6 +300,10 @@ namespace ECM.Controllers
         
         private void HandleFootsteps()
         {
+            if (PauseController.Instance.IsPaused)
+            {
+                return; // Do nothing if the game is paused
+            }
             // Check if the character is grounded and moving
             if (!isGrounded || moveDirection.sqrMagnitude < 0.1f)
             {

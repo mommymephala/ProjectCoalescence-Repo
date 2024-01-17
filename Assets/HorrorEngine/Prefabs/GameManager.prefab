@@ -105,8 +105,12 @@ MonoBehaviour:
   InitialInventory:
   - Item: {fileID: 11400000, guid: ed3e7b8b8c8adad458ef5a2a952d662e, type: 2}
     Count: 1
-    SecondaryCount: 10
-    Status: 0
+    SecondaryCount: 0
+    Status: 10
+  - Item: {fileID: 11400000, guid: 6e5a641c24b90cc46a14d02f5c39f4b2, type: 2}
+    Count: 1
+    SecondaryCount: 0
+    Status: 10
   InitialDocuments: []
   InitialMaps: []
   InitialEquipment: []

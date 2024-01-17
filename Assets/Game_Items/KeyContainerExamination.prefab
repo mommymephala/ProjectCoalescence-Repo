@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeyContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 2205306838562494806, guid: 0ab76591b968ef54d800f8f5b9d3bb47, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -273,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: fba335b76854b654b95e141b01f79646, type: 2}
+      objectReference: {fileID: 11400000, guid: 6e5a641c24b90cc46a14d02f5c39f4b2, type: 2}
     - target: {fileID: 7192505850423417541, guid: c10c3cc2aac81144a8b7872c3df610a0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
       value: OnKeyPickedUp
