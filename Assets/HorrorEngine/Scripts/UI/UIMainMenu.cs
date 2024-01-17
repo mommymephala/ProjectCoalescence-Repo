@@ -14,8 +14,9 @@ namespace HorrorEngine
     {
         [SerializeField] private GameObject m_LoadSlotsScreen;
         [SerializeField] private Button m_NewButton;
-        [SerializeField] private Button m_LoadButton;
+        [SerializeField] private Button _Options;
         [SerializeField] private Button m_QuitButton;
+        [SerializeField] private GameObject Options_Screen;
         [SerializeField] private AudioClip m_CloseSlotsClip;
         [FormerlySerializedAs("StartScene")]
         [SerializeField] private SceneReference m_StartScene;
@@ -53,8 +54,9 @@ namespace HorrorEngine
         private void Start()
         {
             int lastSavedSlot = GameSaveUtils.GetLastSavedSlot();
-            m_LoadButton.gameObject.SetActive(lastSavedSlot >= 0);
+            _Options.gameObject.SetActive(lastSavedSlot >= 0);
             m_LoadSlotsScreen.SetActive(false);
+            Options_Screen.SetActive(false);
         }
 
         private void Update()
@@ -70,7 +72,18 @@ namespace HorrorEngine
                     CloseSlotsScreen();
                 }
             }
-
+            if (Options_Screen.activeSelf)
+            {
+                if (m_Input.IsConfirmDown())
+                {
+                    
+                }
+                else if (m_Input.IsCancelDown())
+                {
+                    
+                }
+            }
+            
             if (EventSystem.current.currentSelectedGameObject == null) // Give back focus to buttons if lost
                 SelectDefault();
         }
@@ -78,7 +91,7 @@ namespace HorrorEngine
         private void CloseSlotsScreen()
         {
             m_NewButton.gameObject.SetActive(true);
-            m_LoadButton.gameObject.SetActive(true);
+            _Options.gameObject.SetActive(true);
             m_QuitButton.gameObject.SetActive(true);
             m_LoadSlotsScreen.SetActive(false);
             SelectDefault();
@@ -105,12 +118,20 @@ namespace HorrorEngine
             m_Input.Flush(); // Prevents selecting the first slot immediately
 
             m_NewButton.gameObject.SetActive(false);
-            m_LoadButton.gameObject.SetActive(false);
+            _Options.gameObject.SetActive(false);
             m_QuitButton.gameObject.SetActive(false);
 
             m_LoadSlotsScreen.gameObject.SetActive(true);
             m_SlotList.FillSlotsInfo();
             m_SlotList.SelectDefault();
+        }
+
+        public void Options()
+        {
+            m_NewButton.gameObject.SetActive(false);
+            _Options.gameObject.SetActive(false);
+            m_QuitButton.gameObject.SetActive(false);
+            
         }
 
         public void QuitGame()

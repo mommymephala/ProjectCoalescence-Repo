@@ -421,8 +421,8 @@ MonoBehaviour:
   m_Text: {fileID: 6011341161050012019}
   OpenExamination: 0
   InteractDuringExamination: 1
-  m_ShowClip: {fileID: 8300000, guid: 91a8ec5f87464ca428fa78f3caf07370, type: 3}
-  m_CloseClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
+  m_ShowClip: {fileID: 8300000, guid: 76c38870f34f41247b352db0b4700662, type: 3}
+  m_CloseClip: {fileID: 8300000, guid: 27e33d06f28961b4d9b0e14c74a1e1e0, type: 3}
 --- !u!1 &6011341161467009787
 GameObject:
   m_ObjectHideFlags: 0

@@ -151,3 +151,10 @@ MonoBehaviour:
       Data3: 1109397659
       Data4: 973050296
     Path: event:/OBJ&INT/Metal_Door
+  metalDoorClosed:
+    Guid:
+      Data1: -1436009916
+      Data2: 1317997895
+      Data3: -1215883107
+      Data4: -1505303675
+    Path: event:/OBJ&INT/Metol_Door_Closed

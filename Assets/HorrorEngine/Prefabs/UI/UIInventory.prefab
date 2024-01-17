@@ -786,11 +786,11 @@ MonoBehaviour:
   m_Equipped: {fileID: 3219396079693771594}
   m_EquippedSecondary: {fileID: 4941068813696465868}
   m_ExpandingInteractionDelay: 1
-  m_ShowClip: {fileID: 8300000, guid: 91a8ec5f87464ca428fa78f3caf07370, type: 3}
-  m_UseClip: {fileID: 8300000, guid: 91a8ec5f87464ca428fa78f3caf07370, type: 3}
+  m_ShowClip: {fileID: 8300000, guid: 117c4325df38ae44489723be7ebb779e, type: 3}
+  m_UseClip: {fileID: 8300000, guid: 117c4325df38ae44489723be7ebb779e, type: 3}
   m_CantUseClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
   m_NavigateClip: {fileID: 8300000, guid: 7506a771bac04be41b734d4c1ed70939, type: 3}
-  m_CloseClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
+  m_CloseClip: {fileID: 8300000, guid: 27e33d06f28961b4d9b0e14c74a1e1e0, type: 3}
   m_ExpandClip: {fileID: 8300000, guid: 55b26e627fa10c44492f11fce36640df, type: 3}
 --- !u!1 &8219519905110273993
 GameObject:

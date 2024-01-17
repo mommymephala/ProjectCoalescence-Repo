@@ -200,8 +200,8 @@ MonoBehaviour:
   m_PageLeftHook: {fileID: 7396782791018418313}
   m_PageCenterHook: {fileID: 5168983372392733110}
   m_PageRightHook: {fileID: 6618071986680605378}
-  m_NavigateClip: {fileID: 8300000, guid: 7506a771bac04be41b734d4c1ed70939, type: 3}
-  m_CloseClip: {fileID: 8300000, guid: e7a5ec70ce6ba5d4a96e971b41ff6f0d, type: 3}
+  m_NavigateClip: {fileID: 8300000, guid: 51bc270614964584fa0e60045a6a844f, type: 3}
+  m_CloseClip: {fileID: 8300000, guid: 27e33d06f28961b4d9b0e14c74a1e1e0, type: 3}
 --- !u!1 &4105211502410563733
 GameObject:
   m_ObjectHideFlags: 0

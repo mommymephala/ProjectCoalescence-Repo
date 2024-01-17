@@ -94,6 +94,7 @@ public class DoorOpening : MonoBehaviour
         }
 
         _animationCoroutine = StartCoroutine(isRotatingDoor ? DoRotationClose() : DoSlidingClose());
+         AudioManager.Instance.PlayDoorClosed(gameObject);
     }
 
     private IEnumerator DoRotationClose()

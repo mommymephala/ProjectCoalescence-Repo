@@ -259,6 +259,9 @@
 		<property name="length">
 			<value>0.20000000000000001</value>
 		</property>
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<relationship name="triggerConditions">
 			<destination>{50629750-40a2-4ffc-9dde-6d6a99e4db5f}</destination>
 		</relationship>

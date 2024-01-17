@@ -299,10 +299,17 @@ namespace ECM.Controllers
         
         private void HandleFootsteps()
         {
+            // Check if the character is grounded and moving
             if (!isGrounded || moveDirection.sqrMagnitude < 0.1f)
             {
                 _footstepTimer = 0;
                 return;
+            }
+
+            // If the footstep timer is 0 and the character is moving, play the first footstep sound immediately
+            if (_footstepTimer == 0)
+            {
+                PlayFootstepSound();
             }
 
             _footstepTimer += Time.deltaTime;
@@ -312,18 +319,22 @@ namespace ECM.Controllers
 
             if (_footstepTimer >= currentFootstepDelay)
             {
-                if (run)
-                {
-                    // Play running footstep sound
-                    AudioManager.Instance.PlayRunning(); // Replace with your actual method to play running footsteps
-                }
-                else
-                {
-                    // Play walking footstep sound
-                    AudioManager.Instance.PlayFootstep();
-                }
-                _footstepTimer = 0;
+                PlayFootstepSound();
             }
+        }
+        private void PlayFootstepSound()
+        {
+            if (run)
+            {
+                // Play running footstep sound
+                AudioManager.Instance.PlayRunning(); // Replace with your actual method to play running footsteps
+            }
+            else
+            {
+                // Play walking footstep sound
+                AudioManager.Instance.PlayFootstep();
+            }
+            _footstepTimer = 0;
         }
         public virtual void LateUpdate()
         {
