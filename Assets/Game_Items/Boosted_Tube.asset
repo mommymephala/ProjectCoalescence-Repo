@@ -15,10 +15,10 @@ MonoBehaviour:
   UniqueId: 8456a099-546e-432b-9dd5-f141cbeef2f3
   Image: {fileID: 21300000, guid: 18fced03e102ba142b922ab25ae6fd38, type: 3}
   ExamineModel: {fileID: 3543605576848217984, guid: cec2d0688f71b044a801c120eed2824d, type: 3}
-  Name: Boosted Health Tube
-  Description: Herb that restores partial health
+  Name: Purple Fluid
+  Description: It completely restores health.
   InventoryAction: 1
   Flags: 116
   DropPrefab: {fileID: 0}
-  m_Regeneration: 25
-  m_CompleteRegeneration: 0
+  m_Regeneration: 100
+  m_CompleteRegeneration: 1

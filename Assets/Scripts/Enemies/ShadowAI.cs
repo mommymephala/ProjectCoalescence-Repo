@@ -27,7 +27,7 @@ public class ShadowAI : MonoBehaviour, IDamageable
     {
         while (true)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(4f, 7f));
+            yield return new WaitForSeconds(Random.Range(4f, 7f));
             TeleportToRandomLocation();
         }
     }
@@ -36,7 +36,7 @@ public class ShadowAI : MonoBehaviour, IDamageable
     {
         if (teleportLocations.Length > 0)
         {
-            int randomIndex = UnityEngine.Random.Range(0, teleportLocations.Length);
+            int randomIndex = Random.Range(0, teleportLocations.Length);
             transform.position = teleportLocations[randomIndex].position;
         }
     }

@@ -15,8 +15,8 @@ MonoBehaviour:
   UniqueId: 9251e87c-9982-420a-bed6-5cbc92b7c780
   Image: {fileID: 21300000, guid: f6ec03ad921c2dc40961aa2b0158fcb8, type: 3}
   ExamineModel: {fileID: 8626040775639491868, guid: 99b767d3df7d26b4081aafa751f1ce9a, type: 3}
-  Name: Shotgun shells
-  Description: For the Remington M1100 series
+  Name: Shotgun Ammo
+  Description: Powerful ammunition for the pump-action shotgun.
   InventoryAction: 0
   Flags: 122
   DropPrefab: {fileID: 0}

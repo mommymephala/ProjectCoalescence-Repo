@@ -16,7 +16,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 009471acb2ed8784b900744bc33c6ce4, type: 3}
   ExamineModel: {fileID: 3735155251281414091, guid: 42f4cd466618eae44a7b193ee225893b, type: 3}
   Name: Baton
-  Description: Batondur bu.
+  Description: A sturdy, high-tech baton from home.
   InventoryAction: 2
   Flags: 368
   DropPrefab: {fileID: 0}

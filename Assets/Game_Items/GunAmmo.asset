@@ -15,8 +15,8 @@ MonoBehaviour:
   UniqueId: 1e377b8b-f525-4381-844a-1f5b1ef04a1f
   Image: {fileID: 21300000, guid: fe8731f5598d6fe4d999a26929682d2d, type: 3}
   ExamineModel: {fileID: 6290183869138669386, guid: 476cdca288968e8478245d6e6dbcfe00, type: 3}
-  Name: 9mm Ammo
-  Description: Gun Ammo
+  Name: Handgun Ammo
+  Description: An electrically charged high caliber ammunition.
   InventoryAction: 0
   Flags: 122
   DropPrefab: {fileID: 0}

@@ -16,7 +16,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 208b8720e20481041bfd2e6fcb49bac0, type: 3}
   ExamineModel: {fileID: 7984818611346810109, guid: 8d7aec988ebd4b94cbd7aac0d6e41d98, type: 3}
   Name: Red Key
-  Description: It opens doors with a spade engraving
+  Description: Can be inserted into a red key slot.
   InventoryAction: 0
   Flags: 240
   DropPrefab: {fileID: 0}

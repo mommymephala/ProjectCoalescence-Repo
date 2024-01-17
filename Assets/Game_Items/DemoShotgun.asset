@@ -16,7 +16,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 1093a75aac279ed41a8edbb14227508e, type: 3}
   ExamineModel: {fileID: 1201058796532870642, guid: 69162891bce6b4f4db6ca0580427f87b, type: 3}
   Name: Shotgun
-  Description: This is a shotgun.
+  Description: Highly effective and deadly.
   InventoryAction: 2
   Flags: 120
   DropPrefab: {fileID: 0}

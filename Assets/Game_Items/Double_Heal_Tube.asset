@@ -15,8 +15,8 @@ MonoBehaviour:
   UniqueId: 8456a099-546e-432b-9dd5-f141cbeef2f3
   Image: {fileID: 21300000, guid: aa7d88254bd317d4ebcb08c76296630e, type: 3}
   ExamineModel: {fileID: 6380525029197609455, guid: 9c3ae41f001f89c4caf0ee4602193252, type: 3}
-  Name: Double Heal
-  Description: Herb that restores partial health
+  Name: Mixed Blue Fluid
+  Description: Greatly restores health.
   InventoryAction: 1
   Flags: 116
   DropPrefab: {fileID: 0}

@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795a2593dd749af49b6767d0126d527e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 4
   _angularSpeed: 540
   _acceleration: 50
   _deceleration: 20
@@ -391,12 +391,12 @@ MonoBehaviour:
   _rootMotionRotation: 0
   footstepDelay: 0.5
   runningFootstepDelay: 0.25
-  _forwardSpeed: 5
-  _backwardSpeed: 3
-  _strafeSpeed: 4
-  _runSpeedMultiplier: 2
+  _forwardSpeed: 4
+  _backwardSpeed: 2
+  _strafeSpeed: 3
+  _runSpeedMultiplier: 1.75
   cameraAnimator: {fileID: 7266222647645721068}
-  cameraAnimSpeed: 1.2
+  cameraAnimSpeed: 0.75
 --- !u!114 &811811088031836526
 MonoBehaviour:
   m_ObjectHideFlags: 0

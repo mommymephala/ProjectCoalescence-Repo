@@ -16,7 +16,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: a101c55f5c2e3254eaa69a4bab3a073f, type: 3}
   ExamineModel: {fileID: 4758111053358299160, guid: 5158c8134cb2e55478ef17d64d911a87, type: 3}
   Name: Blue Key
-  Description: It opens doors with a spade engraving
+  Description: Can be inserted into a blue key slot.
   InventoryAction: 0
   Flags: 240
   DropPrefab: {fileID: 0}

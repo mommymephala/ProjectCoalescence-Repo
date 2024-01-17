@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bc1c23e40f04041838df542be9b892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: HerhangiBirAdam
+  PlayerName: Meursault
   Player: {fileID: 0}
   Inventory:
     Items:
@@ -84,12 +84,13 @@ MonoBehaviour:
     m_AutoBulk: 1
     m_Combinations:
     - {fileID: 11400000, guid: 7ff8feb1e2abf0746bdd60574177d9f6, type: 2}
-    - {fileID: 11400000, guid: 8d850626663147942bcf0eb90aff11fe, type: 2}
+    - {fileID: 11400000, guid: 2080df893b5eb3442ad282944d7f5688, type: 2}
+    - {fileID: 11400000, guid: 20ab24bc403b1ab4b95e859916de8424, type: 2}
     - {fileID: 11400000, guid: 4c4faadd2b95e38409a6a33764a157eb, type: 2}
     m_OnFullDialog:
       Lines:
       - Delay: 0
-        Text: ' I can''t carry any more items'
+        Text: I can't carry any more items.
     WeaponSlot: 1
     Expanded: 0
     PreExpansionSize: 0
@@ -102,29 +103,9 @@ MonoBehaviour:
   MapDatabase: {fileID: 11400000, guid: c423acb542438c44db88c2dc29c811fb, type: 2}
   SpawnableDatabase: {fileID: 11400000, guid: 01b253ca63b3e3441acfd87520c6fe2c, type: 2}
   InitialInventory:
-  - Item: {fileID: 11400000, guid: cd181e0ffc3d78d47bbf3568b77277c1, type: 2}
-    Count: 1
-    SecondaryCount: 10
-    Status: 0
-  - Item: {fileID: 11400000, guid: 54b5dc0a8e9ccee45a7ee3b800760f1b, type: 2}
-    Count: 1
-    SecondaryCount: 3
-    Status: 0
-  - Item: {fileID: 11400000, guid: c50dbf6ac5b642d44bd8505f4f84df7f, type: 2}
-    Count: 1
-    SecondaryCount: 0
-    Status: 0
   - Item: {fileID: 11400000, guid: ed3e7b8b8c8adad458ef5a2a952d662e, type: 2}
     Count: 1
-    SecondaryCount: 0
-    Status: 0
-  - Item: {fileID: 11400000, guid: e2fa7f883db7ddf4bb030602c6d02a6a, type: 2}
-    Count: 1
-    SecondaryCount: 0
-    Status: 0
-  - Item: {fileID: 11400000, guid: c396a572c8e52a941b73ef3207e845c2, type: 2}
-    Count: 1
-    SecondaryCount: 0
+    SecondaryCount: 10
     Status: 0
   InitialDocuments: []
   InitialMaps: []
