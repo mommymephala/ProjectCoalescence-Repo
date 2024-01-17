@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1201825430092543538
 Transform:
   m_ObjectHideFlags: 0
@@ -390,6 +390,7 @@ MonoBehaviour:
   _useRootMotion: 0
   _rootMotionRotation: 0
   footstepDelay: 0.5
+  runningFootstepDelay: 0.25
   _forwardSpeed: 5
   _backwardSpeed: 3
   _strafeSpeed: 4
@@ -668,7 +669,7 @@ MonoBehaviour:
   m_CameraType: 0
   m_Cameras:
   - {fileID: 4349807213556756194}
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
