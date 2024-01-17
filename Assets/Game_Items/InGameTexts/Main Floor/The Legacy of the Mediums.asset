@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: The Legacy of the Mediums
+  m_EditorClassIdentifier: 
+  UniqueId: 36963e06-9ca1-48a7-a5d3-c250bf39e66d
+  Name: The Legacy of the Mediums
+  Image: {fileID: 21300000, guid: ba54fa9abd9f21d4d86afc86a5329442, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  PagesText_DEPRECATED: []
+  Pages:
+  - Text: "Introduction:\r\nThis document aims to provide a concise historical overview
+      of the 'mediums,' a significant subgroup that existed within our civilization,
+      based on surviving records and scholarly interpretations.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Origin and Nature:\r\nThe birth of the mediums within our society is deeply
+      entwined with the exploration of the Second Men's hive-mind system. These mediums,
+      distinguished by their extraordinary mental capabilities, seemed to echo aspects
+      of the Second Men's hive-mind, yet with a unique twist.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: This remarkable development suggests that the research into the Second
+      Men's hive-mind system did more than uncover the secrets of collective consciousness.
+      It possibly laid the foundation for the mediums' unique evolution, where the
+      amalgamation of music and mental prowess became a new form of communal bonding
+      and interaction.
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Cultural Role:\r\nMediums were revered for their perceived ability to
+      interface with a metaphysical realm. This unique trait granted them a special
+      status, intertwining their existence with the religious and cultural fabric
+      of our society. They were seen as conduits to the unknown, bridging the tangible
+      world with the unseen.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Influence and Impact:\r\nTheir abilities and insights influenced religious
+      practices, artistic expressions, and possibly the governance structures of
+      their time. The mediums were often placed on a pedestal, seen as both spiritual
+      guides and oracles.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Controversy and Societal Implications:\r\nDespite their revered status,
+      the existence of mediums was not without controversy. Debates likely arose
+      over the legitimacy of their abilities, the moral ramifications of their roles,
+      and the extent of their influence on society.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Decline and Extinction:\r\nThe mediums eventually faced a period of decline,
+      caused by disagreements on the progression of human race. This caused an alienation
+      of two societies and after we left our home \u2013 the Sol System, and come
+      here, they couldn\u2019t survive the war with the intelligent marine species
+      of this planet.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip: {fileID: 0}
+  PageClip: {fileID: 0}
+  CloseClip: {fileID: 0}

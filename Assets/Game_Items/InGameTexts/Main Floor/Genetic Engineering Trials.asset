@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: Genetic Engineering Trials
+  m_EditorClassIdentifier: 
+  UniqueId: 36963e06-9ca1-48a7-a5d3-c250bf39e66d
+  Name: Genetic Engineering Trials
+  Image: {fileID: 21300000, guid: ba54fa9abd9f21d4d86afc86a5329442, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  PagesText_DEPRECATED: []
+  Pages:
+  - Text: The initial phase of our engineered plant life is exceeding expectations.
+      Especially the bioluminescent fungi are thriving. They've adapted beyond our
+      projections, casting an ethereal glow across the chamber. It's a blend of art
+      and science, functional yet captivating.
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip: {fileID: 0}
+  PageClip: {fileID: 0}
+  CloseClip: {fileID: 0}

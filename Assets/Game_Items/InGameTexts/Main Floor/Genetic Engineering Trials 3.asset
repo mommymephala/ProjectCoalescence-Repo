@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: Genetic Engineering Trials 3
+  m_EditorClassIdentifier: 
+  UniqueId: 36963e06-9ca1-48a7-a5d3-c250bf39e66d
+  Name: Genetic Engineering Trials 3
+  Image: {fileID: 21300000, guid: ba54fa9abd9f21d4d86afc86a5329442, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  PagesText_DEPRECATED: []
+  Pages:
+  - Text: Concerns are mounting. Some of the plant species are exhibiting traits
+      that were not part of the original design. This includes a rapid mutation rate
+      and a tendency to spread beyond their designated areas. Control measures are
+      becoming less effective.
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: A decision has been made to cease further genetic manipulation in this
+      chamber. The current state of the ecosystem presents a blend of wonder and
+      hazard, a testament to the unpredictability of nature. We will continue to
+      monitor and document, but direct intervention is now limited. The balance of
+      this engineered environment must be respected.
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip: {fileID: 0}
+  PageClip: {fileID: 0}
+  CloseClip: {fileID: 0}

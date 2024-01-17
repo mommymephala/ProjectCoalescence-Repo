@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543205dd590b764295581a5ae2883d4, type: 3}
+  m_Name: ReactorPanelLog
+  m_EditorClassIdentifier: 
+  UniqueId: 36963e06-9ca1-48a7-a5d3-c250bf39e66d
+  Name: 'Reactor Panel Log: Design and Principles'
+  Image: {fileID: 21300000, guid: ba54fa9abd9f21d4d86afc86a5329442, type: 3}
+  ShowImageOnRead: 0
+  ShowPageCount: 1
+  PagesText_DEPRECATED: []
+  Pages:
+  - Text: "Date: [Data Corrupted]\r\nSubject: Dyson-Sphere Miniaturization and Fusion
+      Reactor Principles\r\n\r\nOverview:\r\nWelcome to the heart of our facility's
+      power source \u2013 the miniaturized Dyson-sphere and its accompanying nuclear
+      fusion reactor. This document outlines the fundamental design and operational
+      principles of our most ambitious project to date.\r\n"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Design Philosophy:\r\nThe mini-Dyson-sphere represents a leap in energy
+      harnessing technology, inspired by the work that is done by our ancestors in
+      the Sol system, our goal was to create a sustainable, high-yield power source
+      by encapsulating a miniature sun. This fusion reactor, mimics the energy production
+      of a star, providing near-limitless power.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Operational Mechanics:\r\nThe reactor core generates energy through nuclear
+      fusion, mimicking the processes found at the heart of stars. Hydrogen atoms,
+      under immense pressure and temperature, fuse to form helium, releasing enormous
+      amounts of energy. This energy is then captured by the Dyson-sphere's array
+      of photovoltaic cells, which line its inner surface.\r\nThe Dyson-sphere's
+      structure is composed of advanced metamaterials, capable of withstanding extreme
+      temperatures and radiation. Its design allows for maximum energy absorption
+      and minimal heat loss, making it incredibly efficient.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Safety Protocols:\r\nGiven the reactor's immense power, numerous safety
+      protocols are in place. These include magnetic containment fields to stabilize
+      the fusion reaction, automated shutdown systems in case of structural failure,
+      and radiation shielding to protect facility personnel.\r\nAfter the unforeseen
+      consequences caused by the previous design, our scientists have worked extensively
+      to change the structure of the reactor. \r\nNow, in the unlikely event of a
+      total system failure, the reactor is designed to collapse inward, safely containing
+      the reaction and preventing widespread damage.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Access and Control:\r\nThe reactor is controlled via a series of access
+      ports located around the facility. These ports are designed to recognize the
+      unique biometric signatures of our registered scientists \u2013 specifically,
+      their fingertips. Unregistered access is strictly prohibited to maintain operational
+      security.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  - Text: "Final Notes:\r\nThis reactor is not just a power source; it's a testament
+      of our will to survive and human ingenuity and also, our unyielding pursuit
+      of knowledge. It stands as a beacon of our civilization's advanced technological
+      capabilities and our commitment to a future powered by clean, limitless energy.\r"
+    Image: {fileID: 0}
+    ImageCaption: 
+    ChangeColor: 0
+    ImageColor: {r: 0, g: 0, b: 0, a: 0}
+  ShowClip: {fileID: 0}
+  PageClip: {fileID: 0}
+  CloseClip: {fileID: 0}
