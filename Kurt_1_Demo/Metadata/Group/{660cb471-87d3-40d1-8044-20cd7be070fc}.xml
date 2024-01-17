@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{660cb471-87d3-40d1-8044-20cd7be070fc}">
+		<property name="name">
+			<value>Deagle_Reload</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{85cdb120-3b47-45e1-9a07-5358a3736dc8}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{48c607e5-f5c4-4910-80c5-a231479831a5}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{57cc5b24-0cf9-48da-943d-54771ef06dce}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{85cdb120-3b47-45e1-9a07-5358a3736dc8}">
+		<relationship name="effects">
+			<destination>{386eed95-71fa-48e5-b19f-63b681cf671f}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{48c607e5-f5c4-4910-80c5-a231479831a5}" />
+	<object class="MixerBusFader" id="{386eed95-71fa-48e5-b19f-63b681cf671f}" />
+</objects>

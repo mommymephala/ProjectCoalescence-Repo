@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{9c3ace89-5c80-4267-a28b-2fc58258e3a6}">
+		<property name="volume">
+			<value>-9.5</value>
+		</property>
+		<property name="name">
+			<value>Chip_Heavy_Attacks_</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{1f9a2726-2269-44ab-b969-d14494941291}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{58fe6185-9e1f-4cac-952e-8bd0888b91c2}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{b3afbafe-1fcf-41d7-9392-4a9ff9d2fa7b}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{1f9a2726-2269-44ab-b969-d14494941291}">
+		<relationship name="effects">
+			<destination>{877a23c3-bfe3-4941-9396-e2cefe5812c9}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{58fe6185-9e1f-4cac-952e-8bd0888b91c2}" />
+	<object class="MixerBusFader" id="{877a23c3-bfe3-4941-9396-e2cefe5812c9}" />
+</objects>

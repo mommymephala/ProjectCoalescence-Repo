@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{7e4c1c3c-b469-499f-a14e-78f80224b6cf}">
+		<property name="name">
+			<value>Deagle_Out_Of_Ammo</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{6a0903be-3a14-405d-a778-a8f28a3f178d}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{85eac3fb-6157-4e35-9599-b1b987411b8b}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{57cc5b24-0cf9-48da-943d-54771ef06dce}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{6a0903be-3a14-405d-a778-a8f28a3f178d}">
+		<relationship name="effects">
+			<destination>{e73e8e33-8483-4479-b67a-8f671aee13e1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{85eac3fb-6157-4e35-9599-b1b987411b8b}" />
+	<object class="MixerBusFader" id="{e73e8e33-8483-4479-b67a-8f671aee13e1}" />
+</objects>

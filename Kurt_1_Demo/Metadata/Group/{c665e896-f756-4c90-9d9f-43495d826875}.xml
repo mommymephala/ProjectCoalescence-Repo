@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{c665e896-f756-4c90-9d9f-43495d826875}">
+		<property name="volume">
+			<value>-8</value>
+		</property>
+		<property name="name">
+			<value>Shotgun_Reload</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{80fc2135-24b8-4f75-9ef2-abf15d6aa7b3}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{f7245a9e-51e3-4f4b-a55c-6acec3241075}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{461319f0-2f69-46ff-ab6c-67a7b10846d2}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{80fc2135-24b8-4f75-9ef2-abf15d6aa7b3}">
+		<relationship name="effects">
+			<destination>{16ff84d6-98b4-4471-b498-e04c9a961667}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{f7245a9e-51e3-4f4b-a55c-6acec3241075}" />
+	<object class="MixerBusFader" id="{16ff84d6-98b4-4471-b498-e04c9a961667}" />
+</objects>
