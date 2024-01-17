@@ -1438,346 +1438,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Path
-      value: event:/OBJ&INT/Metal_Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerDeath.Path
-      value: event:/SFX/Player/Player_Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerRunning.Path
-      value: event:/SFX/Player/Player_Run
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data1
-      value: -607918179
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data2
-      value: 1135980185
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data3
-      value: 1109397659
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: metalDoor.Guid.Data4
-      value: 973050296
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerTakeDamage.Path
-      value: event:/SFX/Player/Player_Take_Damage
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: BaseEnemyFootstep.Path
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: ChipEnemyFootStep.Path
-      value: event:/SFX/Weapon/Weapon_Deagle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerDeath.Guid.Data1
-      value: 1227820766
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerDeath.Guid.Data2
-      value: 1112037699
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerDeath.Guid.Data3
-      value: 93806010
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerDeath.Guid.Data4
-      value: 1869849546
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerRunning.Guid.Data1
-      value: -2091680138
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerRunning.Guid.Data2
-      value: 1203750866
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerRunning.Guid.Data3
-      value: 184799391
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerRunning.Guid.Data4
-      value: -1896962226
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.idle.Path
-      value: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.idle.Path
-      value: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Idle/Chip_Enemy_Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.death.Path
-      value: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.death.Path
-      value: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Death/Chip_Enemy_Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerTakeDamage.Guid.Data1
-      value: 32212735
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerTakeDamage.Guid.Data2
-      value: 1171920211
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerTakeDamage.Guid.Data3
-      value: -1484202318
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: playerTakeDamage.Guid.Data4
-      value: -468843434
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: BaseEnemyFootstep.Guid.Data1
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: BaseEnemyFootstep.Guid.Data2
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: BaseEnemyFootstep.Guid.Data3
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: BaseEnemyFootstep.Guid.Data4
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: ChipEnemyFootStep.Guid.Data1
-      value: 2103223952
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: ChipEnemyFootStep.Guid.Data2
-      value: 1321540374
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: ChipEnemyFootStep.Guid.Data3
-      value: -1911335018
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: ChipEnemyFootStep.Guid.Data4
-      value: -519273705
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.footstep.Path
-      value: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Footstep/Tar_Spawn_Footstep
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.footstep.Path
-      value: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Footstep/Chip_Enemy_Footsteps
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.idle.Guid.Data1
-      value: -919301942
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.idle.Guid.Data2
-      value: 1106864262
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.idle.Guid.Data3
-      value: 1710035132
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.idle.Guid.Data4
-      value: 1943114385
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.takeDamage.Path
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.idle.Guid.Data1
-      value: 2028078850
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.idle.Guid.Data2
-      value: 1338528419
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.idle.Guid.Data3
-      value: -2125631336
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.idle.Guid.Data4
-      value: -751747404
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Heavyattack.Path
-      value: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Heavy_Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.death.Guid.Data1
-      value: 410524000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.death.Guid.Data2
-      value: 1090939099
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.death.Guid.Data3
-      value: 1246424730
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.death.Guid.Data4
-      value: 2038832096
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Heavyattack.Path
-      value: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Attacks/Chip_Enemy_Heavy_Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.death.Guid.Data1
-      value: 1889166572
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.death.Guid.Data2
-      value: 1324818673
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.death.Guid.Data3
-      value: 726761105
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.death.Guid.Data4
-      value: 1240178927
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Normalattack.Path
-      value: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Normal_Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Normalattack.Path
-      value: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Attacks/Chip_Enemy_Normal_Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.footstep.Guid.Data1
-      value: 669736964
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.footstep.Guid.Data2
-      value: 1313791695
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.footstep.Guid.Data3
-      value: -1316190548
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.footstep.Guid.Data4
-      value: -773224799
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.footstep.Guid.Data1
-      value: -1985346438
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.footstep.Guid.Data2
-      value: 1157996324
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.footstep.Guid.Data3
-      value: -322858847
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.footstep.Guid.Data4
-      value: -227501852
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.takeDamage.Guid.Data1
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.takeDamage.Guid.Data2
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.takeDamage.Guid.Data3
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.takeDamage.Guid.Data4
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Heavyattack.Guid.Data1
-      value: -352967841
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Heavyattack.Guid.Data2
-      value: 1171035083
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Heavyattack.Guid.Data3
-      value: -1434024532
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Heavyattack.Guid.Data4
-      value: -1102331217
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Heavyattack.Guid.Data1
-      value: -1523091217
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Heavyattack.Guid.Data2
-      value: 1254355555
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Heavyattack.Guid.Data3
-      value: -1052581981
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Heavyattack.Guid.Data4
-      value: 1232170868
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Normalattack.Guid.Data1
-      value: -1576766576
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Normalattack.Guid.Data2
-      value: 1242475021
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Normalattack.Guid.Data3
-      value: 1148887993
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: baseEnemySounds.Normalattack.Guid.Data4
-      value: -430664985
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Normalattack.Guid.Data1
-      value: 20833893
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Normalattack.Guid.Data2
-      value: 1155053795
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Normalattack.Guid.Data3
-      value: -1003491435
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362327567133030829, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
-      propertyPath: chipEnemySounds.Normalattack.Guid.Data4
-      value: -1081385637
-      objectReference: {fileID: 0}
     - target: {fileID: 7217314309965146093, guid: 0758613092b3cd34f9c582453b62c327, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -4489,111 +4149,6 @@ Transform:
   - {fileID: 25546517}
   m_Father: {fileID: 1016892058}
   m_LocalEulerAnglesHint: {x: -0.0000041325316, y: 0.0000011424418, z: -123.59125}
---- !u!1001 &949613582
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 429299258408657129, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_ToggleMap
-      value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 429299258408657129, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_XPrimaryAxis
-      value: Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 429299258408657129, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_YPrimaryAxis
-      value: Vertical
-      objectReference: {fileID: 0}
-    - target: {fileID: 429299258408657129, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_ToggleMapList
-      value: MapList
-      objectReference: {fileID: 0}
-    - target: {fileID: 792903191699544257, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 5568526188610130909, guid: 8e598006fee070547bf70436c34d9e3b, type: 3}
-    - target: {fileID: 792903191699544257, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 5568526188610130909, guid: 8e598006fee070547bf70436c34d9e3b, type: 3}
-    - target: {fileID: 792903191699544257, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: mouseLookComponent
-      value: 
-      objectReference: {fileID: 8018176572433920961, guid: 8e598006fee070547bf70436c34d9e3b, type: 3}
-    - target: {fileID: 7228592620527511133, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: showCursor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7228592620527511133, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: UnlockForUI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7228592620527511133, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: VisibleForUI
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063176, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208461063178, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_Name
-      value: HECore
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203255208820099815, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8391543906207922688, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 193bf82098c71a341a2c6f67ffa422b5, type: 3}
 --- !u!1 &965892028
 GameObject:
   m_ObjectHideFlags: 0
@@ -8469,6 +8024,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 819430220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2086222561
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950964735520325495, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080459572898015098, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
+      propertyPath: m_Name
+      value: HECore
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d12581736f692c46a8ca84c3bbeceb7, type: 3}
 --- !u!1 &2090860915
 GameObject:
   m_ObjectHideFlags: 0
@@ -12155,7 +11767,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 949613582}
+  - {fileID: 2086222561}
   - {fileID: 205783330}
   - {fileID: 1693053675}
   - {fileID: 1773120417}

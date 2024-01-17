@@ -51,106 +51,99 @@ MonoBehaviour:
       Data3: -1709840227
       Data4: 1259604765
     Path: event:/SFX/Player/Player_Footsteps
+  playerRunning:
+    Guid:
+      Data1: -2091680138
+      Data2: 1203750866
+      Data3: 184799391
+      Data4: -1896962226
+    Path: event:/SFX/Player/Player_Run
   playerTakeDamage:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 32212735
+      Data2: 1171920211
+      Data3: -1484202318
+      Data4: -468843434
+    Path: event:/SFX/Player/Player_Take_Damage
   playerDeath:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1227820766
+      Data2: 1112037699
+      Data3: 93806010
+      Data4: 1869849546
+    Path: event:/SFX/Player/Player_Death
   baseEnemySounds:
     footstep:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    takeDamage:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 669736964
+        Data2: 1313791695
+        Data3: -1316190548
+        Data4: -773224799
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Footstep/Tar_Spawn_Footstep
     Normalattack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1576766576
+        Data2: 1242475021
+        Data3: 1148887993
+        Data4: -430664985
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Normal_Attack
     Heavyattack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -352967841
+        Data2: 1171035083
+        Data3: -1434024532
+        Data4: -1102331217
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_AttackS/Tar_Spawn_Heavy_Attack
     death:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 410524000
+        Data2: 1090939099
+        Data3: 1246424730
+        Data4: 2038832096
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Death/Tar_Spawn_Death
     idle:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -919301942
+        Data2: 1106864262
+        Data3: 1710035132
+        Data4: 1943114385
+      Path: event:/SFX/Enemy/Enemy_Tar_Spawn/Tar_Spawn_Idle/Tar_Spawn_Idle
   chipEnemySounds:
     footstep:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    takeDamage:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1985346438
+        Data2: 1157996324
+        Data3: -322858847
+        Data4: -227501852
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Footstep/Chip_Enemy_Footsteps
     Normalattack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 20833893
+        Data2: 1155053795
+        Data3: -1003491435
+        Data4: -1081385637
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Attacks/Chip_Enemy_Normal_Attack
     Heavyattack:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1523091217
+        Data2: 1254355555
+        Data3: -1052581981
+        Data4: 1232170868
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Attacks/Chip_Enemy_Heavy_Attack
     death:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1889166572
+        Data2: 1324818673
+        Data3: 726761105
+        Data4: 1240178927
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Death/Chip_Enemy_Death
     idle:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 2028078850
+        Data2: 1338528419
+        Data3: -2125631336
+        Data4: -751747404
+      Path: event:/SFX/Enemy/Enemy_Chip_Enemy/Chip_Enemy_Idle/Chip_Enemy_Idle
   metalDoor:
     Guid:
       Data1: -607918179

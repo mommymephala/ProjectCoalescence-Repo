@@ -17,7 +17,7 @@ namespace HorrorEngine
         [SerializeField] private float m_ShowDelay = 3;
 
         private IUIInput m_Input;
-        private Material m_GameOverTextMaterial;
+        // private Material m_GameOverTextMaterial;
         private bool m_SaveSlotAvailable;
 
         // --------------------------------------------------------------------
@@ -31,8 +31,8 @@ namespace HorrorEngine
 
         private void Start()
         {
-            m_GameOverTextMaterial = new Material(m_GameOverText.material);
-            m_GameOverText.material = m_GameOverTextMaterial;
+            // m_GameOverTextMaterial = new Material(m_GameOverText.material);
+            // m_GameOverText.material = m_GameOverTextMaterial;
             MessageBuffer<GameOverMessage>.Subscribe(OnGameOver);
             gameObject.SetActive(false);
         }
@@ -85,7 +85,7 @@ namespace HorrorEngine
 
         void Show()
         {
-            m_GameOverTextMaterial.SetFloat(k_ActivationTimeID, Time.timeSinceLevelLoad);
+            // m_GameOverTextMaterial.SetFloat(k_ActivationTimeID, Time.timeSinceLevelLoad);
             gameObject.SetActive(true);
             SelectDefault();
             CursorController.Instance.SetInUI(true);

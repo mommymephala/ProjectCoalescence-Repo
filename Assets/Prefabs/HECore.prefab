@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 5520528303451097593}
   - component: {fileID: 7725385220902153722}
   - component: {fileID: 6810442586168555994}
+  - component: {fileID: 8486470899319751059}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -122,10 +123,14 @@ MonoBehaviour:
   m_Cancel: Cancel
   m_TogglePause: Pause
   m_ToggleInventory: Inventory
-  m_ToggleMap: 
-  m_ToggleMapList: 
-  m_NextSubmap: 
-  m_PrevSubmap: 
+--- !u!81 &8486470899319751059
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676826032863588621}
+  m_Enabled: 1
 --- !u!1 &4080459572898015098
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +162,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2506842644571001462}
   - {fileID: 2288532676968975169}
   - {fileID: 8487934595562784271}
   - {fileID: 4178272170311098832}
@@ -543,72 +547,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &2090681080597140303
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3950964735520325495}
-    m_Modifications:
-    - target: {fileID: 4596362433352417574, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_Name
-      value: DoorTransitionController
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
---- !u!4 &2506842644571001462 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4596362433352417593, guid: 2adb7a86e6ac93242b1a803b0a532c45, type: 3}
-  m_PrefabInstance: {fileID: 2090681080597140303}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6530243914556195161
 PrefabInstance:
   m_ObjectHideFlags: 0
