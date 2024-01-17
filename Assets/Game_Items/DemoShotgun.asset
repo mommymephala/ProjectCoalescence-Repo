@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DemoShotgun
   m_EditorClassIdentifier: 
   UniqueId: a8ca23ec-d560-4e6d-a472-16248beacac3
-  Image: {fileID: 21300000, guid: eeee8afd6f3190f4c97f9256406e9a0c, type: 3}
-  ExamineModel: {fileID: 2618670157336995982, guid: 5fc5b59030b8c6740b88a351716e8549, type: 3}
+  Image: {fileID: 21300000, guid: 1093a75aac279ed41a8edbb14227508e, type: 3}
+  ExamineModel: {fileID: 1201058796532870642, guid: 69162891bce6b4f4db6ca0580427f87b, type: 3}
   Name: Shotgun
   Description: This is a shotgun.
   InventoryAction: 2

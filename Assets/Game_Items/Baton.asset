@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Baton
   m_EditorClassIdentifier: 
   UniqueId: cd5c7572-11e2-442d-a064-dc038febc852
-  Image: {fileID: 21300000, guid: 5f4b54923e4043a438528982181e070c, type: 3}
-  ExamineModel: {fileID: 919132149155446097, guid: 396173af5a2bc2b43abe0da333586934, type: 3}
+  Image: {fileID: 21300000, guid: 009471acb2ed8784b900744bc33c6ce4, type: 3}
+  ExamineModel: {fileID: 3735155251281414091, guid: 42f4cd466618eae44a7b193ee225893b, type: 3}
   Name: Baton
   Description: Batondur bu.
   InventoryAction: 2

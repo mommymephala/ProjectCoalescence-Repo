@@ -66,7 +66,7 @@ namespace HorrorEngine
 
             gameObject.SetActive(true);
 
-            m_ButtonLegend?.SetActive(m_CanCloseSelf);
+//            m_ButtonLegend?.SetActive(m_CanCloseSelf);
 
             m_XSpeed = 0;
             m_YSpeed = 0;
@@ -113,9 +113,9 @@ namespace HorrorEngine
                 m_Renderer.InteractionDetector.Cast();
                 if (m_Renderer.InteractionDetector.FocusedInteractive)
                 {
-                    m_InteractionPrompt.gameObject.SetActive(true);
-                    m_InteractionPrompt.transform.position = m_Renderer.Camera.WorldToScreenPoint(m_Renderer.InteractionDetector.FocusedInteractive.transform.position);
-                    m_InteractionPrompt.transform.localRotation = Quaternion.LookRotation(-m_Renderer.Camera.transform.forward);
+                  // m_InteractionPrompt.gameObject.SetActive(true);
+                //7m_InteractionPrompt.transform.position = m_Renderer.Camera.WorldToScreenPoint(m_Renderer.InteractionDetector.FocusedInteractive.transform.position);
+//                 m_InteractionPrompt.transform.localRotation = Quaternion.LookRotation(-m_Renderer.Camera.transform.forward);
 
                     if (m_Input.IsConfirmDown())
                     {
@@ -124,7 +124,7 @@ namespace HorrorEngine
                 }
                 else
                 {
-                    m_InteractionPrompt.gameObject.SetActive(false);
+                   // m_InteractionPrompt.gameObject.SetActive(false);
                 }
             }
         }

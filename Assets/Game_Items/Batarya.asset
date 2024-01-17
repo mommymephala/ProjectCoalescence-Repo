@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58e5e9a2ec5a7634ebab86edd9f5f4aa, type: 3}
-  m_Name: Key
+  m_Name: Batarya
   m_EditorClassIdentifier: 
-  UniqueId: 6ec7c756-591a-43d3-af20-0addec637fac
-  Image: {fileID: 21300000, guid: 7287f58a855a8f341be10ebb9a9abd4d, type: 3}
-  ExamineModel: {fileID: 3231717572638813147, guid: dc0ba9a5f2fa7084a8cc3510fbd5ecec, type: 3}
-  Name: Spade Key
-  Description: It opens doors with a spade engraving
+  UniqueId: 0cb6d9b0-2149-40f3-a2b4-8073e36f8053
+  Image: {fileID: 21300000, guid: 181dae82243e6094b95b187888fb7337, type: 3}
+  ExamineModel: {fileID: 1356027461061613287, guid: 85049b9e45dbf154387a15fdfdc14847, type: 3}
+  Name: Battery
+  Description: Electric battery
   InventoryAction: 0
-  Flags: 240
+  Flags: 126
   DropPrefab: {fileID: 0}

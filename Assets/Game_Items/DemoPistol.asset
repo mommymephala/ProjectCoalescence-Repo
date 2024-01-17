@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DemoPistol
   m_EditorClassIdentifier: 
   UniqueId: 92c02655-6baf-487a-9b16-02938a3e6f0b
-  Image: {fileID: 21300000, guid: e11eae54ed767974bba7c86b71112524, type: 3}
-  ExamineModel: {fileID: 42335214512033538, guid: fdb7fcebfb29e6d4f993588b6c476f64, type: 3}
+  Image: {fileID: 21300000, guid: 56a3ba642facc994b86a08838b8b05c5, type: 3}
+  ExamineModel: {fileID: 2471493122128573221, guid: 59166bdf1adab5443a48c737ab921896, type: 3}
   Name: Pistol
   Description: That's a pistol.
   InventoryAction: 2

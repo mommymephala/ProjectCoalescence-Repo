@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14947ebda2ae13c4f9220ba7dedb616b, type: 3}
+  m_Name: Health_Tube
+  m_EditorClassIdentifier: 
+  UniqueId: d8bd4932-197b-49fc-bf02-331671da0689
+  Image: {fileID: 21300000, guid: 482a05653b19f824491f2973800b8958, type: 3}
+  ExamineModel: {fileID: 235085495699500596, guid: 12c106bb59d8aa44b9b0ababb1f0c731, type: 3}
+  Name: Health Tube
+  Description: It greatly restores your health
+  InventoryAction: 1
+  Flags: 124
+  DropPrefab: {fileID: 0}
+  m_Regeneration: 25
+  m_CompleteRegeneration: 0
